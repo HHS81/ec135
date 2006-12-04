@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+	<variant type="string">ADAC </variant>
+
+
+     		<material>
+         <fuselage>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </fuselage>
+         
+         <lighthull>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </lighthull>
+         
+         <binocular>
+          <texture>liveries/binocular.adac.rgb</texture>
+         </binocular>
+         
+         <radardome>
+          <texture>liveries/empty.rgb</texture>
+         </radardome>
+         
+         <tail>
+          <texture>liveries/tail.adac.rgb</texture>
+         </tail>
+         
+         <spant>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </spant>
+         
+         <vstab>
+          <texture>liveries/vstab.adac.rgb</texture>
+         </vstab>
+         
+         <reardoor_re>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </reardoor_re>
+         
+         <reardoor_li>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </reardoor_li>
+         
+         <backdoor_re_u>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </backdoor_re_u>
+         
+         <backdoor_re_o>
+          <texture>liveries/binocular.adac.rgb</texture>
+         </backdoor_re_o>
+
+<backdoor_li_u>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </backdoor_li_u>
+         
+         <backdoor_li_o>
+          <texture>liveries/binocular.adac.rgb</texture>
+         </backdoor_li_o>
+
+<frontdoor_li_u>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </frontdoor_li_u>
+         
+         <frontdoor_li_o>
+          <texture>liveries/binocular.adac.rgb</texture>
+         </frontdoor_li_o>
+
+<frontdoor_re_u>
+          <texture>liveries/fuselage.adac.rgb</texture>
+         </frontdoor_re_u>
+         
+         <frontdoor_re_o>
+          <texture>liveries/binocular.adac.rgb</texture>
+         </frontdoor_re_o>
+
+
+         
+         
+	 <fuselage_color>
+	  <diffuse>
+	   <red>1</red>
+	   <green>1</green>
+	   <blue>1</blue>
+	  </diffuse>
+
+	  <ambient>
+	   <red>0</red>
+	   <green>0</green>
+	   <blue>0</blue>
+	  </ambient>
+
+	  <specular>
+	   <red>1</red>
+	   <green>1</green>
+	   <blue>1</blue>
+	  </specular>
+
+	  <emission>
+	   <red>0.0</red>
+	   <green>0.0</green>
+	   <blue>0.0</blue>
+	  </emission>
+
+	  <transparency>
+	   <alpha>1.0</alpha>
+	  </transparency>
+
+	  <shininess>10</shininess>
+	 </fuselage_color>
+   
+   <rotorcap_color>
+	  <diffuse>
+	   <red>1</red>
+	   <green>1</green>
+	   <blue>1</blue>
+	  </diffuse>
+
+	  <ambient>
+	   <red>0</red>
+	   <green>0</green>
+	   <blue>0</blue>
+	  </ambient>
+
+	  <specular>
+	   <red>1</red>
+	   <green>1</green>
+	   <blue>1</blue>
+	  </specular>
+
+	  <emission>
+	   <red>0.0</red>
+	   <green>0.0</green>
+	   <blue>0.0</blue>
+	  </emission>
+
+	  <transparency>
+	   <alpha>1.0</alpha>
+	  </transparency>
+
+	  <shininess>10</shininess>
+	 </rotorcap_color>
+
+     </material>
+   </livery>
+		</model>
+  </sim>
+</PropertyList>

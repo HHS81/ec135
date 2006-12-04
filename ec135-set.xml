@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+EC 135 simulation config.
+
+************************************************************************
+-->
+
+<PropertyList>
+	<sim>
+		<description>Eurocopter EC135</description>
+		<author>Heiko Schulz, Maik Justus (FDM)</author>
+		<status>alpha</status>
+		<aircraft-version>0.1</aircraft-version>
+
+		<flight-model>yasim</flight-model>
+		<aero>ec135</aero>
+		<fuel-fraction>0.8</fuel-fraction>
+    
+    <!--<startup>
+            <splash-texture>Aircraft/ec135/splash.rgb</splash-texture>
+        </startup>-->
+    
+      
+ 		<sound>
+			<path>Aircraft/ec135/Sounds/sound.xml</path>
+		</sound>
+
+		<instrumentation>
+			<path>Aircraft/ec135/Models/instrumentation/instrumentation.xml</path>
+		</instrumentation>
+
+
+		<model>
+			<path archive="y">Aircraft/ec135/Models/ec135.xml</path>
+      <livery>
+	<variant type="string">adac </variant>
+
+
+     		<material>
+         <fuselage>
+          <texture>fuselage.adac.rgb</texture>
+         </fuselage>
+         
+         <lighthull>
+          <texture>fuselage.adac.rgb</texture>
+         </lighthull>
+         
+         <binocular>
+          <texture>binocular.adac.rgb</texture>
+         </binocular>
+         
+         <radardome>
+          <texture>empty.rgb</texture>
+         </radardome>
+         
+         <tail>
+          <texture>tail.adac.rgb</texture>
+         </tail>
+         
+         <spant>
+          <texture>fuselage.adac.rgb</texture>
+         </spant>
+         
+         <vstab>
+          <texture>vstab.adac.rgb</texture>
+         </vstab>
+         
+         <reardoor_re>
+          <texture>fuselage.adac.rgb</texture>
+         </reardoor_re>
+         
+         <reardoor_li>
+          <texture>fuselage.adac.rgb</texture>
+         </reardoor_li>
+         
+         <backdoor_re_u>
+          <texture>fuselage.adac.rgb</texture>
+         </backdoor_re_u>
+         
+         <backdoor_re_o>
+          <texture>binocular.adac.rgb</texture>
+         </backdoor_re_o>
+
+<backdoor_li_u>
+          <texture>fuselage.adac.rgb</texture>
+         </backdoor_li_u>
+         
+         <backdoor_li_o>
+          <texture>binocular.adac.rgb</texture>
+         </backdoor_li_o>
+
+<frontdoor_li_u>
+          <texture>fuselage.adac.rgb</texture>
+         </frontdoor_li_u>
+         
+         <frontdoor_li_o>
+          <texture>binocular.adac.rgb</texture>
+         </frontdoor_li_o>
+
+<frontdoor_re_u>
+          <texture>fuselage.adac.rgb</texture>
+         </frontdoor_re_u>
+         
+         <frontdoor_re_o>
+          <texture>binocular.adac.rgb</texture>
+         </frontdoor_re_o>
+
+
+         
+         
+	 <fuselage_color>
+	  <diffuse>
+	   <red>1</red>
+	   <green>1</green>
+	   <blue>1</blue>
+	  </diffuse>
+
+	  <ambient>
+	   <red>0</red>
+	   <green>0</green>
+	   <blue>0</blue>
+	  </ambient>
+
+	  <specular>
+	   <red>1</red>
+	   <green>1</green>
+	   <blue>1</blue>
+	  </specular>
+
+	  <emission>
+	   <red>0.0</red>
+	   <green>0.0</green>
+	   <blue>0.0</blue>
+	  </emission>
+
+	  <transparency>
+	   <alpha>1.0</alpha>
+	  </transparency>
+
+	  <shininess>10</shininess>
+	 </fuselage_color>
+   
+   <rotorcap_color>
+	  <diffuse>
+	   <red>1</red>
+	   <green>1</green>
+	   <blue>1</blue>
+	  </diffuse>
+
+	  <ambient>
+	   <red>0</red>
+	   <green>0</green>
+	   <blue>0</blue>
+	  </ambient>
+
+	  <specular>
+	   <red>1</red>
+	   <green>1</green>
+	   <blue>1</blue>
+	  </specular>
+
+	  <emission>
+	   <red>0.0</red>
+	   <green>0.0</green>
+	   <blue>0.0</blue>
+	  </emission>
+
+	  <transparency>
+	   <alpha>1.0</alpha>
+	  </transparency>
+
+	  <shininess>10</shininess>
+	 </rotorcap_color>
+
+     </material>
+   </livery>
+		</model>
+
+
+		<view n="0">
+			<internal archive="y">true</internal>
+			<config>
+				<x-offset-m archive="y">0.397</x-offset-m>
+				<!--right-->
+				<y-offset-m archive="y">0.88</y-offset-m>
+				<!--up-->
+				<z-offset-m archive="y">0.75</z-offset-m>
+				<!--back-->
+				<pitch-offset-deg>-8</pitch-offset-deg>
+			</config>
+		</view>
+
+
+
+
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb>180</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="1">
+			<name>Co-Pilot</name>
+			<weight-lb>180</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="2">
+			<name>Right Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="3">
+			<name>Middle Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="4">
+			<name>Left Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="5">
+			<name>Load</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>800</max-lb>
+		</weight>
+
+		<help>
+			<title>EC 135 - background and help</title>
+      <line></line>
+      <line>Informations about the Eurocopter E 135</line>
+      <line></line>
+      <line>The EC 135 is a light twin, multi-mission helicopter.</line>
+<line>Eurocopter has two version of it: the EC 135 P2i and the EC 135 T2i</line>
+            <line>P2 stands for the PRATT and WHITNEY PW 206B2 turbine engine with 743 PS (horsepower).</line>
+      <line>T2 stands for TURBOMECA Arrius 2B2 turbine engine with 706 PS.</line>
+            <line>The EC 135 descends from the MBB Bo 108.</line>
+            <line>The Bo 108 was a demonstration prototype for fly-by-wire and has it's descend from the famous Bo 105.</line>
+      <line>When the Eurocopter company was founded, the Bo 108 came with.</line>
+      <line>Eurocopter decided that there was a marcetplace for such a helicopter and the developement went on.</line>
+      <line> From the french partners it got the fenestron, from MBB the hingeless rotor. </line>
+            <line>The fenestron makes it very hard for dangerous situations in the range of the tail rotor</line>
+            <line>and reduces the noise level about 50% to other helicopters</line>
+            <line>That's why the EC 135 is a vey recommanded helicopter for EMS and the police, especially in Europe</line>
+            <line></line>
+            <line>Help</line>
+            <line></line>
+            <line>starting the engines -> press }-key</line>
+            <line>shut down the engines -> press {-key</line>
+            <line>collective -> page up/down- keys</line>
+            <line>Open/ Close doors -> click the menu panel above</line>
+            <line>change livery ->press l-key</line>
+
+      
+		</help>
+    
+    <menubar>
+            <default>
+                <menu n="10">
+                    <label>EC135</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Open/close pilots door</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                ec135.pilotDoor.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Open/close Copilots door</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                ec135.copilotDoor.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Open/close right backdoor</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                ec135.ribackDoor.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Open/close left backdoor</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                ec135.lebackDoor.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Open/close reardoors</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                ec135.rearDoors.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                     </menu>
+            </default>
+        </menubar>
+	</sim>
+
+	<controls>
+		<engines>
+			<engine n="0">
+				<magnetos>0</magnetos>
+			</engine>
+			<engine n="1">
+				<throttle>1</throttle>
+			</engine>
+		</engines>
+    
+    
+    </controls>
+
+  
+ 
+    
+    <input>
+	<keyboard>
+
+<!-- Livery Box -->
+ 		<key n="108">
+   			<name>l</name>
+   			<desc>Show livery select dialog</desc>
+   			<binding>
+    				<command>nasal</command>
+     				<script>livery.showModelSelectDialog()</script>
+   			</binding>
+ 		</key>
+    
+    </keyboard>
+    </input>
+    
+     	<nasal>
+		<ec135>
+			<file>Aircraft/ec135/Models/ec135.nas</file>
+		</ec135>
+    	<livery>
+		<file>Aircraft/ec135/Models/livery.nas</file>
+	</livery>
+    </nasal>
+    
+    	<rotors>
+		<main>
+			<rpm type="double">0</rpm>
+		</main>
+	</rotors>
+  
+  </PropertyList>
