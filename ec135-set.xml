@@ -327,9 +327,12 @@ EC 135 simulation config.
     
     </controls>
 
-  
- 
-    
+	<instrumentation>
+		<gsdi>
+			<serviceable type="bool">true</serviceable>
+		</gsdi>
+	</instrumentation>
+
     <input>
 	<keyboard>
 
