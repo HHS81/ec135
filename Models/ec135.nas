@@ -100,5 +100,5 @@ init_rotoranim = func {
 
 # strobe and light=====
 var strobe_switch = props.globals.getNode("controls/lighting/strobe", 1);
-aircraft.light.new("sim/model/lights/strobe/state", 0.025, 1.00, strobe_switch);
+aircraft.light.new("sim/model/lights/strobe/state", [0.025, 1.00], strobe_switch);
 
