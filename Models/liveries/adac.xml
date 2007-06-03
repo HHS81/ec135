@@ -1,150 +1,111 @@
 <?xml version="1.0"?>
 
 <PropertyList>
-  <sim>
-    <model>
-      <livery>
-	<variant type="string">ADAC </variant>
+	<sim>
+		<model>
+			<ec135>
+				<binocular_standart type="bool">true</binocular_standart>
+				<binocular_tri type="bool">false</binocular_tri>
+				<winch>false</winch>
+				<mirror>false</mirror>
+				<wirecutter_skid>false</wirecutter_skid>
+				<wirecutter_up>false</wirecutter_up>
+				<wirecutter_down>false</wirecutter_down>
+				<livery>
+					<variant type="string">ADAC </variant>
 
 
-     		<material>
-         <fuselage>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </fuselage>
-         
-         <lighthull>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </lighthull>
-         
-         <binocular>
-          <texture>liveries/binocular.adac.rgb</texture>
-         </binocular>
-         
-         <radardome>
-          <texture>liveries/empty.rgb</texture>
-         </radardome>
-         
-         <tail>
-          <texture>liveries/tail.adac.rgb</texture>
-         </tail>
-         
-         <spant>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </spant>
-         
-         <vstab>
-          <texture>liveries/vstab.adac.rgb</texture>
-         </vstab>
-         
-         <reardoor_re>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </reardoor_re>
-         
-         <reardoor_li>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </reardoor_li>
-         
-         <backdoor_re_u>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </backdoor_re_u>
-         
-         <backdoor_re_o>
-          <texture>liveries/binocular.adac.rgb</texture>
-         </backdoor_re_o>
+					<material>
+						<fuselage>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</fuselage>
 
-<backdoor_li_u>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </backdoor_li_u>
-         
-         <backdoor_li_o>
-          <texture>liveries/binocular.adac.rgb</texture>
-         </backdoor_li_o>
+						<plate>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</plate>
 
-<frontdoor_li_u>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </frontdoor_li_u>
-         
-         <frontdoor_li_o>
-          <texture>liveries/binocular.adac.rgb</texture>
-         </frontdoor_li_o>
+						<wirecutter_up>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</wirecutter_up>
 
-<frontdoor_re_u>
-          <texture>liveries/fuselage.adac.rgb</texture>
-         </frontdoor_re_u>
-         
-         <frontdoor_re_o>
-          <texture>liveries/binocular.adac.rgb</texture>
-         </frontdoor_re_o>
+						<wirecutter_down>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</wirecutter_down>
 
+						<wirecutter_skid>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</wirecutter_skid>
 
-         
-         
-	 <fuselage_color>
-	  <diffuse>
-	   <red>1</red>
-	   <green>1</green>
-	   <blue>1</blue>
-	  </diffuse>
+						<skid>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</skid>
 
-	  <ambient>
-	   <red>0</red>
-	   <green>0</green>
-	   <blue>0</blue>
-	  </ambient>
+						<binocular>
+							<texture>liveries/binocular.adac.rgb</texture>
+						</binocular>
 
-	  <specular>
-	   <red>1</red>
-	   <green>1</green>
-	   <blue>1</blue>
-	  </specular>
+						<binocular_tri>
+							<texture>liveries/binocular_tri.oeamtc.rgb</texture>
+						</binocular_tri>
 
-	  <emission>
-	   <red>0.0</red>
-	   <green>0.0</green>
-	   <blue>0.0</blue>
-	  </emission>
+						<binocular_standart>
+							<texture>liveries/dhecz.binocular_standart.rgb</texture>
+						</binocular_standart>
 
-	  <transparency>
-	   <alpha>1.0</alpha>
-	  </transparency>
+						<tail>
+							<texture>liveries/tail.adac.rgb</texture>
+						</tail>
 
-	  <shininess>10</shininess>
-	 </fuselage_color>
-   
-   <rotorcap_color>
-	  <diffuse>
-	   <red>1</red>
-	   <green>1</green>
-	   <blue>1</blue>
-	  </diffuse>
+						<fenestron>
+							<texture>liveries/fenestron.adac.rgb</texture>
+						</fenestron>
 
-	  <ambient>
-	   <red>0</red>
-	   <green>0</green>
-	   <blue>0</blue>
-	  </ambient>
+						<rotorcap>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</rotorcap>
 
-	  <specular>
-	   <red>1</red>
-	   <green>1</green>
-	   <blue>1</blue>
-	  </specular>
+						<reardoor_re>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</reardoor_re>
 
-	  <emission>
-	   <red>0.0</red>
-	   <green>0.0</green>
-	   <blue>0.0</blue>
-	  </emission>
+						<reardoor_li>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</reardoor_li>
 
-	  <transparency>
-	   <alpha>1.0</alpha>
-	  </transparency>
+						<backdoor_re_u>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</backdoor_re_u>
 
-	  <shininess>10</shininess>
-	 </rotorcap_color>
+						<backdoor_re_o>
+							<texture>liveries/binocular.adac.rgb</texture>
+						</backdoor_re_o>
 
-     </material>
-   </livery>
+						<backdoor_li_u>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</backdoor_li_u>
+
+						<backdoor_li_o>
+							<texture>liveries/binocular.adac.rgb</texture>
+						</backdoor_li_o>
+
+						<frontdoor_li_u>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</frontdoor_li_u>
+
+						<frontdoor_li_o>
+							<texture>liveries/binocular.adac.rgb</texture>
+						</frontdoor_li_o>
+
+						<frontdoor_re_u>
+							<texture>liveries/fuselage.adac.rgb</texture>
+						</frontdoor_re_u>
+
+						<frontdoor_re_o>
+							<texture>liveries/binocular.adac.rgb</texture>
+						</frontdoor_re_o>
+					</material>
+				</livery>
+			</ec135>
 		</model>
-  </sim>
+	</sim>
 </PropertyList>

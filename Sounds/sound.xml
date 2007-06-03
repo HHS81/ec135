@@ -5,32 +5,28 @@
 
 <PropertyList>
 	<fx>
-		<!-- inside -->
+
+
+		<!-- turbine inside -->
 		<engine>
 			<name>turbine-start-inside</name>
 			<mode>once</mode>
 			<path>Aircraft/ec135/Sounds/ec135_turbine_strt_in.wav</path>
 			<condition>
-				<and>
-					<equals>
-						<property>sim/model/ec135/state</property>
-						<value>1</value>
-					</equals>
-					<equals>
-						<property>sim/current-view/view-number</property>
-						<value>0</value>
-					</equals>
-				</and>
+				<equals>
+					<property>sim/model/ec135/state</property>
+					<value>1</value>
+				</equals>
 			</condition>
 			<volume>
-				<factor>1</factor>
+				<property>sim/model/ec135/inside_volume</property>
 			</volume>
 		</engine>
 
 		<engine>
 			<name>turbine-loop-inside</name>
 			<mode>looped</mode>
-			<path>Aircraft/ec135/Sounds/ec135_turbine_idle_in.wav</path>
+			<path>Aircraft/ec135/Sounds/ec135_idle-inside.wav</path>
 			<condition>
 				<and>
 					<equals>
@@ -53,19 +49,13 @@
 			<mode>once</mode>
 			<path>Aircraft/ec135/Sounds/ec135_shut_ec_in.wav</path>
 			<condition>
-				<and>
-					<equals>
-						<property>sim/model/ec135/state</property>
-						<value>3</value>
-					</equals>
-					<equals>
-						<property>sim/current-view/view-number</property>
-						<value>0</value>
-					</equals>
-				</and>
+				<equals>
+					<property>sim/model/ec135/state</property>
+					<value>3</value>
+				</equals>
 			</condition>
 			<volume>
-				<factor>1</factor>
+				<property>sim/model/ec135/inside_volume</property>
 			</volume>
 		</engine>
 
@@ -77,33 +67,25 @@
 			<mode>once</mode>
 			<path>Aircraft/ec135/Sounds/ec135_turbine_strt_out.wav</path>
 			<condition>
-				<and>
-					<equals>
-						<property>sim/model/ec135/state</property>
-						<value>1</value>
-					</equals>
-					<not>
-						<equals>
-							<property>sim/current-view/view-number</property>
-							<value>1</value>
-						</equals>
-					</not>
-				</and>
+				<equals>
+					<property>sim/model/ec135/state</property>
+					<value>1</value>
+				</equals>
 			</condition>
 			<volume>
-				<factor>1</factor>
+				<property>sim/model/ec135/outside_volume</property>
 			</volume>
 		</engine>
 
 		<engine>
 			<name>turbine-loop-outside</name>
 			<mode>looped</mode>
-			<path>Aircraft/ec135/Sounds/ec135_turbine_idle_out.wav</path>
+			<path>Aircraft/ec135/Sounds/ec135_turbine_idle_out2.wav</path>
 			<condition>
 				<and>
 					<equals>
 						<property>sim/model/ec135/state</property>
-						<value>1</value>
+						<value>2</value>
 					</equals>
 					<not>
 						<equals>
@@ -114,7 +96,7 @@
 				</and>
 			</condition>
 			<volume>
-				<factor>1</factor>
+				<property>sim/model/ec135/outside_volume</property>
 			</volume>
 		</engine>
 
@@ -123,33 +105,23 @@
 			<mode>once</mode>
 			<path>Aircraft/ec135/Sounds/ec135_shut_ec_out.wav</path>
 			<condition>
-				<and>
-					<equals>
-						<property>sim/model/ec135/state</property>
-						<value>3</value>
-					</equals>
-					<not>
-						<equals>
-							<property>sim/current-view/view-number</property>
-							<value>0</value>
-						</equals>
-					</not>
-				</and>
+				<equals>
+					<property>sim/model/ec135/state</property>
+					<value>3</value>
+				</equals>
 			</condition>
 			<volume>
-				<factor>1</factor>
+				<property>sim/model/ec135/outside_volume</property>
 			</volume>
 		</engine>
-    
-    
-
 
 
 		<!-- rotor -->
+
 		<rotor>
 			<name>rotor</name>
 			<mode>looped</mode>
-			<path>Aircraft/ec135/Sounds/ec135_rotor_out.wav</path>
+			<path>Aircraft/ec135/Sounds/ec135_turbine_idle_out.wav</path>
 			<condition>
 				<and>
 					<greater-than>
@@ -164,7 +136,7 @@
 			<volume>
 				<property>rotors/main/rpm</property>
 				<factor>0.01</factor>
-				<max>0.2</max>
+				<max>0.25</max>
 			</volume>
 			<pitch>
 				<property>rotors/main/rpm</property>
@@ -174,9 +146,7 @@
 			</pitch>
 		</rotor>
 
-
-   
-    		<rotor>
+		<rotor>
 			<name>stall</name>
 			<mode>looped</mode>
 			<path>Aircraft/ec135/Sounds/ec135_rotor_out.wav</path>
@@ -193,8 +163,8 @@
 			</condition>
 			<volume>
 				<property>rotors/main/stall-filtered</property>
-				<factor>60</factor>
-				<max>1.0</max>
+				<factor>150</factor>
+				<max>2.0</max>
 			</volume>
 			<pitch>
 				<property>rotors/main/rpm</property>
@@ -202,7 +172,7 @@
 				<offset>0</offset>
 				<max>1.75</max>
 			</pitch>
-		</rotor>-->
+		</rotor>
 
 		<overspeed>
 			<name>overspeed</name>
@@ -215,7 +185,7 @@
 				</greater-than>
 			</condition>
 			<volume>
-				<factor>0.2</factor>
+				<factor>0.9</factor>
 			</volume>
 			<pitch>
 				<factor>0.1</factor>
@@ -230,8 +200,56 @@
 			<path>Aircraft/ec135/Sounds/TC1.wav</path>
 			<condition>
 				<property>gear/gear[0]/wow</property>
+			</condition>
+			<volume>
+				<factor>0.8</factor>
+			</volume>
+			<pitch>
+				<factor>0.01</factor>
+			</pitch>
+			<reference-dist>5.0</reference-dist>
+			<max-dist>10.0</max-dist>
+		</contact>
+
+		<contact>
+			<name>ground contact</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/TC1.wav</path>
+			<condition>
 				<property>gear/gear[1]/wow</property>
+			</condition>
+			<volume>
+				<factor>0.8</factor>
+			</volume>
+			<pitch>
+				<factor>0.01</factor>
+			</pitch>
+			<reference-dist>5.0</reference-dist>
+			<max-dist>10.0</max-dist>
+		</contact>
+
+		<contact>
+			<name>ground contact</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/TC1.wav</path>
+			<condition>
 				<property>gear/gear[2]/wow</property>
+			</condition>
+			<volume>
+				<factor>0.8</factor>
+			</volume>
+			<pitch>
+				<factor>0.01</factor>
+			</pitch>
+			<reference-dist>5.0</reference-dist>
+			<max-dist>10.0</max-dist>
+		</contact>
+
+		<contact>
+			<name>ground contact</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/TC1.wav</path>
+			<condition>
 				<property>gear/gear[3]/wow</property>
 			</condition>
 			<volume>
@@ -243,6 +261,103 @@
 			<reference-dist>5.0</reference-dist>
 			<max-dist>10.0</max-dist>
 		</contact>
+
+		<contact>
+			<name>ground contact</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/TC1.wav</path>
+			<condition>
+				<property>gear/gear[4]/wow</property>
+			</condition>
+			<volume>
+				<factor>0.8</factor>
+			</volume>
+			<pitch>
+				<factor>0.01</factor>
+			</pitch>
+			<reference-dist>5.0</reference-dist>
+			<max-dist>10.0</max-dist>
+		</contact>
+
+		<slide>
+			<name>skid sliding</name>
+			<mode>looped</mode>
+			<path>Sounds/rumble.wav</path>
+			<condition>
+				<and>
+					<property>gear/gear[0]/wow</property>
+					<not>
+						<property>sim/crashed</property>
+					</not>
+				</and>
+			</condition>
+			<volume>
+				<property>sim/sound/slide[0]/volume</property>
+			</volume>
+			<pitch>
+				<property>sim/sound/slide[0]/pitch</property>
+			</pitch>
+		</slide>
+
+		<slide>
+			<name>skid sliding</name>
+			<mode>looped</mode>
+			<path>Sounds/rumble.wav</path>
+			<condition>
+				<and>
+					<property>gear/gear[1]/wow</property>
+					<not>
+						<property>sim/crashed</property>
+					</not>
+				</and>
+			</condition>
+			<volume>
+				<property>sim/sound/slide[1]/volume</property>
+			</volume>
+			<pitch>
+				<property>sim/sound/slide[1]/pitch</property>
+			</pitch>
+		</slide>
+
+		<slide>
+			<name>skid sliding</name>
+			<mode>looped</mode>
+			<path>Sounds/rumble.wav</path>
+			<condition>
+				<and>
+					<property>gear/gear[2]/wow</property>
+					<not>
+						<property>sim/crashed</property>
+					</not>
+				</and>
+			</condition>
+			<volume>
+				<property>sim/sound/slide[2]/volume</property>
+			</volume>
+			<pitch>
+				<property>sim/sound/slide[2]/pitch</property>
+			</pitch>
+		</slide>
+
+		<slide>
+			<name>skid sliding</name>
+			<mode>looped</mode>
+			<path>Sounds/rumble.wav</path>
+			<condition>
+				<and>
+					<property>gear/gear[3]/wow</property>
+					<not>
+						<property>sim/crashed</property>
+					</not>
+				</and>
+			</condition>
+			<volume>
+				<property>sim/sound/slide[3]/volume</property>
+			</volume>
+			<pitch>
+				<property>sim/sound/slide[3]/pitch</property>
+			</pitch>
+		</slide>
 
 		<wind>
 			<name>wind</name>
@@ -290,127 +405,5 @@
 				<factor>0.1</factor>
 			</pitch>
 		</crash>
-
-
-
-		<door>
-			<name>close right frontdoor</name>
-			<mode>once</mode>
-			<path>Sounds/door_close.wav</path>
-			<condition>
-				<equals>
-					<property>sim/model/door-positions/doors/pilotDoor/position-norm</property>
-					<value>0</value>
-				</equals>
-			</condition>
-			<position>
-				<x>1.0</x>
-				<y>1.5</y>
-				<z>-1.5</z>
-			</position>
-			<volume>
-				<factor>1</factor>
-			</volume>
-		</door>
-
-		<door>
-			<name>close left frontdoor</name>
-			<mode>once</mode>
-			<path>Sounds/door_close.wav</path>
-			<condition>
-				<equals>
-					<property>sim/model/ec135/doors/copilotDoor/position-norm</property>
-					<value>0</value>
-				</equals>
-			</condition>
-			<position>
-				<x>-1.0</x>
-				<y>1.5</y>
-				<z>-1.5</z>
-			</position>
-			<volume>
-				<factor>0.5</factor>
-			</volume>
-		</door>
-
-		<door>
-			<name>close right backdoor</name>
-			<mode>once</mode>
-			<path>Sounds/door_close.wav</path>
-			<condition>
-				<equals>
-					<property>sim/model/ec135/doors/ribackDoor/position-norm</property>
-					<value>0</value>
-				</equals>
-			</condition>
-			<position>
-				<x>1.0</x>
-				<y>1.0</y>
-				<z>-1.5</z>
-			</position>
-			<volume>
-				<factor>0.5</factor>
-			</volume>
-		</door>
-
-		<door>
-			<name>close left backdoor</name>
-			<mode>once</mode>
-			<path>Sounds/door_close.wav</path>
-			<condition>
-				<equals>
-					<property>sim/model/ec135/doors/lebackDoor/position-norm</property>
-					<value>0</value>
-				</equals>
-			</condition>
-			<position>
-				<x>-1.0</x>
-				<y>1.0</y>
-				<z>-1.5</z>
-			</position>
-			<volume>
-				<factor>0.5</factor>
-			</volume>
-		</door>
-
-		<door>
-			<name>close right reardoor</name>
-			<mode>once</mode>
-			<path>Sounds/door_close.wav</path>
-			<condition>
-				<equals>
-					<property>sim/model/ec135/doors/rearDoors/position-norm</property>
-					<value>0</value>
-				</equals>
-			</condition>
-			<position>
-				<x>0.0</x>
-				<y>-1.5</y>
-				<z>-1.0</z>
-			</position>
-			<volume>
-				<factor>0.5</factor>
-			</volume>
-		</door>
-
-		<door>
-			<name>close left reardoor</name>
-			<mode>once</mode>
-			<path>Sounds/door_close.wav</path>
-			<condition>
-				<equals>
-					<property>sim/model/ec135/doors/rearDoors/position-norm</property>
-					<value>0</value>
-				</equals>
-			</condition>
-			<position>
-				<x>0.0</x>
-				<y>-1.5</y>
-				<z>-1.0</z>
-			</position>
-			<volume>
-				<factor>0.5</factor>
-			</volume>
-		</door>
 	</fx>
 </PropertyList>

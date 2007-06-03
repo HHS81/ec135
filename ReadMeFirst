@@ -1,0 +1,74 @@
+This Model of an Eurocopter EC135 is made for FlightGear and stands under the terms of GPLv2.
+Tested in Plib with compilation from 05/28/2007
+
+Note:  EUROCOPTER and its logo are trade marks of the Eurocopter group.
+======================================================================================================================
+Credits:
+Author 3D-Model and man in charge:
+
+Heiko Schulz
+Heiko.H.Schulz@gmx.net
+
+Author dynamic flight model:
+
+Maik Justus
+fg@mjustus.de
+
+Author Nasal:
+Melchior Franz
+mfranz@aon.at
+
+Soundfiles by George Arana - Rotor Spider Developement Group
+
+Thanks guys especially Maik for your help and work!
+
+Changelog: 
+
+Actual version: v.0.2
+-------------------------------------------------------------
+-fully new made 3D-model - matching real good to the real one
+-improved interior with stick and pedals
+-changed variants: ADAC Chr. 31 "Berlin", D-HECZ "second prototype", ÖAMTC Christopherus 1
+-improved cockpit with half analog IFR-panel 
+-HSI is now working, working VOR
+-GSDI selectable
+-improved and more detailed main rotor with incidence animation
+-Fenestron now with the correct configuration of the blades: 1-4-1-4
+-dynamic flight model now with the correct position of the CG
+-added frontlight, retractable landinglight, strobes with the correct frequency, beacon with the correct frequency
+-rotor brake system now working
+
+To-Do:
+-adding antennas and other mounting parts (search lights, cameras)
+-fully clickable cockpit (half-analog and digital)
+-complete light function
+-variants with radardome
+-variants with high-skid
+-much more (international)variants! 
+-realistic dynamic flight model
+-mainrotors much more detailed
+-animation of the fenestron blades (incidence)
+-sound still could be improved
+-adding pilots figures
+
+
+Actual version:v.0.1
+--------------------------------------------------------------
+-first 3d-model of an ec135
+-first try of an ec135-flight dynamic model
+-livery changing
+-two version: ADAC and Bavarian Police
+-first version of the half analog cockpit
+-doors to open
+
+To-Do:
+-better quality of the 3d-model
+-full mainrotor animation
+-better Fenestron 
+-improve cockpit, implementing a working HSI
+-clean up the xml-files
+-improve soundsystem
+-realistic dynamic flight model
+-selectable GSDI
+-implementing rotor brake system
+-more variants

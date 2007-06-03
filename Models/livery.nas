@@ -29,7 +29,7 @@ liveries = {};
 file = "";
 color = "";
 #" ~ getprop("/sim/model[0]") ~ "
-foreach (file; directory(getprop("/sim/fg-root") ~ "/Aircraft/ec135/Models/liveries/")) {
+foreach (file; directory(getprop("/sim/fg-root") ~ "/Aircraft/ec135/Models/Liveries/")) {
 	if (substr(file, size(file) - 4) == ".xml") {  
 		name = pop(split("/", file));
 		livery = split(".",name);
@@ -37,7 +37,7 @@ foreach (file; directory(getprop("/sim/fg-root") ~ "/Aircraft/ec135/Models/liver
 		foreach (var tmp;livery2) {
 			color = color ~ tmp ~ " ";
 		}
-		liveries[color] = "/liveries/" ~ file;
+		liveries[color] = "/Liveries/" ~ file;
 		color = "";
 	}
 }
@@ -48,15 +48,15 @@ select_variant = func {
 	print("Switching texture to " ~ arg[0]);
 
 	# Sets the variant name
-	#setprop("sim/model/livery/variant",arg[0]);
+	#setprop("sim/model/ec135/livery/variant",arg[0]);
 
 	# Sets the new texture on the aircraft components
-	#setprop("sim/model/livery/material/fuselage/texture", e);
+	#setprop("sim/model/ec135/livery/material/fuselage/texture", e);
 	
 	load(e);
 
-#	foreach (var n; props.globals.getNode("sim/model/livery/material").getChildren()) {
-#		setprop("sim/model/livery/material/" ~ n.getName() ~ "/texture", e);
+#	foreach (var n; props.globals.getNode("sim/model/ec135/livery/material").getChildren()) {
+#		setprop("sim/model/ec135/livery/material/" ~ n.getName() ~ "/texture", e);
 #	}
 }
 
@@ -130,7 +130,7 @@ closeModelSelectDialog = func {
 
 INIT = func {
 
-	variant = getprop("sim/model/livery/variant");
+	variant = getprop("sim/model/ec135/livery/variant");
 	#if (variant == nil) {
 	#	variant = 0;
 	#}
