@@ -29,7 +29,7 @@ liveries = {};
 file = "";
 color = "";
 #" ~ getprop("/sim/model[0]") ~ "
-foreach (file; directory(getprop("/sim/fg-root") ~ "/Aircraft/ec135/Models/Liveries/")) {
+foreach (file; directory(getprop("/sim/fg-root") ~ "/Aircraft/ec135/Models/liveries/")) {
 	if (substr(file, size(file) - 4) == ".xml") {  
 		name = pop(split("/", file));
 		livery = split(".",name);
@@ -37,7 +37,7 @@ foreach (file; directory(getprop("/sim/fg-root") ~ "/Aircraft/ec135/Models/Liver
 		foreach (var tmp;livery2) {
 			color = color ~ tmp ~ " ";
 		}
-		liveries[color] = "/Liveries/" ~ file;
+		liveries[color] = "/liveries/" ~ file;
 		color = "";
 	}
 }
