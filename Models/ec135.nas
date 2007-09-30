@@ -14,6 +14,11 @@ var npow = func(v, w) { math.exp(math.ln(abs(v)) * w) * (v < 0 ? -1 : 1) }
 var clamp = func(v, min = 0, max = 1) { v < min ? min : v > max ? max : v }
 var normatan = func(x) { math.atan2(x, 1) * 2 / math.pi }
 
+
+# liveries =========================================================
+aircraft.livery.init("Aircraft/ec135/Models/liveries",
+		"sim/model/ec135/livery/variant");
+
 # doors ============================================================
 pilotDoor = aircraft.door.new( "/sim/model/door-positions/pilotDoor", 1, 0 );
 copilotDoor = aircraft.door.new( "/sim/model/door-positions/copilotDoor", 1, 0 );

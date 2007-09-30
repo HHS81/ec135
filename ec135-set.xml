@@ -47,7 +47,7 @@ EC 135 simulation config.
 				<wirecutter_up>false</wirecutter_up>
 
 				<livery>
-					<variant type="string">dhecz </variant>
+					<variant type="string">dhecz</variant>
 
 
 					<material>
@@ -360,7 +360,7 @@ EC 135 simulation config.
 				<desc>Show livery select dialog</desc>
 				<binding>
 					<command>nasal</command>
-					<script>livery.showModelSelectDialog()</script>
+					<script>aircraft.livery.dialog.toggle()</script>
 				</binding>
 			</key>
 
@@ -453,9 +453,6 @@ EC 135 simulation config.
 			<file>Aircraft/ec135/Models/ec135.nas</file>
 			<file>Aircraft/ec135/Models/hsi.nas</file>
 		</ec135>
-		<livery>
-			<file>Aircraft/ec135/Models/livery.nas</file>
-		</livery>
 	</nasal>
 
 
