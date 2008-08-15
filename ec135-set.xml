@@ -151,7 +151,6 @@ EC 135 simulation config.
 			<type>lookfrom</type>
 			<internal type="bool">true</internal>
 			<config>
-				>
 				<x-offset-m type="double">0.36.25</x-offset-m>
 				<y-offset-m type="double">0.66</y-offset-m>
 				<z-offset-m type="double">1.00</z-offset-m>
@@ -391,7 +390,7 @@ EC 135 simulation config.
 				</mod-up>
 			</key>
 
-			-			<key n="123">
+			<key n="123">
 				<name>{</name>
 				<desc>Shutdown Engines</desc>
 				<binding>
