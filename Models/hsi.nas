@@ -13,8 +13,8 @@ if( v == nil ) {
 hsihb = props.globals.getNode( "/instrumentation/hsi/heading-bug-rotation-deg", "true" );
 hsics = props.globals.getNode( "/instrumentation/hsi/cursor-rotation-deg", "true" );
 
-setlistener( "/instrumentation/heading-indicator/indicated-heading-deg", func {
-  h = cmdarg().getValue();
+setlistener( "/instrumentation/heading-indicator/indicated-heading-deg", func(n) {
+  h = n.getValue();
 
   v = h - aphb.getValue();
   if( v < 0.0 ) {

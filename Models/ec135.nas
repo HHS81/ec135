@@ -407,8 +407,8 @@ setlistener("/sim/signals/fdm-initialized", func {
 	init_rotoranim();
 	collective.setDoubleValue(1);
 
-	setlistener("/sim/signals/reinit", func {
-		cmdarg().getBoolValue() and return;
+	setlistener("/sim/signals/reinit", func(n) {
+		n.getBoolValue() and return;
 		cprint("32;1", "reinit");
 		turbine_timer.stop();
 		collective.setDoubleValue(1);
@@ -416,18 +416,18 @@ setlistener("/sim/signals/fdm-initialized", func {
 		crashed = 0;
 	});
 
-	setlistener("sim/crashed", func {
-		cprint("31;1", "crashed ", cmdarg().getValue());
+	setlistener("sim/crashed", func(n) {
+		cprint("31;1", "crashed ", n.getValue());
 		turbine_timer.stop();
-		if (cmdarg().getBoolValue()) {
+		if (n.getBoolValue()) {
 			crash(crashed = 1);
 		}
 	});
 
-	setlistener("/sim/freeze/replay-state", func {
-		cprint("33;1", cmdarg().getValue() ? "replay" : "pause");
+	setlistener("/sim/freeze/replay-state", func(n) {
+		cprint("33;1", n.getValue() ? "replay" : "pause");
 		if (crashed) {
-			crash(!cmdarg().getBoolValue())
+			crash(!n.getBoolValue())
 		}
 	});
 
