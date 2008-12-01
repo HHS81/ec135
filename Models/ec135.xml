@@ -12,9 +12,9 @@
 		<x-m>3.50</x-m>
 
 		<pitch-deg>3.5</pitch-deg>
-
+		
 	</offsets>
-
+	
   <nasal>
         <load>
             var livery_update = aircraft.livery_update.new(
@@ -1838,7 +1838,7 @@
 		<y-factor>2</y-factor>
 		<z-factor>2</z-factor>
 	</animation>
-
+	
 <!--bigsearchlight
 <model>
 		<name>bigsearchlight</name>
@@ -1880,7 +1880,7 @@
 			<property>sim/model/ec135/binocular_tri</property>
 		</condition>
 	</animation>
-
+	
 	
 
 	<animation>
@@ -1922,7 +1922,7 @@
 			<property>sim/model/ec135/wirecutter_down</property>
 		</condition>
 	</animation>
-
+	
 	<animation>
 		<type>select</type>
 		<object-name>nose</object-name>
@@ -1980,7 +1980,7 @@
 <animation>
 		<type>shader</type>
 		<shader>chrome</shader>
-		<texture>glass_shader.png</texture>
+		<texture>glass_shader.rgb</texture>
 		<object-name>windshield</object-name>
 		<object-name>glas</object-name>
 		<object-name>frontdoorglas_re</object-name>
@@ -1996,7 +1996,7 @@
 	
   
 
-
+	
 
 	<!-- Material Animations -->
 
@@ -2004,6 +2004,15 @@
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>fuselage</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+	
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>skid</object-name>
 		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
@@ -2062,7 +2071,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2071,7 +2080,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2080,7 +2089,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2089,7 +2098,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2098,7 +2107,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2107,7 +2116,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2116,7 +2125,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2134,7 +2143,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2180,7 +2189,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
@@ -2251,7 +2260,7 @@
 		<texture-prop>texture</texture-prop>
 		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
