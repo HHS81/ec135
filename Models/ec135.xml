@@ -1980,7 +1980,7 @@
 <animation>
 		<type>shader</type>
 		<shader>chrome</shader>
-		<texture>glass_shader.rgb</texture>
+		<texture>glass_shader.png</texture>
 		<object-name>windshield</object-name>
 		<object-name>glas</object-name>
 		<object-name>frontdoorglas_re</object-name>
