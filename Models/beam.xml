@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- Searchlight-->
+<PropertyList>
+
+ <path>beam.ac</path>
+ 
+
+ <animation>
+  <type>billboard</type>
+  <spherical>false</spherical>
+ </animation>
+ 
+ 
+</PropertyList>

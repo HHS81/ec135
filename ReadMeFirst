@@ -1,5 +1,10 @@
 This Model of an Eurocopter EC135 is made for FlightGear and stands under the terms of GPLv2.
-Tested in Plib with compilation from 05/28/2007
+
+This model is standing under heavily work progress so please accept that there are a lot of thing which might not working as you want. 
+For updates use the CVS-version and read the CVS-logs and some threads in the officiasl FlightGear Forum!
+
+Im still looking for the Operations manual and a lots of datas about the airfoils!
+The current fdm is just a guess and might be not that realistic.
 
 Note:  EUROCOPTER and its logo are trade marks of the Eurocopter group.
 ======================================================================================================================
@@ -21,8 +26,30 @@ mfranz@aon.at
 Soundfiles by George Arana - Rotor Spider Developement Group
 
 Thanks guys especially Maik for your help and work!
+Thanks for Heliflyer Georg Vollnhals for the great photo documentation!
+
+And of course thanks to all them I forgot!
 
 Changelog: 
+
+Actual Version v.0.4
+---------------------------------------------------------------
+This is a complete rebuild of the ec135 with a much better exterior modell
+It is currently a work in progress, so a lots of things can be broken now,
+but it should be not worser to fly than in the last version.
+
+-complete new exterior with added antennas and other mounting parts (search lights, cameras)
+-glas shader with fresnel effect
+-variants changing over mp
+-better texture mapping so it should be easy to make your own livery
+
+Currently in Progress at this date:
+-replacing the panels and adding the digital version with a nearly photorealistic one!
+-adding the overhead
+-making it all clickable and working from the cockpit
+-better interior : EMS and VIP-version
+-adding and finishing the missing liveries like the D-HECZ, ADAC (Chr. 23), OEAMTC, G-SASA, Bavarian Police
+-adding the high skid model
 
 Actual version: v.0.2
 -------------------------------------------------------------

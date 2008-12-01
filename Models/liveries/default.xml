@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<sim>
+		<model>
+			<livery>
+				
+				
+					<name type="string">Default</name>
+					
+                                                   <index type="int">0</index>
+					
+					    <texture>default.fuselage.png</texture>
+
+				</livery>
+				
+				<liverytail>
+				<name type="string">Default</name>
+					 <index type="int">3</index>
+					  <texture>default.tail.png</texture>
+				</liverytail>
+				
+			<ec135>
+			<binocular_standart type="bool">false</binocular_standart>
+				<binocular_tri type="bool">true</binocular_tri>
+				<winch>true</winch>
+				<mirror>true</mirror>
+				<wirecutter_skid>false</wirecutter_skid>
+				<wirecutter_up>true</wirecutter_up>
+				<wirecutter_down>true</wirecutter_down>
+				<nose>false</nose>
+				<nosefl>false</nosefl>
+				<radardome>true</radardome>
+				<antennaset>true</antennaset>
+				<plateleft>false</plateleft>
+				<plateright>true</plateright>
+			</ec135>
+		</model>
+	</sim>
+</PropertyList>

@@ -9,10 +9,10 @@ EC 135 simulation config.
 <PropertyList>
 	<sim>
 		<description>Eurocopter EC135</description>
-		<author>Heiko Schulz, Maik Justus (FDM)</author>
+		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal)</author>
 		<status>alpha</status>
 		<license>GPL v2</license>
-		<aircraft-version>0.2</aircraft-version>
+		<aircraft-version>0.4</aircraft-version>
 
 		<flight-model>yasim</flight-model>
 		<aero>ec135</aero>
@@ -34,6 +34,13 @@ EC 135 simulation config.
 
 		<model>
 			<path archive="y">Aircraft/ec135/Models/ec135.xml</path>
+			<variant type="int">0</variant>
+			<livery>
+                              <file type="string">Bavarian Police "Edelweiss"</file>
+            </livery>
+	    <liverytail>
+	    <file type="string">Bavarian Police "Edelweiss"</file>
+	    </liverytail>
 			<ec135>
 				<state type="int">0</state>
 				<rotor-step-deg type="float">-1.0</rotor-step-deg>
@@ -45,103 +52,18 @@ EC 135 simulation config.
 				<mirror>false</mirror>
 				<wirecutter_skid>false</wirecutter_skid>
 				<wirecutter_up>false</wirecutter_up>
-
-				<livery>
-					<variant type="string">dhecz</variant>
-
-
-					<material>
-						<fuselage>
-							<texture>fuselage.dhecz.rgb</texture>
-						</fuselage>
-
-						<fenestron>
-							<texture>fenestron.dhecz.rgb</texture>
-						</fenestron>
-
-						<tail>
-							<texture>tail.dhecz.rgb</texture>
-						</tail>
-
-						<binocular>
-							<texture>binocular.adac.rgb</texture>
-						</binocular>
-
-						<binocular_tri>
-							<texture>binocular_tri.adac.rgb</texture>
-						</binocular_tri>
-
-						<binocular_standart>
-							<texture>dhecz.binocular_standart.rgb</texture>
-						</binocular_standart>
-
-						<wirecutter_up>
-							<texture>fuselage.dhecz.rgb</texture>
-						</wirecutter_up>
-
-						<wirecutter_down>
-							<texture>fuselage.dhecz.rgb</texture>
-						</wirecutter_down>
-
-						<wirecutter_skid>
-							<texture>fuselage.dhecz.rgb</texture>
-						</wirecutter_skid>
-
-						<rotorcap>
-							<texture>fuselage.dhecz.rgb</texture>
-						</rotorcap>
-
-						<plate>
-							<texture>fuselage.dhecz.rgb</texture>
-						</plate>
+				<nose>false</nose>
+				<nosefl>true</nosefl>
+				<radardome>false</radardome>
+				<antennaset>true</antennaset>
+				<plateleft>false</plateleft>
+				<plateright>true</plateright>
 
 
-						<skid>
-							<texture>fuselage.dhecz.rgb</texture>
-						</skid>
 
-						<reardoor_re>
-							<texture>fuselage.dhecz.rgb</texture>
-						</reardoor_re>
 
-						<reardoor_li>
-							<texture>fuselage.dhecz.rgb</texture>
-						</reardoor_li>
 
-						<backdoor_re_u>
-							<texture>fuselage.dhecz.rgb</texture>
-						</backdoor_re_u>
 
-						<backdoor_re_o>
-							<texture>binocular.adac.rgb</texture>
-						</backdoor_re_o>
-
-						<backdoor_li_u>
-							<texture>fuselage.dhecz.rgb</texture>
-						</backdoor_li_u>
-
-						<backdoor_li_o>
-							<texture>binocular.adac.rgb</texture>
-						</backdoor_li_o>
-
-						<frontdoor_li_u>
-							<texture>fuselage.dhecz.rgb</texture>
-						</frontdoor_li_u>
-
-						<frontdoor_li_o>
-							<texture>binocular.adac.rgb</texture>
-						</frontdoor_li_o>
-
-						<frontdoor_re_u>
-							<texture>fuselage.dhecz.rgb</texture>
-						</frontdoor_re_u>
-
-						<frontdoor_re_o>
-							<texture>binocular.adac.rgb</texture>
-						</frontdoor_re_o>
-
-					</material>
-				</livery>
 			</ec135>
 		</model>
 
@@ -151,11 +73,15 @@ EC 135 simulation config.
 			<type>lookfrom</type>
 			<internal type="bool">true</internal>
 			<config>
+
+				<x-offset-m type="double">0.3625</x-offset-m>
+				<y-offset-m type="double">0.76</y-offset-m>
+
 				<x-offset-m type="double">0.36.25</x-offset-m>
 				<y-offset-m type="double">0.66</y-offset-m>
 				<z-offset-m type="double">1.00</z-offset-m>
-				<pitch-offset-deg>-8</pitch-offset-deg>
-				<default-field-of-view-deg type="double">50.0</default-field-of-view-deg>
+				<pitch-offset-deg>-9</pitch-offset-deg>
+				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
 			</config>
 		</view>
 
@@ -163,6 +89,7 @@ EC 135 simulation config.
 			<config>
 				<target-y-offset-m archive="y" type="double">1.8</target-y-offset-m>
 				<target-z-offset-m archive="y" type="double">2.7</target-z-offset-m>
+				<default-field-of-view-deg type="double">46.0</default-field-of-view-deg>
 			</config>
 		</view>
 
@@ -170,6 +97,7 @@ EC 135 simulation config.
 			<config>
 				<target-y-offset-m archive="y" type="double">1.8</target-y-offset-m>
 				<target-z-offset-m archive="y" type="double">2.7</target-z-offset-m>
+				<default-field-of-view-deg type="double">46.0</default-field-of-view-deg>
 			</config>
 		</view>
 
@@ -177,6 +105,7 @@ EC 135 simulation config.
 			<config>
 				<target-y-offset-m archive="y" type="double">1.8</target-y-offset-m>
 				<target-z-offset-m archive="y" type="double">2.7</target-z-offset-m>
+				<default-field-of-view-deg type="double">46.0</default-field-of-view-deg>
 			</config>
 		</view>
 

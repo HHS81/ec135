@@ -15,6 +15,27 @@
 
 	</offsets>
 
+  <nasal>
+        <load>
+            var livery_update = aircraft.livery_update.new(
+	    "Aircraft/ec135/Models/liveries", 10,
+	    func { print("ec135 livery update") });
+        </load>
+
+        <unload>
+            livery_update.stop();
+        </unload>
+    </nasal>
+
+
+<!--<animation>
+<object-name>fuselage</object-name>
+<object-name>fuselage.001</object-name>
+</animation>-->
+
+
+
+
 
 	<params>
 		<flap>
@@ -71,7 +92,7 @@
 		<object-name>blurred2</object-name>
 		<object-name>blurred3</object-name>
 		<object-name>blurred4</object-name>
-		<offset-deg>5</offset-deg>
+		<offset-deg>1.5</offset-deg>
 		<axis>
 			<x>0</x>
 			<y>-1</y>
@@ -106,7 +127,7 @@
 		<object-name>blade4b</object-name>
 		<object-name>blade4c</object-name>
 		<object-name>blade4d</object-name>
-		<offset-deg>5</offset-deg>
+		<offset-deg>1.5</offset-deg>
 		<axis>
 			<x>0</x>
 			<y>-1</y>
@@ -133,7 +154,7 @@
 		<object-name>blurred2</object-name>
 		<object-name>blurred3</object-name>
 		<object-name>blurred4</object-name>
-		<property>/rotors/main/rpm</property>
+		<property>rotors/main/rpm</property>
 		<factor>-0.74</factor>
 		<axis>
 			<x1-m>-1.003</x1-m>
@@ -167,7 +188,7 @@
 		<object-name>blade4b</object-name>
 		<object-name>blade4c</object-name>
 		<object-name>blade4d</object-name>
-		<property>/rotors/main/rpm</property>
+		<property>rotors/main/rpm</property>
 		<factor>-1.0</factor>
 		<axis>
 			<x1-m>-1.003</x1-m>
@@ -203,7 +224,7 @@
 		<object-name>mainrotors</object-name>
 		<condition>
 			<less-than>
-				<property>/rotors/main/rpm</property>
+				<property>rotors/main/rpm</property>
 				<value>175</value>
 			</less-than>
 		</condition>
@@ -1018,11 +1039,11 @@
 	<!--animation of doors, sticks and pedals-->
 	<animation>
 		<type>rotate</type>
-		<object-name>frontdoor_re_o</object-name>
-		<object-name>frontdoor_re_u</object-name>
-		<object-name>frontdoor_re.i</object-name>
-		<!--<object-name>doorknob_front_re</object-name>-->
+		<object-name>frontdoor_re</object-name>
 		<object-name>frontdoorglas_re</object-name>
+		<object-name>windowcross_re</object-name>
+		<!--<object-name>doorknob_front_re</object-name>-->
+		
 		<property>/sim/model/door-positions/pilotDoor/position-norm</property>
 		<factor>60</factor>
 
@@ -1037,9 +1058,9 @@
 	</animation>
 	<animation>
 		<type>rotate</type>
-		<object-name>frontdoor_li_o</object-name>
-		<object-name>frontdoor_li_u</object-name>
-		<object-name>frontdoor_li.i</object-name>
+		<object-name>frontdoor_li</object-name>
+		<object-name>frontdoorglas_li</object-name>
+		<object-name>windowcross_li</object-name>
 		<!--<object-name>doorknob_front_li</object-name>-->
 		<object-name>frontdoorglas_li</object-name>
 		<property>/sim/model/door-positions/copilotDoor/position-norm</property>
@@ -1058,7 +1079,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>reardoor_re</object-name>
-		<object-name>reardoor_re.i</object-name>
+		
 		<property>/sim/model/door-positions/rearDoors/position-norm</property>
 		<factor>100</factor>
 
@@ -1075,8 +1096,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>reardoor_li</object-name>
-		<object-name>reardoor_li.i</object-name>
-		<object-name>rearglas_li</object-name>
+		
+		<!--<object-name>rearglas_li</object-name>-->
 		<property>/sim/model/door-positions/rearDoors/position-norm</property>
 		<factor>-100</factor>
 
@@ -1093,11 +1114,11 @@
 	<!--sideward animation backdoor right-->
 	<animation>
 		<type>translate</type>
-		<object-name>backdoor_re_o</object-name>
-		<object-name>backdoor_re_u</object-name>
-		<object-name>backdoor_re.i</object-name>
-		<!--<object-name>doorknob_back_re</object-name>-->
+		<object-name>backdoor_re</object-name>
 		<object-name>backdoorglas_re</object-name>
+		<object-name>gummi_re</object-name>
+		<!--<object-name>doorknob_back_re</object-name>-->
+		
 		<property>/sim/model/door-positions/ribackDoor/position-norm</property>
 		<interpolation>
 			<entry>
@@ -1123,11 +1144,11 @@
 	<!--forward animation backdoor right-->
 	<animation>
 		<type>translate</type>
-		<object-name>backdoor_re_o</object-name>
-		<object-name>backdoor_re_u</object-name>
-		<object-name>backdoor_re.i</object-name>
-		<!--<object-name>doorknob_back_re</object-name>-->
+		<object-name>backdoor_re</object-name>
 		<object-name>backdoorglas_re</object-name>
+		<object-name>gummi_re</object-name>
+		<!--<object-name>doorknob_back_re</object-name>-->
+		
 		<property>/sim/model/door-positions/ribackDoor/position-norm</property>
 		<interpolation>
 			<entry>
@@ -1153,11 +1174,11 @@
 	<!--sideward animation backdoor left-->
 	<animation>
 		<type>translate</type>
-		<object-name>backdoor_li_o</object-name>
-		<object-name>backdoor_li_u</object-name>
-		<object-name>backdoor_li.i</object-name>
-		<!--<object-name>doorknob_back_li</object-name>-->
+		<object-name>backdoor_li</object-name>
 		<object-name>backdoorglas_li</object-name>
+		<object-name>gummi_li</object-name>
+		<!--<object-name>doorknob_back_li</object-name>-->
+		
 		<property>/sim/model/door-positions/lebackDoor/position-norm</property>
 		<interpolation>
 			<entry>
@@ -1183,11 +1204,11 @@
 	<!--forward animation backdoor left-->
 	<animation>
 		<type>translate</type>
-		<object-name>backdoor_li_o</object-name>
-		<object-name>backdoor_li_u</object-name>
-		<object-name>backdoor_li.i</object-name>
-		<!--<object-name>doorknob_back_li</object-name>-->
+		<object-name>backdoor_li</object-name>
 		<object-name>backdoorglas_li</object-name>
+		<object-name>gummi_li</object-name>
+		<!--<object-name>doorknob_back_li</object-name>-->
+		
 		<property>/sim/model/door-positions/lebackDoor/position-norm</property>
 		<interpolation>
 			<entry>
@@ -1818,26 +1839,49 @@
 		<z-factor>2</z-factor>
 	</animation>
 
+<!--bigsearchlight
+<model>
+		<name>bigsearchlight</name>
+		<path>Aircraft/ec135/Models/bigsearchlight.xml</path>
+		<offsets>
+			<x-m>-3.400</x-m>
+			<y-m>-0.902</y-m>
+			<z-m>0.548</z-m>
+
+			<pitch-deg>-3.5</pitch-deg>
+
+		</offsets>
+	</model>-->
+
 
 	<!--variant select animation-->
 
 	<animation>
 		<type>select</type>
-		<object-name>binocular_standart</object-name>
+		<!--<object-name>binocular_standart</object-name>-->
 		<object-name>windshield</object-name>
 		<condition>
 			<property>sim/model/ec135/binocular_standart</property>
 		</condition>
 	</animation>
 
+<animation>
+		<name>Triangle</name>
+		<object-name>windshield_tri</object-name>
+		<object-name>triangle</object-name>
+</animation>
+
 	<animation>
 		<type>select</type>
-		<object-name>binocular_tri</object-name>
-		<object-name>windshield_tri</object-name>
+		<!--<object-name>binocular_tri</object-name>-->
+		<object-name>Triangle</object-name>
+		<!--<object-name>triangle</object-name>-->
 		<condition>
 			<property>sim/model/ec135/binocular_tri</property>
 		</condition>
 	</animation>
+
+	
 
 	<animation>
 		<type>select</type>
@@ -1879,6 +1923,78 @@
 		</condition>
 	</animation>
 
+	<animation>
+		<type>select</type>
+		<object-name>nose</object-name>
+		<condition>
+			<property>sim/model/ec135/nose</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>nosefl</object-name>
+		<object-name>hull</object-name>
+		<object-name>frontlight</object-name>
+		<object-name>flight</object-name>
+		<object-name>lighthalo2</object-name>
+		<condition>
+			<property>sim/model/ec135/nosefl</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>radardome</object-name>
+		<condition>
+			<property>sim/model/ec135/radardome</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>antenna</object-name>
+		<condition>
+			<property>sim/model/ec135/antennaset</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>plateleft</object-name>
+		<condition>
+			<property>sim/model/ec135/plateleft</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>plateright</object-name>
+		<condition>
+			<property>sim/model/ec135/plateright</property>
+		</condition>
+	</animation>
+
+
+
+<animation>
+		<type>shader</type>
+		<shader>chrome</shader>
+		<texture>glass_shader.png</texture>
+		<object-name>windshield</object-name>
+		<object-name>glas</object-name>
+		<object-name>frontdoorglas_re</object-name>
+		<object-name>backdoorglas_re</object-name>
+		<object-name>backglas</object-name>
+		<object-name>windshield_tri</object-name>
+		<object-name>frontdoorglas_li</object-name>
+		<object-name>backdoorglas_li</object-name>
+</animation>
+	
+
+  
+	
+  
 
 
 
@@ -1888,180 +2004,285 @@
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>fuselage</object-name>
-		<property-base>sim/model/ec135/livery/material/fuselage</property-base>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>wirecutter_up</object-name>
-		<property-base>sim/model/ec135/livery/material/wirecutter_up</property-base>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>wirecutter_down</object-name>
-		<property-base>sim/model/ec135/livery/material/wirecutter_down</property-base>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>wirecutter_skid</object-name>
-		<property-base>sim/model/ec135/livery/material/wirecutter_skid</property-base>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>rotorcap</object-name>
-		<property-base>sim/model/ec135/livery/material/rotorcap</property-base>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>skid</object-name>
-		<property-base>sim/model/ec135/livery/material/skid</property-base>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>binocular</object-name>
-		<property-base>sim/model/ec135/livery/material/binocular</property-base>
+		<object-name>triangle</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>windowcross_li</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>windowcross_re</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>Plane.007</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>Cube.001</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>Plane.013</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>Plane.017</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>Plane.002</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>Plane.015</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>Cube.002</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
 
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>tail</object-name>
-		<property-base>sim/model/ec135/livery/material/tail</property-base>
+		<property-base>sim/model/liverytail/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>tail.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>fenestron</object-name>
-		<property-base>sim/model/ec135/livery/material/fenestron</property-base>
+		<property-base>sim/model/liverytail/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>tail.rgb</texture>
+	</animation>
+	
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>fin</object-name>
+		<property-base>sim/model/liverytail/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>tail.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>plate</object-name>
-		<property-base>sim/model/ec135/livery/material/plate</property-base>
+		<object-name>plateright</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
-	</animation>
-
-
-	<animation>
-		<type>material</type>
-		<!--global type="bool">true</global-->
-		<object-name>binocular_tri</object-name>
-		<property-base>sim/model/ec135/livery/material/binocular_tri</property-base>
-		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>binocular_standart</object-name>
-		<property-base>sim/model/ec135/livery/material/binocular_standart</property-base>
+		<object-name>plateleft</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
+
+
+	
+	
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>reardoor_re</object-name>
-		<property-base>sim/model/ec135/livery/material/reardoor_re</property-base>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
 		<object-name>reardoor_li</object-name>
-		<property-base>sim/model/ec135/livery/material/reardoor_li</property-base>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>frontdoor_li_u</object-name>
-		<property-base>sim/model/ec135/livery/material/frontdoor_li_u</property-base>
+		<object-name>frontdoor_re</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>frontdoor_li_o</object-name>
-		<property-base>sim/model/ec135/livery/material/frontdoor_li_o</property-base>
+		<object-name>frontdoor_li</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
+	</animation>
+
+	
+
+	
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>backdoor_re</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>frontdoor_re_u</object-name>
-		<property-base>sim/model/ec135/livery/material/frontdoor_re_u</property-base>
+		<object-name>backdoor_li</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
 
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>frontdoor_re_o</object-name>
-		<property-base>sim/model/ec135/livery/material/frontdoor_re_o</property-base>
+		<object-name>nose</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>backdoor_re_u</object-name>
-		<property-base>sim/model/ec135/livery/material/backdoor_re_u</property-base>
+		<object-name>nosefl</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
-
+	
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>backdoor_re_o</object-name>
-		<property-base>sim/model/ec135/livery/material/backdoor_re_o</property-base>
+		<object-name>radardome</object-name>
+		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
+		<texture>default.fuselage.rgb</texture>
 	</animation>
+	
+	
 
-	<animation>
-		<type>material</type>
-		<!--global type="bool">true</global-->
-		<object-name>backdoor_li_u</object-name>
-		<property-base>sim/model/ec135/livery/material/backdoor_li_u</property-base>
-		<texture-prop>texture</texture-prop>
-	</animation>
+	
 
-	<animation>
-		<type>material</type>
-		<!--global type="bool">true</global-->
-		<object-name>backdoor_li_o</object-name>
-		<property-base>sim/model/ec135/livery/material/backdoor_li_o</property-base>
-		<texture-prop>texture</texture-prop>
-	</animation>
-
+	
 
 </PropertyList>

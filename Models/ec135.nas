@@ -16,8 +16,8 @@ var normatan = func(x) { math.atan2(x, 1) * 2 / math.pi }
 
 
 # liveries =========================================================
-aircraft.livery.init("Aircraft/ec135/Models/liveries",
-		"sim/model/ec135/livery/variant");
+aircraft.livery.init("Aircraft/ec135/Models/liveries", "sim/model/livery/name", "sim/model/liverytail/name", "sim/model/livery/index");
+
 
 # doors ============================================================
 pilotDoor = aircraft.door.new( "/sim/model/door-positions/pilotDoor", 1, 0 );
@@ -187,9 +187,22 @@ var update_slide = func {
 	forindex (var i; skid) {
 		skid[i].update();
 	}
+};
+
+call_sound = func {
+
+if (getprop("sim/current-view/view-number") > 0.1) {
+            
+            setprop("sim/model/ec135/sound/volume", 1);} 
+	    # schedule the next call
+   settimer(call_sound, 0.2);   
 }
 
+init = func {
+   settimer(call_sound, 0.0);
+}
 
+init();
 
 
 
@@ -408,12 +421,13 @@ setlistener("/sim/signals/fdm-initialized", func {
 	collective.setDoubleValue(1);
 
 	setlistener("/sim/signals/reinit", func(n) {
+	crashed = 0;
 		n.getBoolValue() and return;
 		cprint("32;1", "reinit");
 		turbine_timer.stop();
 		collective.setDoubleValue(1);
 		variant.scan();
-		crashed = 0;
+		
 	});
 
 	setlistener("sim/crashed", func(n) {

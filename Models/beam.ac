@@ -1,0 +1,26 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+MATERIAL "Material.007" rgb 0.255581 0.035113 0.964023 amb 0.5 0.5 0.5 emis 0.75 0.75 0.75 spec 0 0 0 shi 32 trans 0.625
+OBJECT world
+kids 1
+OBJECT poly
+name "beam"
+data 9
+Plane.028
+texture "lightbeam.rgb"
+texrep 1 1
+crease 30.000000
+numvert 4
+0.842149 14.461833 2e-006
+0.210537 0.004695 0
+-0.210537 0.004695 0
+-0.842149 14.461833 2e-006
+numsurf 1
+SURF 0x20
+mat 1
+refs 4
+0 0.00298210978508 0.987673521042
+3 0.00603386759758 0.0111230015755
+2 1.00086116791 0.00196331739426
+1 1.00086116791 0.990729689598
+kids 0

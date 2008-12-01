@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!-- Searchlight-->
+<PropertyList>
+
+ <path>bigsearchlight.ac</path>
+ 
+<animation>
+<type>rotate</type>
+<object-name>searchlight</object-name>
+<object-name>cone</object-name>
+
+<offset-deg>22.5</offset-deg>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+</animation>
+
+ <model>
+		<name>lightbeam</name>
+		<path>Aircraft/ec135/Models/beam.xml</path>
+		<offsets>
+			<x-m>-0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+
+			<pitch-deg>-112.5</pitch-deg>
+
+		</offsets>
+	</model>
+	
+<animation>
+		<type>translate</type>
+		<name>lightcircle</name>
+		<object-name>Circle</object-name>
+		<property>position/gear-agl-m</property>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+	
+<animation>
+		<type>translate</type>
+		<name>lightcircle</name>
+		<object-name>Circle</object-name>
+		<property>position/gear-agl-m</property>
+		<factor>1.5</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+<!--<animation>
+		<type>scale</type>
+		<object-name>Circle</object-name>
+		<property>position/gear-agl-m</property>
+		<offset>0</offset>
+		<x-min>1</x-min>
+		<y-min>1</y-min>
+		<z-min>1</z-min>
+		<x-factor>0.5</x-factor>
+		<y-factor>0.5</y-factor>
+		<z-factor>0.5</z-factor>
+	</animation>-->
+	
+<animation>
+		<type>rotate</type>
+		<name>fu_pitch</name>
+		<object-name>Circle</object-name>
+		<property>orientation/pitch-deg</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<name>fu_roll</name>
+		<object-name>Circle</object-name>
+		<property>orientation/roll-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+
+
+</PropertyList>
