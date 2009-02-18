@@ -14,7 +14,7 @@
 	<rotor name="main" 
        x="1.9" y="0.0" z="1.325" 
        nx="0.05" ny="0" nz="1." 
-       fx="1" fy="0" fz="0" ccw="0"
+       fx="1" fy="0" fz="0" ccw="1"
 	  maxcollective="15.8" mincollective="0.2"
        mincyclicele="-4.5" maxcyclicele="6.5" 
 	  mincyclicail="-6" maxcyclicail="4"
