@@ -19,6 +19,11 @@
 					 <index type="int">3</index>
 					  <texture>default.tail.png</texture>
 				</liverytail>
+				<rotorblade>
+				<name type="string">ANWB</name>
+					 <index type="int">1</index>
+					  <texture>rotorblade.anwb.png</texture>
+				</rotorblade>
 				
 			<ec135>
 			<binocular_standart type="bool">false</binocular_standart>
@@ -34,6 +39,8 @@
 				<antennaset>true</antennaset>
 				<plateleft>false</plateleft>
 				<plateright>true</plateright>
+				<reardoorwindow>true</reardoorwindow>
+				<reardoor_norm>false</reardoor_norm>
 			</ec135>
 		</model>
 	</sim>

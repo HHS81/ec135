@@ -1,53 +1,45 @@
-<!--angepaßte Version vom 06.02.07, rpm: 394,yasimdragfactor="12.5", yasimliftfactor="160", max-power-engine="759"-->
+<!--models a Ec135 from Eurocopter, trying to solve the wrong pitch during cuise the dimensions are from standing on the ground-->
+<airplane mass="3015">
 
-<airplane mass="3402">
-
-	<approach speed="47" aoa="5">
+	<approach speed="48" aoa="16">
 		<control-setting axis="/controls/engines/engine[0]/throttle" value="0.3"/>
 	</approach>
 
-	<cruise speed="147" alt="0">
-		<control-setting axis="/controls/engines/engine[0]/throttle" value="1.0"/>
+	<cruise speed="130" alt="0">
+		<control-setting axis="/controls/engines/engine[0]/throttle" value="0.5"/>
 	</cruise>
 
 
 
-	<rotor name="main" x="-3.18" y="0.0" z="2" nx="0.09" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1" phi0="45"
+	<rotor name="main" 
+       x="1.9" y="0.0" z="1.325" 
+       nx="0.05" ny="0" nz="1." 
+       fx="1" fy="0" fz="0" ccw="0"
 	  maxcollective="15.8" mincollective="0.2"
-	  mincyclicele="-4.7" maxcyclicele="10.5"
+       mincyclicele="-4.5" maxcyclicele="6.5" 
 	  mincyclicail="-6" maxcyclicail="4"
-	  diameter="10.2" numblades="4" weightperblade="77" relbladecenter="0.5"
-	  dynamic="1" rpm="394" rellenflaphinge="0.2" delta3="0.0"
-	  delta=".25"
-	  pitch-a="10"
-	  pitch-b="15"
-	  flapmin="-15"
-	  flapmax="15"
-	  flap0="-5"
-	  flap0factor="0"
-	  notorque="0"
-	  dragfactor="0.30"
+       diameter="10.2" numblades="4" 
+       weightperblade="77" twist="-8" 
+       chord="0.31" rpm="394" 
+       relbladecenter="0.6" dynamic="1"
+       rellenflaphinge="0.2" 
+       delta3="0.0" delta=".25" 
+       pitch-a="10" pitch-b="15" 
+       flapmin="-15" flapmax="15" 
+       flap0="-7.5" flap0factor="0" phi0="173"
+       notorque="0" dragfactor="0.30" 
 	  translift-ve="20"
 	  translift-maxfactor="1.3"
-	  ground-effect-constant="0.1"
-	  twist="-8.5"
+       ground-effect-constant="0.7" 
 	  taper="1"
-	  chord="0.31"
-	  number-of-segments="8"
-	  number-of-parts="8"
-	  rel-len-where-incidence-is-measured="0.7"
-	  rel-len-blade-start="0.076"
-
-	  airfoil-lift-coefficient="3.55"
-	  airfoil-drag-coefficient0="0.0150"
-	  airfoil-drag-coefficient1="0.25"
-	  incidence-stall-zero-speed="15"
-	  incidence-stall-half-sonic-speed="14.5"
-	  lift-factor-stall="0.18"
-	  stall-change-over="5.5"
-	  drag-factor-stall="2.0"
+       number-of-segments="10" number-of-parts="10" 
+       rel-len-where-incidence-is-measured="0.7" rel-len-blade-start="0.16"
+       airfoil-lift-coefficient="8.3" airfoil-drag-coefficient0="0.0075" airfoil-drag-coefficient1="0.1" 
+       incidence-stall-zero-speed="18" incidence-stall-half-sonic-speed="9" 
+       lift-factor-stall="0.18" drag-factor-stall="8.0" stall-change-over="5.5" 
 	  cyclic-factor="1.0"
-	  rotor-correction-factor="0.9"
+       rotor-correction-factor="0.75" 
+       downwashfactor ="0.1" 
 >
 		>
 		<control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL" split="true"/>
@@ -64,13 +56,13 @@
 	</rotor>
 
 
-	<rotor name="tail" x="-9.3" y="-0.0" z="1.13" nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
+	<rotor name="tail"  x="-4.129" y="-0.226" z="0.174" nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 	  maxcollective="12" mincollective="-7.5"
 	  diameter="1" numblades="10" weightperblade="1" relbladecenter="0.7"
 	  dynamic="1" rpm="3584" rellenflaphinge="0.0" delta3="0" translift="0" delta="0.5"
 	  pitch-a="10"
 	  pitch-b="15"
-	  airfoil-lift-coefficient="6.4"
+	  airfoil-lift-coefficient="8.4"
 	  airfoil-drag-coefficient0="0.0035"
 	  airfoil-drag-coefficient1="0.10"
 	  notorque="0"
@@ -97,13 +89,13 @@
 
 
 	<rotorgear
-	  max-power-engine="759"
+	  max-power-engine="840"
 	  max-power-rotor-brake="100"
 	  rotorgear-friction="1.4"
 	  engine-prop-factor="0.005"
 	  engine-accel-limit="1.96"
-	  yasimdragfactor="12.5"
-	  yasimliftfactor="160"
+	  yasimdragfactor="50"
+	  yasimliftfactor="60"
 >
 		>
 		<control-input axis="/controls/engines/engine[0]/magnetos" control="ROTORGEARENGINEON"/>
@@ -113,87 +105,87 @@
 	</rotorgear>
 
 
-	<cockpit x="-1.88" y=".33" z="0.6"/>
+	<cockpit x="7.589" y="0.694" z="-0.570"/>
 
-	<fuselage ax="0" ay="0" az="0" bx="-5.10" by="0" bz="0"
-			  width="1.92" taper="0.95" midpoint="0.5"/>
+        <!-- Fuse -->
+        <fuselage ax="5.15" ay="0" az="-0.7" 
+                  bx="0.285" by="0" bz="-0.365"
+                  cx="1.7" cy="1.7" cz="1.7" 
+		  width="1.6"   
+		  taper="0.8" 
+		  midpoint="0.35"/>
+        <!-- Tail -->
+	<fuselage ax="0.285" ay="0" az="-0.365"
+	          bx="-3.289" by="0" bz="-0.103"
+              cz="0.3" 
+		  width="0.5"   
+		  taper="0.2" 
+		  midpoint="0"/>
 
-	<fuselage ax="-5.10" ay="0" az=".70" bx="-9.90" by="0" bz=".70"
-			  width="0.47" taper="0.9" midpoint="0.05"/>
 
-
-	<vstab x="-9.4" y="0" z="1.148" taper=".5" length="1.84" chord="1.40" sweep="40" incidence="5">
-		<stall aoa="16" width="4" peak="1.5"/>
-	</vstab>
-
-	<vstab x="-7.9" y="1.36" z=".980" taper="1" length=".75" chord=".40" sweep="30" incidence="5">
-		<stall aoa="16" width="4" peak="1.5"/>
-	</vstab>
-
-	<vstab x="-7.9" y="-1.36" z=".90" taper="1" length=".75" chord=".40" sweep="30" incidence="5">
-		<stall aoa="16" width="4" peak="1.5"/>
-	</vstab>
-
-	<hstab x="-9.4" y="0.0" z=".90" taper="1.0" effectiveness="0.5" length="1.27" chord="0.52" sweep="0" incidence="-5">
+	<hstab x="-2.620" y="0.16" z="-0.2" 
+               taper="1.0" 
+               effectiveness="1.0" 
+               length="0.7" 
+               chord="0.30"
+               sweep="0"
+               incidence="-10">
 		<stall aoa="0" width="0" peak="1.5"/>
 	</hstab>
 
-	<!-- left skid -->
-	<gear x="-1.297" y="1.016" z="-1.277" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
-	<gear x="-3.998" y="1.016" z="-1.277" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
-
-	<!-- right skid -->
-	<gear x="-1.297" y="-1.016" z="-1.277" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
-	<gear x="-3.998" y="-1.016" z="-1.277" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
-
-	<!-- tail rotor protector -->
-	<gear x="-9.196" y="0" z="-0.496" skid="1" compression="0.01" spring="0.1" sfric="1" dfric="1"/>
-	<gear x="-9.825" y="0" z="-0.419" skid="1" compression="0.01" spring="0.1" sfric="1" dfric="1"/>
-
-	<!--retractable LandingLight-->
-	<gear x="-3.115" y="0.271" z="0.709" compression="0.0" sfric="0.0" dfric="0.0" retract-time="1.5"
-		spring="0.0" damp="0.0">
-		<control-input axis="/controls/gear/gear-down" control="EXTEND"/>
-		<control-speed control="EXTEND" transition-time="1.5"/>
-		<control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
-	</gear>
+	<vstab x="-3.937" y="0" z="-0.862" 
+	taper=".5" 
+	length="1.84" 
+	chord="1.40" 
+	sweep="40" 
+	incidence="5">
+		<stall aoa="16" width="4" peak="1.5"/>
+	</vstab>
+<!-- engine -->
+	<ballast x="1.0" y="+0.0" z=" 0.3" mass="400"/>
 
 
+	<ballast x="4.0" y="+0.0" z=" -0.2" mass="300"/>
+	<ballast x="4.0" y="+0.0" z=" -0.2" mass="100"/>
+
+	<ballast x="4.0" y="-2.0" z=" -0.2" mass="200"/>
+	<ballast x="4.0" y=" 2.0" z=" -0.2" mass="200"/>
+
+	<ballast x="4.0" y="+0.0" z=" -0.2" mass="100"/>
+	<ballast x="4.0" y="+0.0" z=" -0.2" mass="100"/>
 
 
-
-	<tank x="-3.39" y="+0.7" z="-.31" capacity="75"/>
-	<tank x="-3.47" y="-0.7" z="-.31" capacity="75"/>
-	<tank x="-3.8" y="-0.5" z="0" capacity="75"/>
-	<!-- work around bug in native-fdm.cxx:184 -->
-	<tank x="0" y="0" z="0" capacity="0"/>
-	<ballast x="-2.2" y="+0.0" z="-1.0" mass="150"/>
-	<ballast x="-1.0" y="-0.8" z="-1.0" mass="150"/>
-	<ballast x="-2.5" y="+0.0" z="-0.5" mass="600"/>
-	<ballast x="-1.0" y="+0.8" z="-1.0" mass="150"/>
-	<ballast x="-1.5" y="+0.0" z="-1.0" mass="150"/>
-
-
-	<weight x="-1.0" y=".33"  z="-.5" mass-prop="/sim/weight[0]/weight-lb"/>
+	<weight x="3.56" y=".37" z="-.45" mass-prop="/sim/weight[0]/weight-lb"/>
 	<!-- pilot -->
-	<weight x="-1.0" y="-.33" z="-.5" mass-prop="/sim/weight[1]/weight-lb"/>
+	<weight x="3.56" y="-.37" z="-.45" mass-prop="/sim/weight[1]/weight-lb"/>
 	<!-- co-pilot -->
-	<weight x="-3.2" y=".33"  z="-.5" mass-prop="/sim/weight[2]/weight-lb"/>
+	<weight x="2.99" y=".43" z="-.45" mass-prop="/sim/weight[2]/weight-lb"/>
 	<!-- right passenger -->
-	<weight x="-2.0" y="-.33" z="-.5" mass-prop="/sim/weight[4]/weight-lb"/>
+	<weight x="2.99" y=".0" z="-.45" mass-prop="/sim/weight[3]/weight-lb"/>
+	<!-- middle passenger -->
+	<weight x="2.99" y="-.43" z="-.45" mass-prop="/sim/weight[4]/weight-lb"/>
 	<!-- left passenger -->
-	<weight x="-4.0" y="0"    z="-.5" mass-prop="/sim/weight[5]/weight-lb"/>
-	<!-- patient/load -->
+	<weight x="2.06" y="0" z="-1.13" mass-prop="/sim/weight[5]/weight-lb"/>
+	<!-- cargo hook -->
 
-	<!-- hitch -->
-	<hitch name="aerotow" x="-3.320" y="0" z="-0.762"  force-is-calculated-by-other="1">
-		<tow length="60" weight-per-meter="0.035" elastic-constant="9000" break-force="10000" mp-auto-connect-period="1.0"/>
-		<winch max-tow-length="1000" min-tow-length="60" initial-tow-length="60"/>
-		<control-input axis="/controls/aerotow/find-aircraft" control="FINDAITOW"/>
-	</hitch>
+<!-- left skid -->
+<gear x="3.863" y="+0.9" z="-1.9" skid="1" compression="0.10" spring="0.4" sfric="0.8" dfric="0.7"/>
+
+<gear x="1.117" y="+0.9" z="-1.9" skid="1" compression="0.10" spring="0.4" sfric="0.8" dfric="0.7"/>
+
+<!-- right skid -->
+<gear x="3.863" y="-0.9" z="-1.9" skid="1" compression="0.10" spring="0.8" sfric="0.8" dfric="0.7"/>
+
+<gear x="1.117" y="-0.9" z="-1.9" skid="1" compression="0.10" spring="0.8" sfric="0.8" dfric="0.7"/>
+
+<!-- tail skid -->
+<gear x="-4.00" y="+0.00" z="-0.353" skid="1" compression="0.01" spring="0.1" sfric="1" dfric="1"/>
+<gear x="-4.666" y="+0.00" z="-0.268" skid="1" compression="0.01" spring="0.1" sfric="1" dfric="1"/>
 
 
+<tank x="2.08" y="+0.7" z="-0.5" capacity="75"/>
+	<tank x="2.08" y="-0.7" z="-0.5" capacity="75"/>
+	<tank x="2.08" y="0.0" z="-0.5" capacity="75"/>
+	<!-- work around bug in native-fdm.cxx:184 ???-->
+	<tank x="0" y="0" z="0" capacity="0"/>
 </airplane>
-
-
-

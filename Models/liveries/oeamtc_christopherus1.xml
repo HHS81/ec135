@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<sim>
+		<model>
+			
+				<livery>
+					<name type="string">OEAMTC Christopherus 1</name>
+					 <index type="int">2</index>
+					  <texture>fuselage.oeamtc.rgb</texture>
+
+				</livery>
+				
+				<liverytail>
+				<name type="string">OEAMTC Christopherus 1</name>
+					 <index type="int">2</index>
+					   <texture>fenestron.oeamtc.rgb</texture>
+					</liverytail>
+				
+			<ec135>
+				<binocular_standart type="bool">false</binocular_standart>
+				<binocular_tri type="bool">true</binocular_tri>
+				<winch>true</winch>
+				<mirror>true</mirror>
+				<wirecutter_skid>true</wirecutter_skid>
+				<wirecutter_up>true</wirecutter_up>
+				<wirecutter_down>true</wirecutter_down>
+				<nose>false</nose>
+				<nosefl>true</nosefl>
+				<radardome>false</radardome>
+				<antennaset>true</antennaset>
+				<plateleft>false</plateleft>
+				<plateright>true</plateright>
+			</ec135>
+		</model>
+	</sim>
+</PropertyList>
