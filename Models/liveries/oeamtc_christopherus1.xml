@@ -7,20 +7,20 @@
 				<livery>
 					<name type="string">OEAMTC Christopherus 1</name>
 					 <index type="int">2</index>
-					  <texture>fuselage.oeamtc.rgb</texture>
+					  <texture>fuselage.oeamtc.png</texture>
 
 				</livery>
 				
 				<liverytail>
 				<name type="string">OEAMTC Christopherus 1</name>
 					 <index type="int">2</index>
-					   <texture>fenestron.oeamtc.rgb</texture>
+					   <texture>tail.oeamtc.png</texture>
 					</liverytail>
 				
 			<ec135>
 				<binocular_standart type="bool">false</binocular_standart>
 				<binocular_tri type="bool">true</binocular_tri>
-				<winch>true</winch>
+				<winch>false</winch>
 				<mirror>true</mirror>
 				<wirecutter_skid>true</wirecutter_skid>
 				<wirecutter_up>true</wirecutter_up>
@@ -29,8 +29,8 @@
 				<nosefl>true</nosefl>
 				<radardome>false</radardome>
 				<antennaset>true</antennaset>
-				<plateleft>false</plateleft>
-				<plateright>true</plateright>
+				<plateleft>true</plateleft>
+				<plateright>left</plateright>
 			</ec135>
 		</model>
 	</sim>

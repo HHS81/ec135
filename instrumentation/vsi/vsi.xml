@@ -7,7 +7,7 @@
 
 	<animation>
 		<type>rotate</type>
-		<object-name>Needle</object-name>
+		<object-name>needle</object-name>
 		<property>/instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
 		<interpolation>
 			<entry>

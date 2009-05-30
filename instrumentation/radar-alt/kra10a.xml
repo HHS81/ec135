@@ -7,40 +7,36 @@
 
 	<animation>
 		<type>rotate</type>
-		<object-name>kra10.needle</object-name>
+		<object-name>RAlt.needle</object-name>
 		<property>/position/altitude-agl-ft</property>
 		<interpolation>
 			<entry>
 				<ind> 0</ind>
-				<dep>90.0</dep>
+				<dep>0.0</dep>
 			</entry>
 			<entry>
-				<ind> 20</ind>
-				<dep>90.0</dep>
-			</entry>
-			<entry>
-				<ind> 30</ind>
-				<dep>350.0</dep>
+				<ind> 25</ind>
+				<dep>342.07</dep>
 			</entry>
 			<entry>
 				<ind> 50</ind>
-				<dep>344.0</dep>
+				<dep>322.3</dep>
 			</entry>
 			<entry>
 				<ind> 100</ind>
-				<dep>330.0</dep>
+				<dep>282.88</dep>
+			</entry>
+			<entry>
+				<ind> 150</ind>
+				<dep>237</dep>
 			</entry>
 			<entry>
 				<ind> 200</ind>
-				<dep>298.0</dep>
-			</entry>
-			<entry>
-				<ind> 300</ind>
-				<dep>267.0</dep>
+				<dep>93.0</dep>
 			</entry>
 			<entry>
 				<ind> 400</ind>
-				<dep>233.0</dep>
+				<dep>127</dep>
 			</entry>
 			<entry>
 				<ind> 500</ind>
@@ -82,7 +78,7 @@
 
 	<animation>
 		<type>rotate</type>
-		<object-name>kra10.Bug</object-name>
+		<object-name>RAlt.Bug</object-name>
 		<property>/instrumentation/radar-altimeter/decision-height</property>
 		<interpolation>
 			<entry>
