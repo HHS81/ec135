@@ -34,7 +34,7 @@ nx="0.094" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
   dragfactor="0.30"
 	  translift-ve="20"
 	  translift-maxfactor="1.3"
-  ground-effect-constant="0.1"
+  ground-effect-constant="0.2"
   twist="-10.2"
 	  taper="1"
   chord="0.27"
@@ -43,9 +43,9 @@ nx="0.094" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
   rel-len-where-incidence-is-measured="0.7"
   rel-len-blade-start="0.076"
 
-  airfoil-lift-coefficient="6.3"
-  airfoil-drag-coefficient0="0.0064"
-  airfoil-drag-coefficient1="0.20"
+ airfoil-lift-coefficient="5.20"
+  airfoil-drag-coefficient0="0.0044"
+  airfoil-drag-coefficient1="0.10"
   incidence-stall-zero-speed="15"
   incidence-stall-half-sonic-speed="14.5"
   lift-factor-stall="0.18"
@@ -53,8 +53,8 @@ nx="0.094" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
   drag-factor-stall="2.0"
 	  cyclic-factor="1.0"
   rotor-correction-factor="0.80"
-  downwashfactor="0.25"
->
+  downwashfactor="0.20"
+  >
    <control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"/>
   <control-input axis="/controls/flight/fcs/roll" control="CYCLICAIL"
 					   src0="-1.0" src1="1.0"
@@ -76,7 +76,7 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 	  dynamic="1" rpm="3584" rellenflaphinge="0.0" delta3="0" translift="0" delta="0.5"
 	  pitch-a="10"
 	  pitch-b="15"
-	  airfoil-lift-coefficient="6.0"
+	  airfoil-lift-coefficient="4.25"
 	  airfoil-drag-coefficient0="0.0035"
 	  airfoil-drag-coefficient1="0.10"
 	  notorque="0"
@@ -91,7 +91,7 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 	  stall-change-over="5.5"
 	  drag-factor-stall="8"
 	  rotor-correction-factor="0.7"
-	  downwashfactor="1.0"
+	  downwashfactor="0.5"
 >
  <control-input axis="/controls/flight/fcs/yaw" control="COLLECTIVE" invert="true"
 					   src0="-1.0" src1="1.0"
@@ -103,13 +103,13 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 
 
 <rotorgear
-  max-power-engine="850"
+  max-power-engine="616"
 	  max-power-rotor-brake="100"
 	  rotorgear-friction="1.4"
 	  engine-prop-factor="0.005"
   engine-accel-limit="4"
   yasimdragfactor="25.5"
-  yasimliftfactor="20.5"
+  yasimliftfactor="35.5"
 >
 		<control-input axis="/controls/engines/engine[0]/magnetos" control="ROTORGEARENGINEON"/>
 		<control-input axis="/controls/rotor/brake" control="ROTORBRAKE"
@@ -126,7 +126,7 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 
 <cockpit x="-1.88" y=".33" z="0.6"/>
 
-<fuselage ax="0.201" ay="0" az="-.4" bx="-5.3" by="0" bz="-.07" cx="3.5" 
+<fuselage ax="0.201" ay="0" az="-.4" bx="-5.3" by="0" bz="-.07" cx="1.0" 
           width="1.92" taper="0.95" midpoint="0.5" idrag="0"/>
 
 <fuselage ax="-5.5" ay="0" az="-.38" bx="-9.7" by="0" bz=".51" cz="0.25" cx="3" 
@@ -148,7 +148,7 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 		<stall aoa="16" width="4" peak="1.5"/>
 </vstab>
 
-<hstab x="-7.4" y="0.05" z="-0.44" taper="1.0" effectiveness="2.0" length="1.30" chord="0.36" sweep="0" incidence="45">
+<hstab x="-7.4" y="0.05" z="-0.44" taper="1.0" effectiveness="2.0" length="1.30" chord="0.36" sweep="0" incidence="15">
   <stall aoa="0" width="0" peak="1.5"/>
 </hstab>
 
