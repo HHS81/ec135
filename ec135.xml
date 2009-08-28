@@ -43,7 +43,7 @@ nx="0.094" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
   rel-len-where-incidence-is-measured="0.7"
   rel-len-blade-start="0.076"
 
- airfoil-lift-coefficient="5.20"
+  airfoil-lift-coefficient="5.20"
   airfoil-drag-coefficient0="0.0044"
   airfoil-drag-coefficient1="0.10"
   incidence-stall-zero-speed="15"
@@ -97,8 +97,8 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 					   src0="-1.0" src1="1.0"
 					   dst0="-1.0" dst1="1.0"/>
 		<control-input axis="/controls/flight/fcs/tail-rotor/throttle" control="COLLECTIVE"
-					   src0="-1.0" src1="1.0"
-					   dst0="-1.0" dst1="1.0"/>
+					   src0="0.0" src1="1.0"
+					   dst0=".00000000000000000065" dst1=".00000000000000000065"/>
 </rotor>
 
 

@@ -529,7 +529,7 @@ var tail = nil;
 var count = 0;
 
 var sensitivities = {'roll' : 0.0, 'pitch' : 0.0, 'yaw' : 1.125 };
-var sas_initial_gains = {'roll' : 0, 'pitch' : 0, 'yaw' : 0.008 };
+var sas_initial_gains = {'roll' : 0, 'pitch' : 0, 'yaw' : 0.004 };
 var cas_input_gains = {'roll' : 30, 'pitch' : -60, 'yaw' : 30, 
                        'attitude-roll' : 80, 'attitude-pitch' : -80 };
 var cas_output_gains = {'roll' : 0.06, 'pitch' : -0.1, 'yaw' : 0.5, 

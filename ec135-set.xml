@@ -3,6 +3,9 @@
 ************************************************************************
 EC 135 simulation config.
 
+This model of the Ec 135 is dedicated to heliflyer.
+Thanks for all the help!
+
 ************************************************************************
 -->
 
@@ -38,7 +41,7 @@ EC 135 simulation config.
 			<livery>
                               <file type="string">Bavarian Police "Edelweiss"</file>
             </livery>
-	    <liverytail>
+	   <liverytail>
 	    <file type="string">Bavarian Police "Edelweiss"</file>
 	    </liverytail>
 	    <rotorblade>
@@ -100,7 +103,7 @@ EC 135 simulation config.
 				
 			</ec135>
 		</model>
-
+		
 		
 
 		<!--view-->
@@ -249,16 +252,16 @@ EC 135 simulation config.
 
 		<menubar>
 			<default>
-				<menu n="10">
+				 <menu n="10">
       <label>Ec135</label>
-					<enabled type="bool">true</enabled>
-					<item>
+      <enabled type="bool">true</enabled>
+      <item>
         <label>Select Livery</label>
-						<binding>
-							<command>nasal</command>
+        <binding>
+          <command>nasal</command>
           <script>aircraft.livery.dialog.toggle()</script>
-						</binding>
-					</item>
+        </binding>
+      </item>
                                                  
 												     
 					<item>
@@ -314,7 +317,7 @@ EC 135 simulation config.
 
 	<input>
 		<keyboard>
-
+		
 		<!--<key n="4">
 				<name>Ctrl-D</name>
 				<desc>Open/close selected door</desc>
@@ -323,7 +326,7 @@ EC 135 simulation config.
 					<script>ec135.doors.toggle()</script>
 				</binding>
 			</key>
-
+		
 		<key n="68">
 				<name>D</name>
 				<desc>Select previous door</desc>
@@ -379,7 +382,7 @@ EC 135 simulation config.
 					</script>
 				</binding>
 			</key>
-
+			
 			<key n="105">
 				<name>i</name>
 				<desc>Toggle ignition switch</desc>
