@@ -1,15 +1,15 @@
-This Model of an Eurocopter EC135 is made for FlightGear and stands under the terms of GPLv2.
+ This Model of an Eurocopter EC135 is made for FlightGear and stands under the terms of GPLv2.
 
 This model is standing under heavily work progress so please accept that there are a lot of thing which might not working as you want. 
 For updates use the CVS-version and read the CVS-logs and some threads in the officiasl FlightGear Forum!
 
-Im still looking for the Operations manual and a lots of datas about the airfoils!
+Im still looking for datas about the airfoils, and perfomance datas!
 The current fdm is just a guess and might be not that realistic.
 
 Note:  EUROCOPTER and its logo are trade marks of the Eurocopter group.
 ======================================================================================================================
 Credits:
-Author 3D-Model and man in charge:
+Main Author, author 3D-Model:
 
 Heiko Schulz
 Heiko.H.Schulz@gmx.net
@@ -77,13 +77,24 @@ Viel Erfolg noch bei deinem Projekt!
  -->
 
 Thanks guys especially Maik for your help and work!
-Thanks for Heliflyer Georg Vollnhals for the great photo documentation!
 
 And of course thanks to all them I forgot!
 
+This model is dedicated to heliflyer aka Georg Vollnhals. Thanks for the great photo documentation and all the help you offered!
+
+_________________________________________________________________
+
 Changelog: 
 
-Actual Version v.0.4
+Actual version v0.5
+---------------------------------------------------------------
+-photorealistic cockpit in progress
+-more realistic fdm
+-fps-perfomance improved on variants changing over mp
+-better sound in work
+
+
+Actual Version v0.4
 ---------------------------------------------------------------
 This is a complete rebuild of the ec135 with a much better exterior modell
 It is currently a work in progress, so a lots of things can be broken now,
