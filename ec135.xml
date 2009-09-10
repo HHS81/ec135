@@ -17,9 +17,9 @@
 
 
 <rotor name="main" x="-2.75" y="0.0" z="1.55" 
-nx="0.094" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
+  nx="0.14" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
 	  maxcollective="15.8" mincollective="0.2"
-  mincyclicele="-4.7" maxcyclicele="10.5"
+  mincyclicele="-5.7" maxcyclicele="9.5"
   mincyclicail="-4.23" maxcyclicail="5.65"
   diameter="10.2" numblades="4" weightperblade="75" relbladecenter="0.5"
   dynamic="1" rpm="395" rellenflaphinge="0.2" delta3="0"
@@ -53,7 +53,7 @@ nx="0.094" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
   drag-factor-stall="2.0"
 	  cyclic-factor="1.0"
   rotor-correction-factor="0.80"
-  downwashfactor="0.20"
+  downwashfactor="0.2"
   >
    <control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"/>
   <control-input axis="/controls/flight/fcs/roll" control="CYCLICAIL"
@@ -108,8 +108,8 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 	  rotorgear-friction="1.4"
 	  engine-prop-factor="0.005"
   engine-accel-limit="4"
-  yasimdragfactor="25.5"
-  yasimliftfactor="35.5"
+  yasimdragfactor="60"
+  yasimliftfactor="12"
 >
 		<control-input axis="/controls/engines/engine[0]/magnetos" control="ROTORGEARENGINEON"/>
 		<control-input axis="/controls/rotor/brake" control="ROTORBRAKE"
@@ -148,27 +148,27 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 		<stall aoa="16" width="4" peak="1.5"/>
 </vstab>
 
-<hstab x="-7.4" y="0.05" z="-0.44" taper="1.0" effectiveness="2.0" length="1.30" chord="0.36" sweep="0" incidence="15">
+<hstab x="-7.4" y="0.05" z="-0.44" taper="1.0" effectiveness="2.0" length="1.30" chord="0.36" sweep="0" incidence="45">
   <stall aoa="0" width="0" peak="1.5"/>
 </hstab>
 
 <!-- left skid -->
-<gear x="-0.9" y="+1.00" z="-1.662" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+<gear x="-0.96" y="+1.00" z="-1.65" skid="1" compression="0.10" spring="0.8" sfric="0.7" dfric="0.6"/>
 
-<gear x="-2.25" y="+1.00" z="-1.579" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
 
-<gear x="-3.6" y="+1.00" z="-1.496" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+
+<gear x="-3.6" y="+1.00" z="-1.51" skid="1" compression="0.10" spring="0.8" sfric="0.7" dfric="0.6"/>
 
 <!-- right skid -->
-<gear x="-0.9" y="-1.00" z="-1.662" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+<gear x="-0.96" y="-1.00" z="-1.65" skid="1" compression="0.10" spring="0.8" sfric="0.7" dfric="0.6"/>
 
-<gear x="-2.25" y="-1.00" z="-1.579" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
 
-<gear x="-3.6" y="-1.00" z="-1.496" skid="1" compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+
+<gear x="-3.6" y="-1.00" z="-1.51" skid="1" compression="0.10" spring="0.8" sfric="0.7" dfric="0.6"/>
 
 <!-- tail skid -->
-<gear x="-8.756" y="+0.00" z="-0.437" skid="1" compression="0.01" spring="0.1" sfric="1" dfric="1"/>
-<gear x="-9.389" y="+0.00" z="-0.283" skid="1" compression="0.01" spring="0.1" sfric="1" dfric="1"/>
+<gear x="-8.756" y="+0.00" z="-0.35" skid="1" compression="0.01" spring="0.1" sfric="1" dfric="1"/>
+<gear x="-9.389" y="+0.00" z="-0.20" skid="1" compression="0.01" spring="0.1" sfric="1" dfric="1"/>
 
 
 
@@ -178,8 +178,8 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 
 
 
-<ballast x="-2.20" y="+0.0" z="0.2" mass="600"/>
-<ballast x="-3.6" y="+0.0" z="0.5" mass="300"/>
+<ballast x="-4.00" y="+0.0" z="0.2" mass="600"/>
+<ballast x="-4.4" y="+0.0" z="0.5" mass="300"/>
 
 <ballast x=" -3.5" y="-2.25" z="1.0" mass="150"/>
 <ballast x="-3.5" y="+2.25" z="1.0" mass="150"/>
@@ -189,8 +189,8 @@ nx="0.07" ny="-1" nz="-0.05" fx="1" fy="0" fz="0" ccw="1"
 
 <ballast x="-0.4" y="+0.0" z="-0.8" mass="800"/>
 
-<ballast x="0.70" y="0" z=".68" mass="-182"/>
-<ballast x="-3.70" y="0" z=".68" mass="-182"/>
+<ballast x="1.40" y="0" z=".68" mass="-182"/>
+<ballast x="-4.40" y="0" z=".68" mass="-182"/>
 
 
 <weight x="-1.0" y=".33"  z="0.4" mass-prop="/sim/weight[0]/weight-lb"/>	<!-- pilot -->

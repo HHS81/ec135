@@ -15,7 +15,7 @@ Thanks for all the help!
 		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal)</author>
 		<status>alpha</status>
 		<license>GPL v2</license>
-		<aircraft-version>0.4</aircraft-version>
+		<aircraft-version>0.6</aircraft-version>
 
 		<flight-model>yasim</flight-model>
 		<aero>ec135</aero>
@@ -113,8 +113,8 @@ Thanks for all the help!
 			<internal type="bool">true</internal>
 			<config>
                                         <x-offset-m type="double">0.41</x-offset-m><!--left-->
-				<y-offset-m type="double">0.37</y-offset-m><!--up-->
-				<z-offset-m type="double">0.47</z-offset-m><!--back-->
+				<y-offset-m type="double">0.35</y-offset-m><!--up-->
+				<z-offset-m type="double">0.95</z-offset-m><!--back-->
 				<pitch-offset-deg>-14</pitch-offset-deg>
 				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
 			</config>
@@ -356,7 +356,9 @@ Thanks for all the help!
 
 
 
- <!--<key n="6">
+ <!--
+only needed for test flights and bug hunting 
+ <key n="6">
     <name>Ctrl-f</name>
     <desc>Toggle AutoHover</desc>
     <binding>

@@ -450,7 +450,7 @@
 		<object-name>stickgrip</object-name>
 		<object-name>griphead</object-name>
 		<property>/controls/flight/elevator</property>
-		<factor>8</factor>
+		<factor>16</factor>
 		<offset-deg>-2.5</offset-deg>
 		<center>
 			<x-m>-3.134</x-m>
@@ -469,7 +469,7 @@
 			<object-name>stickgrip</object-name>
 		<object-name>griphead</object-name>
 		<property>/controls/flight/aileron</property>
-		<factor>4.94</factor>
+		<factor>8.94</factor>
 		<offset>-0.71</offset>
 		<center>
 			<x-m>-3.134</x-m>
