@@ -13,7 +13,13 @@ Thanks for all the help!
 	<sim>
 		<description>Eurocopter EC135</description>
 		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal)</author>
-		<status>alpha</status>
+		<status>beta</status>
+                    <rating>
+		<FDM type="int">3</FDM>
+                    <systems type="int">1</systems>
+                   <cockpit type="int">3</cockpit>
+                   <model type="int">4</model>
+                   </rating>
 		<license>GPL v2</license>
 		<aircraft-version>0.6</aircraft-version>
 
