@@ -306,7 +306,7 @@ var CAS = {
 
   calcSideSlipAdjustment : func {
     var mach = getprop("/velocities/mach");
-    var slip = getprop("/orientation/side-slip-deg");
+    var slip = -getprop("/orientation/side-slip-deg"); <!-- inverted after a change in side-slip sign (bug #901) -->
     if (mach < 0.015) { # works only if air speed > 10kt
       slip = 0;
     }
