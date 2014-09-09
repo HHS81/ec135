@@ -1,0 +1,525 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+EC 135 simulation config.
+
+This model of the Ec 135 is dedicated to heliflyer.
+Thanks for all the help!
+
+************************************************************************
+-->
+
+<PropertyList>
+	<sim>
+		<description>Eurocopter EC135</description>
+		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal)</author>
+		<status>beta</status>
+                    <rating>
+		<FDM type="int">3</FDM>
+                    <systems type="int">1</systems>
+                   <cockpit type="int">3</cockpit>
+                   <model type="int">4</model>
+                   </rating>
+		<license>GPL v2</license>
+		<aircraft-version>0.6</aircraft-version>
+
+		<flight-model>yasim</flight-model>
+		<aero>ec135</aero>
+		<fuel-fraction>0.8</fuel-fraction>
+
+		<startup>
+			<splash-texture>Aircraft/ec135/splash.rgb</splash-texture>
+		</startup>
+
+		<sound>
+			<path>Aircraft/ec135/Sounds/sound.xml</path>
+		</sound>
+
+
+		<instrumentation>
+			<path>Aircraft/ec135/instrumentation/instrumentation.xml</path>
+		</instrumentation>
+
+
+		<model>
+			<path archive="y">Aircraft/ec135/Models/ec135.xml</path>
+			<variant type="int">0</variant>
+			<livery>
+                              <file type="string">Bavarian Police "Edelweiss"</file>
+            </livery>
+	   <liverytail>
+	    <file type="string">Bavarian Police "Edelweiss"</file>
+	    </liverytail>
+	    <rotorblade>
+				<name type="string">Bavarian Police "Edelweiss"</name>
+					 <index type="int">1</index>
+					  <texture>rotorblade.png</texture>
+				</rotorblade>
+			<ec135>
+				<state type="int">0</state>
+				<rotor-step-deg type="float">-1.0</rotor-step-deg>
+
+				<hide-gsdi>true</hide-gsdi>
+				<binocular_standart type="bool">true</binocular_standart>
+				<binocular_tri type="bool">false</binocular_tri>
+				<winch>false</winch>
+				<mirror>false</mirror>
+				<wirecutter_skid>false</wirecutter_skid>
+				<wirecutter_up>false</wirecutter_up>
+				<nose>false</nose>
+				<nosefl>true</nosefl>
+				<radardome>false</radardome>
+				<antennaset>true</antennaset>
+				<plateleft>false</plateleft>
+				<plateright>true</plateright>
+				<reardoorwindow>true</reardoorwindow>
+				<reardoor_norm>false</reardoor_norm>
+				
+				<doors>
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">pilot's door</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">copilot's door</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">right backdoor</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">left backdoor</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">right reardoor</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">left reardoor</name>
+					</door>
+				</doors>
+				
+			</ec135>
+		</model>
+		
+		
+
+		<!--view-->
+		<view n="0">
+			<name>Cockpit</name>
+			<type>lookfrom</type>
+			<internal type="bool">true</internal>
+			<config>
+                                        <x-offset-m type="double">0.41</x-offset-m><!--left-->
+				<y-offset-m type="double">0.35</y-offset-m><!--up-->
+				<z-offset-m type="double">0.95</z-offset-m><!--back-->
+				<pitch-offset-deg>-14</pitch-offset-deg>
+				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="1">
+			<config>
+				<target-z-offset-m archive="y" type="double">2.5</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="2">
+			<config>
+				<target-z-offset-m archive="y" type="double">2.5</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="3">
+			<config>
+				<target-z-offset-m archive="y" type="double">2.5</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="4">
+			<config>
+				<target-z-offset-m archive="y" type="double">2.5</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="5">
+			<config>
+				<target-z-offset-m archive="y" type="double">2.5</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="6">
+			<config>
+				<target-z-offset-m archive="y" type="double">2.5</target-z-offset-m>
+			</config>
+		</view>
+
+
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb>180</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="1">
+			<name>Co-Pilot</name>
+			<weight-lb>180</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="2">
+			<name>Right Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="3">
+			<name>Middle Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="4">
+			<name>Left Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="5">
+			<name>Load</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>800</max-lb>
+		</weight>
+
+		<help>
+			<title>EC 135 - background and help</title>
+			<line></line>
+			<line>Informations about the Eurocopter EC 135</line>
+			<line></line>
+			<line>The EC 135 is a light twin, multi-mission helicopter.</line>
+			<line>Eurocopter has two version of it: the EC 135 P2i and the EC 135 T2i</line>
+			<line>P2 stands for the PRATT and WHITNEY PW 206B2 turbine engine with 743 PS (horsepower).</line>
+			<line>T2 stands for TURBOMECA Arrius 2B2 turbine engine with 706 PS.</line>
+			<line>The EC 135 descends from the MBB Bo 108.</line>
+			<line>The Bo 108 was a demonstration prototype for fly-by-wire and has it's descend from the famous Bo 105.</line>
+			<line>When the Eurocopter company was founded, the Bo 108 came with.</line>
+			<line>Eurocopter decided that there was a marcetplace for such a helicopter and the developement went on.</line>
+			<line> From the french partners it got the fenestron, from MBB the hingeless rotor. </line>
+			<line>The fenestron makes it very hard for dangerous situations in the range of the tail rotor</line>
+			<line>and reduces the noise level about 50% to other helicopters</line>
+			<line>That's why the EC 135 is a vey recommanded helicopter for EMS and the police, especially in Europe</line>
+			<line></line>
+			<line>Help</line>
+			<line></line>
+			<line>starting the engines -> press }-key</line>
+			<line>shut down the engines -> press {-key</line>
+			<line>toggle rotor brake -> press N-key</line>
+			<line>collective -> page up/down- keys</line>
+			<line>Open/ Close doors -> click the menu "EC135" panel above</line>
+			<line>change livery ->press l-key</line>
+			<line>landinglight ->press g/G-key</line>
+
+
+		</help>
+
+		<hitches>
+			<!-- make sure some properties do exist, when the list for multiplayer transfere is defined-->
+			<!-- they need to be in the same value, as they are initilized in the FDM, to get the same values after reset
+    should fix this somehow-->
+			<aerotow>
+				<tow>
+					<length type="float">60</length>
+					<elastic-constant type="float">10000</elastic-constant>
+					<weight-per-m-kg-m type="float">1</weight-per-m-kg-m>
+					<dist type="float">1</dist>
+					<connected-to-property-node type="bool"></connected-to-property-node>
+					<brake-force type="float">100000</brake-force>
+					<connected-to-ai-or-mp-callsign type ="string">*</connected-to-ai-or-mp-callsign>
+					<end-force-x type ="float">0</end-force-x>
+					<end-force-y type ="float">0</end-force-y>
+					<end-force-z type ="float">0</end-force-z>
+				</tow>
+				<speed-in-tow-direction type="float">0</speed-in-tow-direction>
+				<open type="bool">true</open>
+				<local-pos-x type="float">0</local-pos-x>
+				<local-pos-y type="float">0</local-pos-y>
+				<local-pos-z type="float">0</local-pos-z>
+				<is-slave type="bool">true</is-slave>
+			</aerotow>
+		</hitches>
+
+		<menubar>
+			<default>
+				 <menu n="10">
+      <label>Ec135</label>
+      <enabled type="bool">true</enabled>
+      <item>
+        <label>Select Livery</label>
+        <binding>
+          <command>nasal</command>
+          <script>aircraft.livery.dialog.toggle()</script>
+        </binding>
+      </item>
+                                                 
+												     
+					<item>
+						<label>Show/hide GSDI</label>
+						<binding>
+							<command>property-toggle</command>
+							<property>/sim/model/hide-gsdi</property>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+	</sim>
+
+	<consumables>
+		<fuel>
+			<tank>
+				<name>Main</name>
+				<selected type="bool" write="n">1</selected>
+				<density-ppg type="double" write="n">6.682</density-ppg>
+			</tank>
+
+			<tank>
+				<name>Supply</name>
+				<selected type="bool" write="n">1</selected>
+				<density-ppg type="double" write="n">6.682</density-ppg>
+			</tank>
+		</fuel>
+	</consumables>
+
+	<controls>
+		<rotor>
+			<reltarget type="double">0</reltarget>
+			<maxreltorque type="double">0</maxreltorque>
+		</rotor>
+
+
+		<lighting>
+			<strobe type="bool">true</strobe>
+			<beacon type="bool">true</beacon>
+			<nav-lights type="bool">true</nav-lights>
+		</lighting>
+	</controls>
+
+	<instrumentation>
+		<gsdi>
+			<serviceable type="bool">true</serviceable>
+		</gsdi>
+		<hsi>
+			<serviceable type="bool" archive="y">true</serviceable>
+		</hsi>
+	</instrumentation>
+
+	<input>
+		<keyboard>
+		
+		<!--<key n="4">
+				<name>Ctrl-D</name>
+				<desc>Open/close selected door</desc>
+				<binding>
+					<command>nasal</command>
+					<script>ec135.doors.toggle()</script>
+				</binding>
+			</key>
+		
+		<key n="68">
+				<name>D</name>
+				<desc>Select previous door</desc>
+				<binding>
+					<command>nasal</command>
+					<script>ec135.doors.previous()</script>
+				</binding>
+			</key>
+		
+		<key n="100">
+				<name>d</name>
+				<desc>Select next door</desc>
+				<binding>
+					<command>nasal</command>
+					<script>ec135.doors.next()</script>
+				</binding>
+			</key>-->
+		
+<key n="4">
+    <name>Ctrl-d</name>
+    <desc>Toggle SAS enabled</desc>
+    <binding>
+      <command>nasal</command>
+      <script>ec135.sas.toggleEnable();</script>
+    </binding>
+  </key>
+
+
+
+ <!--
+only needed for test flights and bug hunting 
+ <key n="6">
+    <name>Ctrl-f</name>
+    <desc>Toggle AutoHover</desc>
+    <binding>
+      <command>nasal</command>
+      <script>ec135.afcs.toggleAutoHover();</script>
+   </binding>
+    <binding>
+      <command>nasal</command>
+      <script>ec135.cas.toggleEnable();</script>
+    </binding>
+
+  </key>-->
+
+			
+			<key n="82">
+				<name>R</name>
+				<desc>Toggle rotor brake</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						var p = "/controls/rotor/brake";
+						setprop(p, !getprop(p));
+					</script>
+				</binding>
+			</key>
+			
+			<key n="105">
+				<name>i</name>
+				<desc>Toggle ignition switch</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						foreach (var e; controls.engines) {
+							if (e.selected.getValue()) {
+								var i = e.controls.getNode("ignition", 1);
+								i.setValue(!i.getValue());
+							}
+						}
+					</script>
+				</binding>
+			</key>
+
+			<key n="114">
+				<name>r</name>
+				<desc>Apply rotor brake</desc>
+				<binding>
+					<command>nasal</command>
+					<script>interpolate("/controls/rotor/brake", 1.0, 2)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>nasal</command>
+						<script>interpolate("/controls/rotor/brake", 0.0, 2)</script>
+					</binding>
+				</mod-up>
+			</key>
+
+			<key n="118">
+				<name>Alt-v</name>
+				<desc>Toggle dynamic cockpit view</desc>
+				<mod-alt>
+					<binding>
+						<command>property-toggle</command>
+						<property>/sim/view/dynamic/enabled</property>
+					</binding>
+				</mod-alt>
+			</key>
+
+
+			<key n="123">
+				<name>{</name>
+				<desc>Shutdown Engines</desc>
+				<binding>
+					<command>nasal</command>
+					<script>ec135.shutdown()</script>
+					<condition>
+						<property>/sim/signals/fdm-initialized</property>
+					</condition>
+				</binding>
+				<!-- <binding>
+      <command>nasal</command>
+      <script>ec135.cas.toggleEnable();</script>
+    </binding>-->
+			</key>
+
+			<key n="125">
+				<name>}</name>
+				<desc>Start Engines</desc>
+				<binding>
+					<command>nasal</command>
+					<script>ec135.startup()</script>
+					<condition>
+						<property>/sim/signals/fdm-initialized</property>
+					</condition>
+				</binding>
+				<!-- <binding>
+      <command>nasal</command>
+      <script>ec135.cas.toggleEnable();</script>
+    </binding>-->
+			</key>
+
+			<key n="79">
+				<name>O</name>
+				<desc>Open aerotow hook</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/aerotow/open</property>
+					<value type="bool">true</value>
+				</binding>
+			</key>
+			<key n="111">
+				<name>o</name>
+				<desc>Lock aerotow hook</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/aerotow/open</property>
+					<value type="bool">false</value>
+				</binding>
+			</key>
+			<key n="15">
+				<name>Ctrl-o</name>
+				<desc>Find aircraft for aerotow</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/aerotow/find-aircraft</property>
+					<value type="bool">true</value>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/aerotow/find-aircraft</property>
+						<value type="bool">false</value>
+					</binding>
+				</mod-up>
+			</key>
+
+		</keyboard>
+	</input>
+
+
+	<nasal>
+		<ec135>
+			<file>Aircraft/ec135/Models/ec135.nas</file>
+			<file>Aircraft/ec135/Models/hsi.nas</file>
+			<!--<file>Aircraft/ec135/Nasal/fcs.nas</file>-->
+			<file>Aircraft/ec135/Nasal/fcs.nas</file>
+			<file>Aircraft/ec135/Nasal/casdisable.nas</file>
+		</ec135>
+	</nasal>
+
+
+	<rotors>
+		<main>
+			<rpm type="double">0</rpm>
+		</main>
+	</rotors>
+
+</PropertyList>

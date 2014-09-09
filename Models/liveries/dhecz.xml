@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<sim>
+		<model>
+			<livery>
+				
+				
+					<name type="string">DHECZ</name>
+					
+                                                   <index type="int">3</index>
+					 <texture>fuselage.dhecz.png</texture>
+					  
+
+				</livery>
+				
+				<liverytail>
+				<name type="string">DHECZ</name>
+					 <index type="int">3</index>
+					 <texture>tail.dhecz.png</texture>
+				</liverytail>
+				<rotorblade>
+				<name type="string">ANWB</name>
+					 <index type="int">1</index>
+					  <texture>rotorblade.rgb</texture>
+				</rotorblade>
+				
+			<ec135>
+			<binocular_standart type="bool">true</binocular_standart>
+				<binocular_tri type="bool">false</binocular_tri>
+				<winch>false</winch>
+				<mirror>false</mirror>
+				<wirecutter_skid>false</wirecutter_skid>
+				<wirecutter_up>false</wirecutter_up>
+				<wirecutter_down>false</wirecutter_down>
+				<nose>false</nose>
+				<nosefl>true</nosefl>
+				<radardome>false</radardome>
+				<antennaset>true</antennaset>
+				<plateleft>false</plateleft>
+				<plateright>true</plateright>
+				<reardoorwindow>false</reardoorwindow>
+				<reardoor_norm>true</reardoor_norm>
+			</ec135>
+		</model>
+	</sim>
+</PropertyList>
