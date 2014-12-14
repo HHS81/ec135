@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Author : Syd Adams
+KDI-572 DME Indicator
+-->
+<PropertyList>
+
+  <path>dme.ac</path>
+
+  <animation>
+      <object-name>button</object-name>
+    <object-name>button.L</object-name>
+    <object-name>button.R</object-name>
+    <object-name>DME.nm</object-name>
+    <object-name>DME.nm1</object-name>
+    <object-name>DME.nm2</object-name>
+    <object-name>DME.nm3</object-name>
+    <object-name>DME.kt1</object-name>
+    <object-name>DME.kt2</object-name>
+    <object-name>DME.kt3</object-name>
+    <object-name>DME.mn1</object-name>
+    <object-name>DME.mn2</object-name>
+  </animation>
+
+  <!--<animation>
+    <type>material</type>
+      <object-name>DME.nm</object-name>
+    <object-name>DME.nm1</object-name>
+    <object-name>DME.nm2</object-name>
+    <object-name>DME.nm3</object-name>
+    <object-name>DME.kt1</object-name>
+    <object-name>DME.kt2</object-name>
+    <object-name>DME.kt3</object-name>
+    <object-name>DME.mn1</object-name>
+    <object-name>DME.mn2</object-name>
+    <emission>
+      <red>   1.0 </red>
+      <green> 0.2 </green>
+      <blue>  0.0 </blue>
+      <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+    </emission>
+  </animation>-->
+
+  <!--
+  <animation>
+    <type>select</type>
+    <object-name>face</object-name>
+    <condition>
+       <and>
+         <greater-than>
+           <property>systems/electrical/outputs/dme</property>
+           <value>8</value>
+         </greater-than>
+         <greater-than>
+           <property>instrumentation/dme/switch-position</property>
+           <value>0</value>
+         </greater-than>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>DME.nm</object-name>
+    <object-name>DME.nm1</object-name>
+    <object-name>DME.nm2</object-name>
+    <object-name>DME.nm3</object-name>
+    <object-name>DME.kt1</object-name>
+    <object-name>DME.kt2</object-name>
+    <object-name>DME.kt3</object-name>
+    <object-name>DME.mn1</object-name>
+    <object-name>DME.mn2</object-name>
+    <condition>
+      <and>
+        <greater-than>
+          <property>systems/electrical/outputs/dme</property>
+          <value>8</value>
+        </greater-than>
+        <property>instrumentation/dme/in-range</property>
+      </and>
+    </condition>
+  </animation>
+  -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>button</object-name>
+    <property>instrumentation/dme/switch-position</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep>  45 </dep></entry>
+      <entry><ind> 2 </ind><dep> 105 </dep></entry>
+      <entry><ind> 3 </ind><dep> 165 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+    <center>
+      <x-m>  0.007 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.007 </z-m>
+    </center>
+  </animation>
+
+  <!-- distance-->
+  <animation>
+    <type>textranslate</type>
+    <object-name>DME.nm1</object-name>
+    <property>instrumentation/dme/indicated-distance-nm</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>DME.nm2</object-name>
+    <property>instrumentation/dme/indicated-distance-nm</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>DME.nm3</object-name>
+    <property>instrumentation/dme/indicated-distance-nm</property>
+    <factor>1.0</factor>
+    <step>0.1</step>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- speed-->
+  <animation>
+    <type>textranslate</type>
+    <object-name>DME.kt1</object-name>
+    <property>instrumentation/dme/indicated-ground-speed-kt</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>DME.kt2</object-name>
+    <property>instrumentation/dme/indicated-ground-speed-kt</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>DME.kt3</object-name>
+    <property>instrumentation/dme/indicated-ground-speed-kt</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- time-->
+  <animation>
+    <type>textranslate</type>
+    <object-name>DME.mn1</object-name>
+    <property>instrumentation/dme/indicated-time-min</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>DME.mn2</object-name>
+    <property>instrumentation/dme/indicated-time-min</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- -hotspots -->
+  <animation>
+    <type>pick</type>
+    <object-name>button.L</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/dme/switch-position</property>
+        <step> -1 </step>
+        <min>   0 </min>
+        <max>   3 </max>
+        <wrap>  0 </wrap>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>instrumentation/dme/switch-position</property>
+            <value type="int">1</value>
+          </equals>
+        </condition>
+        <command>property-assign</command>
+        <property>instrumentation/dme/frequencies/source</property>
+        <value>instrumentation/nav[0]/frequencies/selected-mhz</value>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>instrumentation/dme/switch-position</property>
+            <value type="int">2</value>
+          </equals>
+        </condition>
+        <command>property-assign</command>
+        <property>instrumentation/dme/frequencies/source</property>
+        <value>instrumentation/dme/frequencies/selected-mhz</value>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>instrumentation/dme/switch-position</property>
+            <value type="int">3</value>
+          </equals>
+        </condition>
+        <command>property-assign</command>
+        <property>instrumentation/dme/frequencies/selected-mhz</property>
+        <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>instrumentation/dme/switch-position</property>
+            <value type="int">0</value>
+          </equals>
+        </condition>
+        <command>property-assign</command>
+        <property>instrumentation/dme[0]/serviceable</property>
+        <value>false</value>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>button.R</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/dme/switch-position</property>
+        <step> 1 </step>
+        <min>  0 </min>
+        <max>  3 </max>
+        <wrap> 0 </wrap>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>instrumentation/dme/switch-position</property>
+            <value type="int">1</value>
+          </equals>
+        </condition>
+        <command>property-assign</command>
+        <property>instrumentation/dme/frequencies/source</property>
+        <value>instrumentation/nav[0]/frequencies/selected-mhz</value>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>instrumentation/dme/switch-position</property>
+            <value type="int">2</value>
+          </equals>
+        </condition>
+        <command>property-assign</command>
+        <property>instrumentation/dme/frequencies/source</property>
+        <value>instrumentation/dme/frequencies/selected-mhz</value>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>instrumentation/dme/switch-position</property>
+            <value type="int">3</value>
+          </equals>
+        </condition>
+        <command>property-assign</command>
+        <property>instrumentation/dme/frequencies/selected-mhz</property>
+        <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>instrumentation/dme/switch-position</property>
+            <value type="int">0</value>
+          </equals>
+        </condition>
+        <command>property-assign</command>
+        <property>instrumentation/dme[0]/serviceable</property>
+        <value>false</value>
+      </binding>
+    </action>
+  </animation>
+  
+<animation>
+  <type>noshadow</type>
+      <object-name>button</object-name>
+    <object-name>button.L</object-name>
+    <object-name>button.R</object-name>
+    <object-name>DME.nm</object-name>
+    <object-name>DME.nm1</object-name>
+    <object-name>DME.nm2</object-name>
+    <object-name>DME.nm3</object-name>
+    <object-name>DME.kt1</object-name>
+    <object-name>DME.kt2</object-name>
+    <object-name>DME.kt3</object-name>
+    <object-name>DME.mn1</object-name>
+    <object-name>DME.mn2</object-name>
+ </animation>
+
+</PropertyList>

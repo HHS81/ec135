@@ -1,0 +1,402 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<path>interior.ac</path>
+	<offsets>
+		<z-m>0.0</z-m>
+		<y-m>0.0</y-m>
+		<x-m>0.0</x-m>
+
+		<pitch-deg>0.0</pitch-deg>
+		
+	</offsets>
+	
+<effect>
+		<inherits-from>Aircraft/ec135/Models/Effects/ec135reflectglas-uber</inherits-from>
+		<object-name>sunshield</object-name>
+</effect>
+	
+<model>
+		<name>MagCompass</name>
+		<path>Aircraft/ec135/Models/instrumentation/MagCompass/magcompass.xml</path>
+		<offsets>
+			<x-m>0.500</x-m>
+			<y-m>0.00</y-m>
+			<z-m>0.528</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+<!--Doors-->
+<animation>
+   <type>pick</type>
+   <object-name>frontdoor.L.i</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.leftFrontDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>rotate</type>
+   <object-name>frontdoor.L.i</object-name>
+   <property>sim/model/ec135/door-positions/leftFrontDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>70.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>0.816197</x-m>
+			<y-m>-0.744383</y-m>
+			<z-m>0.166909</z-m>
+		</center>
+		<axis>
+			<x>-0.289498</x>
+			<y>-0.005941</y>
+			<z>-0.503452</z>
+		</axis>
+ </animation>
+ 
+ <animation>
+   <type>pick</type>
+   <object-name>frontdoor.R.i</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.rightFrontDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>rotate</type>
+   <object-name>frontdoor.R.i</object-name>
+   <property>sim/model/ec135/door-positions/rightFrontDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>70.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>0.816197</x-m>
+			<y-m>0.744383</y-m>
+			<z-m>0.166909</z-m>
+		</center>
+		<axis>
+			<x>0.289498</x>
+			<y>0.005941</y>
+			<z>0.503452</z>
+		</axis>
+ </animation>
+ 
+ <!--backdoor-->
+   <animation>
+   <type>pick</type>
+   <object-name>backdoor.L.i</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.leftBackDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>translate</type>
+   <object-name>backdoor.L.i</object-name>
+   <property>sim/model/ec135/door-positions/leftBackDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>0.5</ind>
+       <dep>0.07</dep>
+     </entry>
+      <entry>
+       <ind>1.0</ind>
+       <dep>0.07</dep>
+     </entry>
+   </interpolation>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+ </animation>
+ <animation>
+   <type>translate</type>
+   <object-name>backdoor.L.i</object-name>
+    <property>sim/model/ec135/door-positions/leftBackDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.5</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1.0</ind>
+       <dep>0.85</dep>
+     </entry>
+   </interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+ </animation>
+ 
+   <animation>
+   <type>pick</type>
+   <object-name>backdoor.R.i</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.rightBackDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>translate</type>
+   <object-name>backdoor.R.i</object-name>
+   <property>sim/model/ec135/door-positions/rightBackDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>0.5</ind>
+       <dep>0.07</dep>
+     </entry>
+      <entry>
+       <ind>1.0</ind>
+       <dep>0.07</dep>
+     </entry>
+   </interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+ </animation>
+ <animation>
+   <type>translate</type>
+   <object-name>backdoor.R.i</object-name>
+   <property>sim/model/ec135/door-positions/rightBackDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.5</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1.0</ind>
+       <dep>0.85</dep>
+     </entry>
+   </interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+ </animation>
+ 
+ <!--reardoorswithwin-->
+ <animation>
+   <type>rotate</type>
+  <object-name>reardoor_win.L.i</object-name>
+    <property>sim/model/ec135/door-positions/leftRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>-0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>0.471599</x>
+			<y>0.01563</y>
+			<z>0.538602</z>
+		</axis>
+ </animation>
+ 
+ <animation>
+   <type>rotate</type>
+  <object-name>reardoor_win.R.i</object-name>
+   <property>sim/model/ec135/door-positions/rightRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>-0.471599</x>
+			<y>-0.01563</y>
+			<z>-0.538602</z>
+		</axis>
+ </animation>
+ <!--reardoorswithoutwin-->
+ <animation>
+   <type>rotate</type>
+  <object-name>reardoor.L.i</object-name>
+   <property>sim/model/ec135/door-positions/leftRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>-0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>0.471599</x>
+			<y>0.01563</y>
+			<z>0.538602</z>
+		</axis>
+ </animation>
+ 
+ <animation>
+   <type>rotate</type>
+  <object-name>reardoor.R.i</object-name>
+    <property>sim/model/ec135/door-positions/rightRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>-0.471599</x>
+			<y>-0.01563</y>
+			<z>-0.538602</z>
+		</axis>
+ </animation>
+ 
+ <animation>
+	<type>select</type>
+	<object-name>reardoor_win.R.i</object-name>
+	<condition>
+	<property>sim/model/ec135/reardoor_winR</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>reardoor_win.L.i</object-name>
+	<condition>
+	<property>sim/model/ec135/reardoor_winL</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>reardoor.R.i</object-name>
+	<condition>
+	<property>sim/model/ec135/reardoorR</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>reardoor.L.i</object-name>
+	<condition>
+	<property>sim/model/ec135/reardoorL</property>
+	</condition>
+</animation>
+
+	
+	
+</PropertyList>

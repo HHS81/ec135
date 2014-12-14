@@ -8,7 +8,7 @@ The current fdm is just a guess and might be not that realistic.
 
 Note:  EUROCOPTER and its logo are trade marks of the Eurocopter group.
 ======================================================================================================================
-This Model will be finally updated and changed end of summer/autumn 2012! Please contact author first before you insist to change anything!
+This Model will be finally updated and changed end of summer/autumn 2013! Please contact author first before you insist to change anything!
 ======================================================================================================================
 Credits:
 Main Author, author 3D-Model:
@@ -17,9 +17,7 @@ Heiko Schulz
 Heiko.H.Schulz@gmx.net
 
 Author dynamic flight model:
-
-Maik Justus
-fg@mjustus.de
+Heiko Schulz
 
 Author Nasal:
 Melchior Franz
@@ -79,14 +77,22 @@ Viel Erfolg noch bei deinem Projekt!
  -->
 
 Thanks guys especially Maik for your help and work!
+Thanks to Sanni for all the nice liveries!
+
+Thanks to Stefan for some additional informations and help offered!
 
 And of course thanks to all them I forgot!
 
-This model is dedicated to heliflyer aka Georg Vollnhals. Thanks for the great photo documentation and all the help you offered!
+This model is dedicated to heliflyer aka Georg Vollnhals. Thanks for the great photo documentation in HD which made it possible to create a photorealistic cockpit!
+Thanks for all the help you offered! RIP
+
+
 
 _________________________________________________________________
 
 Changelog: 
+
+Actual version: see wiki!
 
 Actual version v0.5
 ---------------------------------------------------------------

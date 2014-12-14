@@ -1,0 +1,231 @@
+<?xml version="1.0" ?>
+
+<PropertyList>
+
+  <path>pilots.ac</path>
+
+<!-- head -->
+  <animation>
+    <type>rotate</type>
+    <object-name>head</object-name>
+    <object-name>earphone</object-name>
+    <property>controls/flight/elevator</property>
+    <factor>-17.5</factor>
+    <center>
+      <x-m>1.325</x-m>
+      <y-m>0.000</y-m>
+      <z-m>0.482</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>head</object-name>
+    <object-name>earphone</object-name>
+    <property>controls/flight/rudder</property>
+    <factor>-25</factor>
+    <center>
+      <x-m>1.325</x-m>
+      <y-m>0.415</y-m>
+      <z-m>0.000</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+  
+<!-- left arm -->
+  <animation>
+    <type>rotate</type>
+    <object-name>leftarmhand</object-name>
+    <property>controls/engines/engine/throttle</property>
+    <factor>-24.5</factor>
+    <center>
+      <x-m> 1.440 </x-m>
+      <y-m> 0.128 </y-m>
+      <z-m>-0.479 </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>leftarmfore</object-name>
+    <property>controls/engines/engine/throttle</property>
+    <factor>-22.5</factor>
+    <center>
+      <x-m> 1.440 </x-m>
+      <y-m> 0.128 </y-m>
+      <z-m>-0.479 </z-m><!-- -0.479 -->
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>leftarmupper</object-name>
+    <property>controls/engines/engine/throttle</property>
+    <factor>40</factor>
+    <center>
+      <x-m> 1.317 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.368 </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- right arm -->
+  <animation>
+    <type>rotate</type>
+    <object-name>rightarmhand</object-name>
+    <property>controls/flight/aileron</property>
+    <factor>-9</factor>
+    <center>
+      <x-m> 0.931</x-m>
+      <y-m> 0.402</y-m>
+      <z-m>-0.425</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>rightarmhand</object-name>
+    <property>controls/flight/elevator</property>
+    <factor>-12.5gygy</factor>
+    <center>
+      <x-m> 0.931</x-m>
+      <y-m> 0.402</y-m>
+      <z-m>-0.425</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>rightarmfore</object-name>
+    <property>controls/flight/aileron</property>
+    <factor>-2.5</factor>
+    <center>
+      <x-m> 2.500</x-m>
+      <y-m> 0.417</y-m>
+      <z-m>-0.125</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>rightarmfore</object-name>
+    <property>controls/flight/elevator</property>
+    <factor>-5</factor>
+    <center>
+      <x-m> 1.100</x-m>
+      <y-m> 0.541</y-m>
+      <z-m>-1.340</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>rightarmupper</object-name>
+    <property>controls/flight/aileron</property>
+    <factor>-20</factor>
+    <center>
+      <x-m>1.327</x-m>
+      <y-m>0.593</y-m>
+      <z-m>0.395</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>rightarmupper</object-name>
+    <property>controls/flight/elevator</property>
+    <factor>20</factor>
+    <center>
+      <x-m>1.327</x-m>
+      <y-m>0.593</y-m>
+      <z-m>0.395</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- feet -->
+  <animation>
+    <type>rotate</type>
+    <object-name>leftlegfoot</object-name>
+    <property>controls/flight/rudder</property>
+    <factor>10</factor>
+    <center>
+      <x-m> 0.547</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-0.426</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>rightlegfoot</object-name>
+    <property>controls/flight/rudder</property>
+    <factor>-10</factor>
+    <center>
+      <x-m> 0.547</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-0.426</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+</PropertyList>
