@@ -1,17 +1,18 @@
  #disable cas when engines running- otherwise we are overflooded with error messages in the console
  call_casdisable = func {
 
- if ( getprop("/rotors/main/rpm")> 80.0)
+ if ( getprop("/rotors/main/rpm")> 50.0)
 
    
 	 
 	 {
 	  
-	  setprop("/controls/flight/fcs/cas-enabled", 0);
+	  setprop("/controls/flight/fcs/switches/cas", 0);
+	 	  
 	  
 	  } else {
 
-            setprop("/controls/flight/fcs/cas-enabled", 1.0);
+            setprop("/controls/flight/fcs/switches/cas", 1.0);
 
            
           }

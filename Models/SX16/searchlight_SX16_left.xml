@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Eurocopter EC 130 Searchlight SX-16 Nightsun from Spectrolab
+ This file is part of FlightGear, the free flight simulator
+ http://www.flightgear.org/
+
+ Copyright (C) 2013 Michael Habarta, mhabarta@freenet.de
+               animations, search light effects
+	       
+Combinded models parts for better computer perfomance
+by Heiko Schulz Heiko.H.Schulz@gmx.net 
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of the
+ License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+-->
+
+<PropertyList>
+
+  <path>Aircraft/ec135/Models/SX16/SX16.ac</path>
+
+ 
+
+  <effect>
+    <inherits-from>Aircraft/ec135/Models/Effects/ec135reflectglas-uber</inherits-from>
+    <object-name>slight_filter_glass</object-name>
+  </effect>
+
+  <!-- searchlight grouping, select conditions -->
+  
+  <animation>
+    <name>searchlight_filter</name>
+    <object-name>slight_filter</object-name>
+    <object-name>slight_filter_glass</object-name>
+  </animation>
+
+  
+
+  
+
+  <!-- searchlight movements -->
+  <animation>
+    <type>rotate</type>
+    <object-name>searchlight-gimbal</object-name>
+    <object-name>searchlight</object-name>
+    <object-name>searchlight_filter</object-name>
+    <object-name>slight_disk</object-name>
+    <property>/sim/model/ec135/searchlight-heading-deg</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>searchlight</object-name>
+    <object-name>searchlight_filter</object-name>
+    <object-name>slight_disk</object-name>
+      <property>/sim/model/ec135/searchlight-elevation-deg</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  
+
+  <!-- pick animations -->
+  <!-- toggle searchlight power on/off 
+  <animation>
+    <type>pick</type>
+    <object-name>slight_body</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <condition>
+          <property>controls/electric/engine/generator</property>
+        </condition>
+        <command>nasal</command>
+        <script>ec135.slight_toggle_power()</script>
+      </binding>
+    </action>
+  </animation>-->
+
+
+
+
+  
+
+  
+
+  <!-- rotation filter -->
+  <animation>
+    <type>rotate</type>
+    <object-name>searchlight_filter</object-name>
+    <property>sim/model/ec135/searchlight-filter/position-norm</property>
+    <factor> 92.0 </factor>
+    <center>
+      <x-m> -0.059 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.066 </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>searchlight_filter</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>
+          ec135.toggle_cycle_filter();
+        </script>
+      </binding>
+    </action>
+  </animation>
+
+ 
+
+</PropertyList>
+
