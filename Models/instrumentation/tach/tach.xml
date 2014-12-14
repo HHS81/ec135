@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<path>tach.ac</path>
+	
+	 <animation>
+        <type>material</type>
+		<object-name>RotorNeedle</object-name>
+		<object-name>N2Needle1</object-name>
+		<object-name>N2Needle2</object-name>
+		<object-name>Face</object-name>
+            <emission>
+           <red>0.79</red>
+            <green>0.39</green>
+            <blue>0.198</blue>
+            <factor-prop>systems/electrical/outputs/stdby-instrument-lights-norm</factor-prop>
+        </emission>
+    </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>N2Needle1</object-name>
+		<property>/engines/engine/n2-pct</property>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>52</dep>
+			</entry>
+			<entry>
+				<ind>50</ind>
+				<dep>92.5</dep>
+			</entry>
+			<entry>
+				<ind>80</ind>
+				<dep>187.75</dep>
+			</entry>
+			<entry>
+				<ind>90</ind>
+				<dep>223</dep>
+			</entry>
+			<entry>
+				<ind>100</ind>
+				<dep>268.73</dep>
+			</entry>
+			<entry>
+				<ind>110</ind>
+				<dep>314</dep>
+			</entry>
+			<entry>
+				<ind>120</ind>
+				<dep>360</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>N2Needle2</object-name>
+		<property>/engines/engine[1]/n2-pct</property>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>52</dep>
+			</entry>
+			<entry>
+				<ind>50</ind>
+				<dep>92.5</dep>
+			</entry>
+			<entry>
+				<ind>80</ind>
+				<dep>187.75</dep>
+			</entry>
+			<entry>
+				<ind>90</ind>
+				<dep>223</dep>
+			</entry>
+			<entry>
+				<ind>100</ind>
+				<dep>268.73</dep>
+			</entry>
+			<entry>
+				<ind>110</ind>
+				<dep>314</dep>
+			</entry>
+			<entry>
+				<ind>120</ind>
+				<dep>360</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>RotorNeedle</object-name>
+		<property>rotors/main/rpm</property>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>52</dep>
+			</entry>
+			<entry>
+				<ind>197.5</ind> <!--50%-->
+				<dep>92.5</dep>
+			</entry>
+			<entry>
+				<ind>237</ind> <!--60%-->
+				<dep>122</dep>
+			</entry>
+			<entry>
+				<ind>276.5</ind> <!--70%-->
+				<dep>149.7</dep>
+			</entry>
+			<entry>
+				<ind>316</ind> <!--80%-->
+				<dep>187.75</dep>
+			</entry>
+			<entry>
+				<ind>355.5</ind> <!--90%-->
+				<dep>223</dep>
+			</entry>
+			<entry>
+				<ind>383.15</ind> <!--97%-->
+				<dep>253</dep>
+			</entry>
+			<entry>
+				<ind>395</ind><!--100%-->
+				<dep>268.73</dep>
+			</entry>
+			<entry>
+				<ind>418.7</ind><!--106%-->
+				<dep>298.5</dep>
+			</entry>
+			<entry>
+				<ind>434.5</ind><!--110%-->
+				<dep>314</dep>
+			</entry>
+			<entry>
+				<ind>474</ind><!--120%-->
+				<dep>360</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+		</axis>
+	</animation>
+	
+<animation>
+  <type>noshadow</type>
+		<object-name>RotorNeedle</object-name>
+		<object-name>N2Needle1</object-name>
+		<object-name>N2Needle2</object-name>
+		<object-name>Face</object-name>
+</animation>
+</PropertyList>
+

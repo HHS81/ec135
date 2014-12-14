@@ -1,0 +1,13 @@
+<PropertyList>
+	
+<model>
+	<path>CADpage.xml</path>
+	 <condition>
+		<greater-than>
+				 <property>/systems/electrical/volts</property>
+				 <value>22</value>
+		</greater-than>
+	</condition>
+ </model>
+	
+</PropertyList>

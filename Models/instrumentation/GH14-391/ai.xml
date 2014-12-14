@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+	<path>gh14391.ac</path>
+	
+	 <animation>
+        <type>material</type>
+		<object-name>ball</object-name>
+		<object-name>face3</object-name>
+            <emission>
+          <red>0.79</red>
+            <green>0.39</green>
+            <blue>0.198</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights-norm</factor-prop>
+        </emission>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>ball</object-name>
+		<property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+		<center>
+			<x-m>-0.075</x-m>
+			<y-m>0.00</y-m>
+			<z-m>0.004</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>face3</object-name>
+		<property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+		<center>
+			<x-m>0.007</x-m>
+			<y-m>0.00</y-m>
+			<z-m>0.004</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>ball</object-name>
+		<property>instrumentation/attitude-indicator/indicated-pitch-deg</property>
+		<factor>0.5</factor>
+		<center>
+			<x-m>-0.075</x-m>
+			<y-m>0.00</y-m>
+			<z-m>0.002</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+<animation>
+  <type>noshadow</type>
+		<object-name>ball</object-name>
+		<object-name>face3</object-name>
+</animation>
+
+
+	
+
+
+</PropertyList>

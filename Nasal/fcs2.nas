@@ -306,7 +306,7 @@ var CAS = {
 
   calcSideSlipAdjustment : func {
     var mach = getprop("/velocities/mach");
-    var slip = -getprop("/orientation/side-slip-deg"); # inverted after a change in side-slip sign (bug #901)
+    var slip = getprop("/orientation/side-slip-deg");
     if (mach < 0.015) { # works only if air speed > 10kt
       slip = 0;
     }
@@ -528,8 +528,9 @@ var stabilator = nil;
 var tail = nil;
 var count = 0;
 
-var sensitivities = {'roll' : 0.0, 'pitch' : 0.0, 'yaw' : 1.125 };
-var sas_initial_gains = {'roll' : 0.0011, 'pitch' : -0.0042, 'yaw' : 0.004 };
+
+var sensitivities = {'roll' : 20.0, 'pitch' : -20.0, 'yaw' : 10.0 };
+var sas_initial_gains = {'roll' : 0.0036, 'pitch' : -0.0061, 'yaw' : 0.02 };
 var cas_input_gains = {'roll' : 30, 'pitch' : -60, 'yaw' : 30, 
                        'attitude-roll' : 80, 'attitude-pitch' : -80 };
 var cas_output_gains = {'roll' : 0.06, 'pitch' : -0.1, 'yaw' : 0.5, 

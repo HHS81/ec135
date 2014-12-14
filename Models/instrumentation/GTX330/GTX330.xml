@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<!--texture by Torsten Dreyer-->
+	<name>GTX330</name>
+	<path>GTX330.ac</path>
+	
+	<!--<animation>
+        <type>material</type>
+		<object-name>Cube</object-name>
+		<object-name>face3</object-name>
+            <emission>
+       <red>   0.886 </red>
+      <green> 0.984 </green>
+      <blue>  0.741 </blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+        </emission>
+    </animation>-->
+    
+
+<animation>
+    <type>pick</type>
+    <object-name>0.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('0');</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>1.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('1');</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>2.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('2');</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>3.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('3');</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>4.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('4');</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>5.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('5');</script>
+        </binding>
+    </action>
+</animation>
+
+
+<animation>
+    <type>pick</type>
+    <object-name>6.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input(6);</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>7.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('7');</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>8.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('8');</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>9.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.input('9');</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>clear.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.delete();</script>
+        </binding>
+    </action>
+</animation>
+
+
+    
+</PropertyList>

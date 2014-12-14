@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+ 
+-->
+<!-- Some low pass filters to soften the response of various instruments -->
+<PropertyList>
+  <filter>
+    <name>TRQ</name>
+    <debug>false</debug>
+    <type>exponential</type>
+     <input>/instrumentation/VEMD/delta-trq</input>
+    <output>/instrumentation/VEMD/delta-trq-filter1</output>
+    <filter-time>1</filter-time>
+     <u_min>0.000</u_min>
+    <u_max>10</u_max>
+  </filter>
+  
+  <filter>
+    <name>oilpressure_bar</name>
+    <debug>false</debug>
+    <type>exponential</type>
+     <input>/engines/engine/oil-pressure-bar</input>
+    <output>/engines/engine/oil-pressure-bar-filter</output>
+    <filter-time>1</filter-time>
+     <u_min>0.000</u_min>
+    <u_max>10</u_max>
+  </filter>
+  
+  
+  <filter>
+    <name>TRQ</name>
+    <debug>false</debug>
+    <type>noise-spike</type>
+     <input>/instrumentation/VEMD/delta-trq-filter1</input>
+    <output>/instrumentation/VEMD/delta-trq-filter</output>
+     <max-rate-of-change>0.5</max-rate-of-change>
+  </filter>
+  
+  
+   <filter>
+    <name>NG</name>
+    <debug>false</debug>
+    <type>exponential</type>
+     <input>/instrumentation/VEMD/delta-n1</input>
+    <output>/instrumentation/VEMD/delta-n1-filter</output>
+    <filter-time>1</filter-time>
+     <u_min>0.000</u_min>
+    <u_max>10</u_max>
+  </filter>
+  
+  <filter>
+    <name>T4</name>
+    <debug>false</debug>
+    <type>exponential</type>
+     <input>/instrumentation/VEMD/delta-t4</input>
+    <output>/instrumentation/VEMD/delta-t4-filter</output>
+    <filter-time>1</filter-time>
+     <u_min>0.000</u_min>
+    <u_max>10</u_max>
+  </filter>
+  
+  <filter>
+    <name>FLI</name>
+    <debug>false</debug>
+    <type>noise-spike</type>
+     <input>/instrumentation/VEMD/FLI/FLI</input>
+    <output>/instrumentation/VEMD/FLI/FLI-filter</output>
+    <max-rate-of-change>1</max-rate-of-change>
+  </filter>
+
+<filter>
+    <name>oiltemp increase</name>
+    <type>noise-spike</type>
+    <input>engines/engine/oil-temperature-degc</input>
+    <output>engines/engine/oil-temperature-degc-filter</output>
+       <max-rate-of-change>0.01</max-rate-of-change>
+  </filter>
+
+  
+
+</PropertyList>

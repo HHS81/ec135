@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+
+	<path>kra10a.ac</path>
+
+	 <animation>
+        <type>material</type>
+		<object-name>RAlt.needle</object-name>
+		<object-name>RAlt.bug</object-name>
+		<object-name>RALT.DHoff_1</object-name>
+		<object-name>Cylinder</object-name>
+		<object-name>RAlt.face</object-name>
+            <emission>
+          <red>0.79</red>
+            <green>0.39</green>
+            <blue>0.198</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights-norm</factor-prop>
+        </emission>
+    </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RAlt.needle</object-name>
+		<property>/position/altitude-agl-ft</property>
+		<interpolation>
+			<entry>
+				<ind>-10</ind>
+				<dep>-8.38</dep>
+			</entry>
+			<entry>
+				<ind> 0</ind>
+				<dep>0.0</dep>
+			</entry>
+			<entry>
+				<ind> 25</ind>
+				<dep>20.75</dep>
+			</entry>
+			<entry>
+				<ind> 50</ind>
+				<dep>41.36</dep>
+			</entry>
+			<entry>
+				<ind> 100</ind>
+				<dep>82.56</dep>
+			</entry>
+			<entry>
+				<ind> 150</ind>
+				<dep>125.45</dep>
+			</entry>
+			<entry>
+				<ind> 200</ind>
+				<dep>164.5</dep>
+			</entry>
+			<entry>
+				<ind>300</ind>
+				<dep>179.75</dep>
+			</entry>
+			<entry>
+				<ind>400</ind>
+				<dep>195</dep>
+			</entry>
+			<entry>
+				<ind> 500</ind>
+				<dep>210.62</dep>
+			</entry>
+			<entry>
+				<ind>1000</ind>
+				<dep>222.34</dep>
+			</entry>
+			<entry>
+				<ind>1500</ind>
+				<dep>235.92</dep>
+			</entry>
+			<entry>
+				<ind>2000</ind>
+				<dep>246.35</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>0.001466</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.003961</z-m>
+		</center>
+		<axis>
+			<x>-0.002942</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RAlt.bug</object-name>
+		<property>/instrumentation/radar-altimeter/decision-height</property>
+		<interpolation>
+			<entry>
+				<ind> 0</ind>
+				<dep>-180.0</dep>
+			</entry>
+			<entry>
+				<ind> 50</ind>
+				<dep>-138.5</dep>
+			</entry>
+			<entry>
+				<ind> 100</ind>
+				<dep>-97.31</dep>
+			</entry>
+			<entry>
+				<ind> 150</ind>
+				<dep>-55</dep>
+			</entry>
+			<entry>
+				<ind> 200</ind>
+				<dep>-15</dep>
+			</entry>
+			<entry>
+				<ind> 300</ind>
+				<dep>0.0</dep>
+			</entry>
+			<entry>
+				<ind> 400</ind>
+				<dep>15.57</dep>
+			</entry>
+			<entry>
+				<ind> 500</ind>
+				<dep>31.05</dep>
+			</entry>
+			<entry>
+				<ind>1000</ind>
+				<dep>42.37</dep>
+			</entry>
+			<entry>
+				<ind>1500</ind>
+				<dep>54.27</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>0.001466</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.003961</z-m>
+		</center>
+		<axis>
+			<x>-0.002942</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+<animation>
+  <type>noshadow</type>
+		<object-name>RAlt.needle</object-name>
+		<object-name>RAlt.bug</object-name>
+		<object-name>RALT.DHoff_1</object-name>
+		<object-name>Cylinder</object-name>
+		<object-name>RAlt.face</object-name>
+</animation>
+
+
+
+</PropertyList>
