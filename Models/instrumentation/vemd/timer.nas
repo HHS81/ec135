@@ -95,29 +95,29 @@ props.globals.getNode(p ~ "start-time", 1).setDoubleValue(start_time);
 #########################################
 
 #var last_fltn = 0;
-var trigger =0;
+#var trigger =0;
 
-var flightnumber = {
+#var flightnumber = {
 
-init:func{
-var last_fltn = props.globals.getNode("/sim/model/ec135/flightnumber").getValue() or 0;
+#init:func{
+#var last_fltn = props.globals.getNode("/sim/model/ec135/flightnumber").getValue() or 0;
 #var trigger = props.globals.getNode("controls/engines/engine[0]/fadec/engine-state").getValue() or 0;
-var fltn = props.globals.getNode("/sim/model/ec135/flightnumber", 1);
-var n1 = props.globals.getNode("/engines/engine/n1-pct").getValue() or 0;
+#var fltn = props.globals.getNode("/sim/model/ec135/flightnumber", 1);
+#var n1 = props.globals.getNode("/engines/engine/n1-pct").getValue() or 0;
 
-if (n1>60)
-trigger=1;
+#if (n1>60)
+#trigger=1;
 
-var count_fltn = (last_fltn + trigger);
+#var count_fltn = (last_fltn + trigger);
 
-fltn.setValue(count_fltn);
-trigger=0;
+#fltn.setValue(count_fltn);
+#trigger=0;
 
-last_fltn = count_fltn;
-}
-};
-setlistener("controls/engines/engine[0]/fadec/engine-state", func {
-flightnumber.init();
+#last_fltn = count_fltn;
+#}
+#};
+#setlistener("controls/engines/engine[0]/fadec/engine-state", func {
+#flightnumber.init();
 
-});
+#});
 
