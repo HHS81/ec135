@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <!--
  This file is part of FlightGear, the free flight simulator
  http://www.flightgear.org/
@@ -32,10 +32,13 @@
     <static-pressure>systems/static[0]/pressure-inhg</static-pressure>
   </altimeter>
 
+
+  <altimeter>
    <name>altimeter</name>
     <number>1</number>
     <static-pressure>systems/static[1]/pressure-inhg</static-pressure>
   </altimeter>
+
   <vertical-speed-indicator>
     <name>vertical-speed-indicator</name>
     <number>0</number>
