@@ -75,7 +75,7 @@ Thanks for all the help!
 				<rotor-step-deg type="float">-1.0</rotor-step-deg>
 				<AnalogDual>true</AnalogDual>
 				<DigitalDual>false</DigitalDual>
-				<AnalogSingle>true</AnalogSingle>
+				<AnalogSingle>false</AnalogSingle>
 				<DigitalSingle>false</DigitalSingle>	
 				<HEMS>true</HEMS>
 				<VIP>false</VIP>
@@ -948,9 +948,9 @@ Thanks for all the help!
 			<file>Aircraft/ec135/Nasal/ec135.nas</file>
 			<file>Aircraft/ec135/Nasal/limits.nas</file>
 			<file>Aircraft/ec135/Nasal/helper.nas</file>
-			<file>Aircraft/ec135/Models/instrumentation/VEMD/timer.nas</file>
-			<file>Aircraft/ec135/Models/instrumentation/VEMD/VEMD.nas</file>
-			<file>Aircraft/ec135/Models/instrumentation/VEMD/roc.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/vemd/timer.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/vemd/VEMD.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/vemd/roc.nas</file>
 			<script><![CDATA[
               KCS55.new();
             ]]></script>
