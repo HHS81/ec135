@@ -326,7 +326,7 @@
 	
 	
            <model>
-		<name>dme</name>
+		<name>DME</name>
 		<path>Aircraft/ec135/Models/instrumentation/dme/dme.xml</path>
 		<offsets>
 
