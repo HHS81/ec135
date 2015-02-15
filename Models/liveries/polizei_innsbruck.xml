@@ -30,7 +30,7 @@
 	<!--or-->
 	<nosefl>true</nosefl><!--nose with frontlight-->
 	<searchlight_front>false</searchlight_front><!--only without radom and without nosefl-->
-	<searchlight_left>true</searchlight_left>
+	<searchlight_left>false</searchlight_left>
 	<FLIR>false</FLIR>
 	<windscreen_tri>true</windscreen_tri>
 	<!--or-->

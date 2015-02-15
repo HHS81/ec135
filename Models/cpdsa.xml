@@ -27,6 +27,7 @@
 		<factor><use>systems/electrical/outputs/stdby-instrument-lights-norm</use></factor>
 	</parameters>
  	<object-name>analogpanel</object-name> 
+ 	<object-name>Plane.066</object-name> 
 </effect>	
 	
 	
@@ -36,7 +37,7 @@
 		<name>AI</name>
 		<path>Aircraft/ec135/Models/instrumentation/GH14-391/ai.xml</path>
 		<offsets>
-			<x-m>0.0</x-m>
+			<x-m>-0.0025</x-m>
 			<y-m>0.317</y-m>
 			<z-m>0.270</z-m>
 			<roll-deg>-3</roll-deg>
@@ -110,7 +111,7 @@
 		</offsets>
 	</model>
 
-	<model>
+	<!--<model>
 		<name>VOR</name>
 		<path>Aircraft/ec135/Models/instrumentation/vor/vor.xml</path>
 		<offsets>
@@ -126,6 +127,28 @@
 		<path>Aircraft/ec135/Models/instrumentation/vor/vor2.xml</path>
 		<offsets>
 			<x-m>0.0</x-m>
+			<y-m>-0.219</y-m>
+			<z-m>0.160</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>-->
+	
+	<model>
+		<name>KI229 RMI</name>
+		<path>Aircraft/ec135/Models/instrumentation/KI229/ki229.xml</path>
+		<offsets>
+			<x-m>0.005</x-m>
+			<y-m>0.217</y-m>
+			<z-m>0.160</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+	
+           <model>
+		<name>KI229 RMI 2</name>
+		<path>Aircraft/ec135/Models/instrumentation/KI229/ki229.xml</path>
+		<offsets>
+			<x-m>0.005</x-m>
 			<y-m>-0.219</y-m>
 			<z-m>0.160</z-m>
 			<pitch-deg>0</pitch-deg>
@@ -240,7 +263,7 @@
 		<name>left AI</name>
 		<path>Aircraft/ec135/Models/instrumentation/GH14-391/ai.xml</path>
 		<offsets>
-			<x-m>0.0</x-m>
+			<x-m>-0.0025</x-m>
 			<y-m>-0.317</y-m>
 			<z-m>0.270</z-m>
 			<roll-deg>-3</roll-deg>
@@ -326,11 +349,11 @@
 	
 	
            <model>
-		<name>DME</name>
+		<name>dme</name>
 		<path>Aircraft/ec135/Models/instrumentation/dme/dme.xml</path>
 		<offsets>
 
-			<x-m>0.0</x-m>
+			<x-m>0.005</x-m>
 			<y-m>0.077</y-m>
 			<z-m>0.025</z-m>
 

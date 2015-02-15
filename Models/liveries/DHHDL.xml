@@ -5,9 +5,9 @@
 	<sim>
 		<model>
 			<livery>
-					<name type="string">D-HCDL "MFG 5"</name>
+					<name type="string">D-HHDL</name>
 					 <index type="int">1</index>
-					  <texture>liveries/D-HCDL.png</texture>
+					  <texture>liveries/D-HHDL.png</texture>
 			</livery>
 		<!--<rotorblade>
 				<name type="string">ANWB</name>
@@ -43,17 +43,17 @@
 				<IBF>false</IBF>
 				<!--or-->
 				<nonIBF>true</nonIBF>
-				<winch>true</winch>
+				<winch>false</winch>
 				<SLLightR>true</SLLightR><!--Retractablelanding/SearchlightRight-->
 				<SLLightL>false</SLLightL><!--Retractablelanding/SearchlightLEFT-->
 				<loudspeaker>false</loudspeaker>
 				<hellas>false</hellas>
-				<lowskid>0</lowskid>
+				<lowskid>1</lowskid>
 				<snowboard_lowskid>false</snowboard_lowskid>
 				<wirecutter_skid>false</wirecutter_skid>
 				<!--or-->
-				<longskid_floats>1</longskid_floats>
-				<emergfloats>1</emergfloats>
+				<longskid_floats>0</longskid_floats>
+				<emergfloats>0</emergfloats>
 				<!--or-->
 				<midskid>0</midskid>
 				<snowboard_midskid>false</snowboard_midskid>
@@ -63,22 +63,22 @@
 				<snowboard_highskid>false</snowboard_highskid>
 				<wirecutter_highskid>false</wirecutter_highskid>
 				<!--steps-->
-				<standardstep>false</standardstep>
+				<standardstep>true</standardstep>
 				<!--or-->
-				<multifunctioncarrier>true</multifunctioncarrier><!--in use with FLIR etc...)-->
+				<multifunctioncarrier>false</multifunctioncarrier><!--in use with FLIR etc...)-->
 				<!--or-->
 				<roundstep>false</roundstep>
 				<DoubleCargoHook>false</DoubleCargoHook>
 				<buckle>false</buckle><!--reardoor_buckle-->
 				<!--reardoors-->
 				<reardoor_winR>false</reardoor_winR><!--reardoor with window-->
-				<reardoor_winL>false</reardoor_winL><!--reardoor with window-->
-				<reardoorL>true</reardoorL>
+				<reardoor_winL>true</reardoor_winL><!--reardoor with window-->
+				<reardoorL>false</reardoorL>
 				<reardoorR>true</reardoorR>
 			</ec135>
 		   		   </model>
 			<rendering>	   
-    <refl_correction type="string">0.25</refl_correction>
+    <refl_correction type="string">-0.05</refl_correction>
     </rendering>
 	</sim>
 </PropertyList>

@@ -289,7 +289,7 @@ init_switches = func() {
     append(output_list,"avionics-switch2");
     append(watt_list,0.2);
     
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"adf");
     append(watt_list,0.2);
     
@@ -301,43 +301,43 @@ init_switches = func() {
     append(output_list,"turn-coordinator");
     append(watt_list,0.5);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"dme");
     append(watt_list,0.2);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"adf");
     append(watt_list,0.2);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"adf");
     append(watt_list,0.2);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"DG");
     append(watt_list,0.2);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"transponder");
     append(watt_list,0.2);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"turn-coordinator");
     append(watt_list,0.2);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"comm");
     append(watt_list,0.2);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"comm[1]");
     append(watt_list,10);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"nav");
     append(watt_list,10);
 
-    append(switch_list,"controls/electric/avionics-switch");
+    append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"nav[1]");
     append(watt_list,10);
     

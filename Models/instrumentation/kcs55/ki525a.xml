@@ -33,7 +33,6 @@
     <to-flag>instrumentation/kcs55/ki525/to-flag</to-flag>
     <from-flag>instrumentation/kcs55/ki525/from-flag</from-flag>
     <nav-flag>instrumentation/kcs55/ki525/nav-flag</nav-flag>
-
     <indicated-heading>instrumentation/kcs55/kg102/indicated-heading-deg</indicated-heading>
     <hdg-flag>instrumentation/kcs55/kg102/flag-norm</hdg-flag>
   </params>
@@ -52,13 +51,11 @@
     <object-name>HDG</object-name>
     <object-name>HDGBug</object-name>
     <object-name>CDIPlate</object-name>
-    <object-name>GS</object-name>
+    <object-name>GS.001</object-name>
     <object-name>GSMarker</object-name>
     <object-name>GSLabel</object-name>
     <object-name>Marker</object-name>
     <object-name>LubberLine</object-name>
-    <object-name>OBSSelector</object-name>
-    <object-name>HDGSelector</object-name>
        <emission>
           <red>0.79</red>
             <green>0.39</green>
@@ -119,74 +116,8 @@
     </center>
   </animation>
 
-  <!--<animation>
-    <type>rotate</type>
-    <object-name>HDGSelector</object-name>
-    <property alias="../../params/selected-heading"/>
-    <factor>-8.0</factor>
-    <axis>
-      <x>1.0</x>
-      <y>0.0</y>
-      <z>0.0</z>
-    </axis>
-    <center>
-      <x-m>0</x-m>
-      <y-m>0.0309671</y-m>
-      <z-m>-0.0274502</z-m>
-    </center>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>HDGSelector</object-name>
-    <property alias="../../params/indicated-heading"/>
-    <factor>8.0</factor>
-    <axis>
-      <x>1.0</x>
-      <y>0.0</y>
-      <z>0.0</z>
-    </axis>
-    <center>
-      <x-m>0</x-m>
-      <y-m>0.0309671</y-m>
-      <z-m>-0.0274502</z-m>
-    </center>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>OBSSelector</object-name>
-    <property alias="../../params/selected-course"/>
-    <factor>-8.0</factor>
-    <axis>
-      <x>1.0</x>
-      <y>0.0</y>
-      <z>0.0</z>
-    </axis>
-    <center>
-      <x-m>0</x-m>
-      <y-m>-0.0309671</y-m>
-      <z-m>-0.0274502</z-m>
-    </center>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>OBSSelector</object-name>
-    <property alias="../../params/indicated-heading"/>
-    <factor>8.0</factor>
-    <axis>
-      <x>1.0</x>
-      <y>0.0</y>
-      <z>0.0</z>
-    </axis>
-    <center>
-      <x-m>0</x-m>
-      <y-m>-0.0309671</y-m>
-      <z-m>-0.0274502</z-m>
-    </center>
-  </animation>-->
-
+  
+  
   <animation>
     <type>rotate</type>
     <object-name>CDIPlate</object-name>
@@ -230,186 +161,16 @@
       <z-m>0</z-m>
     </center>
   </animation>
+  
+  
 
-  <!--<animation>
-    <type>pick</type>
-    <object-name>HDGSelectorPick.L</object-name>
-    <visible>false</visible>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-heading"/>
-        <step>-1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>1</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-heading"/>
-        <step>-10</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
+  
 
-  <animation>
-    <type>pick</type>
-    <object-name>HDGSelectorPick.R</object-name>
-    <visible>false</visible>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-heading"/>
-        <step>1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>1</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-heading"/>
-        <step>10</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
+  
+  
+  
 
-  <animation>
-    <type>pick</type>
-    <object-name>HDGSelector</object-name>
-    <visible>true</visible>
-    <action>
-      <button>3</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-heading"/>
-        <step>-1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>4</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-heading"/>
-        <step>1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>OBSSelectorPick.L</object-name>
-    <visible>false</visible>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-course"/>
-        <step>-1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>1</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-course"/>
-        <step>-10</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>OBSSelectorPick.R</object-name>
-    <visible>false</visible>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-course"/>
-        <step>1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>1</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-course"/>
-        <step>10</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>OBSSelector</object-name>
-    <visible>true</visible>
-    <action>
-      <button>3</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-course"/>
-        <step>-1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>4</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-course"/>
-        <step>1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>-->
+ 
 
   <animation>
     <type>rotate</type>
@@ -497,7 +258,7 @@
 
   <animation>
     <type>translate</type>
-    <object-name>GS</object-name>
+    <object-name>GS.001</object-name>
     <property alias="../../params/gs-needle-deflection"/>
     <factor>0.016</factor>
     <axis>
@@ -509,7 +270,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>GS</object-name>
+    <object-name>GS.001</object-name>
     <condition>
       <property alias="../../../params/has-gs"/>
       <property alias="../../../params/gs-in-range"/>
@@ -520,7 +281,7 @@
     <type>rotate</type>
     <object-name>ArrowBody</object-name>
     <property alias="../../params/cdi-needle-deflection"/>
-    <factor>2.5</factor>
+    <factor>2.0</factor>
     <axis>
       <x>0.0</x>
       <y>0.0</y>
