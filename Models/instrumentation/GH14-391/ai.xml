@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <PropertyList>
+<!-- texture improvements and slipball animation by FSig - Many Thanks to him!-->
 
 	<path>gh14391.ac</path>
 	
@@ -63,6 +64,25 @@
 			<z>0</z>
 		</axis>
 	</animation>
+	
+<animation>
+    <type>rotate</type>
+    <object-name>slipball</object-name>
+    <property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
+    <factor>15</factor>
+    <min-deg> -15 </min-deg>
+    <max-deg>  15 </max-deg>
+    <axis>
+      <x>-1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0.036</z-m>
+    </center>
+  </animation>
 	
 <animation>
   <type>noshadow</type>
