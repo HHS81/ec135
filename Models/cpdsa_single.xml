@@ -237,7 +237,7 @@
 	
            <model>
 		<name>dme</name>
-		<path>Aircraft/ec135/Models/instrumentation/dme/dme.xml</path>
+		<path>Aircraft/ec135/Models/instrumentation/dme/DME.xml</path>
 		<offsets>
 
 			<x-m>0.005</x-m>
