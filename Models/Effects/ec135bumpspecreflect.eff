@@ -37,7 +37,7 @@
             </images>
 			</texture>
 			<reflection-fresnel type="float">0.00</reflection-fresnel>
-			<reflection-rainbow type="float">0.02</reflection-rainbow>
+			<reflection-rainbow type="float">0.15</reflection-rainbow>
 			<reflection-noise type="float">0.01</reflection-noise>
 			<ambient-correction type="float">0.0</ambient-correction>
                 		<dirt-enabled type="int">0</dirt-enabled>
