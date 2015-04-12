@@ -3,6 +3,7 @@
     <name>EC135_bumpspecreflect</name>
     <inherits-from>Effects/model-combined-deferred</inherits-from>
 		<parameters>
+			<rain-enabled type="int">1</rain-enabled>
 			<normalmap-enabled type="int">1</normalmap-enabled>
 			<normalmap-dds type="int">0</normalmap-dds>
 			<texture n="2">
@@ -27,18 +28,18 @@
 			<texture n="5">
 			<type>cubemap</type>
 			<images>
-				<positive-x>Aircraft/dhc2/Models/Effects/fgfs-sky/1.png</positive-x>
-				<negative-x>Aircraft/dhc2/Models/Effects/fgfs-sky/4.png</negative-x>
-				<positive-y>Aircraft/dhc2/Models/Effects/fgfs-sky/2.png</positive-y>
-				<negative-y>Aircraft/dhc2/Models/Effects/fgfs-sky/3.png</negative-y>
-				<positive-z>Aircraft/dhc2/Models/Effects/fgfs-sky/6.png</positive-z>
-				<negative-z>Aircraft/dhc2/Models/Effects/fgfs-sky/5.png</negative-z>
-			</images>
+				<positive-x>Aircraft/Generic/Effects/fgfs-sky2/1.png</positive-x>
+				<negative-x>Aircraft/Generic/Effects/fgfs-sky2/4.png</negative-x>
+				<positive-y>Aircraft/Generic/Effects/fgfs-sky2/2.png</positive-y>
+				<negative-y>Aircraft/Generic/Effects/fgfs-sky2/3.png</negative-y>
+				<positive-z>Aircraft/Generic/Effects/fgfs-sky2/6.png</positive-z>
+				<negative-z>Aircraft/Generic/Effects/fgfs-sky2/5.png</negative-z>
+            </images>
 			</texture>
-			<reflection-fresnel type="float">0.01</reflection-fresnel>
-			<reflection-rainbow type="float">0.01</reflection-rainbow>
+			<reflection-fresnel type="float">0.00</reflection-fresnel>
+			<reflection-rainbow type="float">0.02</reflection-rainbow>
 			<reflection-noise type="float">0.01</reflection-noise>
-			<ambient-correction type="float">0.1</ambient-correction>
+			<ambient-correction type="float">0.0</ambient-correction>
                 		<dirt-enabled type="int">0</dirt-enabled>
 			<dirt-color type="vec3d">1.0 1.0 1.0</dirt-color>
 			<dirt-factor type="float">0.5</dirt-factor>
