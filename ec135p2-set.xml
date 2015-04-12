@@ -960,6 +960,7 @@ Thanks for all the help!
 			<file>Aircraft/ec135/Models/instrumentation/vemd/timer.nas</file>
 			<file>Aircraft/ec135/Models/instrumentation/vemd/VEMD.nas</file>
 			<file>Aircraft/ec135/Models/instrumentation/vemd/roc.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/dme/ki266.nas</file>
 			<script><![CDATA[
 	      ki266.new(0);
               KCS55.new();
