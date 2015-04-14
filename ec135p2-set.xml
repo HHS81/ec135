@@ -12,7 +12,7 @@ Thanks for all the help!
 <PropertyList>
 	<sim>
 		<description>Eurocopter EC135 P2</description>
-		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal), Oliver Thurau (Particles), sanni (Pilot Animation)</author>
+		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements)</author>
 		<status>early production</status>
 		<rating>
                     <FDM type="int">4</FDM>
@@ -21,6 +21,15 @@ Thanks for all the help!
                     <model type="int">5</model>
                     </rating>
 		<license>GPL v2</license>
+		
+		<tags>
+			<tag>eurocopter</tag>			
+			<tag>helicopter</tag>
+			<tag>2-engine</tag>
+			<tag>1990s</tag>
+			<tag>2000s</tag>
+			<tag>2010s</tag>
+		</tags>
 		
 
 		<flight-model>yasim</flight-model>
@@ -951,7 +960,9 @@ Thanks for all the help!
 			<file>Aircraft/ec135/Models/instrumentation/vemd/timer.nas</file>
 			<file>Aircraft/ec135/Models/instrumentation/vemd/VEMD.nas</file>
 			<file>Aircraft/ec135/Models/instrumentation/vemd/roc.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/dme/ki266.nas</file>
 			<script><![CDATA[
+	      ki266.new(0);
               KCS55.new();
             ]]></script>
 		</ec135>

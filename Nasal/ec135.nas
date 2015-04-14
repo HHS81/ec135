@@ -1029,7 +1029,7 @@ var hi_heading = props.globals.getNode("/instrumentation/heading-indicator/indic
 var vertspeed = props.globals.initNode("/velocities/vertical-speed-fps");
 var gross_weight_lb = props.globals.initNode("/yasim/gross-weight-lbs");
 var gross_weight_kg = props.globals.initNode("/sim/model/gross-weight-kg");
-props.globals.getNode("/instrumentation/adf/rotation-deg", 1).alias(hi_heading);
+#props.globals.getNode("/instrumentation/adf/rotation-deg", 1).alias(hi_heading);
 
 
 var main_loop = func {

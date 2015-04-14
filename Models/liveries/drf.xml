@@ -73,7 +73,7 @@
       </ec135>
     </model>
     <rendering>	   
-      <refl_correction type="string">0.025</refl_correction>
+      <refl_correction type="string">0.25</refl_correction>
     </rendering>
   </sim>
 </PropertyList>

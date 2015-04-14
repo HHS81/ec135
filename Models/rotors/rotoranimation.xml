@@ -150,7 +150,7 @@
 		<object-name>mainrotor</object-name>
 		<object-name>mainrotor_fast</object-name>
 		<object-name>blurred</object-name>
-		<property>rotors/main/blade/position-deg</property>
+<property>rotors/main/blade/position-deg</property>
 		<factor>1</factor>
 		<center>
 			<x-m>0</x-m>
