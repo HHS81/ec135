@@ -7,7 +7,7 @@
       <livery>
 	<name type="string">LifeFlight</name>
 	<index type="int">1</index>
-	<texture>/liveries/lifeflight.png</texture>
+	<texture>liveries/lifeflight.png</texture>
       </livery>
 
       <ec135>
