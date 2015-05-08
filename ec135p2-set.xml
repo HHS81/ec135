@@ -37,7 +37,7 @@ Thanks for all the help!
 		<fuel-fraction>1.0</fuel-fraction>
 
 		<startup>
-			<splash-texture>Aircraft/ec135/splash.rgb</splash-texture>
+			<splash-texture>Aircraft/ec135/splash.png</splash-texture>
 		</startup>
 
 		<sound>
