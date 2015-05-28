@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<path>asi.ac</path>
+	
+	 <animation>
+        <type>material</type>
+        <object-name>face</object-name>
+        <object-name>asi-needle1</object-name>
+            <emission>
+          <red>0.79</red>
+            <green>0.39</green>
+            <blue>0.198</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights-norm</factor-prop>
+        </emission>
+    </animation>
+    
+
+
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>asi-needle1</object-name>
+		<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+		<interpolation>
+			<entry>
+				<ind>   0</ind>
+				<dep>  -5</dep>
+			</entry>
+			<entry>
+				<ind>  10</ind>
+				<dep>  4</dep>
+			</entry>
+			<entry>
+				<ind>  20</ind>
+				<dep> 13</dep>
+			</entry>
+			<entry>
+				<ind>  30</ind>
+				<dep> 35</dep>
+			</entry>
+			<entry>
+				<ind>  40</ind>
+				<dep>65</dep>
+			</entry>
+			<entry>
+				<ind>  50</ind>
+				<dep>95</dep>
+			</entry>
+			<entry>
+				<ind>  60</ind>
+				<dep>125</dep>
+			</entry>
+			<entry>
+				<ind>  70</ind>
+				<dep>158</dep>
+			</entry>
+			<entry>
+				<ind>  80</ind>
+				<dep>188</dep>
+			</entry>
+			<entry>
+				<ind>  90</ind>
+				<dep>205</dep>
+			</entry>
+			<entry>
+				<ind> 100</ind>
+				<dep>219</dep>
+			</entry>
+			<entry>
+				<ind> 110</ind>
+				<dep>232</dep>
+			</entry>
+			<entry>
+				<ind> 120</ind>
+				<dep>246</dep>
+			</entry>
+			<entry>
+				<ind> 130</ind>
+				<dep>263</dep>
+			</entry>
+			<entry>
+				<ind> 140</ind>
+				<dep>274</dep>
+			</entry>
+			<entry>
+				<ind> 150</ind>
+				<dep>289</dep>
+			</entry>
+			<entry>
+				<ind> 160</ind>
+				<dep>302</dep>
+			</entry>
+			<entry>
+				<ind> 170</ind>
+				<dep>316</dep>
+			</entry>
+			<entry>
+				<ind> 180</ind>
+				<dep>330</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+<animation>
+  <type>noshadow</type>
+        <object-name>face.006</object-name>
+        <object-name>asi-needle1</object-name>
+ </animation>
+</PropertyList>
+
+
+

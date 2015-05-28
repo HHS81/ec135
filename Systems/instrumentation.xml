@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!--
+ This file is part of FlightGear, the free flight simulator
+ http://www.flightgear.org/
+
+ Copyright (C) 2009 Torsten Dreyer, Torsten (at) t3r _dot_ de
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of the
+ License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+-->
+
+<PropertyList>
+
+  <airspeed-indicator>
+    <name>airspeed-indicator</name>
+    <number>0</number>
+    <total-pressure>systems/pitot[0]/total-pressure-inhg</total-pressure>
+    <static-pressure>systems/static[0]/pressure-inhg</static-pressure>
+  </airspeed-indicator>
+
+ 
+  <altimeter>
+    <name>altimeter</name>
+    <number>0</number>
+    <static-pressure>systems/static[0]/pressure-inhg</static-pressure>
+  </altimeter>
+
+
+  <altimeter>
+   <name>altimeter</name>
+    <number>1</number>
+    <static-pressure>systems/static[1]/pressure-inhg</static-pressure>
+  </altimeter>
+
+  <vertical-speed-indicator>
+    <name>vertical-speed-indicator</name>
+    <number>0</number>
+    <static-pressure>systems/static[0]/pressure-inhg</static-pressure>
+  </vertical-speed-indicator>
+
+  <attitude-indicator>
+    <name>attitude-indicator</name>
+    <number>0</number>
+    <suction>systems/vacuum[0]/suction-inhg</suction>
+  </attitude-indicator>
+
+ 
+
+  <heading-indicator>
+    <name>heading-indicator</name>
+    <number>0</number>
+    <suction>systems/vacuum[0]/suction-inhg</suction>
+  </heading-indicator>
+
+  
+  <turn-indicator>
+    <name>turn-indicator</name>
+    <number>0</number>
+   <suction>systems/vacuum[0]/suction-inhg</suction>
+  </turn-indicator>
+
+  <slip-skid-ball>
+    <name>slip-skid-ball</name>
+    <number>0</number>
+  </slip-skid-ball>
+
+ 
+  <clock>
+    <name>clock</name>
+    <number>0</number>
+  </clock>
+
+  <dme>
+    <name>dme</name>
+    <number>0</number>
+  </dme>
+
+  <adf>
+    <name>adf</name>
+    <number>0</number>
+  </adf>
+
+  <nav-radio>
+    <name>nav</name>
+    <number>0</number>
+  </nav-radio>
+
+  <nav-radio>
+    <name>nav</name>
+    <number>1</number>
+  </nav-radio>
+
+  <magnetic-compass>
+    <name>magnetic-compass</name>
+    <number>0</number>
+  </magnetic-compass>
+
+  <marker-beacon>
+    <name>marker-beacon</name>
+    <number>0</number>
+  </marker-beacon>
+  
+  <gsdi>
+	<name>gsdi</name>
+	<number>0</number>
+</gsdi>
+
+<KT-70>
+	<name>kt-70</name>
+	<number>0</number>
+</KT-70>
+
+
+<gps>
+	<name>gps</name>
+	<number>0</number>
+</gps>
+ <comm-radio> <name>comm</name> <number>0</number> </comm-radio> <comm-radio> <name>comm</name> <number>1</number> </comm-radio></PropertyList>

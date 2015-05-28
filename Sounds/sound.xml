@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--new Ec135 sound config-->
+<PropertyList>
+<fx>
+<!--exterior-->
+		<engine>
+			<name>turbine0-start</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/turbine_strt_out_R.wav</path>
+			<condition>
+			<greater-than>
+				<property>engines/engine[0]/n1-pct</property>
+				<value>0.1</value>
+			</greater-than>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>1</factor>
+			</volume>
+			<reference-dist>50</reference-dist>
+			<max-dist>500</max-dist>
+		</engine>
+
+		<engine>
+			<name>turbine0-loop</name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/turbine_idle_out_R.wav</path>
+			<condition>
+				<property>engines/engine[0]/running</property>
+			</condition>
+			<delay-sec>21</delay-sec>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>1.25</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0.0</offset>
+				<max>1.5</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+			<position>
+        <x> 4.924 </x>
+        <y> 0.580 </y>
+        <z> 0.943 </z>
+      </position>
+      			<reference-dist>5</reference-dist>
+			<max-dist>500</max-dist>
+		</engine>
+
+		<engine>
+			<name>turbine0-shutdown</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/shut_ec_out_R.wav</path>
+			<condition>
+				<not>
+					<property>engines/engine[0]/running</property>
+				</not>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>1</factor>
+			</volume>
+			<reference-dist>50</reference-dist>
+			<max-dist>500</max-dist>
+		</engine>
+
+		<engine>
+			<name>turbine1-start</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/turbine_strt_out_L.wav</path>
+			<condition>
+			<greater-than>
+				<property>engines/engine[1]/n1-pct</property>
+				<value>0.1</value>
+			</greater-than>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>1</factor>
+			</volume>
+			<reference-dist>50</reference-dist>
+			<max-dist>500</max-dist>
+		</engine>
+
+<engine>
+			<name>turbine1-loop</name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/turbine_idle_out_L.wav</path>
+			<condition>
+				<property>engines/engine[1]/running</property>
+			</condition>
+			<delay-sec>21</delay-sec>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>1.25</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0.0</offset>
+				<max>1.5</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+			<position>
+        <x> 4.924 </x>
+        <y> -0.580 </y>
+        <z> 0.943 </z>
+      </position>
+   			<reference-dist>5</reference-dist>
+			<max-dist>500</max-dist>
+		</engine>
+
+		<engine>
+			<name>turbine1-shutdown</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/shut_ec_out_L.wav</path>
+			<condition>
+				<not>
+					<property>engines/engine[1]/running</property>
+				</not>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>1</factor>
+			</volume>
+			<reference-dist>50</reference-dist>
+			<max-dist>500</max-dist>
+		</engine>
+		
+	
+<rotor>
+			<name>ambient stall </name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/ec_rotor_out.wav</path>
+			<condition>
+				          <greater-than>
+						<property>rotors/main/rpm</property>
+						<value>50</value>
+					</greater-than>
+				</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>1</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/stall-filtered</property>
+				<factor>1000</factor>
+				<offset>0.4</offset>
+				<max>1.5</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+			<position>
+        <x> 3.005 </x>
+        <y> 0.0 </y>
+        <z> 1.821 </z>
+      </position>
+     			<reference-dist>500</reference-dist>
+			<max-dist>5000</max-dist>
+		</rotor>
+		
+                     <rotor>
+			<name>stall </name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/ec_rotor_out_bass.wav</path>
+			<condition>
+				<and>
+					<greater-than>
+						<property>rotors/main/rpm</property>
+						<value>50</value>
+					</greater-than>
+					<not>
+						<property>sim/crashed</property>
+					</not>
+				</and>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>1</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/stall</property>
+				<factor>1500</factor>
+				<offset>0.3</offset>
+				<max>2.0</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+			<reference-dist>1000</reference-dist>
+			<max-dist>7000</max-dist>
+		</rotor>
+		
+
+		
+<rotor>
+			<name>blade-vortex-interaction</name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/BladeVortex.wav</path>
+			<condition>
+				<greater-than>
+					<property>sim/sound/vibration</property>
+					<value>0.01</value>
+				</greater-than>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_external</property>
+			<factor>0.7</factor>
+			</volume>
+			<volume>
+				<property>sim/sound/vibration</property>
+				<factor>0.95</factor>
+				<offset>0.0</offset>
+				<max>1.5</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.002531</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.5</max>
+			</pitch>
+			<position>
+        <x> 3.005 </x>
+        <y> 0.0 </y>
+        <z> 1.821 </z>
+      </position>
+			<reference-dist>150</reference-dist>
+			<max-dist>3000</max-dist>
+		</rotor>
+		
+<tailrotor>
+      <name>tail_rotor</name>
+      <mode>looped</mode>
+      <path>Aircraft/ec135/Sounds/fenestron_ec135.wav</path>
+      <condition>
+        <and>
+          <greater-than>
+            <property>rotors/main/rpm</property>
+            <value>50</value>
+          </greater-than>
+          <not>
+            <property>sim/crashed</property>
+          </not>
+          </and>
+      </condition>
+	<volume>
+		<property>sim/model/ec135/sound/volume_external</property>
+		<factor>1</factor>
+	</volume>
+      <volume>
+        <property>rotors/tail/torque</property>
+        <factor>0.0300</factor>
+      </volume>
+       <position>
+        <x> 8.856 </x>
+        <y> 0.0 </y>
+        <z> 0.866 </z>
+      </position>
+      <orientation>
+        <x> -0.2 </x>
+        <y> 1.0 </y>
+        <z> 0.0 </z>
+        <inner-angle>50</inner-angle>
+        <outer-angle>100</outer-angle>
+        <outer-gain>0.15</outer-gain>
+      </orientation>
+      <reference-dist>100</reference-dist>
+      <max-dist>3000</max-dist>
+    </tailrotor>
+		
+<wind>
+			<name>wind</name>
+			<mode>looped</mode>
+			<path>Sounds/wind.wav</path>
+			<condition>
+				<and>
+					<property>velocities/airspeed-kt</property>
+					<not>
+						<property>sim/crashed</property>
+					</not>
+				</and>
+			</condition>
+			<volume>
+				<property>position/altitude-ft</property>
+				<factor>-0.000015</factor>
+				<offset>1.0</offset>
+				<min>0.1</min>
+				<max>1.0</max>
+			</volume>
+			<volume>
+				<property>velocities/airspeed-kt</property>
+				<factor>0.006</factor>
+				<min>0.03</min>
+				<max>1.0</max>
+			</volume>
+			<pitch>
+				<property>velocities/airspeed-kt</property>
+				<factor>0.01</factor>
+				<offset>1.25</offset>
+			</pitch>
+       <position>
+        <x> 0 </x>
+        <y> 0.0 </y>
+        <z> 0.0 </z>
+      </position>
+      <orientation>
+        <x> 1 </x>
+        <y> 0.0 </y>
+        <z> 0.0 </z>
+        <inner-angle>90</inner-angle>
+        <outer-angle>120</outer-angle>
+        <outer-gain>0.2</outer-gain>
+      </orientation>
+			<reference-dist>20</reference-dist>
+			<max-dist>1000</max-dist>
+		</wind>
+
+<!--interior-->
+
+		<engine>
+			<name>turbine0-start inside</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/turbine_strt_in_R.wav</path>
+			<condition>
+			<greater-than>
+				<property>engines/engine[0]/n1-pct</property>
+				<value>0.1</value>
+			</greater-than>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1</factor>
+			</volume>
+		</engine>
+
+<engine>
+			<name>turbine0-loop inside</name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/turbine_idle_in_R.wav</path>
+			<condition>
+			<property>engines/engine[0]/running</property>
+			</condition>
+			<delay-sec>21</delay-sec>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0.0</offset>
+				<max>1.5</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+		</engine>
+
+		<engine>
+			<name>turbine0-shutdown inside</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/shut_ec_in_R.wav</path>
+			<condition>
+			<not>
+			<property>engines/engine[0]/running</property>
+			</not>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1</factor>
+			</volume>
+		</engine>
+
+		<engine>
+			<name>turbine1-start inside</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/turbine_strt_in_L.wav</path>
+			<condition>
+			<greater-than>
+				<property>engines/engine[1]/n1-pct</property>
+				<value>0.1</value>
+			</greater-than>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1</factor>
+			</volume>
+		</engine>
+
+		<engine>
+			<name>turbine1-loop inside</name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/turbine_idle_in_L.wav</path>
+			<condition>
+			<property>engines/engine[1]/running</property>
+			</condition>
+			<delay-sec>21</delay-sec>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1.25</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0.0</offset>
+				<max>1.5</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+		</engine>
+
+		<engine>
+			<name>turbine1-shutdown inside</name>
+			<mode>once</mode>
+			<path>Aircraft/ec135/Sounds/shut_ec_in_L.wav</path>
+			<condition>
+			<not>
+			<property>engines/engine[1]/running</property>
+			</not>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1</factor>
+			</volume>
+		</engine>
+		
+		<rotor>
+			<name>idle</name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/ec_idle_inside.wav</path>
+			<condition>
+
+					<greater-than>
+						<property>rotors/main/rpm</property>
+						<value>50</value>
+					</greater-than>
+					<not>
+						<property>sim/crashed</property>
+					</not>
+
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0.0</offset>
+				<max>1.5</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+		</rotor>
+		
+		
+		<rotor>
+			<name>stall</name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/ec_rotor_in_bass.wav</path>
+			<condition>
+				          <greater-than>
+						<property>rotors/main/rpm</property>
+						<value>50</value>
+					</greater-than>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/stall-filtered</property>
+				<factor>750</factor>
+				<offset>0.2</offset>
+				<max>2.0</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+			<position>
+        <x> 3.005 </x>
+        <y> 0.0 </y>
+        <z> 1.821 </z>
+      </position>
+
+		</rotor>
+		
+<rotor>
+			<name>ambient stall inside </name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/ec_rotor_in.wav</path>
+			<condition>
+				          <greater-than>
+						<property>rotors/main/rpm</property>
+						<value>50</value>
+					</greater-than>
+				</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1.0</factor>
+			</volume>
+			<volume>
+				<property>rotors/main/stall-filtered</property>
+				<factor>700</factor>
+				<offset>0.4</offset>
+				<max>1.0</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.00253</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.0</max>
+			</pitch>
+			<position>
+        <x> 3.005 </x>
+        <y> 0.0 </y>
+        <z> 1.821 </z>
+      </position>
+     			<reference-dist>500</reference-dist>
+			<max-dist>5000</max-dist>
+		</rotor>
+
+		
+<rotor>
+			<name>blade-vortex-interaction</name>
+			<mode>looped</mode>
+			<path>Aircraft/ec135/Sounds/BladeVortex.wav</path>
+			<condition>
+				<greater-than>
+					<property>sim/sound/vibration</property>
+					<value>0.00000001</value>
+				</greater-than>
+			</condition>
+			<volume>
+				<property>sim/model/ec135/sound/volume_internal</property>
+			<factor>1.0</factor>
+			</volume>
+			<volume>
+				<property>sim/sound/vibration</property>
+				<factor>1.0</factor>
+				<offset>0.0</offset>
+				<max>1.0</max>
+			</volume>
+			<pitch>
+				<property>rotors/main/rpm</property>
+				<factor>0.002531</factor>
+				<offset>0</offset>
+				<min>0</min>
+				<max>1.5</max>
+			</pitch>
+			<position>
+        <x> 3.005 </x>
+        <y> 0.0 </y>
+        <z> 1.821 </z>
+      </position>
+			<reference-dist>150</reference-dist>
+			<max-dist>3000</max-dist>
+</rotor>
+
+  </fx>
+
+</PropertyList>

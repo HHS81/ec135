@@ -1,0 +1,425 @@
+<?xml version="1.0"?>
+
+<!-- Eurocopter EC 135 Helicopter by Heiko Schulz, animation set -->
+
+<PropertyList>
+
+<!--rembrandt-->
+
+  <path>RembrandtLights.ac</path>
+
+ <animation>
+   <type>light</type>
+   <light-type>spot</light-type>
+   <name>LandingLight</name>
+   <object-name>LandingLightCone</object-name>
+   <nopreview/>
+<position>
+     <x>-0.127</x>
+     <y>0</y>
+     <z>-0.195</z>
+   </position>
+   <direction>
+     <x>-1</x>
+     <y>0</y>
+     <z>-0.1</z>
+   </direction>
+   <ambient>
+     <r>0.5</r>
+     <g>0.5</g>
+     <b>0.55</b>
+     <a>1.0</a>
+   </ambient>
+   <diffuse>
+     <r>0.95</r>
+     <g>0.95</g>
+     <b>0.8</b>
+     <a>1.0</a>
+   </diffuse>
+   <specular>
+     <r>0.95</r>
+     <g>0.95</g>
+     <b>0.8</b>
+     <a>1.0</a>
+   </specular>
+   <attenuation>
+     <c>1.0</c>
+     <l>0.0</l>
+     <q>0.00015</q>
+   </attenuation>
+   <exponent>25</exponent>
+   <cutoff>85</cutoff>
+   <near-m>2</near-m>
+   <far-m>250</far-m>
+ </animation>
+ 
+ <animation>
+   <type>light</type>
+   <light-type>spot</light-type>
+   <name>LandingLight</name>
+   <object-name>LandingLightCone.001</object-name>
+   <nopreview/>
+   <position>
+     <x>-0.127</x>
+     <y>0</y>
+     <z>-0.195</z>
+   </position>
+   <direction>
+     <x>-1</x>
+     <y>0</y>
+     <z>-0.1</z>
+   </direction>
+   <ambient>
+     <r>0.5</r>
+     <g>0.5</g>
+     <b>0.55</b>
+     <a>1.0</a>
+   </ambient>
+   <diffuse>
+     <r>0.95</r>
+     <g>0.95</g>
+     <b>0.8</b>
+     <a>1.0</a>
+   </diffuse>
+   <specular>
+     <r>0.95</r>
+     <g>0.95</g>
+     <b>0.8</b>
+     <a>1.0</a>
+   </specular>
+   <attenuation>
+     <c>1.0</c>
+     <l>0.0</l>
+     <q>0.00015</q>
+   </attenuation>
+   <exponent>25</exponent>
+   <cutoff>85</cutoff>
+   <near-m>2</near-m>
+   <far-m>250</far-m>
+ </animation>
+ 
+<animation>
+	<type>select</type>
+   <object-name>LandingLightCone</object-name>
+	<condition>
+	<property>/systems/electrical/outputs/landing-light</property>
+	<not>
+	<property>sim/model/ec135/nose</property>
+	<property>sim/model/ec135/BigRadom</property>
+	<property>sim/model/ec135/smallradom</property>
+	</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+   <object-name>LandingLightCone.001</object-name>
+	<condition>
+	<and>
+	<property>/systems/electrical/outputs/landing-light</property>
+	<or>
+	<property>sim/model/ec135/nose</property>
+	<property>sim/model/ec135/smallradom</property>
+	<property>sim/model/ec135/BigRadom</property>
+	</or>
+	</and>
+	</condition>
+</animation>
+
+<animation>
+    <type>light</type>
+    <light-type>spot</light-type>
+    <name>NavLightBack</name>
+    <object-name>NavLightBackVolume</object-name>
+       <nopreview/>
+    <position>
+      <x>9.917</x>
+      <y>-0.05</y>
+      <z>2.608</z>
+    </position>
+    <direction>
+      <x> 1.0</x>
+      <y> 0.0</y>
+      <z> 0.0</z>
+    </direction>
+    <ambient>
+     <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </ambient>
+    <diffuse>
+      <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </diffuse>
+    <specular>
+      <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </specular>
+    <attenuation>
+      <c>1.0</c>
+      <l>0.0</l>
+      <q>0.75</q>
+    </attenuation>
+    <exponent>3</exponent>
+    <near-m>0.01</near-m>
+    <far-m>36</far-m>
+    <cutoff>150</cutoff>
+  </animation>
+  
+  <animation>
+    <type>light</type>
+    <light-type>spot</light-type>
+    <name>NavLightLeft</name>
+    <object-name>NavLightVolume_left</object-name>
+       <nopreview/>
+    <position>
+      <x>7.302</x>
+      <y>-1.388</y>
+      <z>-0.220</z>
+    </position>
+    <direction>
+      <x> 0.0</x>
+      <y>-1.0</y>
+      <z> 0.0</z>
+    </direction>
+    <ambient>
+     <r>0.99</r>
+      <g>0.0</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </ambient>
+    <diffuse>
+      <r>0.99</r>
+      <g>0.0</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </diffuse>
+    <specular>
+      <r>0.99</r>
+      <g>0.0</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </specular>
+    <attenuation>
+      <c>1.0</c>
+      <l>0.0</l>
+      <q>0.75</q>
+    </attenuation>
+    <exponent>6</exponent>
+    <near-m>0.01</near-m>
+    <far-m>5</far-m>
+    <cutoff>75</cutoff>
+  </animation>
+  
+  <animation>
+    <type>light</type>
+    <light-type>spot</light-type>
+    <name>NavLightRight</name>
+    <object-name>NavLightVolume_right</object-name>
+       <nopreview/>
+    <position>
+      <x>7.302</x>
+      <y>1.388</y>
+      <z>-0.220</z>
+    </position>
+    <direction>
+      <x> 0.0</x>
+      <y>1.0</y>
+      <z> 0.0</z>
+    </direction>
+    <ambient>
+     <r>0.0</r>
+      <g>0.99</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </ambient>
+    <diffuse>
+      <r>0.9</r>
+      <g>0.99</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </diffuse>
+    <specular>
+      <r>0.0</r>
+      <g>0.99</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </specular>
+    <attenuation>
+      <c>1.0</c>
+      <l>0.0</l>
+      <q>0.75</q>
+    </attenuation>
+    <exponent>6</exponent>
+    <near-m>0.01</near-m>
+    <far-m>5</far-m>
+    <cutoff>75</cutoff>
+  </animation>
+  
+<animation>
+	<type>select</type>
+    <object-name>NavLightVolume_right</object-name>
+    <object-name>NavLightVolume_left</object-name>
+    <object-name>NavLightBackVolume</object-name>
+	<condition>
+	<property>/systems/electrical/outputs/nav-lights</property>
+	</condition>
+</animation>
+  
+ <animation>
+    <type>light</type>
+    <light-type>point</light-type>
+    <name>Beacon</name>
+    <object-name>BeaconVolume</object-name>
+       <nopreview/>
+    <position>
+      <x>9.116</x>
+      <y>-0.052</y>
+      <z>2.728</z>
+    </position>
+       <ambient>
+     <r>0.99</r>
+      <g>0.0</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </ambient>
+    <diffuse>
+      <r>0.99</r>
+      <g>0.0</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </diffuse>
+    <specular>
+      <r>0.99</r>
+      <g>0.0</g>
+      <b>0.0</b>
+      <a>1.0</a>
+    </specular>
+    <attenuation>
+      <c>1.0</c>
+      <l>0.7</l>
+      <q>2</q>
+    </attenuation>
+     <near-m>0.01</near-m>
+    <far-m>5</far-m>
+     </animation>
+
+ <animation>
+   <type>select</type>
+    <object-name>BeaconVolume</object-name>
+   <condition>
+<property>/systems/electrical/outputs/beacon/state</property>
+   </condition>
+ </animation>
+ 
+<animation>
+    <type>light</type>
+    <light-type>spot</light-type>
+    <name>Strobe1</name>
+    <object-name>StrobeVolumeRight</object-name>
+       <nopreview/>
+    <position>
+      <x>4.0043</x>
+      <y>0.85</y>
+      <z>0.230</z>
+    </position>
+    <direction>
+      <x> 0.0</x>
+      <y>1.0</y>
+      <z> 0.0</z>
+    </direction>
+    <ambient>
+     <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </ambient>
+    <diffuse>
+      <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </diffuse>
+    <specular>
+      <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </specular>
+      <attenuation>
+      <c>1.0</c>
+      <l>0.0</l>
+      <q>0.75</q>
+    </attenuation>
+    <exponent>1</exponent>
+    <near-m>0.01</near-m>
+    <far-m>10</far-m>
+    <cutoff>150</cutoff>
+
+  </animation>
+  
+<animation>
+    <type>light</type>
+    <light-type>spot</light-type>
+    <name>Strobe2</name>
+    <object-name>StrobeVolumeLeft</object-name>
+       <nopreview/>
+    <position>
+      <x>4.0043</x>
+      <y>-0.85</y>
+      <z>0.230</z>
+    </position>
+    <direction>
+      <x> 0.0</x>
+      <y> -1.0</y>
+      <z> 0.0</z>
+    </direction>
+    <ambient>
+     <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </ambient>
+    <diffuse>
+      <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </diffuse>
+    <specular>
+      <r>0.99</r>
+      <g>0.99</g>
+      <b>0.96</b>
+      <a>1.0</a>
+    </specular>
+    <attenuation>
+      <c>1.0</c>
+      <l>0.0</l>
+      <q>0.75</q>
+    </attenuation>
+    <exponent>1</exponent>
+    <near-m>0.01</near-m>
+    <far-m>10</far-m>
+    <cutoff>150</cutoff>
+
+  </animation>
+  
+ <animation>
+   <type>select</type>
+    <object-name>StrobeVolumeRight</object-name>
+    <object-name>StrobeVolumeLeft</object-name>
+   <condition>
+	<property>/systems/electrical/outputs/strobe/state</property>	
+   </condition>
+ </animation>
+
+
+
+	
+	
+</PropertyList>

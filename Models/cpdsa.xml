@@ -1,0 +1,1476 @@
+<?xml version="1.0"?>
+
+<!-- CPDS with analog instruments, Dual IFR, EC135 P2 by Heiko Schulz, animation set -->
+
+<PropertyList>
+
+
+	<path>cpdsa.ac</path>
+	<offsets>
+		<z-m>0</z-m>
+		<y-m>0.0</y-m>
+		<x-m>0</x-m>
+
+		<pitch-deg>0</pitch-deg>
+		
+	</offsets>
+	
+	<!--Instrumentation-->
+	
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/ec135/Models/AnalogPanel_LM.png</image>
+		</texture>
+		<condition><use>controls/lighting/instrument-lights</use></condition>
+		<factor><use>systems/electrical/outputs/stdby-instrument-lights-norm</use></factor>
+	</parameters>
+ 	<object-name>analogpanel</object-name> 
+ 	<object-name>Plane.066</object-name> 
+</effect>	
+	
+	
+
+
+	<model>
+		<name>AI</name>
+		<path>Aircraft/ec135/Models/instrumentation/GH14-391/ai.xml</path>
+		<offsets>
+			<x-m>-0.0025</x-m>
+			<y-m>0.317</y-m>
+			<z-m>0.270</z-m>
+			<roll-deg>-3</roll-deg>
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+
+	<model>
+		<name>ASI</name>
+		<path>Aircraft/ec135/Models/instrumentation/asi/asi.xml</path>
+		<offsets>
+			
+			<x-m>0.0</x-m>
+			<y-m>0.217</y-m>
+			<z-m>0.321</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+
+	<model>
+		<name>ALT</name>
+		<path>Aircraft/ec135/Models/instrumentation/alt/altimeter.xml</path>
+		<offsets>
+			
+			<x-m>0.0</x-m>
+			<y-m>0.420</y-m>
+			<z-m>0.278</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+	<model>
+		<name>VSI</name>
+		<path>Aircraft/ec135/Models/instrumentation/vsi/vsi.xml</path>
+		<offsets>
+			
+			<x-m>0.0</x-m>
+			<y-m>0.422</y-m>
+			<z-m>0.191</z-m>
+
+			<pitch-deg>-0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+
+
+	<model>
+		<name>right HSI</name>
+		<path>Aircraft/ec135/Models/instrumentation/kcs55/ki525a.xml</path>
+
+		<offsets>
+
+			<x-m>0.0</x-m>
+			<y-m>0.318</y-m>
+			<z-m>0.166</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+	<!--<model>
+		<name>VOR</name>
+		<path>Aircraft/ec135/Models/instrumentation/vor/vor.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.217</y-m>
+			<z-m>0.160</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+	
+           <model>
+		<name>VOR2</name>
+		<path>Aircraft/ec135/Models/instrumentation/vor/vor2.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-0.219</y-m>
+			<z-m>0.160</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>-->
+	
+	<model>
+		<name>KI229 RMI</name>
+		<path>Aircraft/ec135/Models/instrumentation/KI229/ki229.xml</path>
+		<offsets>
+			<x-m>0.005</x-m>
+			<y-m>0.217</y-m>
+			<z-m>0.160</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+	
+           <model>
+		<name>KI229 RMI 2</name>
+		<path>Aircraft/ec135/Models/instrumentation/KI229/ki229.xml</path>
+		<offsets>
+			<x-m>0.005</x-m>
+			<y-m>-0.219</y-m>
+			<z-m>0.160</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<name>Radar-Alt</name>
+		<path>Aircraft/ec135/Models/instrumentation/radar-alt/kra10a.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.220</y-m>
+			<z-m>0.242</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+
+
+	
+	<model>
+		<name>Small AI</name>
+		<path>Aircraft/ec135/Models/instrumentation/ai_small/STBYai.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.00</y-m>
+			<z-m>0.294</z-m>
+			<roll-deg>-3</roll-deg>
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+	<model>
+		<name>Clock</name>
+		<path>Aircraft/ec135/Models/instrumentation/clock/clock.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-0.132</y-m>
+			<z-m>0.294</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+
+
+	<model>
+		<name>GSDI</name>
+		<path>Aircraft/ec135/Models/instrumentation/gsdi/gsdi.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.063</y-m>
+			<z-m>0.294</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+
+	<model>
+		<name>Tach</name>
+		<path>Aircraft/ec135/Models/instrumentation/tach/tach.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.129</y-m>
+			<z-m>0.294</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+	<model>
+		<name>cad</name>
+		<path>Aircraft/ec135/Models/instrumentation/cad/cad.xml</path>
+		<offsets>
+			<x-m>0.004</x-m>
+			<y-m>-0.142</y-m>
+			<z-m>0.241</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+	
+	<model>
+		<name>vemd</name>
+		<path>Aircraft/ec135/Models/instrumentation/vemd/vemd.xml</path>
+		<offsets>
+			<x-m>0.004</x-m>
+			<y-m>0.017</y-m>
+			<z-m>0.238</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>>
+
+
+
+
+	
+
+	<model>
+		<name>left AI</name>
+		<path>Aircraft/ec135/Models/instrumentation/GH14-391/ai.xml</path>
+		<offsets>
+			<x-m>-0.0025</x-m>
+			<y-m>-0.317</y-m>
+			<z-m>0.270</z-m>
+			<roll-deg>-3</roll-deg>
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+
+	<model>
+		<name>left ASI</name>
+		<path>Aircraft/ec135/Models/instrumentation/asi/asi.xml</path>
+		<offsets>
+			
+			<x-m>0.0</x-m>
+			<y-m>-0.414</y-m>
+			<z-m>0.276</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+
+	<model>
+		<name>left ALT</name>
+		<path>Aircraft/ec135/Models/instrumentation/alt/altimeter2.xml</path>
+		<offsets>
+			
+			<x-m>0.0</x-m>
+			<y-m>-0.218</y-m>
+			<z-m>0.323</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+
+	<model>
+		<name>left VSI</name>
+		<path>Aircraft/ec135/Models/instrumentation/vsi/vsi.xml</path>
+		<offsets>
+			
+			<x-m>0.0</x-m>
+			<y-m>-0.220</y-m>
+			<z-m>0.243</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+	
+	<model>
+		<name>left HSI</name>
+		<path>Aircraft/ec135/Models/instrumentation/kcs55/ki525a.xml</path>
+		<offsets>
+
+			<x-m>0.0</x-m>
+			<y-m>-0.319</y-m>
+			<z-m>0.166</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+
+	<model>
+		<name>HI</name>
+		<path>Aircraft/ec135/Models/instrumentation/hi/hi.xml</path>
+		<offsets>
+
+			<x-m>0.0</x-m>
+			<y-m>-0.416</y-m>
+			<z-m>0.182</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+	
+	
+           <model>
+		<name>dme</name>
+		<path>Aircraft/ec135/Models/instrumentation/dme/DME.xml</path>
+		<offsets>
+
+			<x-m>0.005</x-m>
+			<y-m>0.077</y-m>
+			<z-m>0.025</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+</model>
+
+
+<!--<model>
+		<name>warning panel</name>
+		<path>Aircraft/ec135/Models/instrumentation/warning_panel/warning_panel.xml</path>
+		<offsets>
+
+			<x-m>-3.511</x-m>
+			<y-m>0.0</y-m>
+			<z-m>1.727</z-m>
+
+			<pitch-deg>-24</pitch-deg>
+
+		</offsets>
+</model>-->
+
+<!--<model>
+		<name>obs</name>
+		<path>Aircraft/ec135/Models/instrumentation/obs/obs.xml</path>
+		<offsets>
+
+			<x-m>-3.410</x-m>
+			<y-m>0.319</y-m>
+			<z-m>1.506</z-m>
+
+			<pitch-deg>-24</pitch-deg>
+
+		</offsets>
+</model>
+
+<model>
+		<name>obs2</name>
+		<path>Aircraft/ec135/Models/instrumentation/obs/obs.xml</path>
+		<offsets>
+
+			<x-m>-3.410</x-m>
+			<y-m>-0.319</y-m>
+			<z-m>1.506</z-m>
+
+			<pitch-deg>-24</pitch-deg>
+
+		</offsets>
+</model>-->
+
+<!--<model>
+		<name>marker</name>
+		<path>Aircraft/ec135/Models/instrumentation/marker/marker.xml</path>
+		<offsets>
+
+			<x-m>-3.510</x-m>
+			<y-m>0.316</y-m>
+			<z-m>1.722</z-m>
+
+			<pitch-deg>-24</pitch-deg>
+
+		</offsets>
+</model>
+
+<model>
+		<name>marker2</name>
+		<path>Aircraft/ec135/Models/instrumentation/marker/marker.xml</path>
+		<offsets>
+
+			<x-m>-3.510</x-m>
+			<y-m>-0.316</y-m>
+			<z-m>1.722</z-m>
+
+			<pitch-deg>-24</pitch-deg>
+
+		</offsets>
+</model>-->
+	
+<animation>
+	<type>select</type>
+	<object-name>gsdi_face</object-name>
+	<condition>
+	<not>
+	<property>sim/model/hide-gsdi</property>
+	</not>
+	</condition>
+</animation>
+
+<!--Switches and Knobs! Switches and Knobs everywhere- on the panel: animation-->
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>HI.incr</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property></property>
+    <step type="double">-0.5</step>
+   </binding>          
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>HI.decr</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property></property>
+    <step type="double">0.5</step>
+   </binding>          
+  </action>
+ </animation>
+ 
+ <!--KCS55-->
+<params>
+    <has-gs>instrumentation/nav[0]/has-gs</has-gs>
+    <gs-in-range>instrumentation/nav[0]/gs-in-range</gs-in-range>
+
+    <gs-needle-deflection>instrumentation/kcs55/ki525/gs-deflection</gs-needle-deflection>
+    <cdi-needle-deflection>instrumentation/kcs55/ki525/cdi-deflection</cdi-needle-deflection>
+    <selected-heading>instrumentation/kcs55/ki525/selected-heading-deg</selected-heading>
+    <selected-course>instrumentation/kcs55/ki525/selected-course-deg</selected-course>
+    <to-flag>instrumentation/kcs55/ki525/to-flag</to-flag>
+    <from-flag>instrumentation/kcs55/ki525/from-flag</from-flag>
+    <nav-flag>instrumentation/kcs55/ki525/nav-flag</nav-flag>
+
+    <indicated-heading>instrumentation/kcs55/kg102/indicated-heading-deg</indicated-heading>
+    <hdg-flag>instrumentation/kcs55/kg102/flag-norm</hdg-flag>
+  </params>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>crs.incr.001</object-name>
+ <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-course"/>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-course"/>
+        <step>10</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>crs.decr.001</object-name>
+  <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-course"/>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-course"/>
+        <step>-10</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>hdg.incr.001</object-name>
+      <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-heading"/>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-heading"/>
+        <step>10</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>hdg.decr.001</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-heading"/>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-heading"/>
+        <step>-10</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>crs.incr</object-name>
+  <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-course"/>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-course"/>
+        <step>10</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>crs.decr</object-name>
+  <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-course"/>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-course"/>
+        <step>-10</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>hdg.incr</object-name>
+     <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-heading"/>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-heading"/>
+        <step>10</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>hdg.decr</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-heading"/>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-heading"/>
+        <step>-10</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+  
+ <animation>
+    <type>rotate</type>
+    <object-name>HDGKnob</object-name>
+    <property alias="../../params/selected-heading"/>
+    <factor>-8.0</factor>
+    <axis>
+      <x>0.012</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0.012</x-m>
+      <y-m>0.361</y-m>
+      <z-m>0.141</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>HDGKnob</object-name>
+    <property alias="../../params/indicated-heading"/>
+    <factor>8.0</factor>
+    <axis>
+      <x>0.012</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0.012</x-m>
+      <y-m>0.361</y-m>
+      <z-m>0.141</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CRSKnob</object-name>
+    <property alias="../../params/selected-course"/>
+    <factor>-8.0</factor>
+    <axis>
+      <x>0.012</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+<center>
+      <x-m>0.012</x-m>
+      <y-m>0.284</y-m>
+      <z-m>0.141</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CRSKnob</object-name>
+    <property alias="../../params/indicated-heading"/>
+    <factor>8.0</factor>
+    <axis>
+      <x>0.012</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+<center>
+      <x-m>0.012</x-m>
+      <y-m>0.284</y-m>
+      <z-m>0.141</z-m>
+    </center>
+  </animation>
+  
+  
+<!---->
+
+ 
+ <animation>
+    <type>rotate</type>
+    <object-name>HDGKnob.001</object-name>
+    <property alias="../../params/selected-heading"/>
+    <factor>-8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+   <center>
+      <x-m>0.012</x-m>
+      <y-m>-0.277</y-m>
+      <z-m>0.138</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>HDGKnob.001</object-name>
+    <property alias="../../params/indicated-heading"/>
+    <factor>8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0.012</x-m>
+      <y-m>-0.277</y-m>
+      <z-m>0.138</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CRSKnob.001</object-name>
+    <property alias="../../params/selected-course"/>
+    <factor>-8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+<center>
+      <x-m>0.012</x-m>
+      <y-m>-0.351</y-m>
+      <z-m>0.139</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CRSKnob.001</object-name>
+    <property alias="../../params/indicated-heading"/>
+    <factor>8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+<center>
+      <x-m>0.012</x-m>
+      <y-m>-0.351</y-m>
+      <z-m>0.139</z-m>
+    </center>
+  </animation>
+ 
+ 
+
+<!--VOR-->
+
+ <animation>
+    <type>rotate</type>
+    <object-name>VORKnob</object-name>
+    <property>/instrumentation/nav[0]/radials/selected-deg</property>
+    <factor>-8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0.016</x-m>
+      <y-m>0.193</y-m>
+      <z-m>0.130</z-m>
+    </center>
+  </animation>
+  
+<animation>
+    <type>rotate</type>
+    <object-name>VORKnob.001</object-name>
+    <property>/instrumentation/nav[1]/radials/selected-deg</property>
+    <factor>-8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0.016</x-m>
+      <y-m>-0.252</y-m>
+      <z-m>0.131</z-m>
+    </center>
+  </animation>
+
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>RAD.decr</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>/instrumentation/nav[0]/radials/selected-deg</property>
+    <step type="double">0.5</step>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>RAD.incr</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>/instrumentation/nav[0]/radials/selected-deg</property>
+    <step type="double">-0.5</step>
+   </binding>          
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>RAD.decr.001</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>/instrumentation/nav[1]/radials/selected-deg</property>
+    <step type="double">0.5</step>
+   </binding>          
+  </action>
+ </animation>
+ 
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>RAD.incr.001</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>/instrumentation/nav[1]/radials/selected-deg</property>
+    <step type="double">0.5</step>
+   </binding>          
+  </action>
+ </animation>
+ 
+<!--ALT-->
+
+<animation>
+    <type>rotate</type>
+    <object-name>INHGKnob.001</object-name>
+           <property>instrumentation/altimeter[1]/setting-inhg</property>
+    <factor>-8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0.011</x-m>
+      <y-m>-0.255</y-m>
+      <z-m>0.293</z-m>
+    </center>
+  </animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>INHGKnob</object-name>
+           <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>-8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0.012</x-m>
+      <y-m>0.4</y-m>
+      <z-m>0.250</z-m>
+    </center>
+  </animation>
+ 
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>INHG.decr.001</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+            <property>instrumentation/altimeter[1]/setting-inhg</property>
+    <step type="double">-0.1</step>
+   </binding>          
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>INHG.incr.001</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+            <property>instrumentation/altimeter[1]/setting-inhg</property>
+    <step type="double">0.1</step>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>INHG.decr</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+            <property>instrumentation/altimeter/setting-inhg</property>
+    <step type="double">-0.1</step>
+   </binding>          
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>INHG.incr</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+            <property>instrumentation/altimeter/setting-inhg</property>
+    <step type="double">0.1</step>
+   </binding>          
+  </action>
+ </animation>
+
+<!--Radar ALT-->
+
+<animation>
+    <type>rotate</type>
+    <object-name>RAlt.knob</object-name>
+	<property>/instrumentation/radar-altimeter/decision-height</property>
+    <factor>-8.0</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>0.016</x-m>
+      <y-m>0.249</y-m>
+      <z-m>0.214</z-m>
+    </center>
+  </animation>
+
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>BUG.incr</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+	<property>/instrumentation/radar-altimeter/decision-height</property>
+    <step type="double">5</step>
+   </binding>          
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>BUG.decr</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+		<property>/instrumentation/radar-altimeter/decision-height</property>
+    <step type="double">-5</step>
+   </binding>          
+  </action>
+ </animation>
+ 
+<!--Standby AI-->
+ 
+
+ <animation>
+  <type>pick</type>
+  <visible>true</visible>
+  <object-name>CageKnob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+                <property>instrumentation/attitude-indicator/caged-flag</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<!--EngineControlPanel-->
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG1.on</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[0]/fadec/engine-state</property>
+    <value type="double">2</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG1.idle</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[0]/fadec/engine-state</property>
+    <value type="double">1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+   <visible>false</visible>
+  <object-name>ENG1.off</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[0]/fadec/engine-state</property>
+    <value type="double">0</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>eng1.swt</object-name>
+    <property>controls/engines/engine[0]/fadec/engine-state</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.035</y-m>
+            <z-m>0.100</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG2.on</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/fadec/engine-state</property>
+    <value type="double">2</value>
+   </binding>           
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG2.idle</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/fadec/engine-state</property>
+    <value type="double">1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG2.off</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+    <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/fadec/engine-state</property>
+    <value type="double">0</value>
+   </binding>      
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>eng2.swt</object-name>
+    <property>controls/engines/engine[1]/fadec/engine-state</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.035</y-m>
+            <z-m>0.100</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+        <object-name>gen1.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/engine[0]/generator</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>GEN1.reset</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/electric/engine[0]/generator</property>
+    <value type="double">-1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>gen1.switch</object-name>
+  <property>controls/electric/engine[0]/generator</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.0120</y-m>
+            <z-m>0.058</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+        <object-name>gen2.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/engine[1]/generator</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>GEN2.reset</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/electric/engine[1]/generator</property>
+    <value type="double">-1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>gen2.switch</object-name>
+  <property>controls/electric/engine[1]/generator</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.044</y-m>
+            <z-m>0.058</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+       <object-name>bat.mst.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/electric/battery-switch</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>BAT.reset</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/electric/battery-switch</property>
+    <value type="double">-1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>bat.mst.switch</object-name>
+    <property>/controls/electric/battery-switch</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.083</y-m>
+            <z-m>0.058</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+        <object-name>fadec1.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/engines/engine[0]/fadec/fadec-switch</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>fadec1.switch</object-name>
+    <property>controls/engines/engine[0]/fadec/fadec-switch</property>
+        <factor>-40.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.035</y-m>
+            <z-m>0.100</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+        <object-name>fadec2.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/engines/engine[1]/fadec/fadec-switch</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>fadec2.switch</object-name>
+    <property>controls/engines/engine[1]/fadec/fadec-switch</property>
+        <factor>-40.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.035</y-m>
+            <z-m>0.100</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+
+
+
+
+
+</PropertyList>

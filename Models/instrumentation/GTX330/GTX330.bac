@@ -1,0 +1,120 @@
+#code snippets taken from the Extra500 Keypad
+
+var XPDRKeypadWidget = {
+	new: func(page,canvasGroup,name){
+		var m = { parents: [
+			XPDRKeypadWidget,
+			KeypadWidgetInterface.new(page,canvasGroup,name)
+		] };
+		m._tree = {
+			code	: props.globals.initNode("/instrumentation/transponder/id-code",0,"INT"),
+			mode 	: props.globals.initNode("/instrumentation/transponder/inputs/knob-mode",0,"INT"),
+			alt	: props.globals.initNode("/instrumentation/transponder/altitude",0,"INT"),
+			altValid: props.globals.initNode("/instrumentation/transponder/altitude-valid",0,"BOOL"),
+			
+		};
+		m._can = {
+			code 	: m._group.getElementById("XPDR_Value"),
+			mode 	: m._group.getElementById("XPDR_MODE"),
+			alt 	: m._group.getElementById("XPDR_ALT"),
+		};
+		m._xpdr = 0;
+		m._alt = 0;
+		m._xpdrMode = 0;
+		m._inputIndex = 0;
+		m._input = ["-","-","-","-"];
+		
+		return m;
+	},
+	init : func(mode,instance=nil){
+		if (instance==nil){instance=me;}
+				
+		if(mode == global.INIT_START){
+			
+		}elsif (mode == global.INIT_RUN){
+			me.setListeners(instance);
+		}elsif (mode == global.INIT_STOP or mode == global.INIT_PAUSE){
+			me.removeListeners();
+		}else{
+			print("XPDRKeypadWidget.init() ... unsupported init mode");
+		}
+	},
+	setListeners : func(instance) {
+		append(me._listeners, setlistener(me._tree.code,func(n){instance._onXPDRChange(n);},1,0) );
+		append(me._listeners, setlistener(me._tree.mode,func(n){instance._onXPDRmodeChange(n);},1,0) );
+		append(me._listeners, setlistener(me._tree.alt,func(n){instance._onXPDRaltChange(n);},1,0) );
+	},
+	_onVisibiltyChange : func(){
+		me._group.setVisible(me._visibility);
+		if(me._visibility == 1){
+			me.init(global.INIT_RUN);
+			me._ifd.setKeyBacklight("XPDR",1);
+			me._ifd._inputHandle["Keyboard"] = func(key){me.handleInput(key);};
+		}else{
+			me.init(global.INIT_PAUSE);
+			me._ifd.setKeyBacklight("XPDR",0);
+			me._ifd._inputHandle["Keyboard"] = nil;
+		}
+	},
+	_onXPDRChange : func(n){
+		me._xpdr = n.getValue(); 
+		me._can.code.setText(sprintf("%i",me._xpdr));
+	},
+	_onXPDRaltChange : func(n){
+		me._alt = n.getValue();
+		if(me._tree.altValid.getBoolValue()){
+			me._can.alt.setText(sprintf("%i",me._alt));
+		}else{
+			me._can.alt.setText("---");
+		}
+	},
+	_onXPDRmodeChange : func(n){
+		me._xpdrMode = n.getValue(); 
+		me._can.mode.setText(IFD.XPDRMODE[me._xpdrMode]);
+	},
+	resetInput : func(){
+		if (me._inputIndex > 3){
+			me._inputUpdate();
+			me._inputIndex = 0;
+			me._input		= ["-","-","-","-"];
+			me._tree.code.setValue(me._xpdr);
+		}
+	},
+	_inputUpdate : func(){
+		me._xpdr = sprintf("%s%s%s%s",me._input[0],me._input[1],me._input[2],me._input[3]);
+		me._can.code.setText(me._xpdr);
+	},
+	handleInput : func (key){
+		if (num(key) != nil){
+			#print ("KeypadClass.handleInputXDPR("~key~") ... "~me._inputValue);
+			me._inputIndex = global.clamp(me._inputIndex,0,3);
+			me._input[me._inputIndex] = key;
+			me._inputIndex +=1;
+			me._inputUpdate();
+		}elsif (key == "CLR"){ # Backspace
+			me._inputIndex -=1;
+			me._inputIndex = global.clamp(me._inputIndex,0,3);
+			
+			me._input[me._inputIndex] = "-";
+			
+			me._inputUpdate();
+			
+		}elsif (key == "CNCL"){ # Cancel
+			
+			me._inputIndex = 0;
+			me._input		= ["-","-","-","-"];
+			
+			me._xpdr = me._tree.code.getValue();
+			me._can.code.setText(sprintf("%i",me._xpdr));
+			
+		}elsif (key == "Enter"){ # confirm
+			me.resetInput();
+		}
+	},
+	
+	
+};
+
+
+
+

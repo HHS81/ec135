@@ -1,0 +1,49 @@
+<PropertyList>
+	<path>CADpage.ac</path>
+	
+<animation>
+  <type>textranslate</type>
+  <object-name>Lsupply</object-name>
+  <property>consumables/fuel/tank[2]/level-kg</property>
+  <interpolation>
+   <entry><ind>  0</ind><dep>   0.6348</dep></entry>
+      <entry><ind>  54.57</ind><dep>0.0</dep></entry>
+       </interpolation>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  </animation>
+  
+  <animation>
+  <type>textranslate</type>
+  <object-name>main</object-name>
+  <property>consumables/fuel/tank[0]/level-kg</property>
+  <interpolation>
+   <entry><ind>  0</ind><dep>  0.6348</dep></entry>
+     <entry><ind>  528.39</ind><dep>0.0</dep></entry>
+       </interpolation>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  </animation>
+  
+  <animation>
+  <type>textranslate</type>
+  <object-name>Rsupply</object-name>
+  <property>consumables/fuel/tank[1]/level-kg</property>
+  <interpolation>
+   <entry><ind>  0</ind><dep>   0.6348</dep></entry>
+     <entry><ind>  49.57</ind><dep>0.0</dep></entry>
+       </interpolation>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  </animation>
+	
+</PropertyList>

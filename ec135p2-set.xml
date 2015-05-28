@@ -1,0 +1,981 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+EC 135 P2 simulation config.
+
+This model of the EC 135 is dedicated to heliflyer.
+Thanks for all the help!
+
+************************************************************************
+-->
+
+<PropertyList>
+	<sim>
+		<description>Eurocopter EC135 P2</description>
+		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements)</author>
+		<status>early production</status>
+		<rating>
+                    <FDM type="int">4</FDM>
+                    <systems type="int">1</systems>
+                     <cockpit type="int">5</cockpit>
+                    <model type="int">5</model>
+                    </rating>
+		<license>GPL v2</license>
+		
+		<tags>
+			<tag>eurocopter</tag>			
+			<tag>helicopter</tag>
+			<tag>2-engine</tag>
+			<tag>1990s</tag>
+			<tag>2000s</tag>
+			<tag>2010s</tag>
+		</tags>
+		
+
+		<flight-model>yasim</flight-model>
+		<aero>ec135P2</aero>
+		<fuel-fraction>1.0</fuel-fraction>
+
+		<startup>
+			<splash-texture>Aircraft/ec135/splash.rgb</splash-texture>
+		</startup>
+
+		<sound>
+			<path>Aircraft/ec135/Sounds/sound.xml</path>
+		</sound>
+
+<systems>
+ <path>Aircraft/ec135/Systems/systems.xml</path>
+<electrical>
+                <path></path>
+</electrical>
+<autopilot>
+            <path>Aircraft/ec135/filter.xml</path>
+</autopilot>
+
+
+</systems>
+<instrumentation>
+<path>Aircraft/ec135/Systems/instrumentation.xml</path>
+</instrumentation>
+
+		<multiplay n="0">
+			<chat_display>1</chat_display>
+			<generic n="0">     
+				<float n="0" alias="/position/gear-agl-m"/>										<!-- rotor particles -->
+				<float n="1" alias="/orientation/pitch-deg"/>									<!-- rotor particles -->
+				<float n="2" alias="/orientation/roll-deg"/>									<!-- rotor particles -->
+				<float n="3" alias="/rotors/main/torque"/>										<!-- rotor particles -->
+				<float n="4" alias="/rotors/main/rpm"/>											<!-- rotor particles - check if needed since it should be standard mp value -->
+				
+				<int n="1" alias="/gear/gear/ground-is-solid"/>									<!-- rotor particles -->
+			</generic>
+		</multiplay>
+
+
+		<model>
+			<path archive="y">Aircraft/ec135/Models/ec135.xml</path>
+			<variant type="int">0</variant>
+			<livery>
+                              <name type="string">WhiteDefault</name>
+                               </livery>
+	   	    	<ec135>
+			  <state type="int">0</state>
+				<rotor-step-deg type="float">-1.0</rotor-step-deg>
+				<AnalogDual>true</AnalogDual>
+				<DigitalDual>false</DigitalDual>
+				<AnalogSingle>false</AnalogSingle>
+				<DigitalSingle>false</DigitalSingle>	
+				<HEMS>true</HEMS>
+				<VIP>false</VIP>
+				<Utility>false</Utility>
+				<hide-gsdi>true</hide-gsdi>
+				<BigRadom>false</BigRadom>
+				<nose>false</nose><!--nose without frontlight-->
+				<!--or-->
+				<smallradom>false</smallradom>
+				<!--or-->
+				<nosefl>true</nosefl><!--nose with frontlight-->
+				<searchlight_front>false</searchlight_front><!--only without radom and without nosefl-->
+				<searchlight_left>false</searchlight_left>
+				<FLIR>false</FLIR>
+				<windscreen_tri>true</windscreen_tri>
+				<!--or-->
+				<windscreen>false</windscreen>
+				<mirror>false</mirror>
+				<wirecutter_up>false</wirecutter_up>
+				<wirecutter_down>false</wirecutter_down>
+				<sandfilter>false</sandfilter>
+				<!--or-->
+				<IBF>true</IBF>
+				<!--or-->
+				<nonIBF>false</nonIBF>
+				<winch>false</winch>
+				<SLLightR>false</SLLightR><!--Retractablelanding/SearchlightRight-->
+				<SLLightL>true</SLLightL><!--Retractablelanding/SearchlightLEFT-->
+				<loudspeaker>false</loudspeaker>
+				<hellas>false</hellas>
+				<lowskid>1</lowskid>
+				<snowboard_lowskid>false</snowboard_lowskid>
+				<wirecutter_skid>false</wirecutter_skid>
+				<!--or-->
+				<longskid_floats>0</longskid_floats>
+				<emergfloats>0</emergfloats>
+				<!--or-->
+				<midskid>0</midskid>
+				<snowboard_midskid>false</snowboard_midskid>
+				<wirecutter_midskid>false</wirecutter_midskid>
+				<!--or-->
+				<highskid>0</highskid>
+				<snowboard_highskid>false</snowboard_highskid>
+				<wirecutter_highskid>false</wirecutter_highskid>
+				<!--steps-->
+				<standardstep>true</standardstep>
+				<!--or-->
+				<multifunctioncarrier>false</multifunctioncarrier><!--in use with FLIR etc...)-->
+				<!--or-->
+				<roundstep>false</roundstep>
+				<DoubleCargoHook>false</DoubleCargoHook>
+				<buckle>true</buckle><!--reardoor_buckle-->
+				<!--reardoors-->
+				<reardoor_winR>false</reardoor_winR><!--reardoor with window-->
+				<reardoor_winL>false</reardoor_winL><!--reardoor with window-->
+				<reardoorL>true</reardoorL>
+				<reardoorR>true</reardoorR>
+				
+				<doors>
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">pilot's door</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">copilot's door</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">right backdoor</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">left backdoor</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">right reardoor</name>
+					</door>
+
+					<door>
+						<position-norm type="double">0.0</position-norm>
+						<name type="string">left reardoor</name>
+					</door>
+				</doors>
+				
+			</ec135>
+		</model>
+
+    <!--<ai>
+      <scenario>moveable_helipad_demo</scenario>
+    </ai>-->
+
+
+		
+		
+   <rendering>
+    <refl_correction type="string">-0.1</refl_correction>
+    </rendering>
+
+
+<airport>
+        <runways>
+            <start-offset-m>3.3</start-offset-m>
+        </runways>
+</airport>		
+
+		<!--view-->
+		<view n="0">
+			<name>Cockpit</name>
+			<type>lookfrom</type>
+			<internal type="bool">true</internal>
+			<config>
+                                        <x-offset-m type="double">0.42</x-offset-m><!--left-->
+				<y-offset-m type="double">0.60</y-offset-m><!--up-->
+				<z-offset-m type="double">1.25</z-offset-m><!--back-->
+				<pitch-offset-deg>-20</pitch-offset-deg>
+				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+				<limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">160</heading-max-deg>
+                        <x-offset-max-m type="double">0.20</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.20</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">65</x-offset-threshold-deg>
+                    </right>
+                </limits>
+			</config>
+		</view>
+
+		<view n="1">
+			<config>
+				<target-z-offset-m archive="y" type="double">3.3</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="2">
+			<config>
+				<target-z-offset-m archive="y" type="double">3.3</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="3">
+			<config>
+				<target-z-offset-m archive="y" type="double">3.3</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="4">
+			<config>
+				<target-z-offset-m archive="y" type="double">3.3</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="5">
+			<config>
+				<target-z-offset-m archive="y" type="double">3.3</target-z-offset-m>
+			</config>
+		</view>
+
+		<view n="6">
+			<config>
+				<target-z-offset-m archive="y" type="double">3.3</target-z-offset-m>
+			</config>
+		</view>
+		
+		
+<view n="100">
+    <name>CoPilot</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+      <from-model type="bool">true</from-model>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <x-offset-m archive="y" type="double">-0.42</x-offset-m>
+      <y-offset-m archive="y" type="double">0.60</y-offset-m>
+      <z-offset-m archive="y" type="double">1.33</z-offset-m>
+	<heading-offset-deg type="double">0</heading-offset-deg>
+	<pitch-offset-deg>-20</pitch-offset-deg>
+	<default-field-of-view-deg>55</default-field-of-view-deg>
+	<dynamic-view type="bool">true</dynamic-view>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.2</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.2</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
+    </config>
+    </view>
+		
+		
+<view n="101">
+    <name>Rearseat frontview</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+	<from-model type="bool">true</from-model>
+	<ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+	<x-offset-m archive="y" type="double">0.42</x-offset-m>
+	<y-offset-m archive="y" type="double">0.60</y-offset-m>
+	<z-offset-m archive="y" type="double">2.94</z-offset-m>
+	<heading-offset-deg type="double">0</heading-offset-deg>
+	<pitch-offset-deg>-3</pitch-offset-deg>
+	<default-field-of-view-deg>55</default-field-of-view-deg>
+	<dynamic-view type="bool">true</dynamic-view>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">160</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
+    </config>
+    </view>
+		
+		
+<view n="102">
+    <name>Rearseat backview</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+      <from-model type="bool">true</from-model>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <x-offset-m archive="y" type="double">-0.42</x-offset-m>
+      <y-offset-m archive="y" type="double">0.60</y-offset-m>
+      <z-offset-m archive="y" type="double">1.94</z-offset-m>
+         <heading-offset-deg type="double">180</heading-offset-deg>
+	       <default-heading-offset-deg>180</default-heading-offset-deg>
+	<pitch-offset-deg>-3</pitch-offset-deg>
+	<default-field-of-view-deg>55</default-field-of-view-deg>
+	<dynamic-view type="bool">true</dynamic-view>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">220</heading-max-deg>
+                        <x-offset-max-m type="double">0.3</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">220</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
+    </config>
+    </view>
+    
+<view n="103">
+    <name>shoulder view</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+      <from-model type="bool">true</from-model>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <x-offset-m archive="y" type="double">0.10</x-offset-m>
+      <y-offset-m archive="y" type="double">0.69</y-offset-m>
+      <z-offset-m archive="y" type="double">1.63</z-offset-m>
+         <heading-offset-deg type="double">0</heading-offset-deg>
+	       <default-heading-offset-deg>0</default-heading-offset-deg>
+	<pitch-offset-deg>-3</pitch-offset-deg>
+	<default-field-of-view-deg>75</default-field-of-view-deg>
+	<dynamic-view type="bool">true</dynamic-view>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.3</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.3</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
+    </config>
+    </view>
+    
+<view n="104">
+    <name>pilot view from beneath</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+      <from-model type="bool">true</from-model>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <x-offset-m archive="y" type="double">-0.30</x-offset-m>
+      <y-offset-m archive="y" type="double">0.20</y-offset-m>
+      <z-offset-m archive="y" type="double">0.80</z-offset-m>
+         <heading-offset-deg type="double">243</heading-offset-deg>
+	       <default-heading-offset-deg>243</default-heading-offset-deg>
+	<pitch-offset-deg>20</pitch-offset-deg>
+	<default-field-of-view-deg>77</default-field-of-view-deg>
+	<dynamic-view type="bool">true</dynamic-view>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.3</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.3</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
+    </config>
+    </view>
+
+
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb>180</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="1">
+			<name>Co-Pilot</name>
+			<weight-lb>180</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="2">
+			<name>Right Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="3">
+			<name>Middle Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="4">
+			<name>Left Passenger</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>300</max-lb>
+		</weight>
+
+		<weight n="5">
+			<name>Load</name>
+			<weight-lb>0</weight-lb>
+			<max-lb>800</max-lb>
+		</weight>
+		
+		<flight-recorder include="Systems/flight-recorder.xml"/>
+
+		<help>
+			<title>EC 135 - background and help</title>
+			<line></line>
+			<line>Informations about the Eurocopter EC 135</line>
+			<line></line>
+			<line>Modelled after a real EC135 P2 using photorealistic images from "D-HDEC" in 2008 </line>
+			<line></line>
+			<line>Help</line>
+			<line></line>
+			<line>Startup</line>
+			<line></line>
+			<line>toggle rotor brake -> press R-key</line>
+			<line>Mainpanel: engage Bat  and GenI + II on engine panel to ON</line>
+			<line>Overhead: switch Anticollisionlight  ON</line>
+			<line>Overhead: engage both prime pumps PRIME I + II ON</line>
+			<line>Mainpanel: engage Engine switch I into idle</line>
+			<line>Mainpanel: watch N1, TRQ, TOT and wait until N1 needle reached more 50%</line>
+			<line>Mainpanel: engage now Engine switch II into idle</line>
+			<line>Mainpanel: watch N1, TRQ, TOT and wait until both N1 needles reached 74%</line>
+			<line>Mainpanel: switch Engine switches I + II into flight</line>
+			<line>Overhead: disengage both prime pumps PRIME I + II OFF</line>	
+			<line>Overhead: engage both transfer pumps XFER F + B ON</line>
+			<line>Navlight, strobes, landlinglights, CAT-A as required</line>
+			<line>The EC135 has to fly with SAS engaged all the times- disengaging will usually produce a caution warning on the real thing</line>
+			<line></line>
+			<line>Landinglight -> l-key (Small L)</line>
+			<line>Open/ Close doors -> click the doorse</line>
+			<line>Dumps SAS -> CTR-d-Key</line>
+			<line>Reengage Pitch/ Roll SAS -> Shift -p -Key</line>
+			<line>Reengage Yaw SAS -> CTR -e -Key</line>
+			<line>CAT A Button (increase rotor speed up to + 3%- use only below 55ktn IAS!) -> a-Key</line>
+			<line></line>
+			
+
+
+		</help>
+
+		<hitches>
+			<!-- make sure some properties do exist, when the list for multiplayer transfere is defined-->
+			<!-- they need to be in the same value, as they are initilized in the FDM, to get the same values after reset
+    should fix this somehow-->
+			<aerotow>
+				<tow>
+					<length type="float">15</length>
+					<elastic-constant type="float">10000</elastic-constant>
+					<weight-per-m-kg-m type="float">1</weight-per-m-kg-m>
+					<dist type="float">1</dist>
+					<connected-to-property-node type="bool"></connected-to-property-node>
+					<brake-force type="float">100000</brake-force>
+					<connected-to-ai-or-mp-callsign type ="string">*</connected-to-ai-or-mp-callsign>
+					<end-force-x type ="float">0</end-force-x>
+					<end-force-y type ="float">0</end-force-y>
+					<end-force-z type ="float">0</end-force-z>
+				</tow>
+				<speed-in-tow-direction type="float">0</speed-in-tow-direction>
+				<open type="bool">true</open>
+				<local-pos-x type="float">0</local-pos-x>
+				<local-pos-y type="float">0</local-pos-y>
+				<local-pos-z type="float">0</local-pos-z>
+				<is-slave type="bool">true</is-slave>
+			</aerotow>
+		</hitches>
+
+		<menubar>
+			<default>
+				 <menu n="10">
+      <label>Ec135</label>
+      <enabled type="bool">true</enabled>
+      <item>
+        <label>Select Livery</label>
+        <binding>
+          <command>nasal</command>
+          <script>aircraft.livery.dialog.toggle()</script>
+        </binding>
+      </item>
+      <item>
+				<label>Supply External Power</label>
+			<binding>
+				<command>property-toggle</command>
+				<property>/controls/electric/external-power</property>
+			</binding>
+	</item>
+                                                 
+												     
+					<item>
+						<label>Show/hide GSDI</label>
+						<binding>
+							<command>property-toggle</command>
+							<property>/sim/model/hide-gsdi</property>
+						</binding>
+					</item>
+					
+					<item>
+						<label>TogglePilot</label>
+						<binding>
+							<command>property-toggle</command>
+							<property>/sim/model/hide-pilot</property>
+						</binding>
+					</item>
+	<item>
+		<label>Show/hide Rotor Particles</label>
+			<binding>
+				<command>nasal</command>
+				<script>
+				var p = "sim/model/rotor-particles";
+				setprop(p, var i = !getprop(p));
+				gui.popupTip("Rotor Particles visible " ~ (i ? "Off" : "On"));
+				</script>
+			</binding>
+	</item>
+				</menu>
+			</default>
+		</menubar>
+		
+
+	</sim>
+	
+	
+	
+	
+<limits>
+<vne>155</vne>
+<MTOW>6251</MTOW>
+<MCP>69</MCP>
+<MTOP>75</MTOP>
+</limits>
+
+	<consumables>
+		<fuel>
+			<tank>
+				<name>Main</name>
+				<selected type="bool" write="n">1</selected>
+				<density-ppg type="double" write="n">6.682</density-ppg>
+			</tank>
+
+			<tank>
+				<name>rightSupply</name>
+				<selected type="bool" write="n">1</selected>
+				<density-ppg type="double" write="n">6.682</density-ppg>
+			</tank>
+			<tank>
+				<name>leftSupply</name>
+				<selected type="bool" write="n">2</selected>
+				<density-ppg type="double" write="n">6.682</density-ppg>
+			</tank>
+		</fuel>
+	</consumables>
+
+
+	<controls>
+	
+			<special>
+			<wiper-switch type="int">0</wiper-switch>
+			<wiper-deg type="double">-5</wiper-deg>
+		</special>
+	
+
+		<rotor>
+	                    <brake type ="double">1</brake>
+			<reltarget type="double">0</reltarget>
+			<maxreltorque type="double">0</maxreltorque>
+			<cata type="bool">0</cata>
+		</rotor>
+		
+		
+		
+
+		
+	<engines>
+	<n2trimfunction>0</n2trimfunction>
+			<engine n="0">
+				<magnetos>1</magnetos>
+				<propeller-pitch alias="/controls/engines/power-trim"/>
+				<mixture alias="/controls/engines/power-balance"/>
+			</engine>
+			<engine n="1">
+				<magnetos>1</magnetos>
+				<propeller-pitch alias="/controls/engines/power-trim"/>
+				<mixture alias="/controls/engines/power-balance"/>
+				<throttle alias="/controls/engines/engine[0]/throttle"/>
+			</engine>
+			<power-trim type="double">0</power-trim>
+			<power-balance type="double">0</power-balance>
+	</engines>
+	
+	 <electric>
+            <engine n="0">
+                <generator type="bool">1</generator>
+            </engine>
+            <engine n="1">
+                <generator type="bool">1</generator>
+            </engine>
+            <avionics-switch type="bool">1</avionics-switch>
+            <battery-switch type="bool">0</battery-switch>
+            <inverter-switch type="bool">0</inverter-switch>
+            <external-power type="bool">0</external-power>
+	 
+ <wiper>
+  <arc-sec type="double" n="0">0</arc-sec>
+            <arc-sec type="double" n="1">1</arc-sec>
+            <arc-sec type="double" n="2">0.6</arc-sec>
+            <delay-sec type="double" n="0">0</delay-sec>
+            <delay-sec type="double" n="1">0</delay-sec>
+            <delay-sec type="double" n="2">0</delay-sec>
+	                <position-norm type="double">0.45</position-norm>
+                      <switch type="int">0</switch>
+        </wiper>	 
+        </electric>
+
+
+	</controls>
+	
+	<systems>
+<electrical>	
+<outputs>
+<transfer-pump-aft>0</transfer-pump-aft>
+<transfer-pump-forward>0</transfer-pump-forward>
+<prime-pump1>0</prime-pump1>
+<prime-pump2>0</prime-pump2>
+</outputs>
+</electrical>
+	</systems>
+
+
+	<instrumentation>
+	<kcs55 include="Systems/kcs55.xml"/>
+		<gsdi>
+			<serviceable type="bool">true</serviceable>
+		</gsdi>
+		<hsi>
+			<serviceable type="bool" archive="y">true</serviceable>
+		</hsi>
+		<turn-indicator>
+					<serviceable type="bool" archive="y">true</serviceable>
+		<spin>1</spin>
+		</turn-indicator>
+	<GTX330 n="0">
+            <serviceable type="bool">true</serviceable>
+            <display>IDENT</display>
+            <input type="string"/>
+        </GTX330>
+	</instrumentation>
+	
+
+
+	<input>
+		<keyboard>
+
+			
+	<key n="100">
+	<name>d</name>
+	<desc>Set collective to zero</desc>
+		<binding>
+			<command>nasal</command>
+			<script>interpolate("/controls/engines/engine/throttle", 1.0, 1.25)</script>
+		</binding>
+	</key>
+		
+<key n="4">
+    <name>Ctrl-d</name>
+    <desc>Dumps SAS </desc>
+	<binding>
+		<command>property-assign</command>
+		<property>controls/flight/fcs/gains/sas/pitch</property>
+		<value type="double">0</value>
+	</binding>
+	<binding>
+		<command>property-assign</command>
+		<property>controls/flight/fcs/gains/sas/roll</property>
+		<value type="double">0</value>
+	</binding>
+	<binding>
+		<command>property-assign</command>
+		<property>controls/flight/fcs/gains/sas/yaw</property>
+		<value type="double">0</value>
+	</binding>
+  </key>
+  
+<key n="80">
+    <name>Shift-p</name>
+    <desc>Reengage Pitch/ Roll-SAS </desc>
+	<binding>
+		<command>property-assign</command>
+		<property>controls/flight/fcs/gains/sas/pitch</property>
+		<value type="double">-0.010</value>
+	</binding>
+	<binding>
+		<command>property-assign</command>
+		<property>controls/flight/fcs/gains/sas/roll</property>
+		<value type="double">0.0150</value>
+	</binding>
+</key>
+
+<key n="5">
+    <name>CTR-e</name>
+    <desc>Reengage Yaw-SAS</desc>
+	<binding>
+		<command>property-assign</command>
+		<property>controls/flight/fcs/gains/sas/yaw</property>
+		<value type="double">0.0075</value>
+	</binding>
+  </key>
+  
+<key n="97">
+    <name>a</name>
+    <desc>CAT-A Rotor speed increase</desc>
+	<binding>
+		<command>property-toggle</command>
+		<property>controls/rotor/cata</property>
+	</binding>
+  </key>
+
+			<key n="108">
+				<name>l</name>
+				<desc>Landing Light</desc>
+				<binding>
+					<command>property-toggle</command>
+					 <property>controls/lighting/landing-lights</property>
+				</binding>
+			</key>
+			
+			<key n="82">
+				<name>R</name>
+				<desc>Toggle rotor brake</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						var p = "/controls/rotor/brake";
+						setprop(p, !getprop(p));
+					</script>
+				</binding>
+			</key>
+			
+			<key n="105">
+				<name>i</name>
+				<desc>Toggle ignition switch</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						foreach (var e; controls.engines) {
+							if (e.selected.getValue()) {
+								var i = e.controls.getNode("ignition", 1);
+								i.setValue(!i.getValue());
+							}
+						}
+					</script>
+				</binding>
+			</key>
+
+			<key n="114">
+				<name>r</name>
+				<desc>Apply rotor brake</desc>
+				<binding>
+					<command>nasal</command>
+					<script>interpolate("/controls/rotor/brake", 1.0, 2)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>nasal</command>
+						<script>interpolate("/controls/rotor/brake", 0.0, 2)</script>
+					</binding>
+				</mod-up>
+			</key>
+
+			<key n="118">
+				<name>Alt-v</name>
+				<desc>Toggle dynamic cockpit view</desc>
+				<mod-alt>
+					<binding>
+						<command>property-toggle</command>
+						<property>/sim/view/dynamic/enabled</property>
+					</binding>
+				</mod-alt>
+			</key>
+
+
+			<key n="123">
+				<name>{</name>
+				<desc>Shutdown Engines</desc>
+				<binding>
+					<command>nasal</command>
+					<script>ec135.shutdown()</script>
+					<condition>
+						<property>/sim/signals/fdm-initialized</property>
+					</condition>
+				</binding>
+				<!-- <binding>
+      <command>nasal</command>
+      <script>ec135.cas.toggleEnable();</script>
+    </binding>-->
+			</key>
+
+			<key n="125">
+				<name>}</name>
+				<desc>Start Engines</desc>
+				<binding>
+					<command>nasal</command>
+					<script>ec135.startup()</script>
+					<condition>
+						<property>/sim/signals/fdm-initialized</property>
+					</condition>
+				</binding>
+				<!-- <binding>
+      <command>nasal</command>
+      <script>ec135.cas.toggleEnable();</script>
+    </binding>-->
+			</key>
+
+			<key n="23">
+			<name>Ctrl-w</name>
+			<desc>Place Winch 1000m in front of aircraft</desc>
+			<binding>
+				<command>property-assign</command>
+				<property>/controls/winch/place</property>
+				<value type="bool">true</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/winch/place</property>
+					<value type="bool">false</value>
+				</binding>
+			</mod-up>
+			</key>
+			<key n="87">
+				<name>W</name>
+				<desc>Toggle winch hook</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						var p = "/sim/hitches/winch/open";
+						setprop(p, !getprop(p));
+					</script>
+				</binding>
+			</key>
+			<key n="119">
+				<name>w</name>
+				<desc>Increase winch speed</desc>
+				<binding>
+					<command>nasal</command>
+					<script>interpolate("/sim/hitches/winch/winch/rel-speed", 1.0, 2)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>nasal</command>
+						<script>interpolate("/sim/hitches/winch/winch/rel-speed", 0.0, 2)</script>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="15">
+				<name>Ctrl-o</name>
+				<desc>Find aircraft for aerotow</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/aerotow/find-aircraft</property>
+					<value type="bool">true</value>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>property-assign</command>
+						<property>/controls/aerotow/find-aircraft</property>
+						<value type="bool">false</value>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="111">
+				<name>o</name>
+				<desc>Lock aerotow hook</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/aerotow/open</property>
+					<value type="bool">false</value>
+				</binding>
+			</key>
+			<key n="79">
+				<name>O</name>
+				<desc>Open aerotow hook</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/sim/hitches/aerotow/open</property>
+					<value type="bool">true</value>
+				</binding>
+			</key>
+
+		</keyboard>
+	</input>
+
+
+	<nasal>
+		<ec135>
+			<file>Aircraft/ec135/Nasal/externalweights.nas</file>
+			<file>Aircraft/ec135/Nasal/fadec.nas</file>
+                             		<file>Aircraft/ec135/Nasal/mk-wiper.nas</file>
+			<file>Aircraft/ec135/Nasal/systems.nas</file>
+			<file>Aircraft/ec135/Nasal/Electrical.nas</file>
+			<file>Aircraft/Generic/helicopter-fcs.nas</file>
+			<file>Aircraft/ec135/Nasal/fcs-config.nas</file>
+			<file>Aircraft/ec135/Nasal/casdisable.nas</file>
+			<file>Aircraft/ec135/Systems/kcs55.nas</file>
+			<file>Aircraft/ec135/Nasal/residualthrust.nas</file>
+			<file>Aircraft/ec135/Nasal/ec135.nas</file>
+			<file>Aircraft/ec135/Nasal/limits.nas</file>
+			<file>Aircraft/ec135/Nasal/helper.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/vemd/timer.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/vemd/VEMD.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/vemd/roc.nas</file>
+			<file>Aircraft/ec135/Models/instrumentation/dme/ki266.nas</file>
+			<script><![CDATA[
+	      ki266.new(0);
+              KCS55.new();
+            ]]></script>
+		</ec135>
+<GTX330>
+			<file>Aircraft/ec135/Models/instrumentation/GTX330/GTX330.nas</file>
+</GTX330>
+	</nasal>
+
+
+	<rotors>
+		<main>
+			<rpm type="double">0</rpm>
+		</main>
+	</rotors>
+
+</PropertyList>
