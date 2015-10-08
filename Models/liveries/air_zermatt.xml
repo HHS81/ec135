@@ -7,7 +7,7 @@
       <livery>
 	<name type="string">Air Zermatt</name>
 	<index type="int">1</index>
-	<texture>liveries/air_zermatt.png</texture>
+	<texture>/liveries/air_zermatt.png</texture>
       </livery>
 
       <ec135>
