@@ -136,6 +136,11 @@ GTX330_copycode();
  GTX330_copycode();
 }
 
+var setMode = func(m) {
+  # set the given mode for the transponder
+  GTX330_mode.setDoubleValue(m);
+}
+
 var delete = func {
   if (size(GTX330_codes)) {
     pop(GTX330_codes);
