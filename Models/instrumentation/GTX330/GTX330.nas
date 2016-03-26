@@ -13,6 +13,20 @@ var GTX330_last		= [];						# Holds copy of last known good code
 
 
 
+# Create a canvas
+var GTX330Display_canvas = canvas.new({
+  "name": "GTX330Display",
+  "size": [512, 128],
+  "view": [202,  48]
+});
+
+# Place the canvas on all objects called "GTX330Display"
+GTX330Display_canvas.addPlacement({"node": "GTX330Display"});
+
+# Create the elements to draw on the canvas.
+var GTX330Display_group = GTX330Display_canvas.createGroup();
+
+
 var input = func(i) {
 		#setprop("/instrumentation/GTX330/input",getprop("/instrumentation/GTX330/input")~i);
   append(GTX330_codes,i);
