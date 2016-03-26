@@ -76,6 +76,11 @@ var onModeChanged = func {
   m = GTX330_mode.getValue();
   m = (m == nil) ? 0 : m;
   canvas_elements["mode"].setText(mode_texts[m]);
+  if (m == 0) {
+    GTX330Display_group.hide();
+  } else {
+    GTX330Display_group.show();
+  }
 }
 
 setlistener(GTX330_mode, onModeChanged, 1, 0);
