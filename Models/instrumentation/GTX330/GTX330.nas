@@ -10,6 +10,8 @@ var GTX330_goodcode	= props.globals.getNode("/instrumentation/transponder/goodco
 var GTX330_mode = props.globals.getNode("/instrumentation/transponder/inputs/knob-mode", 1);
 
 var stopwatchDialog = props.globals.getNode("/sim/gui/dialogs/stopwatch-dialog/", 1);
+var instrumentLights = props.globals.getNode("/controls/lighting/instrument-lights");
+var batterySwitch = props.globals.getNode("/controls/electric/battery-switch");
 
 var GTX330_codes		= [];						# Array for 4 code digits
 var GTX330_last		= [];						# Holds copy of last known good code
@@ -21,6 +23,12 @@ var mode_texts = {
   3 : "(ground)",
   4 : "ON",
   5 : "ALT"
+};
+
+var display_colors = {
+  "off"      : [   0,   0,   0], # color when the display is off, e.g. the battery master switch is OFF (usually black)
+  "active"   : [   1,   1,   0], # color of an active pixel (yellow)
+  "inactive" : [ 0.1, 0.1, 0.1]  # color of an inactive pixel (dark grey, inactive pixels are usually not completely black)
 };
 
 
@@ -44,7 +52,6 @@ canvas_elements["flighttime"] = GTX330Display_group.createChild("text")
                                                    .setAlignment("left-bottom")
                                                    .setFont("LiberationFonts/LiberationMono-Bold.ttf")
                                                    .setFontSize(17, 1.2)
-                                                   .setColor(1,1,0)
                                                    .setText("99:99:99");
 
 canvas_elements["flighttime_label"] = GTX330Display_group.createChild("text")
@@ -52,7 +59,6 @@ canvas_elements["flighttime_label"] = GTX330Display_group.createChild("text")
                                                          .setAlignment("left-bottom")
                                                          .setFont("LiberationFonts/LiberationMono-Regular.ttf")
                                                          .setFontSize(11, 1.05)
-                                                         .setColor(1,1,0)
                                                          .setText("FLIGHT TIME");
 
 canvas_elements["squawk"] = GTX330Display_group.createChild("text")
@@ -60,7 +66,6 @@ canvas_elements["squawk"] = GTX330Display_group.createChild("text")
                                                .setAlignment("left-bottom")
                                                .setFont("LiberationFonts/LiberationMono-Bold.ttf")
                                                .setFontSize(34, 0.95)
-                                               .setColor(1,1,0)
                                                .setText("----");
 
 canvas_elements["mode"] = GTX330Display_group.createChild("text")
@@ -68,22 +73,28 @@ canvas_elements["mode"] = GTX330Display_group.createChild("text")
                                              .setAlignment("left-bottom")
                                              .setFont("LiberationFonts/LiberationMono-Bold.ttf")
                                              .setFontSize(10, 1)
-                                             .setColor(1,1,0)
                                              .setText("INIT");
 
 
-var onModeChanged = func {
-  m = GTX330_mode.getValue();
-  m = (m == nil) ? 0 : m;
+var updateDisplay = func {
+  m = (GTX330_mode.getValue() or 0);
+  fg_color = (instrumentLights.getValue() or 0) ? "active" : "inactive";
+  bg_color = (instrumentLights.getValue() or 0) ? "inactive" : "active";
+  bat = (batterySwitch.getValue() or 0);
   canvas_elements["mode"].setText(mode_texts[m]);
-  if (m == 0) {
+  if ((m == 0) or !bat) {
     GTX330Display_group.hide();
+    bg_color = "off";
   } else {
-    GTX330Display_group.show();
+    GTX330Display_group.show().setColor(display_colors[fg_color]);
   }
+  GTX330Display_canvas.setColorBackground(display_colors[bg_color]);
 }
 
-setlistener(GTX330_mode, onModeChanged, 1, 0);
+updateDisplay();
+setlistener(GTX330_mode, updateDisplay, 0, 0);
+setlistener(instrumentLights, updateDisplay, 0, 0);
+setlistener(batterySwitch, updateDisplay, 0, 0);
 
 var input = func(i) {
 		#setprop("/instrumentation/GTX330/input",getprop("/instrumentation/GTX330/input")~i);
