@@ -3,16 +3,16 @@
 ************************************************************************
 EC 135 P2 simulation config.
 
-This model of the EC 135 is dedicated to heliflyer.
+This model of the EC 135 is dedicated to heliflyer aka Georg Vollnhals.
 Thanks for all the help!
 
 ************************************************************************
 -->
 
-<PropertyList>
+<PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
 	<sim>
 		<description>Eurocopter EC135 P2</description>
-		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements)</author>
+		<author>Heiko Schulz, Maik Justus (FDM), Melchior Franz (Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements), Sebastian Dietrich (GTX330 improvements)</author>
 		<status>early production</status>
 		<rating>
                     <FDM type="int">4</FDM>
@@ -74,6 +74,15 @@ Thanks for all the help!
 
 
 		<model>
+		
+
+        <!-- An exit for the walker -->
+        <map>
+            <default_exit>
+                <x-offset-m type="float">2.0</x-offset-m>
+                <y-offset-m type="float">2.0</y-offset-m>
+            </default_exit>
+        </map>
 			<path archive="y">Aircraft/ec135/Models/ec135.xml</path>
 			<variant type="int">0</variant>
 			<livery>
@@ -181,7 +190,6 @@ Thanks for all the help!
     <!--<ai>
       <scenario>moveable_helipad_demo</scenario>
     </ai>-->
-
 
 		
 		
@@ -861,7 +869,7 @@ Thanks for all the help!
       <script>ec135.cas.toggleEnable();</script>
     </binding>-->
 			</key>
-
+<!-- Disable the following two key bindings because of the walker:
 			<key n="23">
 			<name>Ctrl-w</name>
 			<desc>Place Winch 1000m in front of aircraft</desc>
@@ -902,7 +910,7 @@ Thanks for all the help!
 						<script>interpolate("/sim/hitches/winch/winch/rel-speed", 0.0, 2)</script>
 					</binding>
 				</mod-up>
-			</key>
+			</key>-->
 			<key n="15">
 				<name>Ctrl-o</name>
 				<desc>Find aircraft for aerotow</desc>
