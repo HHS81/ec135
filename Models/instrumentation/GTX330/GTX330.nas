@@ -91,10 +91,16 @@ var updateDisplay = func {
   GTX330Display_canvas.setColorBackground(display_colors[bg_color]);
 }
 
+var updateDisplayedCode = func {
+  canvas_elements["squawk"].setText(sprintf("%04d", GTX330_code.getValue()));
+}
+
 updateDisplay();
+updateDisplayedCode();
 setlistener(GTX330_mode, updateDisplay, 0, 0);
 setlistener(instrumentLights, updateDisplay, 0, 0);
 setlistener(batterySwitch, updateDisplay, 0, 0);
+setlistener(GTX330_code, updateDisplayedCode, 0, 1);
 
 var input = func(i) {
 		#setprop("/instrumentation/GTX330/input",getprop("/instrumentation/GTX330/input")~i);
