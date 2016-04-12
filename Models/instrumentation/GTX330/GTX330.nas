@@ -161,7 +161,7 @@ var GTX330_copycode = func {
     codestr = codestr ~ GTX330_codes[i];
   }
   var code = 0;
-  code = code + codestr;
+  code = math.mod(code + codestr, 10000);
   GTX330_code.setValue(code);
 }
 
