@@ -91,10 +91,35 @@ var updateDisplay = func {
   GTX330Display_canvas.setColorBackground(display_colors[bg_color]);
 }
 
+var updateDisplayedCode = func {
+  canvas_elements["squawk"].setText(sprintf("%04d", GTX330_code.getValue()));
+}
+
+
+### Workaround, until https://sourceforge.net/p/flightgear/fgdata/merge-requests/60/ is merged.
+### React directly to changes in the "Radio Frequencies" dialog.
+var onTransponderDigitsChanged = func {
+  var goodcode = 1;
+  var code = 0;
+  for (var i = 3; i >= 0 ; i -= 1) {
+    goodcode = goodcode and (num(getprop("/instrumentation/transponder/inputs/digit[" ~ i ~ "]")) != nil) ;
+    code = code * 10 + (num(getprop("/instrumentation/transponder/inputs/digit[" ~ i ~ "]")) or 0);
+  }
+  if (goodcode) {
+    canvas_elements["squawk"].setText(sprintf("%04d", code));
+  }
+}
+for (var i = 0; i<4; i += 1) {
+  setlistener(props.globals.getNode("/instrumentation/transponder/inputs/digit[" ~ i ~ "]", 1), onTransponderDigitsChanged);
+}
+### End of workaround
+
 updateDisplay();
+updateDisplayedCode();
 setlistener(GTX330_mode, updateDisplay, 0, 0);
 setlistener(instrumentLights, updateDisplay, 0, 0);
 setlistener(batterySwitch, updateDisplay, 0, 0);
+setlistener(GTX330_code, updateDisplayedCode, 0, 1);
 
 var input = func(i) {
 		#setprop("/instrumentation/GTX330/input",getprop("/instrumentation/GTX330/input")~i);
