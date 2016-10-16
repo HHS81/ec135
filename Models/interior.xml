@@ -29,6 +29,26 @@
 
 		</offsets>
 	</model>
+<!--.animations-->
+<!--headset holder-->
+<animation>
+		<type>rotate</type>
+		<object-name>headset_holder</object-name>
+		<property>null</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<!--factor>1</factor-->
+		<center>
+			<x-m>0.747429</x-m>
+			<y-m>-0.001443</y-m>
+			<z-m>0.658929</z-m>
+		</center>
+		<axis>
+			<x>-0.011391</x>
+			<y>0</y>
+			<z>0.021732</z>
+		</axis>
+	</animation>
 
 <!--Doors-->
 <animation>
