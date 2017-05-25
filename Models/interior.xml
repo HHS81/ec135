@@ -34,10 +34,10 @@
 <animation>
 		<type>rotate</type>
 		<object-name>headset_holder</object-name>
-		<property>null</property>
-		<!--min-deg>0</min-deg-->
-		<!--max-deg>360</max-deg-->
-		<!--factor>1</factor-->
+	<property>sim/model/ec135/door-positions/headsetHolder/position-norm</property>
+	<min-deg>0</min-deg>
+	<max-deg>90</max-deg>
+	<factor>90</factor>
 		<center>
 			<x-m>0.747429</x-m>
 			<y-m>-0.001443</y-m>
@@ -49,6 +49,20 @@
 			<z>0.021732</z>
 		</axis>
 	</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>headset_holder</object-name>
+	<visible>true</visible>
+	<action>
+		<button>0</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<command>nasal</command>
+			<script>ec135.headsetHolder.toggle();</script>
+		</binding>
+	</action>
+</animation>
 
 <!--Doors-->
 <animation>

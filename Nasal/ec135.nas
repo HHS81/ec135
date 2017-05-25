@@ -21,6 +21,9 @@ var min = func(a, b) a < b ? a : b;
 # liveries =========================================================
 aircraft.livery.init("Aircraft/ec135/Models/liveries");
 
+# holder for the headsets ================
+headsetHolder = aircraft.door.new( "/sim/model/ec135/door-positions/headsetHolder", 0.5, 0);
+
 #doors=========================
 leftFrontDoor = aircraft.door.new( "/sim/model/ec135/door-positions/leftFrontDoor", 4, 0 );
 rightFrontDoor = aircraft.door.new( "/sim/model/ec135/door-positions/rightFrontDoor", 4, 0 );
