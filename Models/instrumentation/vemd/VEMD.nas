@@ -7,8 +7,9 @@ var fliconvert= func {
 
 var NG = props.globals.getNode("/engines/engine/n1-pct").getValue() or 0;
 var T4 = props.globals.getNode("/engines/engine/tot-degc").getValue() or 0;
-#var NG2 = props.globals.getNode("/engines/engine[1]/n1-pct").getValue() or 0;
-#var T42 = props.globals.getNode("/engines/engine[1]/tot-degc").getValue() or 0;
+var NG2 = props.globals.getNode("/engines/engine[1]/n1-pct").getValue() or 0;
+var T42 = props.globals.getNode("/engines/engine[1]/tot-degc").getValue() or 0;
+var TRQ2 = props.globals.getNode("/sim/model/ec135/torque2-pct").getValue() or 0;
 var TRQ = props.globals.getNode("/sim/model/ec135/torque-pct").getValue() or 0;
 
 
@@ -17,17 +18,18 @@ var fliNG = NG/10;
 var fliT4 = T4/100;
 var fliTRQ = TRQ/7.5;
 
-#var fliNG2 = NG2/10;
-#var fliT42 = T42/100;
+var fliNG2 = NG2/10;
+var fliT42 = T42/100;
+var fliTRQ2 = TRQ2/7.5;
 
 
 setprop ("instrumentation/VEMD/FLI/fliTRQ", fliTRQ);
 setprop ("instrumentation/VEMD/FLI/fliT4", fliT4);
 setprop ("instrumentation/VEMD/FLI/fliNG", fliNG);
 
-#setprop ("instrumentation/VEMD/FLI2/fliTRQ", fliTRQ);
-#setprop ("instrumentation/VEMD/FLI2/fliT42", fliT4);
-#setprop ("instrumentation/VEMD/FLI2/fliNG2", fliNG);
+setprop ("instrumentation/VEMD/FLI2/fliTRQ", fliTRQ2);
+setprop ("instrumentation/VEMD/FLI2/fliT4", fliT42);
+setprop ("instrumentation/VEMD/FLI2/fliNG", fliNG2);
 
 settimer(fliconvert, 0.1);
 }
@@ -42,6 +44,9 @@ var compare_roc = func {
     var fliT4 = props.globals.getNode("instrumentation/VEMD/FLI/fliT4").getValue() or 0;
      var fliTRQ = props.globals.getNode("instrumentation/VEMD/FLI/fliTRQ").getValue() or 0;
      
+    var fliNG2 = props.globals.getNode("instrumentation/VEMD/FLI2/fliNG").getValue() or 0;
+    var fliT42 = props.globals.getNode("instrumentation/VEMD/FLI2/fliT4").getValue() or 0;
+    var fliTRQ2 = props.globals.getNode("instrumentation/VEMD/FLI2/fliTRQ").getValue() or 0;
     
     var delta_NG = props.globals.getNode("/instrumentation/VEMD/delta-n1-filter").getValue() or 0;
     var delta_TRQ = props.globals.getNode("/instrumentation/VEMD/delta-trq-filter").getValue() or 0;
@@ -52,21 +57,23 @@ var compare_roc = func {
 
 
 
-   if (delta_NG > delta_TRQ){
-        if (delta_NG > delta_T4){
-            interpolate ("instrumentation/VEMD/FLI/FLI", fliNG, 2);
-        } else {
-            interpolate ("instrumentation/VEMD/FLI/FLI", fliT4, 2);
-        }
-   }else{
-        if (delta_TRQ > delta_T4) {
-            interpolate ("instrumentation/VEMD/FLI/FLI", fliTRQ, 2);
-        }else{
-            interpolate ("instrumentation/VEMD/FLI/FLI", fliT4, 2)
-        }
-	}
-	
+    #if (delta_NG > delta_TRQ){
+    #    if (delta_NG > delta_T4){
+    #        interpolate ("instrumentation/VEMD/FLI/FLI", fliNG, 2);
+    #    } else {
+    #        interpolate ("instrumentation/VEMD/FLI/FLI", fliT4, 2);
+    #    }
+    #}else{
+    #    if (delta_TRQ > delta_T4) {
+    #        interpolate ("instrumentation/VEMD/FLI/FLI", fliTRQ, 2);
+    #    }else{
+    #        interpolate ("instrumentation/VEMD/FLI/FLI", fliT4, 2)
+    #    }
+    #}
     
+    # At the moment, the indicator whether TRQ, TOT, or N1 is the limiting factor is always showing TRQ, so have the needles also display TRQ.
+    interpolate ("instrumentation/VEMD/FLI/FLI", fliTRQ, 2);
+    interpolate ("instrumentation/VEMD/FLI2/FLI", fliTRQ2, 2);
   
     
 
