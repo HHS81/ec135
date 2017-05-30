@@ -338,6 +338,14 @@ if ((n12 > 1) and (SEL2 ==0)) {
 power2.setValue(0);
 }
 
+if ((n11 > 74.5) and (flines_filled1 >= 0.90) and (SEL1 == 1)) {
+power1.setValue(0.74);
+}
+
+if ((n12 > 74.5) and (flines_filled2 >= 0.90) and (SEL2 == 1)) {
+power2.setValue(0.74);
+}
+
 settimer(flight, 0.2);
 }
 
