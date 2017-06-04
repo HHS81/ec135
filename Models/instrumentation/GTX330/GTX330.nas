@@ -227,6 +227,11 @@ var stopwatchStartTime = func {
     }
 }
 
+var cursor = func {
+    # Cancel user input for transponder code.
+    GTX330_digits = "";
+}
+
 var startstop = func {
     var dlg = globals["__dlg:stopwatch-dialog"];
     if (dlg != nil) {

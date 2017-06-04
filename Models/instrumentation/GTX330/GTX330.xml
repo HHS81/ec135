@@ -165,6 +165,19 @@
 
 <animation>
     <type>pick</type>
+    <object-name>cursor.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.cursor();</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
     <object-name>startstop.btn</object-name>
     <action>
         <button>0</button>
