@@ -9,6 +9,10 @@ var stopwatchDialog = props.globals.getNode("/sim/gui/dialogs/stopwatch-dialog/"
 var instrumentLights = props.globals.getNode("/controls/lighting/instrument-lights");
 var batterySwitch = props.globals.getNode("/controls/electric/battery-switch");
 
+var savedBeforeVFR = -1; # The VFR-button saves the current code into this variable, so it can restore it when pressed again.
+
+var VFRcode = "7000"; # 7000 is VFR in Europe. Change to 1200 to fit the US.
+
 var mode_texts = {
   0 : "(off)",
   1 : "STBY",
@@ -69,6 +73,10 @@ canvas_elements["mode"] = GTX330Display_group.createChild("text")
                                              .setText("INIT");
 
 
+var pad_with_zeroes = func(num, size) {
+  return substr("000000000" ~ num, -size);
+}
+
 var updateDisplay = func {
   m = (GTX330_mode.getValue() or 0);
   fg_color = (instrumentLights.getValue() or 0) ? "active" : "inactive";
@@ -120,6 +128,7 @@ var input = func(i) { # The user pressed the button for number i
     }
 
     if (size(GTX330_digits) == 4) { # If we now have 4 digits, set the transponder code
+        savedBeforeVFR = -1;
         GTX330_goodcode.setBoolValue(1);
         GTX330_code.setIntValue(GTX330_digits);
         GTX330_digits = "";
@@ -129,6 +138,24 @@ var input = func(i) { # The user pressed the button for number i
 var setMode = func(m) {
   # set the given mode for the transponder
   GTX330_mode.setDoubleValue(m);
+}
+
+var vfr = func {
+    if (savedBeforeVFR == -1) {
+        # Save the current code and set the code to VFR.
+        if (GTX330_goodcode.getValue()) {
+            savedBeforeVFR = pad_with_zeroes(GTX330_code.getValue(), 4);
+        }
+        GTX330_digits = VFRcode;
+    } else {
+        # Restore the saved code.
+        GTX330_digits = savedBeforeVFR;
+        savedBeforeVFR = -1;
+    }
+
+    GTX330_goodcode.setBoolValue(1);
+    GTX330_code.setIntValue(GTX330_digits);
+    GTX330_digits = "";
 }
 
 var clear = func {
