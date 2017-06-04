@@ -123,6 +123,8 @@ setlistener(batterySwitch, updateDisplay, 0, 0);
 setlistener(GTX330_code, updateDisplayedCode, 0, 1);
 
 var input = func(i) { # The user pressed the button for number i
+    if ((GTX330_mode.getValue() or 0) == 0) return;
+
     if (i <= 7) {
         GTX330_digits = GTX330_digits ~ i;
     }
@@ -141,6 +143,8 @@ var setMode = func(m) {
 }
 
 var vfr = func {
+    if ((GTX330_mode.getValue() or 0) == 0) return;
+
     if (savedBeforeVFR == -1) {
         # Save the current code and set the code to VFR.
         if (GTX330_goodcode.getValue()) {
@@ -159,6 +163,8 @@ var vfr = func {
 }
 
 var clear = func {
+  if ((GTX330_mode.getValue() or 0) == 0) return;
+
   if (size(GTX330_digits) > 0) {
     # Remove the last digit
     GTX330_digits = left(GTX330_digits, size(GTX330_digits) - 1);
@@ -228,11 +234,15 @@ var stopwatchStartTime = func {
 }
 
 var cursor = func {
+    if ((GTX330_mode.getValue() or 0) == 0) return;
+
     # Cancel user input for transponder code.
     GTX330_digits = "";
 }
 
 var startstop = func {
+    if ((GTX330_mode.getValue() or 0) == 0) return;
+
     var dlg = globals["__dlg:stopwatch-dialog"];
     if (dlg != nil) {
         # the stopwatch dialog is open, we must use its functions
