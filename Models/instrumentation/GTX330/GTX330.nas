@@ -131,10 +131,20 @@ var setMode = func(m) {
   GTX330_mode.setDoubleValue(m);
 }
 
-var delete = func {
+var clear = func {
   if (size(GTX330_digits) > 0) {
     # Remove the last digit
     GTX330_digits = left(GTX330_digits, size(GTX330_digits) - 1);
+  } else {
+    # Stop the stopwatch and reset it.
+    var dlg = globals["__dlg:stopwatch-dialog"];
+    if (dlg != nil) {
+      dlg.stop();
+      dlg.reset();
+    } else {
+      stopwatchDialog.setBoolValue("running", 0);
+      stopwatchDialog.setDoubleValue("accu", 0);
+    }
   }
 }
 	
@@ -190,5 +200,33 @@ var stopwatchStartTime = func {
     }
 }
 
+var startstop = func {
+    var dlg = globals["__dlg:stopwatch-dialog"];
+    if (dlg != nil) {
+        # the stopwatch dialog is open, we must use its functions
+        if (dlg.running) {
+            dlg.stop();
+        } else {
+            dlg.start();
+        }
+    } else {
+        # the stopwatch dialog is closed, we must emulate its functions
+        var r = stopwatchDialog.getNode("running");
+        var running = (r != nil) ? r.getBoolValue() : 0;
+        var time = props.globals.getNode("/sim/time/elapsed-sec");
+        if (running) {
+            var a = stopwatchDialog.getNode("accu");
+            var accu = (a != nil) ? a.getValue() : 0.0;
+            accu += time.getValue() - stopwatchDialog.getValue("start-time");
+            a = stopwatchDialog.getNode("accu", 1);
+            a.setDoubleValue(accu);
+            r.setBoolValue(0);
+        } else {
+            running = 1;
+            stopwatchDialog.setBoolValue("running", running);
+            stopwatchDialog.setDoubleValue("start-time", time.getValue());
+        }
+    }
+}
 
 loop();
