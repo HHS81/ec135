@@ -6,7 +6,7 @@
 <animation>
   <type>rotate</type>
   <object-name>FLI.e1</object-name>
-  <property>/instrumentation/vemd/FLI/FLI-filter</property>
+  <property>/instrumentation/VEMD/FLI/FLI-filter</property>
   <interpolation>
    <entry><ind>  0</ind><dep>   0</dep></entry>
    <entry><ind>  1</ind><dep>15.76</dep></entry>
@@ -42,7 +42,7 @@
 <animation>
   <type>rotate</type>
   <object-name>FLI.e2</object-name>
-  <property>/instrumentation/vemd/FLI2/FLI-filter</property>
+  <property>/instrumentation/VEMD/FLI2/FLI-filter</property>
   <interpolation>
    <entry><ind>  0</ind><dep>   0</dep></entry>
    <entry><ind>  1</ind><dep>15.76</dep></entry>
@@ -107,7 +107,7 @@
   </offsets>
   <overlay>
    <params>
-    <property type="string">/sim/model/ec135/torque-pct</property>
+    <property type="string">/sim/model/ec135/torque2-pct</property>
     <factor type="double">1</factor>
     <offset type="double">0.0</offset>
     <format type="string">%1.0f</format>

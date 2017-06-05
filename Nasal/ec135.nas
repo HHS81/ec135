@@ -212,6 +212,8 @@ var torque3_pct = props.globals.getNode("sim/model/ec135/torque-oei", 1);
 var torque4_pct = props.globals.getNode("sim/model/ec135/torque-aeo", 1);
 var target_rel_rpm = props.globals.getNode("controls/rotor/reltarget", 1);
 var max_rel_torque = props.globals.getNode("controls/rotor/maxreltorque", 1);
+var n1pct  = props.globals.getNode("engines/engine/n1-pct", 1);
+var n1pct2 = props.globals.getNode("engines/engine[1]/n1-pct", 1);
 
 
 
@@ -697,11 +699,20 @@ torque.setDoubleValue(0);
 
 #max tqr value = 598600
 var update_torque = func(dt) {
+	# We only have the total torque on the rotor. To determine how much each engine is contributing to that total torque, we
+	# estimate the power output for each enginge see how much it contributes to the total power.
+	var enginePowerPct1 = math.pow(n1pct.getValue(), 6);  # Estimating the engine power from N1%. Better than nothing, but definitely needs improving.
+	var enginePowerPct2 = math.pow(n1pct2.getValue(), 6);
+
+	var trq_ratio = enginePowerPct1 / ( enginePowerPct1 + enginePowerPct2);
+	if (debug.isnan(trq_ratio)) {
+		trq_ratio = 0.5;
+	}
+
 	var f = dt / (0.2 + dt);
 	torque_val = torque.getValue() * f + torque_val * (1 - f);
-	torque_pct.setDoubleValue(torque_val / 6251);
-	torque_val2 = torque.getValue() * 0.000168055;
-	torque2_pct.setDoubleValue(torque_val2);
+	torque_pct.setDoubleValue(torque_val / 6251 * trq_ratio * 2);
+	torque2_pct.setDoubleValue(torque_val / 6251 * (1 - trq_ratio) * 2);
 	torque_val3 = (torque.getValue() * 0.000274855);
 	torque3_pct.setDoubleValue(torque_val3);
 	torque_val4 = (torque.getValue() * 0.000137427) * 1.035; #mean value * 0.000137621 as factor as engines are flat rated, but yasim doesn't simulate engines yet

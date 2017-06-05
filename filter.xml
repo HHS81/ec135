@@ -67,6 +67,15 @@
     <output>/instrumentation/VEMD/FLI/FLI-filter</output>
     <max-rate-of-change>1</max-rate-of-change>
   </filter>
+  
+  <filter>
+    <name>FLI2</name>
+    <debug>false</debug>
+    <type>noise-spike</type>
+     <input>/instrumentation/VEMD/FLI2/FLI</input>
+    <output>/instrumentation/VEMD/FLI2/FLI-filter</output>
+    <max-rate-of-change>1</max-rate-of-change>
+  </filter>
 
 <filter>
     <name>oiltemp increase</name>
