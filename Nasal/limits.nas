@@ -124,9 +124,9 @@ var checkGandVNE = func {
   var TOW =getprop("yasim/gross-weight-lbs");
   var MTOW = getprop("limits/MTOW");
   
-  if (TOW > MTOW)
+  if ((TOW != nil) and (TOW > MTOW))
   {
-  msg = "Gross weight exceeds MTOW of 6251 lbs!";
+    msg = "Gross weight exceeds MTOW of " ~ math.ceil(MTOW) ~ " lbs!";
   }
   
   #Now Check TakeOffPower
