@@ -158,11 +158,100 @@
         <repeatable>false</repeatable>
         <binding>
             <command>nasal</command>
-            <script>GTX330.delete();</script>
+            <script>GTX330.clear();</script>
         </binding>
     </action>
 </animation>
 
+<animation>
+    <type>pick</type>
+    <object-name>cursor.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.cursor();</script>
+        </binding>
+    </action>
+</animation>
 
-    
+<animation>
+    <type>pick</type>
+    <object-name>startstop.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.startstop();</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>off.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.setMode(0);</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>stby.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.setMode(1);</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>on.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.setMode(4);</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>alt.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.setMode(5);</script>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>vfr.btn</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>GTX330.vfr();</script>
+        </binding>
+    </action>
+</animation>
+
 </PropertyList>

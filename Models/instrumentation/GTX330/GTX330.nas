@@ -1,20 +1,17 @@
 #code snippets taken from the Boeing CDU and KT-76C by Gary Neely
 
-GTX330Input             = props.globals.getNode("/instrumentation/GTX330/input", 1);
-GTX330_code	 = props.globals.getNode("/instrumentation/transponder/id-code", 1);
-GTX330_goodcode	 = props.globals.getNode("/instrumentation/transponder/goodcode", 1);
-
-var GTX330_code		= props.globals.getNode("/instrumentation/transponder/id-code");
-var GTX330_Input             = props.globals.getNode("/instrumentation/GTX330/input");
-var GTX330_goodcode	= props.globals.getNode("/instrumentation/transponder/goodcode");
+var GTX330_digits = ""; # string to hold the user input
+var GTX330_code		= props.globals.getNode("/instrumentation/transponder/id-code", 1);
+var GTX330_goodcode	= props.globals.getNode("/instrumentation/transponder/goodcode", 1);
 var GTX330_mode = props.globals.getNode("/instrumentation/transponder/inputs/knob-mode", 1);
 
 var stopwatchDialog = props.globals.getNode("/sim/gui/dialogs/stopwatch-dialog/", 1);
 var instrumentLights = props.globals.getNode("/controls/lighting/instrument-lights");
 var batterySwitch = props.globals.getNode("/controls/electric/battery-switch");
 
-var GTX330_codes		= [];						# Array for 4 code digits
-var GTX330_last		= [];						# Holds copy of last known good code
+var savedBeforeVFR = -1; # The VFR-button saves the current code into this variable, so it can restore it when pressed again.
+
+var VFRcode = "7000"; # 7000 is VFR in Europe. Change to 1200 to fit the US.
 
 var mode_texts = {
   0 : "(off)",
@@ -76,6 +73,10 @@ canvas_elements["mode"] = GTX330Display_group.createChild("text")
                                              .setText("INIT");
 
 
+var pad_with_zeroes = func(num, size) {
+  return substr("000000000" ~ num, -size);
+}
+
 var updateDisplay = func {
   m = (GTX330_mode.getValue() or 0);
   fg_color = (instrumentLights.getValue() or 0) ? "active" : "inactive";
@@ -95,25 +96,6 @@ var updateDisplayedCode = func {
   canvas_elements["squawk"].setText(sprintf("%04d", GTX330_code.getValue()));
 }
 
-
-### Workaround, until https://sourceforge.net/p/flightgear/fgdata/merge-requests/60/ is merged.
-### React directly to changes in the "Radio Frequencies" dialog.
-var onTransponderDigitsChanged = func {
-  var goodcode = 1;
-  var code = 0;
-  for (var i = 3; i >= 0 ; i -= 1) {
-    goodcode = goodcode and (num(getprop("/instrumentation/transponder/inputs/digit[" ~ i ~ "]")) != nil) ;
-    code = code * 10 + (num(getprop("/instrumentation/transponder/inputs/digit[" ~ i ~ "]")) or 0);
-  }
-  if (goodcode) {
-    canvas_elements["squawk"].setText(sprintf("%04d", code));
-  }
-}
-for (var i = 0; i<4; i += 1) {
-  setlistener(props.globals.getNode("/instrumentation/transponder/inputs/digit[" ~ i ~ "]", 1), onTransponderDigitsChanged);
-}
-### End of workaround
-
 updateDisplay();
 updateDisplayedCode();
 setlistener(GTX330_mode, updateDisplay, 0, 0);
@@ -121,54 +103,65 @@ setlistener(instrumentLights, updateDisplay, 0, 0);
 setlistener(batterySwitch, updateDisplay, 0, 0);
 setlistener(GTX330_code, updateDisplayedCode, 0, 1);
 
-var input = func(i) {
-		#setprop("/instrumentation/GTX330/input",getprop("/instrumentation/GTX330/input")~i);
-  append(GTX330_codes,i);
-GTX330_copycode();
+var input = func(i) { # The user pressed the button for number i
+    if ((GTX330_mode.getValue() or 0) == 0) return;
 
- if (size(GTX330_codes) >= 4) { return 0; }
- if (size(GTX330_codes) == 4) {						# If we now have 4 digits, treat as a good
-   GTX330_last = GTX330_codes;						# code and save; flag that we have a good
-    GTX330_goodcode.setValue(1);	
-}  else {
-    GTX330_goodcode.setValue(0);
-  }
- GTX330_copycode();
+    if (i <= 7) {
+        GTX330_digits = GTX330_digits ~ i;
+    }
+
+    if (size(GTX330_digits) == 4) { # If we now have 4 digits, set the transponder code
+        savedBeforeVFR = -1;
+        GTX330_goodcode.setBoolValue(1);
+        GTX330_code.setIntValue(GTX330_digits);
+        GTX330_digits = "";
+    }
 }
 
-var delete = func {
-  if (size(GTX330_codes)) {
-    pop(GTX330_codes);
-    GTX330_copycode();
+var setMode = func(m) {
+  # set the given mode for the transponder
+  GTX330_mode.setDoubleValue(m);
+}
+
+var vfr = func {
+    if ((GTX330_mode.getValue() or 0) == 0) return;
+
+    if (savedBeforeVFR == -1) {
+        # Save the current code and set the code to VFR.
+        if (GTX330_goodcode.getValue()) {
+            savedBeforeVFR = pad_with_zeroes(GTX330_code.getValue(), 4);
+        }
+        GTX330_digits = VFRcode;
+    } else {
+        # Restore the saved code.
+        GTX330_digits = savedBeforeVFR;
+        savedBeforeVFR = -1;
+    }
+
+    GTX330_goodcode.setBoolValue(1);
+    GTX330_code.setIntValue(GTX330_digits);
+    GTX330_digits = "";
+}
+
+var clear = func {
+  if ((GTX330_mode.getValue() or 0) == 0) return;
+
+  if (size(GTX330_digits) > 0) {
+    # Remove the last digit
+    GTX330_digits = left(GTX330_digits, size(GTX330_digits) - 1);
+  } else {
+    # Stop the stopwatch and reset it.
+    var dlg = globals["__dlg:stopwatch-dialog"];
+    if (dlg != nil) {
+      dlg.stop();
+      dlg.reset();
+    } else {
+      stopwatchDialog.setBoolValue("running", 0);
+      stopwatchDialog.setDoubleValue("accu", 0);
+    }
   }
 }
 	
-
-
-var GTX330_copycode = func {
-#var GTX330_Input             = props.globals.getNode("/instrumentation/GTX330/input");
-  if (!size(GTX330_codes)) {
-    GTX330_code.setValue(0);
-    return 0;
-  }
-  var codestr = "";
-  for(var i=0; i < size(GTX330_codes); i+=1) {
-    codestr = codestr ~ GTX330_codes[i];
-  }
-  var code = 0;
-  code = code + codestr;
-  GTX330_code.setValue(code);
-}
-
-
-	
-#var delete = func {
-#		var length = size(getprop("/instrumentation/GTX330/input")) - 1;
-#		setprop("/instrumentation/GTX330/input",substr(getprop("/instrumentation/GTX330/input"),0,length));
-#	}
-	
-var i = 0;
-
 var timestring = func(seconds) {
     var h = seconds / 3600;
     var m = int(math.mod(seconds / 60, 60));
@@ -189,23 +182,6 @@ var loop = func {
     settimer(loop, 0.33333);
 }
 
-var plusminus = func {	
-	var end = size(getprop("/instrumentation/GTX/input"));
-	var start = end - 1;
-	var lastchar = substr(getprop("/instrumentation/GTX/input"),start,end);
-	if (lastchar == "+"){
-		me.delete();
-		me.input('-');
-		}
-	if (lastchar == "-"){
-		me.delete();
-		me.input('+');
-		}
-	if ((lastchar != "-") and (lastchar != "+")){
-		me.input('+');
-		}
-	}
-	
 # Return true if the stopwatch is running, false otherwise.
 var stopwatchIsRunning = func {
     var dlg = globals["__dlg:stopwatch-dialog"];
@@ -238,5 +214,42 @@ var stopwatchStartTime = func {
     }
 }
 
+var cursor = func {
+    if ((GTX330_mode.getValue() or 0) == 0) return;
+
+    # Cancel user input for transponder code.
+    GTX330_digits = "";
+}
+
+var startstop = func {
+    if ((GTX330_mode.getValue() or 0) == 0) return;
+
+    var dlg = globals["__dlg:stopwatch-dialog"];
+    if (dlg != nil) {
+        # the stopwatch dialog is open, we must use its functions
+        if (dlg.running) {
+            dlg.stop();
+        } else {
+            dlg.start();
+        }
+    } else {
+        # the stopwatch dialog is closed, we must emulate its functions
+        var r = stopwatchDialog.getNode("running");
+        var running = (r != nil) ? r.getBoolValue() : 0;
+        var time = props.globals.getNode("/sim/time/elapsed-sec");
+        if (running) {
+            var a = stopwatchDialog.getNode("accu");
+            var accu = (a != nil) ? a.getValue() : 0.0;
+            accu += time.getValue() - stopwatchDialog.getValue("start-time");
+            a = stopwatchDialog.getNode("accu", 1);
+            a.setDoubleValue(accu);
+            r.setBoolValue(0);
+        } else {
+            running = 1;
+            stopwatchDialog.setBoolValue("running", running);
+            stopwatchDialog.setDoubleValue("start-time", time.getValue());
+        }
+    }
+}
 
 loop();
