@@ -348,12 +348,12 @@ Thanks for all the help!
                 <limits>
                     <enabled type="bool">true</enabled>
                     <left>
-                        <heading-max-deg type="double">220</heading-max-deg>
+                        <heading-max-deg type="double">210</heading-max-deg>
                         <x-offset-max-m type="double">0.3</x-offset-max-m>
                         <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
                     </left>
                     <right>
-                        <heading-max-deg type="double">220</heading-max-deg>
+                        <heading-max-deg type="double">210</heading-max-deg>
                         <x-offset-max-m type="double">0.25</x-offset-max-m>
                         <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
                     </right>
