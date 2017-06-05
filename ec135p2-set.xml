@@ -192,9 +192,10 @@ Thanks for all the help!
     </ai>-->
 
 		
-		
-   <rendering>
-    <refl_correction type="string">-0.1</refl_correction>
+    <rendering>	   
+	<refl_correction type="string">-0.33</refl_correction>
+	<refl-type>1.0</refl-type>
+	<fresnel-factor>0.5</fresnel-factor>
     </rendering>
 
 
