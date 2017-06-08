@@ -32,92 +32,6 @@
 #simpel hack- known issue: boost-pump runs even without power#
 
 
-#####################################################
-
-###Engine Start###
-
-#controls.StartSelector = func(v = 1) {
- #   var vlt = getprop("systems/electrical/volts") or 0;
- #   if(vlt < 22) v=0;
-#	setprop("controls/engines/engine/startselector",v);
-#}
-
-##starter cycle##
-# var StartSelector
-var start = func {
-
-	var ignition1 = props.globals.getNode("/controls/engines/engine/ignition", 1);
-	var ignition2 = props.globals.getNode("/controls/engines/engine[1]/ignition", 1);
-	var starter1 = props.globals.getNode("/controls/engines/engine/starter", 1);
-	var starter2 = props.globals.getNode("/controls/engines/engine[1]/starter", 1);
-	var primepump1 = props.globals.getNode("/systems/electrical/outputs/prime-pump1").getValue() or 0;
-	var primepump2 = props.globals.getNode("/systems/electrical/outputs/prime-pump1").getValue() or 0;
-	var power1 = props.globals.getNode("controls/engines/engine/power", 1);
-	var power2 = props.globals.getNode("controls/engines/engine[1]/power", 1);
-	var starting1 = props.globals.getNode("controls/engines/engine/starting", 1);
-	var starting2 = props.globals.getNode("controls/engines/engine[1]/starting", 1);
-	var injection1 = props.globals.getNode("controls/engines/engine/injection", 1);
-	var injection2 = props.globals.getNode("controls/engines/engine[1]/injection", 1);
-
-
-	var CUTOFF = props.globals.getNode("/controls/engines/engine/cutoff").getValue() or 0;
-	var n11 = props.globals.getNode("/engines/engine/n1-pct").getValue() or 0;
-	var n12 = props.globals.getNode("/engines/engine[1]/n1-pct").getValue() or 0;
-	var VOLTS = props.globals.getNode("/systems/electrical/volts").getValue() or 0;
-	var SEL1 = props.globals.getNode("/controls/engines/engine/fadec/engine-state").getValue() or 0;
-	var SEL2 = props.globals.getNode("/controls/engines/engine[1]/fadec/engine-state").getValue() or 0;
-
-
-
-	if ((SEL1 == 1) and (n11 < 73.5)) {
-		if (VOLTS > 22) {
-			starter1.setValue (1);
-		}
-	} else {
-		starter1.setValue (0);
-	}
-
-	if ((SEL2 == 1) and (n12 < 73.5)) {
-		if (VOLTS > 22) {
-			starter2.setValue (1);
-		}
-	} else {
-		starter2.setValue (0);
-	}
-
-	###ignition cycle###
-
-	if ((SEL1 == 1) and (n11 > 17) and (n11 < 73.5)) {
-		if (VOLTS > 24) {
-			ignition1.setValue (1);
-		}
-	} else {
-		ignition1.setValue(0);
-	}
-
-	if ((n11 > 17) and (n11 < 73.5)) {
-		starting1.setValue(1.0);
-	}
-
-	if ((SEL2 == 1) and (n12 > 17) and (n12 < 73.5)) {
-		if (VOLTS > 24) {
-			ignition2.setValue (1);
-		}
-	} else {
-		ignition2.setValue(0);
-	}
-
-	if ((n12 > 17) and (n12 < 73.5)) {
-		starting2.setValue(1.0);
-	}
-
-	settimer(start, 0.1);
-}
-
-start();
-
-
-
 ###fuel injection 1###
 
 var injection1 = {
@@ -335,6 +249,24 @@ var fadecEngine = {
             } else {
                 interpolate(me.flines_filled, 0, 3);
             }
+        }
+        
+        # starter cycle
+        if ((v.SEL == 1) and (v.n1pct < 73.5) and (v.VOLTS > 22)) {
+            me.starter.setValue(1);
+        } else {
+            me.starter.setValue(0);
+        }
+        
+        # ignition cycle
+        if ((v.n1pct > 17) and (v.n1pct < 73.5) and (v.SEL == 1) and (v.VOLTS > 24)) {
+            me.ignition.setValue(1);
+        } else {
+            me.ignition.setValue(0);
+        }
+        
+        if ((v.n1pct > 17) and (v.n1pct < 73.5)) {
+            me.starting.setValue(1.0);
         }
     }
 };
