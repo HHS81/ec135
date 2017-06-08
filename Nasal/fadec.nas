@@ -28,48 +28,8 @@
 #}
 #tforce();
 
-###State of fuellines- if filled up engine can run- if not engine cuts off###
+
 #simpel hack- known issue: boost-pump runs even without power#
-
-
-var primepumps = func {
-
-	flines_filled1 = props.globals.getNode("/controls/fuel/tank/fuellines_filled", 1);
-	flines_filled2 = props.globals.getNode("/controls/fuel/tank[1]/fuellines_filled", 1);
-	var primepump1 = props.globals.getNode("/systems/electrical/outputs/prime-pump1").getValue() or 0;
-	var primepump2 = props.globals.getNode("/systems/electrical/outputs/prime-pump2").getValue() or 0;
-	var CUTOFF1 = props.globals.getNode("/controls/engines/engine/cutoff").getValue() or 0;
-	var CUTOFF2 = props.globals.getNode("/controls/engines/engine[1]/cutoff").getValue() or 0;
-	var n11 = props.globals.getNode("/engines/engine[0]/n1-pct").getValue() or 0;
-	var n12 = props.globals.getNode("/engines/engine[1]/n1-pct").getValue() or 0;
-	var VOLTS = props.globals.getNode("/systems/electrical/volts").getValue() or 0;
-	var bp_pwr = getprop("/systems/electrical/outputs/boost-pump");
-
-	if (n11 < 60) {
-		if (primepump1 > 24) {
-			interpolate ("/controls/fuel/tank/fuellines_filled",1, 5);
-		} else {
-			interpolate ("/controls/fuel/tank/fuellines_filled",0, 3);
-		}
-	}
-	#needs informations#if (CUTOFF1==1){
-	#nterpolate ("controls/fuel/tank/fuellines_filled",0, 3);
-	#}
-
-	if (n12 < 60) {
-		if (primepump2 > 24) {
-			interpolate ("controls/fuel/tank[1]/fuellines_filled",1, 5);
-		} else {
-			interpolate ("controls/fuel/tank[1]/fuellines_filled",0, 3);
-		}
-	}
-	#if (CUTOFF2 ==1){
-	#interpolate ("controls/fuel/tank[1]/fuellines_filled",0, 3);
-	#}
-
-	settimer(primepumps, 0.1);
-}
-primepumps();
 
 
 #####################################################
@@ -367,6 +327,15 @@ var fadecEngine = {
     # main loop
     run: func() {
         var v = me.getValues();
+        
+        # filling the fuellines
+        if (v.n1pct < 60) {
+            if (v.primepump > 24) {
+                interpolate(me.flines_filled, 1, 5);
+            } else {
+                interpolate(me.flines_filled, 0, 3);
+            }
+        }
     }
 };
 
