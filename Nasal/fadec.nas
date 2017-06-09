@@ -130,61 +130,6 @@ setlistener("controls/engines/engine[1]/injection", func {
 });
 
 
-
-###flight###
-
-var flight = func {
-
-	var flines_filled1 = props.globals.getNode("controls/fuel/tank/fuellines_filled").getValue() or 0;
-	var flines_filled2 = props.globals.getNode("controls/fuel/tank[1]/fuellines_filled").getValue() or 0;
-
-	var n11 = props.globals.getNode("/engines/engine/n1-pct").getValue() or 0;
-	var n12 = props.globals.getNode("/engines/engine[1]/n1-pct").getValue() or 0;
-
-	var power1 = props.globals.getNode("controls/engines/engine/power", 1);
-	var power2 = props.globals.getNode("controls/engines/engine[1]/power", 1);
-
-	var SEL1 = props.globals.getNode("/controls/engines/engine/fadec/engine-state").getValue() or 0;
-	var SEL2 = props.globals.getNode("/controls/engines/engine[1]/fadec/engine-state").getValue() or 0;
-
-	if ((n11 > 1) and (SEL1 == 2)) {
-		power1.setValue(1);
-	}
-
-	if ((n11 > 1) and (flines_filled1 < 0.90)) {
-		power1.setValue(0);
-	}
-
-	if ((n11 > 1) and (SEL1 == 0)) {
-		power1.setValue(0);
-	}
-
-	if ((n12 > 1) and (SEL2 == 2)) {
-		power2.setValue(1);
-	}
-
-	if ((n12 > 1) and (flines_filled2 < 0.90)) {
-		power2.setValue(0);
-	}
-
-	if ((n12 > 1) and (SEL2 == 0)) {
-		power2.setValue(0);
-	}
-
-	if ((n11 > 74.5) and (flines_filled1 >= 0.90) and (SEL1 == 1)) {
-		power1.setValue(0.74);
-	}
-
-	if ((n12 > 74.5) and (flines_filled2 >= 0.90) and (SEL2 == 1)) {
-		power2.setValue(0.74);
-	}
-
-	settimer(flight, 0.2);
-}
-
-flight();
-
-
 var fadecEngine = {
     # handles to properties
     flines_filled: nil,
@@ -267,6 +212,23 @@ var fadecEngine = {
         
         if ((v.n1pct > 17) and (v.n1pct < 73.5)) {
             me.starting.setValue(1.0);
+        }
+        
+        # flight
+        if ((v.n1pct > 1) and (v.SEL == 2)) {
+            me.power.setValue(1);
+        }
+        
+        if ((v.n1pct > 1) and (v.flines_filled < 0.90)) {
+            me.power.setValue(0);
+        }
+        
+        if ((v.n1pct > 1) and (v.SEL == 0)) {
+            me.power.setValue(0);
+        }
+        
+        if ((v.n1pct > 74.5) and (v.flines_filled >= 0.90) and (v.SEL == 1)) {
+            me.power.setValue(0.74);
         }
     }
 };
