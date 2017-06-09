@@ -32,49 +32,6 @@
 #simpel hack- known issue: boost-pump runs even without power#
 
 
-###idle 1###
-
-var idle1 = {
-	init: func {
-		var power1 = props.globals.getNode("controls/engines/engine/power", 1);
-		var flines_filled1 = props.globals.getNode("controls/fuel/tank/fuellines_filled").getValue() or 0;
-
-		var n11 = props.globals.getNode("/engines/engine/n1-pct").getValue() or 0;
-		var CUTOFF1 = props.globals.getNode("/controls/engines/engine/cutoff").getValue() or 0;
-		var SEL1 = props.globals.getNode("/controls/engines/engine/fadec/engine-state").getValue() or 0;
-
-		if (SEL1 == 1) {
-			power1.setValue (0.74);
-		}
-	}
-};
-
-setlistener("controls/engines/engine/injection", func {
-	idle1.init();
-});
-
-
-###idle2###
-var idle2 = {
-	init: func {
-		var power2 = props.globals.getNode("controls/engines/engine[1]/power", 1);
-		var flines_filled2 = props.globals.getNode("controls/fuel/tank[1]/fuellines_filled").getValue() or 0;
-
-		var n12 = props.globals.getNode("/engines/engine[1]/n1-pct").getValue() or 0;
-		var CUTOFF2 = props.globals.getNode("/controls/engines/engine[1]/cutoff").getValue() or 0;
-		var SEL2 = props.globals.getNode("/controls/engines/engine[1]/fadec/engine-state").getValue() or 0;
-
-		if (SEL2 == 1) {
-			power2.setValue (0.74);
-		}
-	}
-};
-
-setlistener("controls/engines/engine[1]/injection", func {
-	idle2.init();
-});
-
-
 var fadecEngine = {
     # handles to properties
     flines_filled: nil,
@@ -111,6 +68,9 @@ var fadecEngine = {
         timer.start();
         setlistener(me.starting, func {
             me.onStarting();
+        });
+        setlistener(me.injection, func {
+            me.onInjection();
         });
     },
     
@@ -190,6 +150,14 @@ var fadecEngine = {
         }
         if ((v.n1pct > 18) and (v.n1pct < 73.5)) {
             me.injection.setValue(1.0);
+        }
+    },
+    
+    onInjection: func() {
+        var v = me.getValues();
+        
+        if (v.SEL == 1) {
+            me.power.setValue(0.74);
         }
     }
 };
