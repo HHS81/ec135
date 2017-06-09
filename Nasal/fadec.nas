@@ -32,61 +32,6 @@
 #simpel hack- known issue: boost-pump runs even without power#
 
 
-###fuel injection 1###
-
-var injection1 = {
-	init: func {
-
-		var injection1 = props.globals.getNode("controls/engines/engine/injection", 1);
-		var power1 = props.globals.getNode("controls/engines/engine/power", 1);
-
-		var flines_filled1 = props.globals.getNode("controls/fuel/tank/fuellines_filled").getValue() or 0;
-		var n11 = props.globals.getNode("/engines/engine/n1-pct").getValue() or 0;
-
-		if (flines_filled1 > 0.90) {
-			power1.setValue (0.13);
-		} else {
-			power1.setValue(0.0);
-		}
-		
-		if ((n11 > 18) and (n11 < 73.5)) {
-			injection1.setValue(1.0);
-		}
-	}
-};
-
-setlistener("controls/engines/engine[0]/starting", func {
-	injection1.init();
-});
-
-###fuel injection 2###
-
-var injection2 = {
-	init: func {
-		var injection2 = props.globals.getNode("controls/engines/engine[1]/injection", 1);
-		var power2 = props.globals.getNode("controls/engines/engine[1]/power", 1);
-
-		var flines_filled2 = props.globals.getNode("controls/fuel/tank[1]/fuellines_filled").getValue() or 0;
-		var n12 = props.globals.getNode("/engines/engine[1]/n1-pct").getValue() or 0;
-
-		if (flines_filled2 > 0.90) {
-			power2.setValue (0.13);
-		} else {
-			power2.setValue(0.0);
-		}
-		
-		if ((n12 > 18) and (n12 < 73.5)) {
-			injection2.setValue(1.0);
-		}
-	}
-};
-
-setlistener("controls/engines/engine[1]/starting", func {
-	injection2.init();
-});
-
-
-
 ###idle 1###
 
 var idle1 = {
@@ -164,6 +109,9 @@ var fadecEngine = {
         
         timer = maketimer(0.1, me, me.run);
         timer.start();
+        setlistener(me.starting, func {
+            me.onStarting();
+        });
     },
     
     # get values of all properties
@@ -229,6 +177,19 @@ var fadecEngine = {
         
         if ((v.n1pct > 74.5) and (v.flines_filled >= 0.90) and (v.SEL == 1)) {
             me.power.setValue(0.74);
+        }
+    },
+    
+    onStarting: func() {
+        var v = me.getValues();
+        
+        if (v.flines_filled > 0.90) {
+            me.power.setValue(0.13);
+        } else {
+            me.power.setValue(0.0);
+        }
+        if ((v.n1pct > 18) and (v.n1pct < 73.5)) {
+            me.injection.setValue(1.0);
         }
     }
 };
