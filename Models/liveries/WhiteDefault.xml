@@ -78,9 +78,9 @@
 			</ec135>
 		   		   </model>
     <rendering>	   
-	<refl_correction type="string">-0.05</refl_correction>
+	<refl_correction type="string">-0.1</refl_correction>
 	<refl-type>1.0</refl-type>
-	<fresnel-factor>0.3</fresnel-factor>
+	<fresnel-factor>0.45</fresnel-factor>
     </rendering>
 	</sim>
 </PropertyList>

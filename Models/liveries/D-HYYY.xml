@@ -75,7 +75,7 @@
     <rendering>	   
 	<refl_correction type="string">-0.16</refl_correction>
 	<refl-type>1.0</refl-type>
-	<fresnel-factor>0.75</fresnel-factor>
+	<fresnel-factor>0.7</fresnel-factor>
     </rendering>
   </sim>
 </PropertyList>
