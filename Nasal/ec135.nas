@@ -193,6 +193,9 @@ var fuel = {
 	levell: func {
 		return me.lsupply.level();	
 	},
+	levelSupply: func(engineNumber) {
+		return engineNumber == 0 ? me.lsupply.level() : me.rsupply.level();
+	},
 	
 	consume: func(amount) {
 		return me.freeze ? 0 : me.rsupply.consume(amount) + me.lsupply.consume(amount);
@@ -221,6 +224,7 @@ var n1pct2 = props.globals.getNode("engines/engine[1]/n1-pct", 1);
 var Engine = {
 	new: func(n) {
 		var m = { parents: [Engine] };
+		m.engineNumber = n;
 		m.in = props.globals.getNode("controls/engines", 1).getChild("engine", n, 1);
 		m.out = props.globals.getNode("engines", 1).getChild("engine", n, 1);
 		m.airtempN = props.globals.getNode("/environment/temperature-degc");
@@ -261,8 +265,6 @@ var Engine = {
 		me.n2LP.set(me.n2 = 0);
 	},
 	update: func(dt, trim = 0) {
-		var runr = props.globals.getNode("/engines/engine/running", 1);
-		var runl = props.globals.getNode("/engines/engine[1]/running", 1);
 		var starter = me.starterLP.filter(me.starterN.getValue() * 0.19);	# starter 15-20% N1max
 		me.powerN.setValue(me.power = clamp(me.powerN.getValue()));
 		var power = me.power * 1.00 + trim;					# 100% = N2% in flight position
@@ -279,14 +281,9 @@ var Engine = {
 				me.timer.start();
 			}
 
-		} elsif (power < 0.05 or !fuel.levelr()) {
-			runr.setBoolValue(0);
+		} elsif (power < 0.05 or !fuel.levelSupply(me.engineNumber)) {
+			me.runningN.setBoolValue(0);
 			me.timer.stop();
-			
-		} elsif (power < 0.05 or !fuel.levell()) {
-			runl.setBoolValue(0);
-			me.timer.stop();
-
 		} else {
 			me.fuelflow = power;
 		}
@@ -1078,8 +1075,8 @@ setlistener("/sim/signals/fdm-initialized", func {
 	gui.menuEnable("autopilot", 0);
 	init_rotoranim();
 	vibration.init();
-	engines.init();
 	fuel.init();
+	engines.init();
 	mouse.init();
 
 	

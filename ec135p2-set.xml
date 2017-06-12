@@ -215,7 +215,7 @@ Thanks for all the help!
 				<y-offset-m type="double">0.60</y-offset-m><!--up-->
 				<z-offset-m type="double">1.25</z-offset-m><!--back-->
 				<pitch-offset-deg>-20</pitch-offset-deg>
-				<default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+				<default-field-of-view-deg type="double">94.0</default-field-of-view-deg>
 				<limits>
                     <enabled type="bool">true</enabled>
                     <left>
@@ -281,7 +281,7 @@ Thanks for all the help!
       <z-offset-m archive="y" type="double">1.33</z-offset-m>
 	<heading-offset-deg type="double">0</heading-offset-deg>
 	<pitch-offset-deg>-20</pitch-offset-deg>
-	<default-field-of-view-deg>55</default-field-of-view-deg>
+	<default-field-of-view-deg>94</default-field-of-view-deg>
 	<dynamic-view type="bool">true</dynamic-view>
                 <limits>
                     <enabled type="bool">true</enabled>
@@ -312,7 +312,7 @@ Thanks for all the help!
 	<z-offset-m archive="y" type="double">2.94</z-offset-m>
 	<heading-offset-deg type="double">0</heading-offset-deg>
 	<pitch-offset-deg>-3</pitch-offset-deg>
-	<default-field-of-view-deg>55</default-field-of-view-deg>
+	<default-field-of-view-deg>94</default-field-of-view-deg>
 	<dynamic-view type="bool">true</dynamic-view>
                 <limits>
                     <enabled type="bool">true</enabled>
@@ -344,17 +344,17 @@ Thanks for all the help!
          <heading-offset-deg type="double">180</heading-offset-deg>
 	       <default-heading-offset-deg>180</default-heading-offset-deg>
 	<pitch-offset-deg>-3</pitch-offset-deg>
-	<default-field-of-view-deg>55</default-field-of-view-deg>
+	<default-field-of-view-deg>94</default-field-of-view-deg>
 	<dynamic-view type="bool">true</dynamic-view>
                 <limits>
                     <enabled type="bool">true</enabled>
                     <left>
-                        <heading-max-deg type="double">220</heading-max-deg>
+                        <heading-max-deg type="double">210</heading-max-deg>
                         <x-offset-max-m type="double">0.3</x-offset-max-m>
                         <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
                     </left>
                     <right>
-                        <heading-max-deg type="double">220</heading-max-deg>
+                        <heading-max-deg type="double">210</heading-max-deg>
                         <x-offset-max-m type="double">0.25</x-offset-max-m>
                         <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
                     </right>
