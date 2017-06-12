@@ -29,14 +29,14 @@
 			</texture>
 			<texture n="5">
 			<type>cubemap</type>
-				<images>
-					<positive-x>Aircraft/Generic/Effects/CubeMaps/real.blue-sky/fair-sky_px.png</positive-x>
-					<negative-x>Aircraft/Generic/Effects/CubeMaps/real.blue-sky/fair-sky_nx.png</negative-x>
-					<positive-y>Aircraft/Generic/Effects/CubeMaps/real.blue-sky/fair-sky_py.png</positive-y>
-					<negative-y>Aircraft/Generic/Effects/CubeMaps/real.blue-sky/fair-sky_ny.png</negative-y>
-					<positive-z>Aircraft/Generic/Effects/CubeMaps/real.blue-sky/fair-sky_pz.png</positive-z>
-					<negative-z>Aircraft/Generic/Effects/CubeMaps/real.blue-sky/fair-sky_nz.png</negative-z>
-				</images>
+			<images>
+				<positive-x>Aircraft/Generic/Effects/fgfs-sky2/1.png</positive-x>
+				<negative-x>Aircraft/Generic/Effects/fgfs-sky2/4.png</negative-x>
+				<positive-y>Aircraft/Generic/Effects/fgfs-sky2/2.png</positive-y>
+				<negative-y>Aircraft/Generic/Effects/fgfs-sky2/3.png</negative-y>
+				<positive-z>Aircraft/Generic/Effects/fgfs-sky2/6.png</positive-z>
+				<negative-z>Aircraft/Generic/Effects/fgfs-sky2/5.png</negative-z>
+			</images>
 			</texture>
 			<texture n="6">
 			<image>Aircraft/ec135/Models/Effects/alpha.png</image>
