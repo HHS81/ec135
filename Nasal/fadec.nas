@@ -109,20 +109,20 @@ var fadecEngine = {
         }
         
         # starter cycle
-        if ((v.SEL >= 1) and (v.n1pct < 73.5) and (v.VOLTS > 22) and (!v.starterOpposite)) {
+        if ((v.SEL >= 1) and (v.n1pct < 50) and (v.VOLTS > 22) and (!v.starterOpposite)) {
             me.starter.setValue(1);
         } else {
             me.starter.setValue(0);
         }
         
         # ignition cycle
-        if ((v.n1pct > 17) and (v.n1pct < 73.5) and (v.SEL >= 1) and (v.VOLTS > 24)) {
+        if ((v.n1pct > 17) and (v.n1pct < 50) and (v.SEL >= 1) and (v.VOLTS > 24)) {
             me.ignition.setValue(1);
         } else {
             me.ignition.setValue(0);
         }
         
-        if ((v.n1pct > 17) and (v.n1pct < 73.5)) {
+        if ((v.n1pct > 17) and (v.n1pct < 50)) {
             me.starting.setValue(1.0);
         }
         
@@ -152,7 +152,7 @@ var fadecEngine = {
         } else {
             me.power.setValue(0.0);
         }
-        if ((v.n1pct > 18) and (v.n1pct < 73.5)) {
+        if ((v.n1pct > 18) and (v.n1pct < 50)) {
             me.injection.setValue(1.0);
         }
     },
