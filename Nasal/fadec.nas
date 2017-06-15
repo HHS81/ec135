@@ -45,6 +45,7 @@ var fadecEngine = {
     injection: nil,
     SEL: nil,
     VOLTS: nil,
+    starterOpposite: nil,
     
     # timer object to have the main loop called on a regular basis
     timer: nil,
@@ -52,12 +53,14 @@ var fadecEngine = {
     # initialize handles and setup main loop
     init: func(engineNumber) {
         var e = props.globals.getNode("/controls/engines").getChild("engine", engineNumber, 1);
+        var e_opposite = props.globals.getNode("/controls/engines").getChild("engine", engineNumber == 1 ? 0 : 1, 1);
         me.flines_filled = props.globals.getNode("/controls/fuel/", 1).getChild("tank", engineNumber, 1).getNode("fuellines_filled", 1);
         me.primepump = props.globals.getNode("/systems/electrical/outputs/prime-pump" ~ (engineNumber + 1), 1);
         me.CUTOFF = e.getNode("cutoff", 1);
         me.n1pct = props.globals.getNode("/engines", 1).getChild("engine", engineNumber, 1).getNode("n1-pct", 1);
         me.ignition = e.getNode("ignition", 1);
         me.starter = e.getNode("starter", 1);
+        me.starterOpposite = e_opposite.getNode("starter", 1);
         me.power = e.getNode("power", 1);
         me.starting = e.getNode("starting", 1);
         me.injection = e.getNode("injection", 1);
@@ -88,6 +91,7 @@ var fadecEngine = {
         v.injection = me.injection.getValue() or 0;
         v.VOLTS = me.VOLTS.getValue() or 0;
         v.SEL = me.SEL.getValue() or 0;
+        v.starterOpposite = me.starterOpposite.getValue() or 0;
         return v;
     },
     
@@ -105,20 +109,20 @@ var fadecEngine = {
         }
         
         # starter cycle
-        if ((v.SEL == 1) and (v.n1pct < 73.5) and (v.VOLTS > 22)) {
+        if ((v.SEL >= 1) and (v.n1pct < 50) and (v.VOLTS > 22) and (!v.starterOpposite)) {
             me.starter.setValue(1);
         } else {
             me.starter.setValue(0);
         }
         
         # ignition cycle
-        if ((v.n1pct > 17) and (v.n1pct < 73.5) and (v.SEL == 1) and (v.VOLTS > 24)) {
+        if ((v.n1pct > 17) and (v.n1pct < 50) and (v.SEL >= 1) and (v.VOLTS > 24)) {
             me.ignition.setValue(1);
         } else {
             me.ignition.setValue(0);
         }
         
-        if ((v.n1pct > 17) and (v.n1pct < 73.5)) {
+        if ((v.n1pct > 17) and (v.n1pct < 50)) {
             me.starting.setValue(1.0);
         }
         
@@ -148,7 +152,7 @@ var fadecEngine = {
         } else {
             me.power.setValue(0.0);
         }
-        if ((v.n1pct > 18) and (v.n1pct < 73.5)) {
+        if ((v.n1pct > 18) and (v.n1pct < 50)) {
             me.injection.setValue(1.0);
         }
     },
@@ -156,7 +160,7 @@ var fadecEngine = {
     onInjection: func() {
         var v = me.getValues();
         
-        if (v.SEL == 1) {
+        if (v.SEL >= 1) {
             me.power.setValue(0.74);
         }
     }
