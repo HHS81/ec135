@@ -64,6 +64,13 @@
 				<not>
 					<property>engines/engine[0]/running</property>
 				</not>
+				<not>
+					<property>controls/engines/engine[0]/starter</property>
+				</not>
+				<greater-than>
+					<property>engines/engine[0]/n1-pct</property>
+					<value>0.1</value>
+				</greater-than>
 			</condition>
 			<volume>
 				<property>sim/model/ec135/sound/volume_external</property>
@@ -133,6 +140,13 @@
 				<not>
 					<property>engines/engine[1]/running</property>
 				</not>
+				<not>
+					<property>controls/engines/engine[1]/starter</property>
+				</not>
+				<greater-than>
+					<property>engines/engine[1]/n1-pct</property>
+					<value>0.1</value>
+				</greater-than>
 			</condition>
 			<volume>
 				<property>sim/model/ec135/sound/volume_external</property>
@@ -393,6 +407,13 @@
 			<not>
 			<property>engines/engine[0]/running</property>
 			</not>
+			<not>
+				<property>controls/engines/engine[0]/starter</property>
+			</not>
+			<greater-than>
+				<property>engines/engine[0]/n1-pct</property>
+				<value>0.1</value>
+			</greater-than>
 			</condition>
 			<volume>
 				<property>sim/model/ec135/sound/volume_internal</property>
@@ -451,6 +472,13 @@
 			<not>
 			<property>engines/engine[1]/running</property>
 			</not>
+			<not>
+				<property>controls/engines/engine[1]/starter</property>
+			</not>
+			<greater-than>
+				<property>engines/engine[1]/n1-pct</property>
+				<value>0.1</value>
+			</greater-than>
 			</condition>
 			<volume>
 				<property>sim/model/ec135/sound/volume_internal</property>
