@@ -63,6 +63,7 @@
      <object-name>backlight.glare</object-name>
      <object-name>navlight_right</object-name>
      <object-name>navlight_left</object-name>
+     <object-name>rotor_disc_T</object-name>
 </effect>
 
 
@@ -111,6 +112,45 @@
 		</offsets>
 </model>
 
+
+	<animation>
+		<!-- Rotate the fenestron blades -->
+		<type>rotate</type>
+		<object-name>Tblade</object-name>
+		<property>rotors/tail/blade/position-deg</property>
+		<factor>1</factor>
+		<center>
+			<x-m>8.863155</x-m>
+			<y-m>-0.0975705</y-m>
+			<z-m>0.8773625</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<!-- Hide the fenestron blades when rotating with high rpm -->
+		<type>select</type>
+		<object-name>Tblade</object-name>
+		<condition>
+			<less-than>
+				<property>rotors/tail/rpm</property>
+				<value>200</value>
+			</less-than>
+		</condition>
+	</animation>
+	<animation>
+		<!-- Fade in the fenestron disc with rising rpm -->
+		<type>blend</type>
+		<object-name>rotor_disc_T</object-name>
+		<property>rotors/tail/rpm</property>
+		<min>0.6</min>
+		<max>1.0</max>
+		<offset>1.4</offset>
+		<factor>-0.004</factor>
+	</animation>
 
 	<animation>
 		<type>rotate</type>
