@@ -397,6 +397,7 @@ update_virtual_bus = func( dt ) {
 	load = 0.0;
 	bus_volts = 0.0;
 	power_source = nil;
+	lbus_volts = battery_volts;
 	rbus_volts = battery_volts;
 	bus_volts = battery_volts;
 	power_source = "battery";
