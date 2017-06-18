@@ -465,6 +465,7 @@ var alternator1_volts = alternator1.get_output_volts();
    Amps.setValue(ammeter_ave);
    Volts.setValue(bus_volts);
     alternator1.apply_load(load);
+    alternator2.apply_load(load);
 
 return load;
 }
