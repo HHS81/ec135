@@ -282,7 +282,7 @@ var Engine = {
 			}
 
 		} elsif (power < 0.05 or !fuel.levelSupply(me.engineNumber)) {
-			me.runningN.setBoolValue(0);
+			me.runningN.setBoolValue(me.running = 0);
 			me.timer.stop();
 		} else {
 			me.fuelflow = power;
