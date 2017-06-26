@@ -16,15 +16,8 @@
 	</offsets>
 	
 <effect>
-	<inherits-from>Effects/lightmap</inherits-from>
-	<parameters>
-		<texture n="1">
-			<image>Aircraft/ec135/Models/OverheadPanel_LM.png</image>
-		</texture>
-		<condition><use>controls/lighting/instrument-lights</use></condition>
-		<factor><use>systems/electrical/outputs/instrument-lights-norm</use></factor>
-	</parameters>
- 	<object-name>OverheadPanel</object-name> 
+	<inherits-from>Effects/ec135_ovh</inherits-from>
+	 	<object-name>OverheadPanel</object-name> 
 </effect>	
 	
 	<model>

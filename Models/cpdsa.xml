@@ -18,14 +18,7 @@
 	<!--Instrumentation-->
 	
 <effect>
-	<inherits-from>Effects/lightmap</inherits-from>
-	<parameters>
-		<texture n="1">
-			<image>Aircraft/ec135/Models/AnalogPanel_LM.png</image>
-		</texture>
-		<condition><use>controls/lighting/instrument-lights</use></condition>
-		<factor><use>systems/electrical/outputs/stdby-instrument-lights-norm</use></factor>
-	</parameters>
+	<inherits-from>Effects/ec135_analogpanel</inherits-from>
  	<object-name>analogpanel</object-name> 
  	<object-name>Plane.066</object-name> 
 </effect>	
