@@ -580,8 +580,13 @@ Thanks for all the help!
 
 	</sim>
 	
-	
-	
+<environment>	
+	<aircraft-effects>
+		<wash-x>0</wash-x>
+		<wash-y>0</wash-y>
+		<wash-strength>0</wash-strength>
+	</aircraft-effects>
+</environment>		
 	
 <limits>
 <vne>155</vne>
@@ -953,9 +958,10 @@ Thanks for all the help!
 
 	<nasal>
 		<ec135>
+			<file>Aircraft/ec135/Nasal/rotor_wash.nas</file>
 			<file>Aircraft/ec135/Nasal/externalweights.nas</file>
 			<file>Aircraft/ec135/Nasal/fadec.nas</file>
-                             		<file>Aircraft/ec135/Nasal/mk-wiper.nas</file>
+			<file>Aircraft/ec135/Nasal/mk-wiper.nas</file>
 			<file>Aircraft/ec135/Nasal/systems.nas</file>
 			<file>Aircraft/ec135/Nasal/Electrical.nas</file>
 			<file>Aircraft/Generic/helicopter-fcs.nas</file>
