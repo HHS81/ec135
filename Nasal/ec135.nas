@@ -962,13 +962,6 @@ var init_rotoranim = func {
 
 
 
-
-
-
-
-
-
-
 # view management ===================================================
 
 var elapsedN = props.globals.getNode("/sim/time/elapsed-sec", 1);
@@ -1027,8 +1020,6 @@ dynamic_view.register(func {
 	me.roll_offset =						# roll change due to
 		-15 * r * lowspeed;					#    roll
 });
-
-
 
 
 
