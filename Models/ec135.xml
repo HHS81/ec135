@@ -98,6 +98,24 @@
 
 
 <model>
+		<name>BambiBucket</name>
+		<path>Aircraft/ec135/Models/BambiBucket.xml</path>
+		<condition>
+			<property>/sim/model/BambiBucket/enabled</property>
+		</condition>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+
+			<pitch-deg>-3.5</pitch-deg>
+
+		</offsets>
+</model>
+
+
+
+<model>
 		<name>mainrotor</name>
 		<path>Aircraft/ec135/Models/rotors/rotoranimation.xml</path>
 

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+
+
+	<path>BambiBucket.ac</path>
+	<offsets>
+		<z-m>0</z-m>
+		<y-m>0.0</y-m>
+		<x-m>0</x-m>
+
+		<pitch-deg>0</pitch-deg>
+		
+	</offsets>
+
+<animation>
+		<type>rotate</type>
+		<object-name>BambiBucket.001</object-name>
+		<object-name>BambiBucket</object-name>
+		<property>sim/model/BambiBucket/pitch3</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>1</factor>
+		<center>
+			<x-m>2.84935</x-m>
+			<y-m>0.002145</y-m>
+			<z-m>-0.96521</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0.14549</y>
+			<z>0</z>
+		</axis>
+	</animation>
+<animation>
+		<type>rotate</type>
+		<object-name>BambiBucket</object-name>
+		<property>sim/model/BambiBucket/pitch2</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>1</factor>
+		<center>
+			<x-m>2.84935</x-m>
+			<y-m>0.002145</y-m>
+			<z-m>-1.53288</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0.14549</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>BambiBucke.001</object-name>
+		<object-name>BambiBucket</object-name>
+		<property>sim/model/BambiBucket/roll2</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>-1</factor>
+		<center>
+			<x-m>2.774424</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.96521</z-m>
+		</center>
+		<axis>
+			<x>0.149853</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>BambiBucket</object-name>
+		<property>sim/model/BambiBucket/roll3</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>-1</factor>
+		<center>
+			<x-m>2.849355</x-m>
+			<y-m>0</y-m>
+			<z-m>-1.53288</z-m>
+		</center>
+		<axis>
+			<x>-0.60153</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+
+
+
+
+
+
+</PropertyList>
