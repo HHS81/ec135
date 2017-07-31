@@ -148,6 +148,21 @@
 		<signal>
 			<type>double</type><property type="string">/rotors/main/stall-filtered</property>
 		</signal>
+		
+		<!--<signal>
+			<type>float</type><property type="string">/sim/model/BambiBucket/pitch1</property>
+		</signal>
+		
+		<signal>
+			<type>float</type><property type="string">/sim/model/BambiBucket/roll1</property>
+		</signal>
+		<signal>
+			<type>float</type><property type="string">/sim/model/BambiBucket/pitch2</property>
+		</signal>
+		
+		<signal>
+			<type>float</type><property type="string">/sim/model/BambiBucket/roll2</property>
+		</signal>-->
 	
 	</signals>
     
