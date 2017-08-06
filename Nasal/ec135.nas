@@ -32,7 +32,9 @@ rightBackDoor = aircraft.door.new( "/sim/model/ec135/door-positions/rightBackDoo
 leftRearDoor = aircraft.door.new( "/sim/model/ec135/door-positions/leftRearDoor", 4, 0 );
 rightRearDoor = aircraft.door.new( "/sim/model/ec135/door-positions/rightRearDoor", 4, 0 );
 
+# BambiBucket, Winch, LongLine
 BB = aircraft.door.new("/sim/model/BambiBucket/deployflexhose", .79, 1 );
+WinchDeploy = aircraft.door.new("/sim/model/Winch/deploy", 2, 0 );
 
 # timers ============================================================
 aircraft.timer.new("/sim/time/hobbs/helicopter", nil).start();
@@ -1063,6 +1065,7 @@ var main_loop = func {
 	engines.update(dt);
 	vibration.update(dt);
 	BambiBucket();
+	Winch();
 	settimer(main_loop, 0);
 }
 

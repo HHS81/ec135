@@ -819,7 +819,6 @@
 <animation>
 	<type>select</type>
 	<object-name>winch</object-name>
-	<object-name>winchhook</object-name>
 	<object-name>winchfix</object-name>
 	<condition>
 	<property>sim/model/ec135/winch</property>
@@ -1022,6 +1021,61 @@
 	<property>sim/model/ec135/reardoorL</property>
 	</condition>
 </animation>
+
+<!--winch animation-->
+	<animation>
+		<type>rotate</type>
+		<object-name>winch</object-name>
+		<property>sim/model/Winch/deploy/position-norm</property>
+		<factor>-40</factor>
+		<center>
+			<x-m>2.915477</x-m>
+			<y-m>-0.676405</y-m>
+			<z-m>0.954338</z-m>
+		</center>
+		<axis>
+			<x>0.02589</x>
+			<y>-0.025472</y>
+			<z>-0.299306</z>
+		</axis>
+	</animation>
+	
+<model>
+		<name>winch</name>
+		<path>Aircraft/ec135/Models/Winch/winch.xml</path>
+
+		<offsets>
+
+			<x-m>2.073</x-m>
+			<y-m>-0.702</y-m>
+			<z-m>1.082</z-m>
+
+			<pitch-deg>-6</pitch-deg>
+
+		</offsets>
+</model>
+
+	
+	<!--<animation>
+		<type>rotate</type>
+		<model>Aircraft/ec135/Models/winch/winch.xml</model>
+		<property>sim/model/Winch/deploy/position-norm</property>
+		<factor>-40</factor>
+		<center>
+			<x-m>2.915477</x-m>
+			<y-m>-0.676405</y-m>
+			<z-m>0.954338</z-m>
+		</center>
+		<axis>
+			<x>0.02589</x>
+			<y>-0.025472</y>
+			<z>-0.299306</z>
+		</axis>
+	</animation>-->
+
+
+	
+
 
 <!-- Material Animations -->
 
