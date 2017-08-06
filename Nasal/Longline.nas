@@ -19,16 +19,16 @@
 # 1 Gallon = 8.345404 lbs * 2500 = 20863 lbs
 
 var capacity = 0.0;
-var wflex_angle_v_array = [0,0,0];
-var wflex_angle_vr_array = [0,0,0];
-var wflex_angle_r_array = [0,0,0];
+var flex_angle_v_array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var flex_angle_vr_array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var flex_angle_r_array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var onground_flag = 0;
 var drop_flag = 0;
 
-var Winch = func {
+var Longline = func {
 			
 
-	var payload = getprop("sim/model/ec135/winch/enabled");
+	var payload = getprop("sim/model/Longline/enabled");
 	var paused = getprop("sim/freeze/clock");
 	var crashed = getprop("sim/crashed");
 
@@ -42,11 +42,11 @@ var Winch = func {
 	
 			
 
-	#################### cable ####################
+	#################### flexhose ####################
 
-	var alt_agl = altitude * 0.3048 + getprop("/sim/model/Winch/offset");
+	var alt_agl = altitude * 0.3048 + getprop("/sim/model/Longline/offset");
 	var n_segments = 3;
-	var segment_length = getprop("/sim/model/Winch/factor");
+	var segment_length = getprop("/sim/model/Longline/factor");
 
 	if (overland)
 		{
@@ -62,7 +62,7 @@ var Winch = func {
 		   onground_flag = 0;
 		}
 
-	setprop("/sim/model/Winch/winchhitsground", onground_flag);
+	setprop("/sim/model/Longline/longlinehitsground", onground_flag);
 
 	if (sniffer == 1) 
 		{
@@ -74,19 +74,19 @@ var Winch = func {
 			drop_flag -= 1;
 		else
 			{
-				#setprop("sim/model/Winch/position-norm", 0);
+				#setprop("sim/model/Longline/position-norm", 0);
 				#sniffer = 0;
 				drop_flag = 0;
 			}
 
-	var flex_force = getprop("/sim/model/Winch/flex-force");
-	var damping = getprop("/sim/model/Winch/damping");
-	var stiffness = getprop("/sim/model/Winch/stiffness");
+	var flex_force = getprop("/sim/model/Longline/flex-force");
+	var damping = getprop("/sim/model/Longline/damping");
+	var stiffness = getprop("/sim/model/Longline/stiffness");
 	var sum_angle = 0.0;
 	var sum_roll = 0.0;
 	var dt = getprop("/sim/time/delta-sec");
-	var bend_force = getprop("/sim/model/Winch/bendforce");
-	var angle_correction = getprop("/sim/model/Winch/correction");
+	var bend_force = getprop("/sim/model/Longline/bendforce");
+	var angle_correction = getprop("/sim/model/Longline/correction");
 
 	if (onground_flag == 0)
 		{
@@ -122,44 +122,44 @@ var Winch = func {
 	if (onground_flag == 0)
 	   {
 
-	   var current_angle = getprop("/sim/model/Winch/pitch1");
+	   var current_angle = getprop("/sim/model/Longline/pitch1");
 	   var ang_error = ref_ang1 - current_angle;
 
-	   wflex_angle_v_array[0] += ang_error * stiffness * dt;
-	   wflex_angle_v_array[0] *= damping_factor;
+	   flex_angle_v_array[0] += ang_error * stiffness * dt;
+	   flex_angle_v_array[0] *= damping_factor;
 
-	   var ang_speed = wflex_angle_v_array[0];
+	   var ang_speed = flex_angle_v_array[0];
 
-	   setprop("/sim/model/Winch/pitch1", current_angle + dt * ang_speed);
+	   setprop("/sim/model/Longline/pitch1", current_angle + dt * ang_speed);
 	   
 	   
-	   var current_roll = getprop("/sim/model/Winch/roll1");
+	   var current_roll = getprop("/sim/model/Longline/roll1");
 	   var roll_error = ref_ang2 - current_roll;
 
-	   wflex_angle_r_array[0] += roll_error * stiffness * dt;
-	   wflex_angle_r_array[0] *= damping_factor;
+	   flex_angle_r_array[0] += roll_error * stiffness * dt;
+	   flex_angle_r_array[0] *= damping_factor;
 
-	   var roll_speed = wflex_angle_r_array[0];
+	   var roll_speed = flex_angle_r_array[0];
 
-	   setprop("/sim/model/Winch/roll1", current_roll + dt * roll_speed);
+	   setprop("/sim/model/Longline/roll1", current_roll + dt * roll_speed);
 
 	  
 	   # kink excitation
 	   
-	   #var kink =  -(next_roll - wflex_angle_r_array[0]);
+	   #var kink =  -(next_roll - flex_angle_r_array[0]);
 	   
-	   #setprop("/sim/model/Winch/roll2",  kink) ;
-	   #wflex_angle_r_array[1] = kink;
+	   #setprop("/sim/model/Longline/roll2",  kink) ;
+	   #flex_angle_r_array[1] = kink;
 
 	   }
 	else
 	   {
 
-	   setprop("/sim/model/Winch/pitch1", ref_ang1);
-	   setprop("/sim/model/Winch/roll1", ref_ang2);
+	   setprop("/sim/model/Longline/pitch1", ref_ang1);
+	   setprop("/sim/model/Longline/roll1", ref_ang2);
 
 	   }
-
+#########################################################################
 	var roll_target = 0.0;
 
 	for (var i = 1; i< n_segments; i=i+1)
@@ -200,38 +200,36 @@ var Winch = func {
 		
 		if (onground_flag == 0)
 		  {
-		  current_angle = getprop("/sim/model/Winch/pitch"~(i+1));
+		  current_angle = getprop("/sim/model/Longline/pitch"~(i+1));
 		  ang_error = angle - current_angle;
 		  
-		current_roll = getprop("/sim/model/Winch/roll"~(i+1));
+		current_roll = getprop("/sim/model/Longline/roll"~(i+1));
 		  roll_error = roll - current_roll;
 		 
 
-		  wflex_angle_v_array[i] += ang_error * stiffness * dt;
-		  wflex_angle_v_array[i] *= damping_factor;
+		  flex_angle_v_array[i] += ang_error * stiffness * dt;
+		  flex_angle_v_array[i] *= damping_factor;
 
-		  ang_speed = wflex_angle_v_array[i];
+		  ang_speed = flex_angle_v_array[i];
 
-		  setprop("/sim/model/Winch/pitch"~(i+1), current_angle + dt * ang_speed);
+		  setprop("/sim/model/Longline/pitch"~(i+1), current_angle + dt * ang_speed);
 		  
-		  wflex_angle_r_array[i] += roll_error * stiffness * dt;
-		  wflex_angle_r_array[i] *= damping_factor;
+		  flex_angle_r_array[i] += roll_error * stiffness * dt;
+		  flex_angle_r_array[i] *= damping_factor;
 
-		  roll_speed = wflex_angle_r_array[i];
+		  roll_speed = flex_angle_r_array[i];
 
-		  setprop("/sim/model/Winch/roll"~(i+1), current_roll + dt * roll_speed);
+		  setprop("/sim/model/Longline/roll"~(i+1), current_roll + dt * roll_speed);
 
 		  }
 		else
 		  {
-		  setprop("/sim/model/Winch/pitch"~(i+1), angle + angle_correction);
-		  setprop("/sim/model/Winch/roll"~(i+1), roll + angle_correction);
+		  setprop("/sim/model/Longline/pitch"~(i+1), angle + angle_correction);
+		  setprop("/sim/model/Longline/roll"~(i+1), roll + angle_correction);
 
 		  }
 
 		}
+}
 
 	# copy the current values into the last step array
-
-
-}

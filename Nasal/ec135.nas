@@ -1066,6 +1066,7 @@ var main_loop = func {
 	vibration.update(dt);
 	BambiBucket();
 	Winch();
+	Longline();
 	settimer(main_loop, 0);
 }
 

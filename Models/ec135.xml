@@ -1055,24 +1055,23 @@
 		</offsets>
 </model>
 
-	
-	<!--<animation>
-		<type>rotate</type>
-		<model>Aircraft/ec135/Models/winch/winch.xml</model>
-		<property>sim/model/Winch/deploy/position-norm</property>
-		<factor>-40</factor>
-		<center>
-			<x-m>2.915477</x-m>
-			<y-m>-0.676405</y-m>
-			<z-m>0.954338</z-m>
-		</center>
-		<axis>
-			<x>0.02589</x>
-			<y>-0.025472</y>
-			<z>-0.299306</z>
-		</axis>
-	</animation>-->
+<model>
+		<name>Longline</name>
+		<path>Aircraft/ec135/Models/Longline/longline.xml</path>
 
+		<offsets>
+
+			<x-m>2.8703</x-m>
+			<y-m>-0.00</y-m>
+			<z-m>-0.951</z-m>
+
+			<pitch-deg>-3.5</pitch-deg>
+
+		</offsets>
+</model>
+
+	
+	
 
 	
 
