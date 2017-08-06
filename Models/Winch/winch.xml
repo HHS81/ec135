@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+
+<!-- Eurocopter EC 135 Helicopter by Heiko Schulz, animation set -->
+
+<PropertyList>
+	<path>winch.ac</path>
+
+<animation>
+	<type>select</type>
+	<object-name>WinchLine</object-name>
+	<object-name>winchhook</object-name>
+	<condition>
+	<property>sim/model/ec135/winch</property>
+	</condition>
+</animation>
+
+<animation><!--only needed with a deployalble winch - remove this animation when winch is not deployable!-->
+		<type>rotate</type>
+		<object-name>WinchLine</object-name>
+		<object-name>winchhook</object-name>
+		<property>sim/model/Winch/deploy/position-norm</property>
+		<factor>40</factor>
+		<center>
+			<x-m>-4.9e-05</x-m>
+			<y-m>9e-06</y-m>
+			<z-m>-0.04545</z-m>
+		</center>
+		<axis>
+			<x>-2e-06</x>
+			<y>8e-06</y>
+			<z>-0.090511</z>
+		</axis>
+	</animation><!--only needed with a deployalble winch - remove this animation when winch is not deployable!-->
+
+<animation>
+		<type>rotate</type>
+		<object-name>WinchLine</object-name>
+		<object-name>winchhook</object-name>
+		<property>sim/model/Winch/pitch1</property>
+		<factor>1</factor>
+	<offset-deg>0</offset-deg>
+		<center>
+			<x-m>-4.9e-05</x-m>
+			<y-m>5e-06</y-m>
+			<z-m>-0.000195</z-m>
+		</center>
+		<axis>
+			<x>4.9e-05</x>
+			<y>0.003464</y>
+			<z>0</z>
+		</axis>
+	</animation>
+<animation>
+		<type>rotate</type>
+		<object-name>WinchLine</object-name>
+		<object-name>winchhook</object-name>
+		<property>sim/model/Winch/pitch2</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>1</factor>
+	<offset-deg>0</offset-deg>
+		<center>
+			<x-m>-4.9e-05</x-m>
+			<y-m>5e-06</y-m>
+			<z-m>-0.000195</z-m>
+		</center>
+		<axis>
+			<x>4.9e-05</x>
+			<y>0.003464</y>
+			<z>0</z>
+		</axis>
+	</animation>
+<animation>
+		<type>rotate</type>
+		<object-name>WinchLine</object-name>
+		<object-name>winchhook</object-name>
+		<property>sim/model/Winch/pitch3</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>1</factor>
+	<offset-deg>0</offset-deg>
+		<center>
+			<x-m>-4.9e-05</x-m>
+			<y-m>5e-06</y-m>
+			<z-m>-0.000195</z-m>
+		</center>
+		<axis>
+			<x>4.9e-05</x>
+			<y>0.003464</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>WinchLine</object-name>
+		<object-name>winchhook</object-name>
+		<property>sim/model/Winch/roll1</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>-1</factor>
+		<offset-deg>0</offset-deg>
+		<center>
+			<x-m>-4.9e-05</x-m>
+			<y-m>5e-06</y-m>
+			<z-m>-0.000195</z-m>
+		</center>
+		<axis>
+			<x>-0.003999</x>
+			<y>5.7e-05</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>WinchLine</object-name>
+		<object-name>winchhook</object-name>
+		<property>sim/model/Winch/roll2</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>-1</factor>
+	<offset-deg>0</offset-deg>
+		<center>
+			<x-m>-4.9e-05</x-m>
+			<y-m>5e-06</y-m>
+			<z-m>-0.000195</z-m>
+		</center>
+		<axis>
+			<x>-0.003999</x>
+			<y>5.7e-05</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>WinchLine</object-name>
+		<object-name>winchhook</object-name>
+		<property>sim/model/Winch/roll3</property>
+		<!--min-deg>0</min-deg-->
+		<!--max-deg>360</max-deg-->
+		<factor>-1</factor>
+	<offset-deg>0</offset-deg>
+		<center>
+			<x-m>-4.9e-05</x-m>
+			<y-m>5e-06</y-m>
+			<z-m>-0.000195</z-m>
+		</center>
+		<axis>
+			<x>-0.003999</x>
+			<y>5.7e-05</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+	<type>translate</type>
+		<object-name>winchhook</object-name>
+		<property>sim/model/Winch/lift</property>
+	<factor>-1</factor>
+	<axis>
+              <x>0</x>
+              <y>0</y>
+              <z>1</z>
+        </axis>
+	</animation>
+	
+	<animation>
+		<type>scale</type>
+		<object-name>WinchLine</object-name>
+		<property>sim/model/Winch/lift</property>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+		<x-max>1</x-max>
+		<x-min>1</x-min>
+		<y-max>1</y-max>
+		<y-min>1</y-min>
+		<z-max>1111</z-max>
+		<z-min>1</z-min>
+		<z-factor>11.11111111</z-factor>
+</animation>
+
+
+
+</PropertyList>
