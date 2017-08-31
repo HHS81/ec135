@@ -413,7 +413,7 @@ Thanks for all the help!
 		</model>
 
     <!--<ai>
-      <scenario>moveable_helipad_demo</scenario>
+      <scenario>load_demo</scenario>
     </ai>-->
 
 		
@@ -718,11 +718,12 @@ Thanks for all the help!
 			<line>Dumps SAS -> CTR-d-Key</line>
 			<line>Reengage Pitch/ Roll SAS -> Shift -p -Key</line>
 			<line>Reengage Yaw SAS -> CTR -e -Key</line>
-			<line>CAT A Button (increase rotor speed up to + 3%- use only below 55ktn IAS!) -> a-Key</line>
+			<line>Currently not operable: CAT A Button (increase rotor speed up to + 3%- use only below 55ktn IAS!) -> a-Key</line>
 			<line></line>
-			
-
-
+			<line></line>
+			<line>Deploy winch: Shift -d-Key ("D"-key)</line>
+			<line>Lift winchrope: -m-Key ("m"-Key)</line>
+			<line>Down winchrope: Shift -m-Key ("M"-Key)</line>			
 		</help>
 
 		<hitches>
