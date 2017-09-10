@@ -1085,7 +1085,7 @@
 	<object-name>LongLine.030</object-name>
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll1</property>
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1093,8 +1093,8 @@
 			<z-m>0.000518</z-m>
 		</center>
 		<axis>
-			<x>0</x>
-			<y>1</y>
+			<x>1</x>
+			<y>0</y>
 			<z>0</z>
 		</axis>
 	</animation>
@@ -1132,7 +1132,7 @@
 	<object-name>LongLine.030</object-name>
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll2</property>
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1140,8 +1140,8 @@
 			<z-m>-0.994</z-m>
 		</center>
 		<axis>
-			<x>0</x>
-			<y>1</y>
+			<x>-0.0002</x>
+			<y>-0.013856</y>
 			<z>0</z>
 		</axis>
 	</animation>
@@ -1179,7 +1179,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll3</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1187,8 +1187,8 @@
 			<z-m>-2.030</z-m>
 		</center>
 		<axis>
-			<x>0</x>
-			<y>1</y>
+			<x>-0.0002</x>
+			<y>-0.013856</y>
 			<z>0</z>
 		</axis>
 	</animation>
@@ -1224,7 +1224,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll4</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1268,7 +1268,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll5</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1311,7 +1311,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll6</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1352,7 +1352,7 @@
 	<object-name>LongLine.025</object-name>
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll7</property>
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1393,7 +1393,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll8</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1433,7 +1433,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll9</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1472,7 +1472,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll10</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1510,7 +1510,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll11</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1547,7 +1547,7 @@
 	<object-name>hook</object-name>	
 		<property>sim/model/Longline/roll12</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1583,7 +1583,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll13</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1618,7 +1618,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll14</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1652,7 +1652,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll15</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1684,7 +1684,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll16</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1716,7 +1716,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll17</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1747,7 +1747,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll18</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1777,7 +1777,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll19</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1806,7 +1806,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll20</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1834,7 +1834,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll21</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1861,7 +1861,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll22</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1887,7 +1887,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll23</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1912,7 +1912,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll24</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1936,7 +1936,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll25</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1959,7 +1959,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll26</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -1981,7 +1981,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll27</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -2002,7 +2002,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll28</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -2022,7 +2022,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll29</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
@@ -2040,7 +2040,7 @@
 	<object-name>hook</object-name>
 		<property>sim/model/Longline/roll30</property>
 
-		<factor>-1</factor>
+		<factor>1</factor>
 	<offset-deg>0</offset-deg>
 		<center>
 			<x-m>-0.000196</x-m>
