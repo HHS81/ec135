@@ -31,6 +31,19 @@ Thanks for all the help!
 			<tag>2010s</tag>
 		</tags>
 		
+		<previews>
+		    <preview>
+			<type>panel</type>
+			<splash type="bool">true</splash>
+			<path>Pics/ec135-interior.jpg</path>
+		    </preview>
+		    <preview>
+			<type>exterior</type>
+			<splash type="bool">true</splash>
+			<path>Pics/ec135-exterior.jpg</path>
+		    </preview>
+		</previews>
+		
 
 		<flight-model>yasim</flight-model>
 		<aero>ec135P2</aero>
