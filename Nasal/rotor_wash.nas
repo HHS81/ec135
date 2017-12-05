@@ -1,7 +1,6 @@
 # Thorsten Renk, modified by HHS
 
 ##########################################
-# Preflight control surface check: elevator
 ##########################################
 var wash_loop = func {
 
@@ -21,12 +20,19 @@ setprop("/environment/aircraft-effects/wash-y", delta_y);
 
 var rpm_factor = getprop("rotors/main/rpm")/395.0;
 
+var blade_incidence1 = getprop("rotors/main/blade[0]/incidence-deg") or 0;
+var blade_incidence2 = getprop("rotors/main/blade[1]/incidence-deg") or 0;
+var blade_incidence3 = getprop("rotors/main/blade[2]/incidence-deg") or 0;
+var blade_incidence4 = getprop("rotors/main/blade[3]/incidence-deg") or 0;
 
-var strength = 37.5/alt;
+var blade_incidence_av = ((blade_incidence1 + blade_incidence2 + blade_incidence3 + blade_incidence4)/4);
+
+var strength = 50/alt;
 if (strength > 1.0) {strength = 1.0;}
-strength = strength * rpm_factor;
+strength = strength * (rpm_factor* (blade_incidence_av/17)) +0.1 ;
 
 setprop("/environment/aircraft-effects/wash-strength", strength);
+setprop("/rotors/main/blade-incidence", blade_incidence_av);
 
 settimer (wash_loop, 0.0);
 };

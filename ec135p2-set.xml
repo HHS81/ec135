@@ -65,7 +65,7 @@ Thanks for all the help!
 				<float n="0" alias="/position/gear-agl-m"/>										<!-- rotor particles -->
 				<float n="1" alias="/orientation/pitch-deg"/>									<!-- rotor particles -->
 				<float n="2" alias="/orientation/roll-deg"/>									<!-- rotor particles -->
-				<float n="3" alias="/rotors/main/torque"/>										<!-- rotor particles -->
+				<float n="3" alias="/environment/aircraft-effects/wash-strength"/>										<!-- rotor particles -->
 				<float n="4" alias="/rotors/main/rpm"/>											<!-- rotor particles - check if needed since it should be standard mp value -->
 				
 				<int n="1" alias="/gear/gear/ground-is-solid"/>									<!-- rotor particles -->
