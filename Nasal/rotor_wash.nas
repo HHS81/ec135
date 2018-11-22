@@ -2,7 +2,7 @@
 
 ##########################################
 ##########################################
-var wash_loop = func {
+var rotorwash = maketimer(0.1, func(){
 
 var vpos = geo.viewer_position();
 var apos = geo.aircraft_position();
@@ -27,15 +27,12 @@ var blade_incidence4 = getprop("rotors/main/blade[3]/incidence-deg") or 0;
 
 var blade_incidence_av = ((blade_incidence1 + blade_incidence2 + blade_incidence3 + blade_incidence4)/4);
 
-var strength = 50/alt;
+var strength = 75/alt;
 if (strength > 1.0) {strength = 1.0;}
 strength = strength * (rpm_factor* (blade_incidence_av/17)) +0.1 ;
 
 setprop("/environment/aircraft-effects/wash-strength", strength);
 setprop("/rotors/main/blade-incidence", blade_incidence_av);
 
-settimer (wash_loop, 0.0);
-};
-
-wash_loop();
-
+});
+rotorwash.start();
