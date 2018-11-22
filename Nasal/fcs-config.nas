@@ -6,9 +6,9 @@
 var fcs_params = {
   'gains' : {
   'sensitivities' : {
-        'pitch' : 20, 
-          'roll' : 30, 
-        'yaw' : 5, 
+        'pitch' : 40, 
+          'roll' : 60, 
+        'yaw' : 10, 
   },
   'sas' : {
 	'authority-limit' : 0.15,
