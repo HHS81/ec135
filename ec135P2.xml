@@ -496,11 +496,18 @@
 	<control-input axis="/rotors/main/vibration/lateral" src0="-1" src1="1" dst0="-1" dst1="1" control="THROTTLE"/>
 </thruster>
 
-<!-- residual thrust a 72 pounds(calculated from an example: http://www.pbsvb.com/turboprop-engine-tp-100-and-turboshaft-engine-ts-100) maybe much less in reality for PW206-->
-<thruster x="-4.406" y="0.6" z="0.978" vx="-1" vy="0" vz="0" thrust="72">
+<!-- residual thrust turbine a 155 pounds(calculated from MTU DB 720) maybe much less in reality for PW206-->
+<thruster x="-4.406" y="0.6" z="0.978" vx="-1" vy="0" vz="0" thrust="155">
 	<control-input axis="/engines/engine[0]/residualthrust"  src0="0" src1="1" dst0="0" dst1="-1" control="THROTTLE"/>
 </thruster>
-<thruster x="-4.406" y="-0.6" z="0.978" vx="-1" vy="0" vz="0" thrust="72">
+<thruster x="-4.406" y="-0.6" z="0.978" vx="-1" vy="0" vz="0" thrust="155">
+	<control-input axis="/engines/engine[1]/residualthrust"  src0="0" src1="1" dst0="0" dst1="-1" control="THROTTLE"/>
+</thruster>
+<!-- downwash effect of the residual thrust turbine a 155 pounds to the stab-->
+<thruster x="-7.3" y="0.6" z="0.615" vx="-1" vy="0" vz="-0.122" thrust="155">
+	<control-input axis="/engines/engine[0]/residualthrust"  src0="0" src1="1" dst0="0" dst1="-1" control="THROTTLE"/>
+</thruster>
+<thruster x="-7.3" y="-0.6" z="0.615" vx="-1" vy="0" vz="-0.122" thrust="155">
 	<control-input axis="/engines/engine[1]/residualthrust"  src0="0" src1="1" dst0="0" dst1="-1" control="THROTTLE"/>
 </thruster>
 

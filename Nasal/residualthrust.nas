@@ -16,8 +16,8 @@ var P2 = 100/(33290/rpm_2);
 #setprop ("engines/engine/P1", P1);
 
 
-var rt1= (0.00007*(torque + 12.0)*P1);
-var rt2= (0.00007*(torque + 12.0)*P2);
+var rt1= (0.00005*(torque + 15)*P1);
+var rt2= (0.00005*(torque + 15)*P2);
 
 if (rpm_1 >1){
 setprop ("engines/engine/residualthrust", rt1);
