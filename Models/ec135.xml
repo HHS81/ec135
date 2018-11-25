@@ -8,7 +8,7 @@
         <load>
             var livery_update = aircraft.livery_update.new(
 	    "Aircraft/ec135/Models/liveries", 10,
-	    func { print("ec135 livery update") });
+	    func { print("livery update") });
         </load>
 
         <unload>
@@ -70,8 +70,8 @@
 
 <model>
 <!--select animation waiting!-->
-	<name>analogflightdeck</name>
-		<path>Aircraft/ec135/Models/analogflightdeck.xml</path>
+	<name>flightdeck</name>
+		<path>Aircraft/ec135/Models/flightdeck.xml</path>
 </model>
 
 <model>

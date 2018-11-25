@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+
+<!-- CPDS with analog instruments, Dual IFR, EC135 P2 by Heiko Schulz, animation set -->
+
+<PropertyList>
+
+
+	<path>h135Dual.ac</path>
+	<offsets>
+		<z-m>0</z-m>
+		<y-m>0.0</y-m>
+		<x-m>0</x-m>
+
+		<pitch-deg>0</pitch-deg>
+		
+	</offsets>
+	
+	<!--Instrumentation-->
+	
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/ec135/Models/AnalogPanel_LM.png</image>
+		</texture>
+		<condition><use>controls/lighting/instrument-lights</use></condition>
+		<factor><use>systems/electrical/outputs/stdby-instrument-lights-norm</use></factor>
+	</parameters>
+ 	<object-name>analogpanel</object-name> 
+ 	<object-name>Plane.066</object-name> 
+</effect>	
+	
+	
+
+ 
+ 
+<!--EngineControlPanel-->
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG1.on</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[0]/fadec/engine-state</property>
+    <value type="double">2</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG1.idle</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[0]/fadec/engine-state</property>
+    <value type="double">1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+   <visible>false</visible>
+  <object-name>ENG1.off</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[0]/fadec/engine-state</property>
+    <value type="double">0</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>eng1.swt</object-name>
+    <property>controls/engines/engine[0]/fadec/engine-state</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.035</y-m>
+            <z-m>0.100</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG2.on</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/fadec/engine-state</property>
+    <value type="double">2</value>
+   </binding>           
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG2.idle</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/fadec/engine-state</property>
+    <value type="double">1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>ENG2.off</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+    <binding>
+    <command>property-assign</command>
+    <property>controls/engines/engine[1]/fadec/engine-state</property>
+    <value type="double">0</value>
+   </binding>      
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>eng2.swt</object-name>
+    <property>controls/engines/engine[1]/fadec/engine-state</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.035</y-m>
+            <z-m>0.100</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+        <object-name>gen1.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/engine[0]/generator</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>GEN1.reset</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/electric/engine[0]/generator</property>
+    <value type="double">-1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>gen1.switch</object-name>
+  <property>controls/electric/engine[0]/generator</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.0120</y-m>
+            <z-m>0.058</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+        <object-name>gen2.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/engine[1]/generator</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>GEN2.reset</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>controls/electric/engine[1]/generator</property>
+    <value type="double">-1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>gen2.switch</object-name>
+  <property>controls/electric/engine[1]/generator</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.044</y-m>
+            <z-m>0.058</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+       <object-name>bat.mst.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/electric/battery-switch</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>BAT.reset</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-assign</command>
+    <property>/controls/electric/battery-switch</property>
+    <value type="double">-1</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>bat.mst.switch</object-name>
+    <property>/controls/electric/battery-switch</property>
+        <factor>-20.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.083</y-m>
+            <z-m>0.058</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+        <object-name>fadec1.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/engines/engine[0]/fadec/fadec-switch</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>fadec1.switch</object-name>
+    <property>controls/engines/engine[0]/fadec/fadec-switch</property>
+        <factor>-40.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.035</y-m>
+            <z-m>0.100</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+
+ 
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+        <object-name>fadec2.switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>controls/engines/engine[1]/fadec/fadec-switch</property>
+    <value type="bool">true</value>
+   </binding>          
+  </action>
+ </animation>
+ 
+     <animation>
+        <type>rotate</type>
+        <object-name>fadec2.switch</object-name>
+    <property>controls/engines/engine[1]/fadec/fadec-switch</property>
+        <factor>-40.0</factor>
+        <center>
+            <x-m>0.012</x-m>
+            <y-m>-0.035</y-m>
+            <z-m>0.100</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+ 
+
+
+
+
+
+</PropertyList>

@@ -1,0 +1,1629 @@
+<?xml version="1.0"?>
+
+<!-- Eurocopter EC 135 Helicopter by Heiko Schulz, animation set -->
+
+<PropertyList>
+
+<nasal>
+        <load>
+            var livery_update = aircraft.livery_update.new(
+	    "Aircraft/ec135/Models/liveries", 10,
+	    func { print("livery update") });
+        </load>
+
+        <unload>
+            livery_update.stop();
+        </unload>
+</nasal>
+  
+ 
+	<path>h135.ac</path>
+	<offsets>
+		<z-m>0.0</z-m>
+		<y-m>0.0</y-m>
+		<x-m>0.0</x-m>
+
+		<pitch-deg>0.0</pitch-deg>
+		
+	</offsets>
+	
+<effect>
+		<inherits-from>Aircraft/ec135/Models/Effects/ec135reflectglas-uber</inherits-from>
+		<object-name>windscreen_tri</object-name>
+		<object-name>windscreen</object-name>
+		<object-name>glas</object-name>
+		<object-name>frontdoorglas.R</object-name>
+		<object-name>frontdoorglas.L</object-name>
+		<object-name>backdoorglas.L</object-name>
+		<object-name>backdoorglas.R</object-name>
+                    <object-name>rearwin.L</object-name>
+		<object-name>rearwin.R</object-name>	
+</effect>
+
+<effect>
+		<inherits-from>Aircraft/ec135/Models/Effects/ec135bumpspecreflect</inherits-from>
+		<object-name>EC135</object-name>
+</effect>
+
+<!--  REMBRANDT support for transparent objects -->
+<effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+ <object-name>Plane.003X</object-name>
+   <object-name>Plane.001X1</object-name>
+   <object-name>Plane.001X0</object-name>
+     <object-name>frontlight.flare</object-name>
+     <object-name>frontlight.flare.001</object-name>
+     <object-name>frontlight.glare</object-name>
+     <object-name>frontlight.glare.001</object-name>
+     <object-name>frontlight.flare.002</object-name>
+     <object-name>frontlight.flare.003</object-name>
+     <object-name>frontlight.glare.002</object-name>
+     <object-name>frontlight.glare.003</object-name>
+     <object-name>backlight.flare</object-name>
+     <object-name>backlight.glare</object-name>
+     <object-name>navlight_right</object-name>
+     <object-name>navlight_left</object-name>
+     <object-name>rotor_disc_T</object-name>
+</effect>
+
+
+
+<model>
+<!--select animation waiting!-->
+	<name>h135flightdeck</name>
+		<path>Aircraft/ec135/Models/h135flightdeck.xml</path>
+</model>
+
+<model>
+		<name>Interior</name>
+		<path>Aircraft/ec135/Models/interior.xml</path>
+
+		<offsets>
+
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+</model>
+
+<model>
+<!--select animation waiting!-->
+	<name>HEMSinterior</name>
+		<path>Aircraft/ec135/Models/HEMS.xml</path>
+</model>
+
+
+
+<model>
+		<name>mainrotor</name>
+		<path>Aircraft/ec135/Models/rotors/h135rotoranimation.xml</path>
+
+		<offsets>
+
+			<x-m>3.023</x-m>
+			<y-m>0</y-m>
+			<z-m>1.801</z-m>
+
+			<pitch-deg>-5</pitch-deg>
+
+		</offsets>
+</model>
+
+
+	<animation>
+		<!-- Rotate the fenestron blades -->
+		<type>rotate</type>
+		<object-name>Tblade</object-name>
+		<property>rotors/tail/blade/position-deg</property>
+		<factor>1</factor>
+		<center>
+			<x-m>8.863155</x-m>
+			<y-m>-0.0975705</y-m>
+			<z-m>0.8773625</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<!-- Hide the fenestron blades when rotating with high rpm -->
+		<type>select</type>
+		<object-name>Tblade</object-name>
+		<condition>
+			<less-than>
+				<property>rotors/tail/rpm</property>
+				<value>200</value>
+			</less-than>
+		</condition>
+	</animation>
+	<animation>
+		<!-- Fade in the fenestron disc with rising rpm -->
+		<type>blend</type>
+		<object-name>rotor_disc_T</object-name>
+		<property>rotors/tail/rpm</property>
+		<min>0.6</min>
+		<max>1.0</max>
+		<offset>1.4</offset>
+		<factor>-0.004</factor>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>rotorcap</object-name>
+		<property>rotors/main/blade/position-deg</property>
+		<factor>1</factor>
+		<center>
+			<x-m>3.010738</x-m>
+			<y-m>-0.000171</y-m>
+			<z-m>1.937808</z-m>
+		</center>
+		<axis>
+			<x>-0.024525</x>
+			<y>-0.000342</y>
+			<z>0.273617</z>
+		</axis>
+	</animation>
+	
+
+
+<!--Doors-->
+<animation>
+   <type>pick</type>
+   <object-name>frontdoor.L</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.leftFrontDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>rotate</type>
+   <object-name>frontdoor.L</object-name>
+  <object-name>frontdoorglas.L</object-name>
+     <object-name>frontdoorhandle.L</object-name>
+   <property>sim/model/ec135/door-positions/leftFrontDoor/position-norm</property>
+<interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>70.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>0.816197</x-m>
+			<y-m>-0.744383</y-m>
+			<z-m>0.166909</z-m>
+		</center>
+		<axis>
+			<x>-0.289498</x>
+			<y>-0.005941</y>
+			<z>-0.503452</z>
+		</axis>
+ </animation>
+ 
+
+ 
+ <animation>
+   <type>pick</type>
+   <object-name>frontdoor.R</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.rightFrontDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>rotate</type>
+   <object-name>frontdoor.R</object-name>
+   <object-name>frontdoorglas.R</object-name>
+       <object-name>frontdoorhandle.R</object-name>
+   <property>sim/model/ec135/door-positions/rightFrontDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>70.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>0.816197</x-m>
+			<y-m>0.744383</y-m>
+			<z-m>0.166909</z-m>
+		</center>
+		<axis>
+			<x>0.289498</x>
+			<y>0.005941</y>
+			<z>0.503452</z>
+		</axis>
+ </animation>
+ 
+  <animation>
+   <type>pick</type>
+   <object-name>backdoor.L</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.leftBackDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>translate</type>
+   <object-name>backdoor.L</object-name>
+  <object-name>backdoorglas.L</object-name>
+   <object-name>backdoorhandle.L</object-name>
+   <property>sim/model/ec135/door-positions/leftBackDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>0.5</ind>
+       <dep>0.07</dep>
+     </entry>
+      <entry>
+       <ind>1.0</ind>
+       <dep>0.07</dep>
+     </entry>
+   </interpolation>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+ </animation>
+ <animation>
+   <type>translate</type>
+   <object-name>backdoor.L</object-name>
+  <object-name>backdoorglas.L</object-name>
+   <object-name>backdoorhandle.L</object-name>
+   <property>sim/model/ec135/door-positions/leftBackDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.5</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1.0</ind>
+       <dep>0.85</dep>
+     </entry>
+   </interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+ </animation>
+ 
+   <animation>
+   <type>pick</type>
+   <object-name>backdoor.R</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.rightBackDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>translate</type>
+   <object-name>backdoor.R</object-name>
+  <object-name>backdoorglas.R</object-name>
+   <object-name>backdoorhandle.R</object-name>
+   <property>sim/model/ec135/door-positions/rightBackDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>0.5</ind>
+       <dep>0.07</dep>
+     </entry>
+      <entry>
+       <ind>1.0</ind>
+       <dep>0.07</dep>
+     </entry>
+   </interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+ </animation>
+ <animation>
+   <type>translate</type>
+   <object-name>backdoor.R</object-name>
+  <object-name>backdoorglas.R</object-name>
+   <object-name>backdoorhandle.R</object-name>
+   <property>sim/model/ec135/door-positions/rightBackDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.5</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1.0</ind>
+       <dep>0.85</dep>
+     </entry>
+   </interpolation>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+ </animation>
+
+ 
+  <animation>
+   <type>pick</type>
+   <object-name>reardoor_win.L</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.leftRearDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>rotate</type>
+  <object-name>reardoor_win.L</object-name>
+   <object-name>rearwin.L</object-name>
+   <property>sim/model/ec135/door-positions/leftRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>-0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>0.471599</x>
+			<y>0.01563</y>
+			<z>0.538602</z>
+		</axis>
+ </animation>
+ 
+  <animation>
+   <type>pick</type>
+   <object-name>reardoor_win.R</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.rightRearDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>rotate</type>
+  <object-name>reardoor_win.R</object-name>
+   <object-name>rearwin.R</object-name>
+   <property>sim/model/ec135/door-positions/rightRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>-0.471599</x>
+			<y>-0.01563</y>
+			<z>-0.538602</z>
+		</axis>
+ </animation>
+ 
+ 
+ 
+ <!--reardoorswithoutwindows-->
+  <animation>
+   <type>pick</type>
+   <object-name>reardoor.L</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.leftRearDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>rotate</type>
+  <object-name>reardoor.L</object-name>
+   <property>sim/model/ec135/door-positions/leftRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>-0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>0.471599</x>
+			<y>0.01563</y>
+			<z>0.538602</z>
+		</axis>
+ </animation>
+ 
+  <animation>
+   <type>pick</type>
+   <object-name>reardoor.R</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+        <command>nasal</command>
+        <script>ec135.rightRearDoor.toggle();</script>
+     </binding>
+   </action>
+ </animation>
+
+<animation>
+   <type>rotate</type>
+  <object-name>reardoor.R</object-name>
+    <property>sim/model/ec135/door-positions/rightRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>-0.471599</x>
+			<y>-0.01563</y>
+			<z>-0.538602</z>
+		</axis>
+ </animation>
+ 
+ <animation>
+   <type>rotate</type>
+  <object-name>buckle</object-name>
+    <property>sim/model/ec135/door-positions/rightRearDoor/position-norm</property><interpolation>
+     <entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+     </entry>
+     <entry>
+       <ind>0.25</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1</ind>
+       <dep>-110.0</dep>
+     </entry>
+   </interpolation>
+<center>
+			<x-m>3.997808</x-m>
+			<y-m>0.724311</y-m>
+			<z-m>-0.112415</z-m>
+		</center>
+		<axis>
+			<x>-0.471599</x>
+			<y>-0.01563</y>
+			<z>-0.538602</z>
+		</axis>
+ </animation>
+
+
+
+	
+	
+
+<!--variant select animation-->
+
+<animation>
+	<type>select</type>
+	<object-name>BigRadom</object-name>
+	<condition>
+	<property>sim/model/ec135/BigRadom</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>smallradom</object-name>
+	<condition>
+	<property>sim/model/ec135/smallradom</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>nosefl</object-name>
+	<object-name>frontlight</object-name>
+	<object-name>frontlight.flare</object-name>
+	<object-name>frontlight.glare</object-name>
+	<condition>
+	<property>sim/model/ec135/nosefl</property>
+	</condition>
+</animation>
+
+
+<animation>
+	<type>select</type>
+	<object-name>nose</object-name>
+	<condition>
+	<or>
+	<property>sim/model/ec135/nose</property>
+	<property>sim/model/ec135/BigRadom</property>
+	<property>sim/model/ec135/smallradom</property>
+	</or>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>frontlight2</object-name>
+	<object-name>frontlight.glare.001</object-name>
+	<object-name>frontlight.flare.001</object-name>
+	<condition>
+	<or>
+	<property>sim/model/ec135/nose</property>
+	<property>sim/model/ec135/smallradom</property>
+	<property>sim/model/ec135/BigRadom</property>
+	</or>
+	</condition>
+</animation>
+
+<model>
+	<name>searchlight_front</name>
+	<path>Aircraft/ec135/Models/SX16/searchlight_SX16_front.xml</path>
+	<offsets>
+		<x-m>-0.254</x-m>
+		<y-m>0.0</y-m>
+		<z-m>-0.439</z-m>
+		<pitch-deg>0.0</pitch-deg>
+	</offsets>
+	<condition>
+	<property>sim/model/ec135/searchlight_front</property>
+	</condition>
+</model>
+
+<animation>
+	<type>select</type>
+	<object-name>searchlight_fronthold</object-name>
+	<condition>
+	<property>sim/model/ec135/searchlight_front</property>
+	</condition>
+</animation>
+
+<model>
+	<name>searchlight_left</name>
+	<path>Aircraft/ec135/Models/SX16/searchlight_SX16_left.xml</path>
+	<offsets>
+		<x-m>0.516</x-m>
+		<y-m>-0.924</y-m>
+		<z-m>-0.937</z-m>
+		<pitch-deg>0.0</pitch-deg>
+	</offsets>
+	<condition>
+	<property>sim/model/ec135/searchlight_left</property>
+	</condition>
+</model>
+
+<animation>
+	<type>select</type>
+	<object-name>searchlight_lefthold</object-name>
+	<condition>
+	<property>sim/model/ec135/searchlight_left</property>
+	</condition>
+</animation>
+
+
+
+<animation>
+	<type>select</type>
+	<object-name>FLIR</object-name>
+	<condition>
+	<property>sim/model/ec135/FLIR</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>windscreen_tri</object-name>
+	<object-name>triangle</object-name>
+	<condition>
+	<property>sim/model/ec135/windscreen_tri</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>windscreen</object-name>
+	<condition>
+	<property>sim/model/ec135/windscreen</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>mirror</object-name>
+	<condition>
+	<property>sim/model/ec135/mirror</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>wirecutter_up</object-name>
+	<condition>
+	<property>sim/model/ec135/wirecutter_up</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>wirecutter_down</object-name>
+	<condition>
+	<property>sim/model/ec135/wirecutter_down</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>wirecutter_skid</object-name>
+	<condition>
+	<property>sim/model/ec135/wirecutter_skid</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>sandfilter</object-name>
+	<condition>
+	<property>sim/model/ec135/sandfilter</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>IBF</object-name>
+	<condition>
+	<property>sim/model/ec135/IBF</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>nonIBF</object-name>
+	<condition>
+	<property>sim/model/ec135/nonIBF</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>winch</object-name>
+	<object-name>winchhook</object-name>
+	<object-name>winchfix</object-name>
+	<condition>
+	<property>sim/model/ec135/winch</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>SLLight_Cover.R</object-name>
+	<object-name>SLLight.R</object-name>
+        <object-name>frontlight.glare.003</object-name>
+        <object-name>frontlight.flare.003</object-name>
+	<condition>
+	<property>sim/model/ec135/SLLightR</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>SLLight_Cover.L</object-name>
+	<object-name>SLLight.L</object-name>
+	<object-name>frontlight.glare.002</object-name>
+	<object-name>frontlight.flare.002</object-name>
+	<condition>
+	<property>sim/model/ec135/SLLightL</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>midskid</object-name>
+	<condition>
+	<property>sim/model/ec135/midskid</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>snowboard_midskid</object-name>
+	<condition>
+	<property>sim/model/ec135/snowboard_midskid</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>wirecutter_midskid</object-name>
+	<condition>
+	<property>sim/model/ec135/wirecutter_midskid</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>lowskid</object-name>
+	<condition>
+	<property>sim/model/ec135/lowskid</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>Loudspeaker</object-name>
+	<condition>
+	<property>sim/model/ec135/loudspeaker</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>Hellas</object-name>
+	<condition>
+	<property>sim/model/ec135/hellas</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>longskid_floats</object-name>
+	<object-name>EmergFloats</object-name>
+	<condition>
+	<property>sim/model/ec135/longskid_floats</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>EmergFloats</object-name>
+	<condition>
+	<and>
+	<property>sim/model/ec135/emergfloats</property>
+	<property>sim/model/ec135/longskid_floats</property>
+	</and>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>highskid</object-name>
+	<condition>
+	<property>sim/model/ec135/highskid</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>snowboard_highskid</object-name>
+	<condition>
+	<property>sim/model/ec135/snowboard_highskid</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>wirecutter_highskid</object-name>
+	<condition>
+	<property>sim/model/ec135/wirecutter_highskid</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>standardstep</object-name>
+	<condition>
+	<property>sim/model/ec135/standardstep</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>multifunctioncarrier</object-name>
+	<condition>
+	<property>sim/model/ec135/multifunctioncarrier</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>roundstep</object-name>
+	<condition>
+	<property>sim/model/ec135/roundstep</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>snowboard_lowskid</object-name>
+	<condition>
+	<property>sim/model/ec135/snowboard_lowskid</property>
+	</condition>
+</animation>
+
+
+<animation>
+	<type>select</type>
+	<object-name>DoubleCargoHook</object-name>
+	<condition>
+	<property>sim/model/ec135/DoubleCargoHook</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>buckle</object-name>
+	<condition>
+	<property>sim/model/ec135/buckle</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>reardoor_win.R</object-name>
+	<object-name>rearwin.R</object-name>
+	<condition>
+	<property>sim/model/ec135/reardoor_winR</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>reardoor_win.L</object-name>
+	<object-name>rearwin.L</object-name>
+	<condition>
+	<property>sim/model/ec135/reardoor_winL</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>reardoor.R</object-name>
+	<condition>
+	<property>sim/model/ec135/reardoorR</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>reardoor.L</object-name>
+	<condition>
+	<property>sim/model/ec135/reardoorL</property>
+	</condition>
+</animation>
+
+<!-- Material Animations -->
+
+	<animation>
+		<type>material</type>
+		<!--global type="bool">true</global-->
+		<object-name>EC135</object-name>
+		<property-base>sim/model/livery/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>default.png</texture>
+	</animation>
+	
+	
+	
+	
+	<!--<animation>
+		<type>material</type>
+		<object-name>blade1</object-name>
+		<object-name>blade1a</object-name>
+		<object-name>blade1b</object-name>
+		<object-name>blade1c</object-name>
+		<object-name>blade1d</object-name>
+		<object-name>blade2</object-name>
+		<object-name>blade2a</object-name>
+		<object-name>blade2b</object-name>
+		<object-name>blade2c</object-name>
+		<object-name>blade2d</object-name>
+		<object-name>blade3</object-name>
+		<object-name>blade3a</object-name>
+		<object-name>blade3b</object-name>
+		<object-name>blade3c</object-name>
+		<object-name>blade3d</object-name>
+		<object-name>blade4</object-name>
+		<object-name>blade4a</object-name>
+		<object-name>blade4b</object-name>
+		<object-name>blade4c</object-name>
+		<object-name>blade4d</object-name>
+		<property-base>sim/model/rotorblade/</property-base>
+		<texture-prop>texture</texture-prop>
+		<texture>rotorblade.rgb</texture>
+	</animation>-->
+	
+<!-- == PARTICLE SYSTEMS , Thanks to Oliver Thurau == -->
+
+	<model>
+		<name>mainrotors_dirt</name>
+		<path>Aircraft/ec135/Models/particle/rotor_particle.xml</path>
+		<offsets>
+			<x-m>  0.000 </x-m>
+			<y-m>  0.000 </y-m>
+			<z-m>  0.000 </z-m>
+		</offsets>
+	</model>
+  
+  <!--Lights-->
+  
+ 
+<animation>
+        <type>flash</type>
+        <object-name>backlight.glare</object-name>
+        <center>
+            <x-m>9.843</x-m>
+            <y-m>-0.048</y-m>
+            <z-m>2.586</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>2</power>
+        <factor>1</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>2</max>
+    </animation>
+    
+     <animation>
+        <type>flash</type>
+        <object-name>backlight.flare</object-name>
+        <center>
+            <x-m>9.848</x-m>
+            <y-m>-0.048</y-m>
+            <z-m>2.586</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>10</power>
+        <factor>5</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>2</max>
+    </animation>
+    
+<animation>
+	<type>select</type>
+        <object-name>backlight.glare</object-name>
+        <object-name>backlight.flare</object-name>
+        <object-name>backlight.glare</object-name>
+        <object-name>navlight_left</object-name>
+        <object-name>navlight_right</object-name>
+	<condition>
+	<property>/systems/electrical/outputs/nav-lights</property>
+	</condition>
+</animation>
+
+<!-- landinglights-->
+
+  <model>
+    <path>Aircraft/ec135/Models/RembrandtLights.xml</path>
+    <condition>
+<property>/sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0 </y-m>
+      <z-m>0 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg>   0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+
+     <animation>
+        <type>flash</type>
+        <object-name>frontlight.glare</object-name>
+        <center>
+            <x-m>-0.121</x-m>
+            <y-m>0.000</y-m>
+            <z-m>-0.192</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>2</power>
+        <factor>1</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>2</max>
+    </animation>
+    
+     <animation>
+        <type>flash</type>
+        <object-name>frontlight.flare</object-name>
+        <center>
+            <x-m>-0.128</x-m>
+            <y-m>0.00</y-m>
+            <z-m>-0.196</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>10</power>
+        <factor>5</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>2</max>
+    </animation>
+    
+     <animation>
+        <type>flash</type>
+        <object-name>frontlight.glare.001</object-name>
+        <center>
+            <x-m>1.312</x-m>
+            <y-m>-0.622</y-m>
+            <z-m>-0.936</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>2</power>
+        <factor>1</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>2</max>
+    </animation>
+    
+     <animation>
+        <type>flash</type>
+        <object-name>frontlight.flare.001</object-name>
+        <center>
+            <x-m>1.305</x-m>
+            <y-m>-0.622</y-m>
+            <z-m>-0.94</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>10</power>
+        <factor>5</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>2</max>
+    </animation>
+    
+<animation>
+	<type>select</type>
+        <object-name>frontlight.glare</object-name>
+        <object-name>frontlight.flare</object-name>
+	<condition>
+	<property>/systems/electrical/outputs/landing-light</property>
+	<not>
+	<property>sim/model/ec135/nose</property>
+	<property>sim/model/ec135/BigRadom</property>
+	<property>sim/model/ec135/smallradom</property>
+	</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+        <object-name>frontlight.glare.001</object-name>
+        <object-name>frontlight.flare.001</object-name>
+	<condition>
+	<and>
+	<property>/systems/electrical/outputs/landing-light</property>
+	<or>
+	<property>sim/model/ec135/nose</property>
+	<property>sim/model/ec135/smallradom</property>
+	<property>sim/model/ec135/BigRadom</property>
+	</or>
+	</and>
+	</condition>
+</animation>
+
+
+<animation>
+   <type>rotate</type>
+	<object-name>SLLight.L</object-name>
+	<!--<object-name>frontlight.flare.002</object-name>
+	<object-name>frontlight.glare.002</object-name>-->
+
+	<property>/controls/lighting/landing-lights</property>
+	<interpolation>
+<entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+	</entry>
+	<entry>
+       <ind>1</ind>
+       <dep>45.0</dep>
+	</entry>
+   </interpolation>
+<center>
+			<x-m>0.710</x-m>
+			<y-m>0.301</y-m>
+			<z-m>-0.705</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+ </animation>
+
+     <animation>
+        <type>flash</type>
+        <object-name>frontlight.glare.002</object-name>
+        <center>
+            <x-m>0.736</x-m>
+            <y-m>-0.321</y-m>
+            <z-m>-0.817</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>2</power>
+        <factor>1</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>2</max>
+    </animation>
+    
+     <animation>
+        <type>flash</type>
+        <object-name>frontlight.flare.002</object-name>
+        <center>
+            <x-m>0.726</x-m>
+            <y-m>-0.321</y-m>
+            <z-m>-0.821</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>10</power>
+        <factor>5</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>1</max>
+    </animation>
+    
+<animation>
+	<type>select</type>
+        <object-name>frontlight.glare.002</object-name>
+        <object-name>frontlight.flare.002</object-name>
+	<condition>
+	<and>
+	<property>/systems/electrical/outputs/landing-light</property>
+	<property>sim/model/ec135/SLLightL</property>
+	</and>
+	</condition>
+</animation>
+
+<animation>
+   <type>rotate</type>
+	<object-name>SLLight.R</object-name>
+	<!--<object-name>frontlight.flare.003</object-name>
+	<object-name>frontlight.glare.003</object-name>-->
+	<property>/controls/lighting/landing-lights</property>
+	<interpolation>
+<entry>
+       <ind>0.0</ind>
+       <dep>0.0</dep>
+	</entry>
+	<entry>
+       <ind>1</ind>
+       <dep>45.0</dep>
+	</entry>
+   </interpolation>
+<center>
+			<x-m>0.710</x-m>
+			<y-m>0.301</y-m>
+			<z-m>-0.705</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+ </animation>
+
+     <animation>
+        <type>flash</type>
+        <object-name>frontlight.glare.003</object-name>
+        <center>
+            <x-m>0.731</x-m>
+            <y-m>0.309</y-m>
+            <z-m>-0.797</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>2</power>
+        <factor>1</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>2</max>
+    </animation>
+    
+     <animation>
+        <type>flash</type>
+        <object-name>frontlight.flare.003</object-name>
+        <center>
+            <x-m>0.721</x-m>
+            <y-m>0.309</y-m>
+            <z-m>-0.801</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>10</power>
+        <factor>5</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>1</max>
+    </animation>
+    
+<animation>
+	<type>select</type>
+        <object-name>frontlight.glare.003</object-name>
+        <object-name>frontlight.flare.003</object-name>
+	<condition>
+	<and>
+	<property>/systems/electrical/outputs/landing-light</property>
+	<property>sim/model/ec135/SLLightR</property>
+	</and>
+	</condition>
+</animation>
+
+<!--strobes-->
+
+ <animation>
+   <type>select</type>
+		<object-name>Plane.001X0</object-name>
+		<object-name>Plane.001X1</object-name>
+   <condition>
+	<property>/systems/electrical/outputs/strobe/state</property>	
+   </condition>
+ </animation>
+
+	<Plane.001Xparams>
+		<light-near>0.8</light-near>
+		<light-med>1.2</light-med>
+		<light-far>20</light-far>
+	</Plane.001Xparams>
+
+	<animation>
+		<name>Plane.001XGroup</name>
+		<object-name>Plane.001X0</object-name>
+		<object-name>Plane.001X1</object-name>
+	</animation>
+
+
+
+	<animation>
+		<type>alpha-test</type>
+		<object-name>Plane.001XGroup</object-name>
+		<alpha-factor>0.001</alpha-factor>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>Plane.001X0</object-name>
+		<offset-m>4.096781</offset-m>
+		<axis>
+			<x>4.00184</x>
+			<y>-0.840943</y>
+			<z>0.248407</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>Plane.001X1</object-name>
+		<offset-m>4.100962</offset-m>
+		<axis>
+			<x>4.005518</x>
+			<y>0.843808</y>
+			<z>0.248407</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>billboard</type>
+		<object-name>Plane.001X0</object-name>
+		<spherical type="bool">true</spherical>
+	</animation>
+
+	<animation>
+		<type>billboard</type>
+		<object-name>Plane.001X1</object-name>
+		<spherical type="bool">true</spherical>
+	</animation>
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>Plane.001X0</object-name>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep alias="../../../../Plane.001Xparams/light-near"/>
+			</entry>
+			<entry>
+				<ind>500</ind>
+				<dep alias="../../../../Plane.001Xparams/light-med"/>
+			</entry>
+			<entry>
+				<ind>16000</ind>
+				<dep alias="../../../../Plane.001Xparams/light-far"/>
+			</entry>
+		</interpolation>
+	</animation>
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>Plane.001X1</object-name>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep alias="../../../../Plane.001Xparams/light-near"/>
+			</entry>
+			<entry>
+				<ind>500</ind>
+				<dep alias="../../../../Plane.001Xparams/light-med"/>
+			</entry>
+			<entry>
+				<ind>16000</ind>
+				<dep alias="../../../../Plane.001Xparams/light-far"/>
+			</entry>
+		</interpolation>
+	</animation>
+	
+<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>25000</max-m>
+	</animation>
+
+<!--beacon-->
+ <animation>
+   <type>select</type>
+   <object-name>Plane.003X</object-name>
+   <condition>
+<property>/systems/electrical/outputs/beacon/state</property>
+   </condition>
+ </animation>
+
+	<Plane.003Xparams>
+		<light-near>0.4</light-near>
+		<light-med>0.8</light-med>
+		<light-far>20</light-far>
+	</Plane.003Xparams>
+
+
+	<animation>
+		<type>alpha-test</type>
+		<object-name>Plane.003X</object-name>
+		<alpha-factor>0.001</alpha-factor>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>Plane.003X</object-name>
+		<offset-m>9.489952</offset-m>
+		<axis>
+			<x>9.112094</x>
+			<y>-0.050066</y>
+			<z>2.650741</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>billboard</type>
+		<object-name>Plane.003X</object-name>
+		<spherical type="bool">true</spherical>
+	</animation>
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>Plane.003X</object-name>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep alias="../../../../Plane.003Xparams/light-near"/>
+			</entry>
+			<entry>
+				<ind>500</ind>
+				<dep alias="../../../../Plane.003Xparams/light-med"/>
+			</entry>
+			<entry>
+				<ind>16000</ind>
+				<dep alias="../../../../Plane.003Xparams/light-far"/>
+			</entry>
+		</interpolation>
+	</animation>
+	
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>25000</max-m>
+	</animation>
+
+<!--wiper-->
+    <animation>
+        <type>rotate</type>
+	<object-name>wiper1</object-name>
+	<object-name>wiperblade</object-name>
+        <property>/controls/special/wiper-deg</property>
+	<offset-deg>0</offset-deg>
+        <factor>1.0</factor>
+       <center>
+			<x-m>-0.041568</x-m>
+			<y-m>0.011162</y-m>
+			<z-m>0.198932</z-m>
+		</center>
+		<axis>
+			<x>0.031401</x>
+			<y>0</y>
+			<z>-0.042489</z>
+		</axis>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+	<object-name>wiperblade</object-name>
+        <property>/controls/special/wiper-deg</property>
+		<offset-deg>0</offset-deg>
+        <factor>-1</factor>
+       <center>
+			<x-m>0.567588</x-m>
+			<y-m>0.011162</y-m>
+			<z-m>0.665551</z-m>
+		</center>
+		<axis>
+			<x>0.018916</x>
+			<y>0</y>
+			<z>-0.028522</z>
+		</axis>
+    </animation>
+
+	
+	
+</PropertyList>

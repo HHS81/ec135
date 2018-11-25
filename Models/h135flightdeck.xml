@@ -1,0 +1,948 @@
+<?xml version="1.0"?>
+
+<!-- Airbus H135 Helicopter by Heiko Schulz, animation set -->
+
+<PropertyList>
+
+
+	<path>flightdeck.ac</path>
+	<offsets>
+		<z-m>0</z-m>
+		<y-m>0.0</y-m>
+		<x-m>0</x-m>
+
+		<pitch-deg>0</pitch-deg>
+		
+	</offsets>
+	
+<effect>
+	<inherits-from>Effects/lightmap</inherits-from>
+	<parameters>
+		<texture n="1">
+			<image>Aircraft/ec135/Models/OverheadPanel_LM.png</image>
+		</texture>
+		<condition><use>controls/lighting/instrument-lights</use></condition>
+		<factor><use>systems/electrical/outputs/instrument-lights-norm</use></factor>
+	</parameters>
+ 	<object-name>OverheadPanel</object-name> 
+</effect>	
+	
+	<model>
+		<name>Pilot</name>
+		<path>Aircraft/ec135/Models/pilots.xml</path>
+		<condition>
+			<not>
+				<property>/sim/model/hide-pilot</property>
+			</not>
+		</condition>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+
+			<pitch-deg>0</pitch-deg>
+
+		</offsets>
+	</model>
+	
+	<model>
+		<name>H135Dual</name>
+		<path>Aircraft/ec135/Models/h135Dual.xml</path>
+		<offsets>
+			<x-m>0.634</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.019</z-m>
+
+			<pitch-deg>-21</pitch-deg>
+
+		</offsets>
+	<condition>
+	<property>sim/model/ec135/AnalogDual</property>
+	</condition>
+	</model>
+	
+		
+	<model>
+		<name>Helimap</name>
+		<path>Aircraft/ec135/Models/instrumentation/helimap/helimap.xml</path>
+		<offsets>
+			<x-m>0.704</x-m>
+			<y-m>-0.089</y-m>
+			<z-m>-0.074</z-m>
+			<heading-deg>90</heading-deg>
+			<roll-deg>25</roll-deg>
+
+		</offsets>
+	</model>
+	
+	<model>
+		<name>GNS430</name>
+		<path>Aircraft/ec135/Models/instrumentation/GNS430/GNS430.xml</path>
+		<!--Aircraft/Instruments-3d/GNS430/GNS430.xml-->
+		<offsets>
+			<x-m>0.661</x-m>
+			<y-m>0.08</y-m>
+			<z-m>-0.052</z-m>
+			<heading-deg>90</heading-deg>
+			<roll-deg>25</roll-deg>
+
+		</offsets>
+	</model>
+	
+	<model>
+		<name>GNS430 2</name>
+		<path>Aircraft/ec135/Models/instrumentation/GNS430/GNS430.xml</path>
+		<!--Aircraft/Instruments-3d/GNS430/GNS430.xml-->
+		<offsets>
+			<x-m>0.724</x-m>
+			<y-m>0.08</y-m>
+			<z-m>-0.085</z-m>
+			<heading-deg>90</heading-deg>
+			<roll-deg>25</roll-deg>
+
+		</offsets>
+	</model>
+	
+	<model>
+		<name>GTX330</name>
+		<path>Aircraft/ec135/Models/instrumentation/GTX330/GTX330.xml</path>
+		<!--Aircraft/Instruments-3d/GTX330/GTX330.xml-->
+		<offsets>
+			<x-m>0.780</x-m>
+			<y-m>0.08</y-m>
+			<z-m>-0.108</z-m>
+			<heading-deg>90</heading-deg>
+			<roll-deg>25</roll-deg>
+
+		</offsets>
+	</model>
+
+
+<animation>
+		<type>rotate</type>
+		<object-name>stickgrip</object-name>
+		<property>/controls/flight/elevator</property>
+		<factor>9.81</factor>
+		<offset-deg>0</offset-deg>
+		<center>
+			<x-m>0.944</x-m>
+			<y-m>0.408</y-m>
+			<z-m>-0.494</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>stickgrip</object-name>
+		<property>/controls/flight/aileron</property>
+		<factor>7.5</factor>
+		<offset>0</offset>
+		<center>
+			<x-m>0.944</x-m>
+			<y-m>0.408</y-m>
+			<z-m>-0.494</z-m>
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+<!--collective angles from: http://www.ntsb.gov/aviationquery/brief2.aspx?ev_id=20100214X92140&ntsbno=WPR10FA133&akey=1-->
+<animation>
+		<type>rotate</type>
+		<object-name>collective</object-name>
+		<object-name>collectivehead</object-name>
+		<object-name>lever.002</object-name>
+		<object-name>lever.003</object-name>
+		<object-name>lever</object-name>
+		<object-name>lever.001</object-name>
+		<object-name>basis</object-name>
+		<object-name>Plane.005</object-name>
+		<object-name>knobs</object-name>
+		<object-name>Cylinder.003</object-name>
+		<object-name>leather</object-name>
+		<property>/controls/engines/engine/throttle</property>
+		<factor>-26</factor>
+		<offset>48</offset>
+		<center>
+			<x-m>1.440</x-m>
+			<y-m>0.128</y-m>
+			<z-m>-0.479</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>rrpedal</object-name>
+
+		<property>/controls/flight/rudder</property>
+		<factor>16.8</factor>
+		<offset>0</offset>
+		<center>
+			<x-m>0.405</x-m>
+			<y-m>0.465</y-m>
+			<z-m>-0.394</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>rlpedal</object-name>
+
+		<property>/controls/flight/rudder</property>
+		<factor>16.8</factor>
+		<offset>0</offset>
+		<center>
+			<x-m>0.405</x-m>
+			<y-m>0.465</y-m>
+			<z-m>-0.394</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+<!--Rotorbrake Lever-->
+
+<animation>
+
+<type>slider</type>
+      <object-name>RotorBrakeLever</object-name>
+      <visible>true</visible>
+
+      <drag-direction>horizontal</drag-direction>
+      
+      <action>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/rotor/brake</property>
+          <factor>0.05</factor>
+          <min>0</min>
+          <max>1</max>
+          <wrap>0</wrap>
+        </binding>
+      </action>
+      
+     <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <label>RotorBrake: %3d%%</label>
+          <tooltip-id>rotorbrake</tooltip-id>
+          <mapping>percent</mapping>
+          <property>/controls/rotor/brake</property>
+        </binding>
+      </hovered>
+    </animation>
+
+ <animation>
+    <type>rotate</type>
+    <object-name>RotorBrakeLever</object-name>
+  <property>/controls/rotor/brake</property>
+    <factor>-45</factor>
+    <center>
+      <x-m>1.141 </x-m>
+      <y-m>  -0.041 </y-m>
+      <z-m> 0.785 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+<!--switches, switches everywhere-->
+
+<!-- first row-->
+    <animation>
+        <type>pick</type>
+        <object-name>vent2.sw</object-name>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/engines/engine[1]/starter</property>
+                <min>0</min>
+                <max>2</max>
+            </binding>
+        </action>
+        <release>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/engines/engine[1]/starter</property>
+                <step>0</step>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+        </release>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>vent2.sw</object-name>
+                <property>controls/engines/engine[1]/starter</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.186</x-m>
+            <y-m>0</y-m>
+            <z-m>0.804</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>vent1.sw</object-name>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/engines/engine[0]/starter</property>
+                <min>0</min>
+                <max>2</max>
+            </binding>
+        </action>
+        <release>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/engines/engine[0]/starter</property>
+                <step>0</step>
+                <min>0</min>
+                <max>1</max>
+            </binding>
+        </release>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>vent1.sw</object-name>
+                <property>controls/engines/engine[0]/starter</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.186</x-m>
+            <y-m>0</y-m>
+            <z-m>0.804</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+
+ 
+
+<!-- second row-->
+    <animation>
+        <type>pick</type>
+        <object-name>acoll.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/lighting/beacon</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>acoll.sw</object-name>
+                <property>controls/lighting/beacon</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.218</x-m>
+            <y-m>0.073</y-m>
+            <z-m>0.810</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+   <animation>
+        <type>pick</type>
+        <object-name>posl.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/lighting/nav-lights</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>posl.sw</object-name>
+                <property>controls/lighting/nav-lights</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.218</x-m>
+            <y-m>0.073</y-m>
+            <z-m>0.810</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+   <animation>
+        <type>pick</type>
+        <object-name>strobe.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/lighting/strobe</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>strobe.sw</object-name>
+                <property>controls/lighting/strobe</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.218</x-m>
+            <y-m>0.073</y-m>
+            <z-m>0.810</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+   <animation>
+        <type>pick</type>
+        <object-name>instrl.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/lighting/instrument-lights</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>instrl.sw</object-name>
+                <property>controls/lighting/instrument-lights</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.218</x-m>
+            <y-m>0.073</y-m>
+            <z-m>0.810</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+     <animation>
+   <type>pick</type>
+    <object-name>instrlight.knob</object-name>
+   <visible>true</visible>
+   <action>
+     <name>Decrease - scrollwheel</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+     <property>controls/lighting/instrument-lights-norm</property>
+       <step>-0.1</step>
+       <min>0</min>
+       <max>1.0</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+   <action>
+     <name>Increase - scrollwheel</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+    <property>controls/lighting/instrument-lights-norm</property>
+       <step>0.1</step>
+       <min>0</min>
+       <max>1.0</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+ </animation>
+ 
+ <animation> 
+  <type>rotate</type>
+  <object-name>instrlight.knob</object-name>
+   <property>controls/lighting/instrument-lights-norm</property>
+  <factor>-270</factor>
+  <center>
+			<x-m>1.219314</x-m>
+			<y-m>-0.047631</y-m>
+			<z-m>0.803082</z-m>
+		</center>
+		<axis>
+			<x>0.002311</x>
+			<y>0</y>
+			<z>-0.014589</z>
+		</axis>
+ </animation>  
+
+     <animation>
+   <type>pick</type>
+    <object-name>stbylight.knob</object-name>
+   <visible>true</visible>
+   <action>
+     <name>Decrease - scrollwheel</name>
+     <button>3</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+     <property>controls/lighting/stdby-instrument-lights-norm</property>
+       <step>-0.1</step>
+       <min>0</min>
+       <max>1.0</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+   <action>
+     <name>Increase - scrollwheel</name>
+     <button>4</button>
+     <repeatable>true</repeatable>
+     <binding>
+       <command>property-adjust</command>
+    <property>controls/lighting/stdby-instrument-lights-norm</property>
+       <step>0.1</step>
+       <min>0</min>
+       <max>1.0</max>
+       <wrap>0</wrap>
+     </binding>
+   </action>
+ </animation>
+ 
+ <animation> 
+  <type>rotate</type>
+  <object-name>stbylight.knob</object-name>
+   <property>controls/lighting/stdby-instrument-lights-norm</property>
+  <factor>-270</factor>
+  <center>
+			<x-m>1.219314</x-m>
+			<y-m>-0.07263</y-m>
+			<z-m>0.803082</z-m>
+		</center>
+		<axis>
+			<x>0.002311</x>
+			<y>0</y>
+			<z>-0.014589</z>
+		</axis>
+ </animation>  
+ 
+<!-- third row-->
+    <animation>
+        <type>pick</type>
+        <object-name>xfer2.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/switches/fuel/transfer-pump[1]</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>xfer2.sw</object-name>
+                <property>controls/switches/fuel/transfer-pump[1]</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.249</x-m>
+            <y-m>0.083</y-m>
+            <z-m>0.814</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>xfer1.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/switches/fuel/transfer-pump[0]</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>xfer1.sw</object-name>
+                <property>controls/switches/fuel/transfer-pump[0]</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.249</x-m>
+            <y-m>0.083</y-m>
+            <z-m>0.814</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>prime2.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/fuel/tank[2]/prime-pump</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>prime2.sw</object-name>
+                <property>controls/fuel/tank[2]/prime-pump</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.249</x-m>
+            <y-m>0.083</y-m>
+            <z-m>0.814</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>prime1.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/fuel/tank[1]/prime-pump</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>prime1.sw</object-name>
+                <property>controls/fuel/tank[1]/prime-pump</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.249</x-m>
+            <y-m>0.083</y-m>
+            <z-m>0.814</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+<!--4. row-->
+
+ <animation>
+		<type>pick</type>
+        <object-name>wiper.sw</object-name>
+		<action>
+		  <button>0</button>
+		  <repeatable>true</repeatable>
+		  <binding>
+		    <command>property-adjust</command>
+		    <property>/controls/special/wiper-switch</property>
+		    <step>1</step>
+		    <min>0</min>
+		    <max>3</max>
+		    <wrap>1</wrap>
+		  </binding>		  
+		  <binding>
+		    <command>property-toggle</command>
+		    <property>/sim/sound/switch2</property>
+		  </binding>
+		</action>
+		<action>
+		  <button>1</button>
+		  <repeatable>true</repeatable>
+		  <binding>
+		    <command>property-adjust</command>
+		    <property>/controls/special/wiper-switch</property>
+		    <step>-1</step>
+		    <min>0</min>
+		    <max>3</max>
+		    <wrap>1</wrap>
+		  </binding>		  
+		  <binding>
+		    <command>property-toggle</command>
+		    <property>/sim/sound/switch2</property>
+		  </binding>
+		</action>
+		<action>
+		  <button>3</button>
+		  <repeatable>true</repeatable>
+		  <binding>
+		    <command>property-adjust</command>
+		    <property>/controls/special/wiper-switch</property>
+		    <step>1</step>
+		    <min>0</min>
+		    <max>3</max>
+		    <wrap>1</wrap>
+		  </binding>		  
+		  <binding>
+		    <command>property-toggle</command>
+		    <property>/sim/sound/switch2</property>
+		  </binding>
+		</action>
+	</animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>wiper.sw</object-name>
+                <property>/controls/special/wiper-switch</property>
+        <factor>13.0</factor>
+        <center>
+            <x-m>1.278</x-m>
+            <y-m>0.000</y-m>
+            <z-m>0.819</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>pitothtr2.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/anti-ice/pitot-heat2</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>pitothtr2.sw</object-name>
+                <property>controls/anti-ice/pitot-heat2</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.278</x-m>
+            <y-m>0.000</y-m>
+            <z-m>0.819</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>pitothtr1.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/anti-ice/pitot-heat</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>pitothtr1.sw</object-name>
+                <property>controls/anti-ice/pitot-heat</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.278</x-m>
+            <y-m>0.000</y-m>
+            <z-m>0.819</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <!--5. row-->
+    <animation>
+        <type>pick</type>
+        <object-name>avionicmst2.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/electric/avionics-switch2</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>avionicmst2.sw</object-name>
+                <property>controls/electric/avionics-switch2</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.314</x-m>
+            <y-m>0.000</y-m>
+            <z-m>0.825</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>pick</type>
+        <object-name>avionicmst1.sw</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/electric/avionics-switch1</property>
+            </binding>
+            <binding>
+                <command>property-toggle</command>
+                <property>sim/sound/click</property>
+            </binding>
+        </action>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>avionicmst1.sw</object-name>
+                <property>controls/electric/avionics-switch1</property>
+        <factor>40.0</factor>
+        <center>
+            <x-m>1.314</x-m>
+            <y-m>0.000</y-m>
+            <z-m>0.825</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+
+
+</PropertyList>
