@@ -790,13 +790,6 @@
 	</condition>
 </animation>
 
-<animation>
-	<type>select</type>
-	<object-name>nonIBF</object-name>
-	<condition>
-	<property>sim/model/ec135/nonIBF</property>
-	</condition>
-</animation>
 
 <animation>
 	<type>select</type>

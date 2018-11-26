@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!--
 ************************************************************************
-H 135 P3 simulation config.
+EC 135 P2 simulation config.
 
-This model of the H 135 is dedicated to heliflyer aka Georg Vollnhals.
+This model of the EC 135 is dedicated to heliflyer aka Georg Vollnhals.
 Thanks for all the help!
 
 ************************************************************************
@@ -12,7 +12,7 @@ Thanks for all the help!
 <PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
 	<sim>
 		<description>Airbus H135 P3</description>
-		<author>Heiko Schulz & Maik Justus (FDM), Melchior Franz & Heiko Schulz(Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements), Sebastian Dietrich (GTX330 improvements), Martin Litzenberger(Helionix)</author>
+		<author>Heiko Schulz + Maik Justus (FDM), Melchior Franz + Heiko Schulz(Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements), Sebastian Dietrich (GTX330 improvements)</author>
 		<status>early production</status>
 		<rating>
                     <FDM type="int">4</FDM>
@@ -29,8 +29,6 @@ Thanks for all the help!
 			<tag>2010s</tag>
 		</tags>
 		
- <variant-of>ec125P2</variant-of>
-		
 		<previews>
 		    <preview>
 			<type>panel</type>
@@ -46,7 +44,7 @@ Thanks for all the help!
 		
 
 		<flight-model>yasim</flight-model>
-		<aero>h135p3</aero>
+		<aero>ec135P2</aero>
 		<fuel-fraction>1.0</fuel-fraction>
 
 		<startup>
@@ -97,7 +95,7 @@ Thanks for all the help!
             </default_exit>
         </map>
 			<path archive="y">Aircraft/ec135/Models/h135.xml</path>
-			<variant type="int">0</variant>
+			<variant type="int">1</variant>
 			<livery>
                               <name type="string">WhiteDefault</name>
                                </livery>
@@ -127,11 +125,9 @@ Thanks for all the help!
 				<mirror>false</mirror>
 				<wirecutter_up>false</wirecutter_up>
 				<wirecutter_down>false</wirecutter_down>
-				<sandfilter>false</sandfilter>
+				<OilCoolInlet>false</OilCoolInlet>
 				<!--or-->
-				<IBF>true</IBF>
-				<!--or-->
-				<nonIBF>false</nonIBF>
+				<IBFFilter>true</IBFFilter>
 				<winch>false</winch>
 				<SLLightR>false</SLLightR><!--Retractablelanding/SearchlightRight-->
 				<SLLightL>true</SLLightL><!--Retractablelanding/SearchlightLEFT-->
@@ -542,7 +538,7 @@ Thanks for all the help!
 		<menubar>
 			<default>
 				 <menu n="10">
-      <label>H135</label>
+      <label>H135 P3</label>
       <enabled type="bool">true</enabled>
       <item>
         <label>Select Livery</label>
@@ -602,10 +598,10 @@ Thanks for all the help!
 </environment>		
 	
 <limits>
-<vne>140</vne>
-<MTOW>6570</MTOW>
+<vne>155</vne>
+<MTOW>6251</MTOW>
 <MCP>69</MCP>
-<MTOP>78</MTOP>
+<MTOP>75</MTOP>
 </limits>
 
 	<consumables>

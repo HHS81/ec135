@@ -7,8 +7,8 @@
 <nasal>
         <load>
             var livery_update = aircraft.livery_update.new(
-	    "Aircraft/ec135/Models/liveries", 10,
-	    func { print("livery update") });
+	    "Aircraft/ec135/Models/liveries_h135p3", 10,
+	    func { print("livery h135 P3 update") });
         </load>
 
         <unload>
@@ -42,7 +42,7 @@
 
 <effect>
 		<inherits-from>Aircraft/ec135/Models/Effects/ec135bumpspecreflect</inherits-from>
-		<object-name>EC135</object-name>
+		<object-name>fuselage</object-name>
 </effect>
 
 <!--  REMBRANDT support for transparent objects -->
@@ -776,17 +776,28 @@
 
 <animation>
 	<type>select</type>
-	<object-name>sandfilter</object-name>
+	<object-name>OilCoolInlet</object-name>
 	<condition>
-	<property>sim/model/ec135/sandfilter</property>
+	<property>sim/model/ec135/OilCoolInlet</property>
 	</condition>
 </animation>
 
 <animation>
 	<type>select</type>
-	<object-name>IBF</object-name>
+	<object-name>oldinlet</object-name>
 	<condition>
-	<property>sim/model/ec135/IBF</property>
+	<not>
+	<property>sim/model/ec135/OilCoolInlet</property>
+	</not>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>IBFGrille</object-name>
+	<object-name>IBFFrame</object-name>
+	<condition>
+	<property>sim/model/ec135/IBFGrille</property>
 	</condition>
 </animation>
 
@@ -1010,7 +1021,7 @@
 	<animation>
 		<type>material</type>
 		<!--global type="bool">true</global-->
-		<object-name>EC135</object-name>
+		<object-name>fuselage</object-name>
 		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>default.png</texture>
