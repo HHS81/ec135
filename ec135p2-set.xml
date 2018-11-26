@@ -12,7 +12,7 @@ Thanks for all the help!
 <PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
 	<sim>
 		<description>Eurocopter EC135 P2</description>
-		<author>Heiko Schulz & Maik Justus (FDM), Melchior Franz & Heiko Schulz(Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements), Sebastian Dietrich (GTX330 improvements)</author>
+		<author>Heiko Schulz + Maik Justus (FDM), Melchior Franz + Heiko Schulz(Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements), Sebastian Dietrich (GTX330 improvements)</author>
 		<status>early production</status>
 		<rating>
                     <FDM type="int">4</FDM>
