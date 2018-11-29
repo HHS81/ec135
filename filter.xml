@@ -2,8 +2,11 @@
 <!--
  
 -->
-<!-- Some low pass filters to soften the response of various instruments -->
 <PropertyList>
+
+
+<!-- Some low pass filters to soften the response of various instruments -->
+
   <filter>
     <name>TRQ</name>
     <debug>false</debug>

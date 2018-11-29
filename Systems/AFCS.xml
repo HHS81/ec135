@@ -1,0 +1,663 @@
+<?xml version="1.0"?>
+<!--
+
+	This file is part of FlightGear, the free flight simulator
+	http://www.flightgear.org/
+
+	Copyright (C) 2018 Heiko Schulz, Heiko.H.Schulz@gmx.net
+
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License as
+	published by the Free Software Foundation; either version 2 of the
+	License, or (at your option) any later version.
+
+	This program is distributed in the hope that it will be useful, but
+	WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	General Public License for more details.
+	
+
+-->
+<PropertyList>
+
+<filter>
+    <name>roll attitude sample hold</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/orientation/roll-deg</input>
+    <output>/controls/flight/roll-deg</output>
+    <gain>1</gain>
+      <enable>
+  <condition>
+     <not-equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>0</value>
+   </not-equals>
+  </condition>
+    </enable>
+ </filter>
+
+<!--<filter>
+    <name>roll attitude fly through</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/fcs/roll</input>
+    <output>/controls/flight/roll-deg</output>
+    <gain>80</gain>
+      <enable>
+  <condition>
+     <not-equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </not-equals>
+  </condition>
+    </enable>
+ </filter>-->
+ 
+ <filter>
+    <name>roll attitude</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/fcs/roll</input>
+    <output>/controls/flight/aileron-cmd</output>
+    <gain>1</gain>
+      <enable>
+  <condition>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+  </condition>
+    </enable>
+ </filter>
+    
+ <filter>
+    <name>pitch attitude sample hold</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/orientation/pitch-deg</input>
+    <output>/controls/flight/pitch-deg</output>
+    <gain>1</gain>
+      <enable>
+  <condition>
+     <not-equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>0</value>
+   </not-equals>
+  </condition>
+    </enable>
+ </filter>
+ 
+      
+ <filter>
+    <name>pitch attitude</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/fcs/pitch</input>
+    <output>/controls/flight/elevator-cmd</output>
+    <gain>1</gain>
+      <enable>
+  <condition>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+  </condition>
+    </enable>
+ </filter>
+
+
+
+<pid-controller>
+  <name>roll attitude hold</name>
+  <debug>false</debug>
+        <enable>
+  <condition>
+  <and>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>0</value>
+   </equals>
+       <equals>
+      <property>/autopilot/afcs/roll</property>
+      <value>1</value>
+   </equals>
+   </and>
+  </condition>
+      </enable>
+ <input>
+   <prop>/orientation/roll-deg</prop>
+  </input>
+  <reference>/controls/flight/roll-deg</reference>
+  <output>
+   <prop>/controls/flight/aileron-cmd</prop>
+  </output>
+  <config>
+   <Kp>0.02</Kp>
+   <Ti>10.0</Ti>
+   <Td>0.0</Td>
+   <u_min>-1.0</u_min>
+   <u_max>1.0</u_max>
+  </config>
+ </pid-controller>
+ 
+ <!-- =============================================================== -->
+  <!-- Roll Axis Modes                                                 -->
+  <!-- =============================================================== -->
+
+ 
+<filter>
+	<name>heading bug error computer/normalizer</name>
+	<debug>false</debug>
+	<type>gain</type>
+	<input>
+		<property>/autopilot/settings/heading-bug-deg</property>
+	</input>
+	<reference>/orientation/heading-magnetic-deg</reference>
+	<output>/autopilot/internal/heading-bug-error-deg</output>
+	<period>
+		<min>-180</min>
+		<max>180</max>
+	</period>
+	<gain>1.0</gain>
+  </filter>
+ 
+  <filter>
+  <name>HDG target roll computer</name>
+  <debug>false</debug>
+<enable>
+<property>/autopilot/afcs/locks/heading</property>
+<value>heading-hold</value>
+</enable>
+  <type>gain</type>
+  <input>/autopilot/internal/heading-bug-error-deg</input>
+  <output>/autopilot/afcs/internal/target-roll-deg</output>
+  <gain>1.0</gain>
+  <min>-60</min>
+  <max>60</max>
+ </filter> 
+
+<pi-simple-controller>
+    <name>Roll rate calculator</name>
+    <debug>false</debug>
+  <enable>
+            <condition>
+            <not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+	<or>
+                    <equals>
+	<property>autopilot/afcs/locks/heading</property>
+	<value>heading-hold</value>
+                    </equals>
+                    <equals>
+	<property>autopilot/afcs/locks/heading</property>
+	<value>VOR</value>
+                    </equals>
+		    </or>
+            </condition>
+  </enable>	
+    <input>
+      <prop>/orientation/roll-deg</prop>
+    </input>
+    <reference>
+      <prop>/autopilot/afcs/internal/target-roll-deg</prop>
+    </reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-roll-rate</prop>
+    </output>
+    <config>
+      <Kp>1.0</Kp>          
+      <Ki>0.1</Ki>          
+       <u_min>-80</u_min> 
+      <u_max>80</u_max>   
+    </config>
+  </pi-simple-controller>
+
+ <pi-simple-controller>
+    <name>Roll rate comparator</name>
+    <debug>false</debug>
+  <enable>
+            <condition>
+            <not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+	<or>
+                    <equals>
+	<property>autopilot/afcs/locks/heading</property>
+	<value>heading-hold</value>
+                    </equals>
+                    <equals>
+	<property>autopilot/afcs/locks/heading</property>
+	<value>VOR</value>
+                    </equals>
+		    </or>
+            </condition>
+  </enable>
+    <input>
+      <prop>/orientation/roll-rate-degps</prop>
+    </input>
+    <reference>
+      <prop>/autopilot/afcs/internal/target-roll-rate</prop>
+    </reference>
+      <output>
+      <prop>/controls/flight/roll-deg</prop>
+    </output>
+    <config>
+      <Kp>1</Kp>          
+      <Ki>0.1</Ki>          
+      <u_min>-27</u_min> 
+      <u_max>27</u_max>   
+    </config>
+  </pi-simple-controller>
+
+ 
+ <!--<pid-controller>
+  <name>side slip</name>
+  <debug>false</debug>
+       <enable>
+  <condition>
+  <and>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>0</value>
+   </equals>
+       <equals>
+      <property>/autopilot/afcs/roll</property>
+      <value>1</value>
+   </equals>
+   </and>
+  </condition>
+      </enable>
+  <input>
+   <prop>/orientation/side-slip-deg</prop>
+  </input>
+  <reference>0</reference>
+  <output>
+   <prop>/controls/flight/fcs/yaw</prop>
+  </output>
+  <config>
+   <Kp>-0.5</Kp>
+   <Ti>10.0</Ti>
+   <Td>0.0</Td>
+   <u_min>-1.0</u_min>
+   <u_max>1.0</u_max>
+  </config>
+ </pid-controller>-->
+
+<!-- outer loop-->
+
+<!-- IAS Hold Mode  --> 
+   <pid-controller>
+    <name>IAS hold Mode Stage #1</name>
+    <debug>false</debug>
+ <enable>
+  <condition>
+<not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+     <and>
+         <equals>
+      <property>/autopilot/afcs/pitch</property>
+      <value>1</value>
+   </equals>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>ias-hold</value>
+   </equals>
+   </and>
+  </condition>
+      </enable>
+    <input>
+      <prop>/autopilot/afcs/internal/lookahead-2-sec-indicated-speed-kt</prop>
+    </input>
+    <reference>
+      <prop>/autopilot/afcs/settings/target-speed-kt-filtered</prop>
+    </reference>
+    <output>
+      <prop>/controls/flight/pitch-deg</prop>
+    </output>
+    <config>
+      <Kp>-0.5</Kp> <!-- -0.5-->       <!-- proportional gain -->
+      <Ti>10.0</Ti>        <!-- integrator time -->
+      <Td>0.0</Td>    <!-- derivator time -->
+      <u_min>-15.0</u_min><!-- minimum output clamp -->
+      <u_max>15.0</u_max> <!-- maximum output clamp -->
+    </config>
+  </pid-controller>
+  
+ <!-- Altitude-hold-->
+ <pi-simple-controller>
+    <name>Altitude Hold (Altimeter based) Stage 1</name>
+    <debug>false</debug>
+ <enable>
+  <condition>
+<not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+   <and>
+         <equals>
+      <property>/autopilot/afcs/pitch</property>
+      <value>1</value>
+   </equals>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>altitude-hold</value>
+   </equals>
+   </and>
+  </condition>
+      </enable>
+    <input>
+      <prop>/instrumentation/altimeter/indicated-altitude-ft</prop>
+    </input>
+    <reference>
+      <prop>autopilot/afcs/internal/actual-target-altitude-ft</prop>
+    </reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-climb-rate-fps</prop>
+    </output>
+    <config>
+      <Kp>0.15</Kp>  
+      <Ki>0.0</Ki>         
+      <u_min>-33</u_min> 
+      <u_max>15</u_max>   
+    </config>
+  </pi-simple-controller>
+
+    
+    
+ <pi-simple-controller>
+    <name>Altitude Hold (Altimeter based) Stage 1</name>
+    <debug>false</debug>
+<enable>
+  <condition>
+      <equals>
+      <property>/autopilot/afcs/internal/altitude-armed</property>
+      <value>1</value>
+  </equals>
+  </condition>
+    </enable>
+    <input>
+      <prop>/instrumentation/altimeter/indicated-altitude-ft</prop>
+    </input>
+    <reference>
+      <prop>/autopilot/afcs/settings/sel-target-altitude-ft</prop>
+    </reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-climb-rate-fps</prop>
+    </output>
+    <config>
+      <Kp>0.5</Kp>          
+      <Ki>0.0</Ki>         
+	<u_min>-33</u_min>
+	<u_max>33</u_max>
+    </config>
+  </pi-simple-controller>
+    
+
+    
+  
+<pid-controller>
+    <name>Altitude/ VS Stage 2</name>
+    <debug>false</debug>
+ <enable>
+  <condition>
+  <not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+  <and>
+         <equals>
+      <property>/autopilot/afcs/pitch</property>
+      <value>1</value>
+   </equals>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>altitude-hold</value>
+   </equals>
+   </and>
+  </condition>
+      </enable>
+    <input>
+      <property>/velocities/vertical-speed-fps</property>
+    </input>
+    <reference>
+      <property>/autopilot/afcs/internal/target-climb-rate-fps</property>
+    </reference>
+    <output>
+      <property>/controls/flight/pitch-deg</property>
+    </output>
+    <config>
+            <Kp>0.15</Kp>
+            <Ti>10.0</Ti>
+            <Td>0.0000</Td>
+      <u_min>-15.0</u_min> 
+      <u_max>15.0</u_max>  
+    </config>
+  </pid-controller>-->
+  
+  <!-- -->
+  
+ <pid-controller>
+  <name>pitch attitude hold</name>
+  <debug>false</debug>
+        <enable>
+  <condition>
+  <and>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>0</value>
+   </equals>
+       <equals>
+      <property>/autopilot/afcs/pitch</property>
+      <value>1</value>
+   </equals>
+   </and>
+  </condition>
+      </enable>
+  <input>
+   <prop>/orientation/pitch-deg</prop>
+  </input>
+  <reference>/controls/flight/pitch-deg</reference>
+  <output>
+   <prop>/controls/flight/elevator-cmd</prop>
+  </output>
+  <config>
+   <Kp>-0.025</Kp>
+   <Ti>10.0</Ti>
+   <Td>0.0</Td>
+   <u_min>-1.0</u_min>
+   <u_max>1.0</u_max>
+  </config>
+ </pid-controller>
+ 
+ 
+
+ 
+ 
+ <!--actuator filter-->
+ <filter>
+    <name>pitch cyclic sample hold</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/elevator-cmd</input>
+    <output>/controls/flight/elevator</output>
+    <gain>1</gain>
+      <enable>
+  <condition>
+  <not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+    <or>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>ias-hold</value>
+   </equals>
+       <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>altitude-hold</value>
+   </equals>
+        <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>hover</value>
+   </equals>
+</or>
+    </condition>
+    </enable>
+ </filter>
+ 
+<filter>
+    <name>roll cyclic sample hold</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/aileron-cmd</input>
+    <output>/controls/flight/aileron</output>
+    <gain>1</gain>
+      <enable>
+  <condition>
+  <not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+         <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>hover</value>
+   </equals>
+  </condition>
+    </enable>
+ </filter>
+ 
+ <!-- Auto Hover-->
+    <pid-controller>
+    <name>Auto Hover pitch</name>
+    <debug>false</debug>
+ <enable>
+  <condition>
+<not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+     <and>
+         <equals>
+      <property>/autopilot/afcs/pitch</property>
+      <value>1</value>
+   </equals>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>hover</value>
+   </equals>
+   </and>
+  </condition>
+      </enable>
+    <input>
+      <prop>/autopilot/afcs/internal/lookahead-1-sec-uBody-fps</prop>
+    </input>
+     <reference>0</reference>
+    <output>
+      <prop>/controls/flight/pitch-deg</prop>
+    </output>
+    <config>
+      <Kp>-1</Kp> 
+      <Ti>5.0</Ti>        
+      <Td>0.0</Td>   
+      <u_min>-15.0</u_min>
+      <u_max>15.0</u_max> 
+    </config>
+  </pid-controller>
+  
+    <pid-controller>
+    <name>Auto Hover roll</name>
+    <debug>false</debug>
+ <enable>
+  <condition>
+<not>
+     <equals>
+      <property>/controls/flight/force_trim_release</property>
+      <value>1</value>
+   </equals>
+   </not>
+     <and>
+         <equals>
+      <property>/autopilot/afcs/roll</property>
+      <value>1</value>
+   </equals>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>hover</value>
+   </equals>
+   </and>
+  </condition>
+      </enable>
+    <input>
+      <prop>/autopilot/afcs/internal/lookahead-1-sec-vBody-fps</prop>
+    </input>
+ <reference>0</reference>
+    <output>
+      <prop>/controls/flight/roll-deg</prop>
+    </output>
+    <config>
+      <Kp>1</Kp> 
+      <Ti>5.0</Ti>        
+      <Td>0.0</Td>    
+      <u_min>-15.0</u_min>
+      <u_max>15.0</u_max> 
+    </config>
+  </pid-controller>
+  
+<!-- helper-->
+
+ <predict-simple>
+     <input>/instrumentation/airspeed-indicator/indicated-speed-kt</input>
+     <output>/autopilot/afcs/internal/lookahead-2-sec-indicated-speed-kt</output>
+     <seconds>2</seconds>
+     <filter-gain>0.0</filter-gain>
+  </predict-simple>
+  
+  <predict-simple>
+     <input>/velocities/uBody-fps</input>
+     <output>/autopilot/afcs/internal/lookahead-1-sec-uBody-fps</output>
+     <seconds>1</seconds>
+     <filter-gain>0.0</filter-gain>
+  </predict-simple>
+  
+  <predict-simple>
+     <input>/velocities/vBody-fps</input>
+     <output>/autopilot/afcs/internal/lookahead-1-sec-vBody-fps</output>
+     <seconds>1</seconds>
+     <filter-gain>0.0</filter-gain>
+  </predict-simple>
+
+   <filter>
+  <name>speed filter</name>
+  <debug>false</debug>
+  <feedback-if-disabled>true</feedback-if-disabled>
+    <input>/autopilot/afcs/settings/target-speed-kt</input>
+  <output>/autopilot/afcs/settings/target-speed-kt-filtered</output>
+  <type>noise-spike</type>
+  <max-rate-of-change>1</max-rate-of-change>
+ </filter>
+ 
+ 
+
+</PropertyList>

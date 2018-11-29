@@ -44,7 +44,7 @@ Thanks for all the help!
 		
 
 		<flight-model>yasim</flight-model>
-		<aero>ec135P2</aero>
+		<aero>h135p3</aero>
 		<fuel-fraction>1.0</fuel-fraction>
 
 		<startup>
@@ -60,10 +60,12 @@ Thanks for all the help!
 <electrical>
                 <path></path>
 </electrical>
-<autopilot>
+    <autopilot n="0">
             <path>Aircraft/ec135/filter.xml</path>
 </autopilot>
-
+	<autopilot n="4">
+                <path>Aircraft/ec135/Systems/AFCS.xml</path>
+	</autopilot>
 
 </systems>
 <instrumentation>
@@ -97,7 +99,7 @@ Thanks for all the help!
 			<path archive="y">Aircraft/ec135/Models/h135.xml</path>
 			<variant type="int">1</variant>
 			<livery>
-                              <name type="string">WhiteDefault</name>
+                              <name type="string">D-EHCB</name>
                                </livery>
 	   	    	<ec135>
 			  <state type="int">0</state>
@@ -761,12 +763,12 @@ Thanks for all the help!
 	<binding>
 		<command>property-assign</command>
 		<property>controls/flight/fcs/gains/sas/pitch</property>
-		<value type="double">-0.010</value>
+		<value type="double">-0.020</value>
 	</binding>
 	<binding>
 		<command>property-assign</command>
 		<property>controls/flight/fcs/gains/sas/roll</property>
-		<value type="double">0.0150</value>
+		<value type="double">0.010</value>
 	</binding>
 </key>
 
@@ -776,7 +778,7 @@ Thanks for all the help!
 	<binding>
 		<command>property-assign</command>
 		<property>controls/flight/fcs/gains/sas/yaw</property>
-		<value type="double">0.0075</value>
+		<value type="double">0.02</value>
 	</binding>
   </key>
   
@@ -788,6 +790,19 @@ Thanks for all the help!
 		<property>controls/rotor/cata</property>
 	</binding>
   </key>
+  
+  
+<key n="102">
+    <name>f</name>
+    <desc>Force Trim Release</desc>
+	<binding>
+		<command>property-toggle</command>
+		<property>/controls/flight/force_trim_release</property>
+	</binding>
+  </key>
+  
+ 
+  
 
 			<key n="108">
 				<name>l</name>
