@@ -5,30 +5,19 @@
 
 var fcs_params = {
   'gains' : {
-  'sensitivities' : {
-        'pitch' : 40, 
-          'roll' : 60, 
-        'yaw' : 10, 
-  },
-  'sas' : {
-	'authority-limit' : 0.15,
-        'pitch' : -0.015, 
-          'roll' : 0.00075, 
-        'yaw' : 0.0075, 
-  },
     'cas' : {
       'input' : {
-        'roll' : 60, 
-        'pitch' : -60, 
-        'yaw' : 30, 
-        'attitude-roll' : 80, 
-        'attitude-pitch' : -80, 
+        'roll' : 30, 
+        'pitch' : -30, 
+        'yaw' : 15, 
+        'attitude-roll' : 90, 
+        'attitude-pitch' : -90, 
         'anti-side-slip-min-speed' : 0.015
       },
       'output' : {
-        'roll' : 0.03, 
-        'pitch' : -0.1, 
-        'yaw' : 0.5, 
+        'roll' : 0.01, 
+        'pitch' : -0.075, 
+        'yaw' : 0.1, 
         'roll-brake-freq' : 5, 
         'pitch-brake-freq' : 2, 
         'roll-brake' : 0.8, 
@@ -52,13 +41,13 @@ var fcs_params = {
   },
   'switches' : { # initial status of FCS
     'auto-hover' : 0, 
-    'cas' : 1, 
+    'cas' : 0, 
     'sas' : 1, 
     'attitude-control' : 1,
-    'auto-stabilator' : 0, 
-    'sideslip-adjuster' : 0, 
-    'tail-rotor-adjuster' : 0,
-    'heading-adjuster' : 0,
+    'auto-stabilator' : 1, 
+    'sideslip-adjuster' : 1, 
+    'tail-rotor-adjuster' : 1,
+    'heading-adjuster' : 1,
     'debug' : 1  # Add this only when you are adjusting FCS parameters
   }
 };

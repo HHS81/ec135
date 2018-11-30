@@ -1024,7 +1024,7 @@
 		<object-name>fuselage</object-name>
 		<property-base>sim/model/livery/</property-base>
 		<texture-prop>texture</texture-prop>
-		<texture>default.png</texture>
+		<texture>liveries_h135p3/D-HECB.png</texture>
 	</animation>
 	
 	

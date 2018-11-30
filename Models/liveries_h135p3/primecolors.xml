@@ -5,9 +5,9 @@
 	<sim>
 		<model>
 			<livery>
-					<name type="string">WhiteDefault</name>
+					<name type="string">PrimeColors</name>
 					 <index type="int">1</index>
-					  <texture>liveries_h135p3/WhiteDefault.png</texture>
+					  <texture>liveries_h135p3/prime.png</texture>
 			</livery>
 		<!--<rotorblade>
 				<name type="string">ANWB</name>
@@ -32,13 +32,13 @@
 				<searchlight_front>false</searchlight_front><!--only without radom and without nosefl-->
 				<searchlight_left>false</searchlight_left>
 				<FLIR>false</FLIR>
-				<windscreen_tri>true</windscreen_tri>
+				<windscreen_tri>false</windscreen_tri>
 				<!--or-->
-				<windscreen>false</windscreen>
+				<windscreen>true</windscreen>
 				<mirror>false</mirror>
 				<wirecutter_up>false</wirecutter_up>
 				<wirecutter_down>false</wirecutter_down>
-				<OilCoolInlet>false</OilCoolInlet>
+				<OilCoolInlet>true</OilCoolInlet>
 				<IBFGrille>true</IBFGrille>
 				<winch>false</winch>
 				<SLLightR>false</SLLightR><!--Retractablelanding/SearchlightRight-->
@@ -75,9 +75,9 @@
 			</ec135>
 		   		   </model>
     <rendering>	   
-	<refl_correction type="string">-0.1</refl_correction>
+	<refl_correction type="string">-0.85</refl_correction>
 	<refl-type>1.0</refl-type>
-	<fresnel-factor>0.45</fresnel-factor>
+	<fresnel-factor>0.5</fresnel-factor>
     </rendering>
 	</sim>
 </PropertyList>

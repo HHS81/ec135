@@ -448,7 +448,7 @@
       <u_min>-15.0</u_min> 
       <u_max>15.0</u_max>  
     </config>
-  </pid-controller>-->
+  </pid-controller>
   
   <!-- -->
   
@@ -505,7 +505,7 @@
       <value>1</value>
    </equals>
    </not>
-    <or>
+   <or>
       <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>ias-hold</value>
@@ -538,10 +538,20 @@
       <value>1</value>
    </equals>
    </not>
-         <equals>
+          <or>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>ias-hold</value>
+   </equals>
+       <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>altitude-hold</value>
+   </equals>
+        <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>hover</value>
    </equals>
+  </or>
   </condition>
     </enable>
  </filter>
@@ -578,7 +588,7 @@
       <prop>/controls/flight/pitch-deg</prop>
     </output>
     <config>
-      <Kp>-1</Kp> 
+      <Kp>-0.5</Kp> 
       <Ti>5.0</Ti>        
       <Td>0.0</Td>   
       <u_min>-15.0</u_min>
@@ -617,7 +627,7 @@
       <prop>/controls/flight/roll-deg</prop>
     </output>
     <config>
-      <Kp>1</Kp> 
+      <Kp>0.5</Kp> 
       <Ti>5.0</Ti>        
       <Td>0.0</Td>    
       <u_min>-15.0</u_min>
