@@ -2,7 +2,7 @@
 	This file is part of FlightGear, the free flight simulator
 	http://www.flightgear.org/
 
-	Copyright (C) 2018 Heiko Schulz, Heiko.H.Schulz@gmx.net
+	Copyright (C) 2009 Heiko Schulz, Heiko.H.Schulz@gmx.net
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License as
@@ -18,10 +18,10 @@
  
  
 
-<!--Airbus H135 
-	Max  weight: 2980kg/ 6570 lbs
-	
-	Empty weight: 3446 lbs 
+<!--EC135 P2
+	Max  weight: 2835kg
+	Min weight: 1500kg (3307 lbs)
+	Empty weight: 3268 lbs (baseline: 3207lbs + margin )
 	
 	Max Range: 450 nm  
 	
@@ -29,7 +29,7 @@
 	width: 2.0m
 	width with hstab: 2.65m
 	
-	Main Rotor diameter: 10.4m
+	Main Rotor diameter: 10.2m
 	Type: bearingless main rotor
 	Disc area: ?? sqm
 	Number of Blades: 4
@@ -68,17 +68,11 @@
 	nearly the same character as with real values
 	
 	
-	Fuel Capacity: 185.1 US gal = 700liters = 1235.4lbs
+	Fuel Capacity: 142.7 US gal = 540liters = 427kg
 	
-	2 Pratt & Whitney PW 206 B3
-	AEO:
-	MTOP: 528kW / 708shp
-	MCP: 457kW/ 613shp
-	OEI:
-	30sec: 610kW/ 818shp
-	2min: 582kW/ 780shp
-	MCP: 528kW/ 708shp
-	
+	2 Pratt & Whitney PW 206 B2
+	max power: 557kw, power rating (MTOP): 747SHP
+	max continous: 543 kw, power rating (MCP): 728SHP
 	
 	CoG from the Flight Manual:
 	
@@ -86,11 +80,10 @@
 	CoG- between 4180mm and 4570mm from datum
 	Empty weight CoG at around 4500mm
 	
-	Airspeed Limits Never Exceed Power on: 140 ktn IAS
-	Maximum possible speed with maximum continous power: 142ktn TAS(!)
+	Airspeed Limits Never Exceed Power on: 155 ktn
+	Maximum possible speed with maximum continous power: 14ktn
 	
 	FDM based on datas from:
-	H135 T3H P3G Technical data (https://www.airbushelicoptersinc.com/images/products/H135/135_T3H_P3H%20Technical_Data_low_resolution.pdf)
 	Flight Manual EC135 P2;  
 	EC135 Training Manual; 
 	NASA-CR-3144 (www.robertheffley.com/docs/Data/NASA%20CR-3144.pdf?); TR-1087-1; 
@@ -117,7 +110,7 @@
 -->
 
 <rotor name="main" x="-2.973" y="0.0" z="1.751" 
-	nx="0.087" ny="0" nz="1." fx="0.087" fy="0" fz="1." ccw="1"
+	nx="0.087" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
 	maxcollective="17.0" mincollective="0.0"
 	mincyclicele="-7.4" maxcyclicele="13.9"
 	mincyclicail="-8.0" maxcyclicail="6.7"
@@ -148,31 +141,31 @@
 	rel-len-blade-start="0.29"
 	
 	airfoil-incidence-no-lift="-0.1"
-	airfoil-lift-coefficient="4.55"
-	airfoil-drag-coefficient0="0.0074"
-	airfoil-drag-coefficient1="0.15"
+	airfoil-lift-coefficient="6.825"
+	airfoil-drag-coefficient0="0.0111"
+	airfoil-drag-coefficient1="0.225"
 	incidence-stall-zero-speed="16"
 	incidence-stall-half-sonic-speed="15.5"
-	lift-factor-stall="0.18"
-	stall-change-over="5.5"
-	drag-factor-stall="2.0"
+	lift-factor-stall="0.27"
+	stall-change-over="8.25"
+	drag-factor-stall="3.0"
 	cyclic-factor="1.1"
 	rotor-correction-factor="0.9"
 	downwashfactor="1.0"
 	>
-	
-	<control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"/>
-	<control-input axis="/controls/flight/fcs/roll" control="CYCLICAIL"
+	<!--lst values: 1.35;0.1;-0.3;3.80;0.0074;0.04; to-do: play with lift-coeff and translift-factor-->
+<control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"/>
+	<control-input axis="/controls/flight/aileron-cmd" control="CYCLICAIL"
 					src0="-1.0" src1="1.0"
 					dst0="-1.0" dst1="1.0"/>
 	<control-input axis="/controls/flight/elevator-trim" control="CYCLICELE"/>
-	<control-input axis="/controls/flight/fcs/pitch" control="CYCLICELE"
+	<control-input axis="/controls/flight/elevator-cmd" control="CYCLICELE"
 					src0="-1.0" src1="1.0"
 					dst0="-1.0" dst1="1.0"/>
 	<control-input axis="/controls/engines/engine[0]/throttle" control="COLLECTIVE"
 					src0="0.0" src1="1.0"
 					dst0="1.0" dst1="-1"/>
-	<!--without SAS-system for debugging and tuning purpose
+	<!--without SAS-system
 	<control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"/>
 	<control-input axis="/controls/flight/aileron" control="CYCLICAIL"
 					src0="-1.0" src1="1.0"
@@ -239,7 +232,7 @@
 	rotorgear-friction="5.2"
 	engine-prop-factor="0.015"
 	engine-accel-limit="100"
-	yasimdragfactor="22.5"
+	yasimdragfactor="45"
 	yasimliftfactor="25"
 	>
 	<control-input axis="/controls/engines/engine[0]/magnetos" control="ROTORGEARENGINEON"/>
@@ -258,10 +251,10 @@
 <cockpit x="-1.88" y=".33" z="0.6"/>
 
 <fuselage ax="0.201" ay="0" az="-.162" bx="-5.3" by="0" bz="0.17" cx="3.0"  cz="0.2"
-          width="1.92" taper="0.95" midpoint="0.5" idrag="0"/>
+          width="1.92" taper="0.95" midpoint="0.5" idrag="0.09"/>
 
 <fuselage ax="-5.262" ay="0" az="0.698" bx="-9.78" by="0" bz=".757" cz="0.25" cx="2.5" 
-          width="0.47" taper="0.9" midpoint="0.05" idrag="0.0"/>
+          width="0.47" taper="0.9" midpoint="0.05" idrag="0.09"/>
 	
 
 
@@ -277,56 +270,6 @@
 	<stall aoa="16" width="4" peak="1.5"/>
 </vstab>
 
-<!--<vstab x="-8.8928" y="0" z="0.538" 
-	dihedral="-90"
-	taper=".5" 
-	effectiveness="0.5"
-	length="0.65" 
-	chord="1.3" 
-	sweep="15"
-	incidence="-5">
-	<stall aoa="16" width="4" peak="1.5"/>
-</vstab>-->
-
-<!--<vstab x="-7.481" y="1.27" z=".672" 
-	taper="0.7" 
-	effectiveness="0.5"
-	length=".26" 
-	chord=".50" 
-	incidence="4"
-	sweep="22">
-	<stall aoa="16" width="4" peak="1.5"/>
-</vstab>-->
-
-<!--<vstab x="-7.481" y="1.27" z=".672" 
-	taper="0.7" 
-	effectiveness="0.5"
-	length="-.52" 
-	chord=".50" 
-	incidence="4"
-	sweep="-30">
-	<stall aoa="16" width="4" peak="1.5"/>
-</vstab>-->
-
-<!--<vstab x="-7.481" y="-1.27" z=".672" 
-	taper="0.7" 
-	effectiveness="0.5"
-	length=".26" 
-	chord=".50" 
-	incidence="4"
-	sweep="22">
-	<stall aoa="16" width="4" peak="1.5"/>
-</vstab>-->
-
-<!--<vstab x="-7.481" y="-1.27" z=".672" 
-	taper="0.7" 
-	effectiveness="0.5"
-	length="-.52" 
-	chord=".50" 
-	incidence="4"
-	sweep="-30">
-	<stall aoa="24" width="10" peak="1.5"/>
-</vstab>-->
 
 <!--changed incidence to -5, former -7-->
 <hstab x="-7.44" y="0.05" z="0.655"
@@ -340,8 +283,8 @@
 </hstab>
 
 <!-- tail bumper -->
-<gear x="8.952" y="+0.00" z="0.088" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8"/>
-<gear x="9.004" y="+0.00" z="0.097" skid="1" compression="0.1" spring="1.5" damp="1.70" sfric="0.6" dfric="0.8"/>
+<gear x="8.952" y="+0.00" z="0.088" skid="1" compression="0.1" spring="1"  damp="1.0" sfric="0.6" dfric="0.8"/>
+<gear x="9.004" y="+0.00" z="0.097" skid="1" compression="0.1" spring="1" damp="1.0" sfric="0.6" dfric="0.8"/>
 
 <!-- left lowskid -->
 <gear x="-1.09" y="+1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8"/>
