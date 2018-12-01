@@ -38,7 +38,7 @@ Thanks for all the help!
 		    <preview>
 			<type>exterior</type>
 			<splash type="bool">true</splash>
-			<path>Pics/ec135-exterior.jpg</path>
+			<path>Pics/h135-exterior.jpg</path>
 		    </preview>
 		</previews>
 		
@@ -48,7 +48,7 @@ Thanks for all the help!
 		<fuel-fraction>1.0</fuel-fraction>
 
 		<startup>
-			<splash-texture>Aircraft/ec135/splash.rgb</splash-texture>
+			<splash-texture>Aircraft/ec135/h135.png</splash-texture>
 		</startup>
 
 		<sound>
