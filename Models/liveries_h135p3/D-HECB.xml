@@ -7,7 +7,7 @@
 			<livery>
 					<name type="string">D-HECB</name>
 					 <index type="int">1</index>
-					  <texture>liveries_h135p3/D-EHCB.png</texture>
+					  <texture>liveries_h135p3/D-HECB.png</texture>
 			</livery>
 		<!--<rotorblade>
 				<name type="string">ANWB</name>
@@ -32,14 +32,14 @@
 				<searchlight_front>false</searchlight_front><!--only without radom and without nosefl-->
 				<searchlight_left>false</searchlight_left>
 				<FLIR>false</FLIR>
-				<windscreen_tri>false</windscreen_tri>
+				<windscreen_tri>true</windscreen_tri>
 				<!--or-->
-				<windscreen>true</windscreen>
+				<windscreen>false</windscreen>
 				<mirror>false</mirror>
 				<wirecutter_up>false</wirecutter_up>
 				<wirecutter_down>false</wirecutter_down>
 				<OilCoolInlet>true</OilCoolInlet>
-				<IBFGrille>true</IBFGrille>
+				<IBFGrille>false</IBFGrille>
 				<winch>false</winch>
 				<SLLightR>false</SLLightR><!--Retractablelanding/SearchlightRight-->
 				<SLLightL>true</SLLightL><!--Retractablelanding/SearchlightLEFT-->
@@ -75,7 +75,7 @@
 			</ec135>
 		   		   </model>
     <rendering>	   
-	<refl_correction type="string">-0.1</refl_correction>
+	<refl_correction type="string">-0.15</refl_correction>
 	<refl-type>1.0</refl-type>
 	<fresnel-factor>0.6</fresnel-factor>
     </rendering>
