@@ -588,8 +588,8 @@
       <prop>/controls/flight/pitch-deg</prop>
     </output>
     <config>
-      <Kp>-0.5</Kp> 
-      <Ti>5.0</Ti>        
+      <Kp>-0.75</Kp> 
+      <Ti>1.0</Ti>        
       <Td>0.0</Td>   
       <u_min>-15.0</u_min>
       <u_max>15.0</u_max> 
@@ -627,8 +627,8 @@
       <prop>/controls/flight/roll-deg</prop>
     </output>
     <config>
-      <Kp>0.5</Kp> 
-      <Ti>5.0</Ti>        
+      <Kp>0.75</Kp> 
+      <Ti>1.0</Ti>        
       <Td>0.0</Td>    
       <u_min>-15.0</u_min>
       <u_max>15.0</u_max> 
