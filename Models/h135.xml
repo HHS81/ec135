@@ -41,7 +41,7 @@
 </effect>
 
 <effect>
-		<inherits-from>Aircraft/ec135/Models/Effects/ec135bumpspecreflect</inherits-from>
+		<inherits-from>Aircraft/ec135/Models/Effects/h135bumpspecreflect</inherits-from>
 		<object-name>fuselage</object-name>
 </effect>
 
@@ -779,6 +779,24 @@
 	<object-name>OilCoolInlet</object-name>
 	<condition>
 	<property>sim/model/ec135/OilCoolInlet</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>HighTail</object-name>
+	<condition>
+	<property>sim/model/ec135/HighTail</property>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>LowTail</object-name>
+	<condition>
+	<not>
+	<property>sim/model/ec135/HighTail</property>
+	</not>
 	</condition>
 </animation>
 
