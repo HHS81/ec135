@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<name>waypoint entry for MFD DMAP list</name>
+<w-base>550</w-base>
+<h-base>40</h-base>
+<w>550</w>
+<h>40</h>
+
+<params>
+    <id>/instrumentation/efis/navd/sym[0]/id</id>
+    <bear>/instrumentation/efis/navd/sym[0]/bearing</bear>
+    <dst>/instrumentation/efis/navd/sym[0]/distance-nm</dst>
+    <sym>/instrumentation/efis/navd/sym[0]/sym</sym>
+    <sym>/instrumentation/efis/navd/sym[0]/info</sym>
+</params>
+
+<layers>
+  
+  <layer>
+    <name>background</name>
+    <w>490</w>
+    <h>38</h>
+    <emissive>true</emissive>
+    <texture>
+      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/mapdisplay.rgb</path>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.45</x2>
+      <y2>0.065</y2>
+    </texture>
+  </layer>    
+  
+  <layer>
+    <type>switch</type>
+    <layer>
+      <name>WPT symbol</name>
+      <condition>
+        <equals>
+          <property alias="../../../../../../params/sym"/>
+          <value>1</value>
+        </equals>  
+      </condition>
+      
+      <w>35</w>
+      <h>35</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <x1>    0.61      </x1>
+          <x2>    0.71      </x2>
+          <y1>    0.20    </y1>
+          <y2>    0.30      </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>x-shift</type> 
+            <offset>-255</offset> 
+          </transformation>
+      </transformations>
+    </layer>
+    
+    <layer>
+      <name>VOR symbol</name>
+      <condition>
+        <equals>
+          <property alias="../../../../../../params/sym"/>
+          <value>0</value>
+        </equals>  
+      </condition>
+      <w>35</w>
+      <h>35</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <x1>    0.70      </x1>
+          <x2>    0.80      </x2>
+          <y1>    0.20    </y1>
+          <y2>    0.30      </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>x-shift</type> 
+            <offset>-255</offset> 
+          </transformation>
+      </transformations>
+    </layer>
+    
+    <layer>
+      <name>NDB symbol</name>
+      <condition>
+        <equals>
+          <property alias="../../../../../../params/sym"/>
+          <value>2</value>
+        </equals>  
+      </condition>
+      <w>30</w>
+      <h>30</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <x1>    0.70      </x1>
+          <x2>    0.80      </x2>
+          <y1>    0.11    </y1>
+          <y2>    0.21      </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>x-shift</type> 
+            <offset>-255</offset> 
+          </transformation>
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>airport symbol</name>
+      <condition>
+        <equals>
+          <property alias="../../../../../../params/sym"/>
+          <value>3</value>
+        </equals>  
+      </condition>
+      <w>35</w>
+      <h>35</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <x1>    0.60      </x1>
+          <x2>    0.70      </x2>
+          <y1>    0.11    </y1>
+          <y2>    0.21      </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+           <transformation>
+            <type>x-shift</type> 
+            <offset>-255</offset> 
+          </transformation>
+      </transformations>
+    </layer>
+    
+    <layer>
+      <name>current WPT symbol</name>
+      <condition>
+        <equals>
+          <property alias="../../../../../../params/sym"/>
+          <value>4</value>
+        </equals>  
+      </condition>
+      <w>35</w>
+      <h>35</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <x1>    0.795      </x1>
+          <x2>    0.895      </x2>
+          <y1>    0.11    </y1>
+          <y2>    0.21      </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>x-shift</type> 
+            <offset>-255</offset> 
+          </transformation>
+      </transformations>
+    </layer>
+  </layer>
+
+  <layer> 
+   <name>ID</name>
+    <point-size>18</point-size>    
+    <type>text</type>
+    <font>arial_black</font>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+      <chunk>
+          <format>%-1.8s</format>
+          <type>text-value</type>
+          <property alias="../../../../../params/id"/>
+        </chunk>
+    </chunks>
+    <emissive>true</emissive>
+    <transformations>
+          <transformation><type>x-shift</type><offset>-230</offset></transformation>
+          <transformation><type>y-shift</type><offset>-6</offset></transformation>
+    </transformations>
+  </layer>
+    
+  <layer> 
+    <condition>
+        <not-equals>
+          <property alias="../../../../../params/sym"/>
+          <value>-1</value>
+        </not-equals>  
+    </condition>
+    <name>INFO TEXT</name>
+    <point-size>18</point-size>    
+    <type>text</type>
+    <font>arial_black</font>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+      <chunk>
+          <format>%s</format>
+          <type>text-value</type>
+          <property alias="../../../../../params/info"/>
+        </chunk>
+    </chunks>
+    <emissive>true</emissive>
+    <transformations>
+          <transformation><type>x-shift</type><offset>-145</offset></transformation>
+          <transformation><type>y-shift</type><offset>-6</offset></transformation>
+    </transformations>
+  </layer>
+  
+  <layer> 
+    <condition>
+        <not-equals>
+          <property alias="../../../../../params/sym"/>
+          <value>-1</value>
+        </not-equals>  
+    </condition>
+    <name>BEARING</name>
+    <point-size>18</point-size>    
+    <type>text</type>
+    <font>arial_black</font>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+      <chunk>
+          <format>%3.0f*</format>
+          <type>number-value</type>
+          <property alias="../../../../../params/bear"/>
+        </chunk>
+    </chunks>
+    <emissive>true</emissive>
+    <transformations>
+          <transformation><type>x-shift</type><offset>110</offset></transformation>
+          <transformation><type>y-shift</type><offset>-6</offset></transformation>
+    </transformations>
+  </layer>
+
+  <layer> 
+    <condition>
+        <not-equals>
+          <property alias="../../../../../params/sym"/>
+          <value>-1</value>
+        </not-equals>  
+    </condition>
+    <name>DISTANCE</name>
+    <point-size>18</point-size>    
+    <type>text</type>
+    <font>arial_black</font>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+      <chunk>
+          <format>%3.0fNM</format>
+          <type>number-value</type>
+          <property alias="../../../../../params/dst"/>
+        </chunk>
+    </chunks>
+    <emissive>true</emissive>
+    <transformations>
+          <transformation><type>x-shift</type><offset>160</offset></transformation>
+          <transformation><type>y-shift</type><offset>-6</offset></transformation>
+    </transformations>
+  </layer>
+  
+ </layers>    
+</PropertyList>

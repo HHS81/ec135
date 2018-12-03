@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<PropertyList>						
+<entry><ind>	0	</ind><dep>		0	</dep></entry>
+<entry><ind>	0.499999	</ind><dep>		0	</dep></entry>
+<entry><ind>	0.5	</ind><dep>		0.5	</dep></entry>
+<entry><ind>	0.999999	</ind><dep>		0.5	</dep></entry>
+<entry><ind>	1	</ind><dep>		1	</dep></entry>
+<entry><ind>	1.499999	</ind><dep>		1	</dep></entry>
+<entry><ind>	1.5	</ind><dep>		1.5	</dep></entry>
+<entry><ind>	1.999999	</ind><dep>		1.5	</dep></entry>
+<entry><ind>	2	</ind><dep>		2	</dep></entry>
+<entry><ind>	2.499999	</ind><dep>		2	</dep></entry>
+<entry><ind>	2.5	</ind><dep>		2.5	</dep></entry>
+<entry><ind>	2.999999	</ind><dep>		2.5	</dep></entry>
+<entry><ind>	3	</ind><dep>		3	</dep></entry>
+<entry><ind>	3.499999	</ind><dep>		3	</dep></entry>
+<entry><ind>	3.5	</ind><dep>		3.5	</dep></entry>
+<entry><ind>	3.999999	</ind><dep>		3.5	</dep></entry>
+<entry><ind>	4	</ind><dep>		4	</dep></entry>
+<entry><ind>	4.499999	</ind><dep>		4	</dep></entry>
+<entry><ind>	4.5	</ind><dep>		4.5	</dep></entry>
+<entry><ind>	4.999999	</ind><dep>		4.5	</dep></entry>
+<entry><ind>	5	</ind><dep>		5	</dep></entry>
+<entry><ind>	5.499999	</ind><dep>		5	</dep></entry>
+<entry><ind>	5.5	</ind><dep>		5.5	</dep></entry>
+<entry><ind>	5.999999	</ind><dep>		5.5	</dep></entry>
+<entry><ind>	6	</ind><dep>		6	</dep></entry>
+<entry><ind>	6.499999	</ind><dep>		6	</dep></entry>
+<entry><ind>	6.5	</ind><dep>		6.5	</dep></entry>
+<entry><ind>	6.999999	</ind><dep>		6.5	</dep></entry>
+<entry><ind>	7	</ind><dep>		7	</dep></entry>
+<entry><ind>	7.499999	</ind><dep>		7	</dep></entry>
+<entry><ind>	7.5	</ind><dep>		7.5	</dep></entry>
+<entry><ind>	7.999999	</ind><dep>		7.5	</dep></entry>
+<entry><ind>	8	</ind><dep>		8	</dep></entry>
+<entry><ind>	8.499999	</ind><dep>		8	</dep></entry>
+<entry><ind>	8.5	</ind><dep>		8.5	</dep></entry>
+<entry><ind>	8.999999	</ind><dep>		8.5	</dep></entry>
+<entry><ind>	9	</ind><dep>		9	</dep></entry>
+<entry><ind>	9.499999	</ind><dep>		9	</dep></entry>
+<entry><ind>	9.5	</ind><dep>		9.5	</dep></entry>
+<entry><ind>	9.999999	</ind><dep>		9.5	</dep></entry>
+</PropertyList>						

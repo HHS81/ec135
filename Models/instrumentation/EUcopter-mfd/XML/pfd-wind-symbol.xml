@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<!-- 
+EC PFD wind rose
+
+Author: litzi
+
+-->
+
+<PropertyList>
+<params>  
+</params>
+
+<name>Helionix Helicopter Compass Rose</name>
+<background>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/transparent.rgb</background>
+
+<w-base>60</w-base>
+<h-base>60</h-base>
+
+<layers>
+  
+ <layer>
+    <name>wind speed symbol</name>
+    <w>256</w>
+    <h>2048</h>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/wind-symbols.rgb</path>
+	<x1>	0.0 </x1>
+	<x2>	1.0 </x2>
+	<y1>	0.0 </y1>
+	<y2>	1.0 </y2>
+    </texture>
+    <emissive>true</emissive>
+  
+    <transformations>
+	<transformation>
+	      <type>rotation</type>
+	      <property>/orientation/heading-magnetic-deg</property>
+	      <scale>-1</scale>
+	</transformation>
+	<transformation>
+	    <type>rotation</type>
+	    <property>/environment/wind-from-heading-deg</property>
+	    <offset>90</offset>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-818</offset>
+	  <property>environment/wind-speed-kt</property>
+	  <interpolation>
+	    <entry><ind>	0	</ind><dep> 0	</dep></entry>
+	    <entry><ind>	5	</ind><dep> 0	</dep></entry>
+	    <entry><ind>	5.001	</ind><dep> 1	</dep></entry>
+	    <entry><ind>	10	</ind><dep> 1	</dep></entry>
+	    <entry><ind>	10.001	</ind><dep> 2	</dep></entry>
+	    <entry><ind>	15	</ind><dep> 2 </dep></entry>
+	    <entry><ind>	15.001	</ind><dep> 3</dep></entry>
+	    <entry><ind>	20	</ind><dep> 3</dep></entry>
+	    <entry><ind>	20.001	</ind><dep> 4</dep></entry>
+	    <entry><ind>	25	</ind><dep> 4</dep></entry>
+	    <entry><ind>	25.001	</ind><dep> 5</dep></entry>
+	    <entry><ind>	30	</ind><dep> 5</dep></entry>
+	    <entry><ind>	30.001	</ind><dep> 6</dep></entry>
+	    <entry><ind>	40	</ind><dep> 6</dep></entry>
+	    <entry><ind>	40.001	</ind><dep> 7</dep></entry>
+	    <entry><ind>	50	</ind><dep> 7</dep></entry>
+	    <entry><ind>	50.001	</ind><dep> 8</dep></entry>
+	    <entry><ind>	60	</ind><dep> 8</dep></entry>
+	  </interpolation> 
+	  <scale>108</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+
+</layers>		
+</PropertyList>  

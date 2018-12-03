@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!-- Some filters for various instruments -->
+  
+<PropertyList>
+ 
+<params>
+  <!-- parameter valid for EC145 helicopter
+       adjust your aircraft
+       nominal value 
+       parameters for max. torque are taken from bk117.nas code. 
+       (note: manual of the Honeywell LTS 101 turbine states 769 Nm @ 6140 rpm shaft )
+  -->
+  <rotor-rpmN>395</rotor-rpmN>
+  <gear-trq-max>970647</gear-trq-max>
+  <eng-trq-max>36400</eng-trq-max>  
+</params>
+
+<!-- 
+  PFD airspeed trend vector 
+-->
+
+<predict-simple>
+      <name>airspeed trend</name>  
+      <input>/velocities/airspeed-kt</input>
+      <seconds>8</seconds>
+      <filter-gain>0</filter-gain>
+      <output>/velocities/airspeed-lookahead</output>
+</predict-simple>
+
+<filter>
+      <name>airspeed trend delta</name> 
+      <type>gain</type>
+      <gain>1</gain>      
+      <input>/velocities/airspeed-lookahead</input>
+      <reference>/velocities/airspeed-kt</reference>
+      <output>/velocities/airspeed-delta-kt-sec</output>
+</filter>
+
+<!-- relative bearings for pointers in rose-->
+<filter>
+      <type>gain</type>
+      <gain>1.0</gain>
+      <input>/instrumentation/gps/wp/wp[1]/desired-course-deg</input>
+      <reference>/orientation/heading-magnetic-deg</reference>
+      <output>/instrumentation/gps/wp/wp[1]/course-err-deg</output>
+      <period>
+	<min>-180.0</min>
+	<max>180.0</max>
+      </period>
+</filter> 
+
+<filter>
+      <type>gain</type>
+      <gain>1.0</gain>
+      <input>/instrumentation/nav[0]/heading-deg</input>
+      <reference>/orientation/heading-magnetic-deg</reference>
+      <output>/instrumentation/nav[0]/rel-bearing-deg</output>
+      <period>
+	<min>-180.0</min>
+	<max>180.0</max>
+      </period>
+</filter> 
+
+<!-- EC145 percent main rotor rpm -->
+<filter>
+      <type>gain</type>
+      <gain>1.0</gain>
+      <input>
+	<expression>
+	  <product>
+	    <value>100</value>
+	    <div>
+		<property>/rotors/main/rpm</property>
+		<value alias="../../../../../../params/rotor-rpmN"/>
+	    </div>
+	  </product>
+	</expression>
+      </input>
+      <output>/rotors/main/rpm-pct</output>
+</filter> 
+
+</PropertyList>  

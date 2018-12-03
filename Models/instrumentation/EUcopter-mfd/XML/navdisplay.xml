@@ -1,0 +1,544 @@
+<?xml version="1.0"?>
+
+<!-- 
+EC NAVD compass rose
+
+Author: litzi
+
+This instrument is part of a 2D-panel simulating a NAVD compass rose found in EC series
+helicopters. This instrument is called from the central EUcopter-navd-panel.xml file with a xml include statement.
+
+Some components of this instrument are based on code and bitmaps of Syd Adams' Primus-1000 instrument.
+
+-->
+
+<PropertyList>
+<params>  
+  <rnum>210</rnum>
+  <pvert>210</pvert>
+  <nvert>-210</nvert>
+  <phor>210</phor>
+  <nhor>-210</nhor>
+  <!-- parameters for needles orientation-->
+  <nav1-err>/instrumentation/nav[0]/rel-bearing-deg</nav1-err>
+  <nav1-in-range>/instrumentation/nav[0]/in-range</nav1-in-range>
+  
+  <nav2-err>/instrumentation/adf[0]/indicated-bearing-deg</nav2-err>
+  <nav2-in-range>/instrumentation/adf[0]/in-range</nav2-in-range>
+
+  <nav3-err>/autopilot/internal/fms-course-error</nav3-err>
+  <nav3-in-range>/autopilot/route-manager/active</nav3-in-range>
+  <!-- parameters for course deviation indicator -->
+  <cdi-act>/instrumentation/nav[0]/in-range</cdi-act>  
+  <cdi-defl>/instrumentation/nav[0]/heading-needle-deflection</cdi-defl>
+  <cdi-err>/instrumentation/nav[0]/rel-bearing-deg</cdi-err>   
+  <cdi-to>/instrumentation/nav[0]/to-flag</cdi-to>
+  <cdi-from>/instrumentation/nav[0]/from-flag</cdi-from>  
+  <hdg-err>/autopilot/internal/heading-bug-error-deg</hdg-err>
+</params>
+
+<name>Helionix Helicopter Compass Rose</name>
+<background>Aircraft/ec145/Models/instruments/EUcopter-mfd/XML/transparent.rgb</background>
+
+<w-base>500</w-base>
+<h-base>500</h-base>
+
+<layers>
+
+  <layer>
+      <name>compass rose</name>
+      <w>400</w>
+      <h>400</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <x1>  0.5     </x1>
+          <y1>  0.5     </y1>
+          <x2>  1       </x2>
+          <y2>  1       </y2>  
+      </texture>
+      <transformations>
+        <transformation>
+        <type>rotation</type> 
+        <property>/orientation/heading-magnetic-deg</property>
+        <scale>-1</scale>
+      </transformation>
+      </transformations>
+      <emissive>true</emissive>
+  </layer>
+  
+ <layer>
+    <name>NAV1 needle tip</name>
+    <w>30</w>
+    <h>90</h>
+    
+    <condition>
+	      <property alias="../../../../params/nav1-in-range"/> 
+    </condition>
+    
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.90136700	</x1>
+	<x2>	0.93457000	</x2>
+        <y1>    0.94    </y1>
+        <y2>    0.967   </y2>
+    </texture>
+    <emissive>true</emissive>
+    <transformations>
+        <transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type>
+          <offset>135</offset>
+	</transformation>
+    </transformations>
+  </layer>  
+
+  <!--
+ <layer>
+    <name>NAV1 needle tail</name>
+    <w>30</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav1-in-range"/> 
+    </condition>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.90136700	</x1>
+	<x2>	0.93457000	</x2>
+	<y1>	0.91894500	</y1>
+	<y2>	0.94384700	</y2>
+    </texture>
+    <emissive>true</emissive>
+
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>-140</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>-87</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+  -->
+
+ <layer>
+    <name>NAV2 needle tip</name>
+    <w>55</w>
+    <h>95</h>
+    
+    <condition>
+	      <property alias="../../../../params/nav2-in-range"/> 
+    </condition>
+    
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.95898400	</x1>
+        <x2>    1.00000000      </x2>
+	<y1>	0.945	</y1>
+	<y2>	0.967	</y2>
+    </texture>
+    <emissive>true</emissive>
+  <transformations>
+        <transformation> 
+          <type>rotation</type> 
+          <property alias="../../../../../params/nav2-err"/>
+        </transformation>
+        <transformation> 
+          <type>y-shift</type>
+          <offset>135</offset>
+        </transformation>
+    </transformations>
+  </layer>  
+  
+<!--
+ <layer>
+    <name>NAV2 needle tail</name>
+    <w>55</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav2-in-range"/> 
+    </condition>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.95898400	</x1>
+	<y1>	0.91894500	</y1>
+	<x2>	1.00000000	</x2>
+	<y2>	0.94384700	</y2>
+    </texture>  
+    <emissive>true</emissive>
+
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>-140</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>-87</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+  -->
+  
+ <layer>
+    <name>NAV3 needle tip</name>
+    <w>35</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav3-in-range"/> 
+    </condition> 
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x2>	0.90136700	</x2>
+	<x1>	0.850	</x1>
+	<y1>	0.94384700	</y1>
+	<y2>	0.97314400	</y2>
+    </texture>
+    <emissive>true</emissive>
+    <transformations>
+        <transformation> 
+          <type>rotation</type> 
+          <property alias="../../../../../params/nav3-err"/>
+        </transformation>
+        <transformation> 
+          <type>y-shift</type>
+          <offset>153</offset>
+        </transformation>
+    </transformations>
+  </layer>  
+  
+ <layer>
+    <name>NAV3 needle tail</name>
+    <w>15</w>
+    <h>95</h>
+    <condition>
+	      <property alias="../../../../params/nav3-in-range"/> 
+    </condition>    
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+        <y2>    0.94384700      </y2>
+        <y1>    0.91894500      </y1>
+        <x1>    0.93261700      </x1>
+        <x2>    0.95019500      </x2>
+    </texture>
+    <emissive>true</emissive>
+    <transformations>
+        <transformation> 
+          <type>rotation</type> 
+          <property alias="../../../../../params/nav3-err"/>
+        </transformation>
+        <transformation> 
+          <type>y-shift</type>
+          <offset>-135</offset>
+        </transformation>
+    </transformations>
+  </layer>  
+
+  <layer>  
+    <name>CDI Deflection needle</name>	
+    <w>15</w>
+    <h>180</h>
+    <condition>
+	      <property alias="../../../../params/cdi-act"/> 
+    </condition>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<y2>	0.94384700	</y2>
+	<y1>	0.91894500	</y1>
+	<x1>	0.93261700	</x1>
+	<x2>	0.95019500	</x2>
+    </texture>
+    <transformations>
+	  <transformation> 
+	    <type>rotation</type> 
+	    <property alias="../../../../../params/cdi-err"/>
+	  </transformation>
+	  <transformation>
+		<type>x-shift</type>
+		<property  alias="../../../../../params/cdi-defl"/>
+		<scale>8.0</scale>
+		<min>-12</min>
+		<max>12</max>
+	  </transformation>
+    </transformations>
+    <emissive>true</emissive>
+  </layer>
+  
+  
+  <layer>
+      <name>to-indicator-arrow</name>      
+      <w>45</w>
+      <h>28</h>
+      <condition>
+         <property alias="../../../../params/cdi-to"/>
+         <property alias="../../../../params/cdi-act"/> 
+      </condition>
+      <texture>
+	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <x1>	0.95898400	</x1>
+	    <y2>	0.98000000	</y2>
+	    <x2>	1.00000000	</x2>
+	    <y1>	0.974	</y1>
+      </texture>
+      <transformations>
+        <transformation> 
+          <type>rotation</type> 
+          <property alias="../../../../../params/cdi-err"/>
+        </transformation>
+        <transformation> 
+          <type>y-shift</type>
+          <offset>96</offset>
+        </transformation>
+        <transformation> 
+          <type>x-shift</type>
+          <offset>2</offset>
+        </transformation>
+    </transformations>
+    <emissive>true</emissive>
+  </layer>
+
+  <layer>
+      <name>from-indicator-arrow</name>      
+      <w>45</w>
+      <h>28</h>
+      <condition>
+         <property alias="../../../../params/cdi-from"/>
+         <property alias="../../../../params/cdi-act"/> 
+      </condition>
+      <texture>
+	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <x1>	0.95898400	</x1>
+	    <y2>	0.98000000	</y2>
+	    <x2>	1.00000000	</x2>
+	    <y1>	0.974	</y1>
+      </texture>
+      <transformations>
+        <transformation> 
+          <type>rotation</type> 
+          <property alias="../../../../../params/cdi-err"/>
+          <offset>180</offset>
+        </transformation>
+        <transformation> 
+          <type>y-shift</type>
+          <offset>96</offset>
+        </transformation>
+        <transformation> 
+          <type>x-shift</type>
+          <offset>0</offset>
+        </transformation>
+    </transformations>
+    <emissive>true</emissive>
+  </layer>
+
+
+<!--
+  <layer>
+    <name>aircraft symbol in center</name>
+    <w>50</w>
+    <h>50</h>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.95898400	</x1>
+	<y1>	0.98000000	</y1>
+	<x2>	1.00000000	</x2>
+	<y2>	0.98974600	</y2>
+    </texture>
+    <emissive>true</emissive>
+  </layer>
+  -->
+  
+  <layer>
+      <name>CDI Deflection Scale</name>      
+      <condition>
+                <property alias="../../../../params/cdi-act"/> 
+      </condition>
+      
+      <w>500</w>
+      <h>500</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <x1>0.0</x1>
+          <y1>0.0</y1>
+          <x2>0.5</x2>
+          <y2>0.5</y2>
+      </texture>
+      <transformations>
+          <transformation> 
+            <type>rotation</type> 
+            <property alias="../../../../../params/cdi-err"/>
+          </transformation>
+      </transformations>
+      <emissive>true</emissive>
+  </layer>
+
+  <layer>
+      <name>compass rose mask</name>
+      <w>400</w>
+      <h>400</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <x1>  0     </x1>
+          <y1>  0.5   </y1>
+          <x2>  0.5   </x2>
+          <y2>  1     </y2>  
+      </texture>
+      <emissive>true</emissive>
+  </layer>
+  
+  <layer include="navd-rose-nums.xml">
+    <name>North Literal</name>
+    <params>
+      <offs>0</offs>
+      <offb>0</offb>
+      <txt> N</txt>
+    </params>
+  </layer>
+  
+  <layer include="navd-rose-nums.xml">
+    <name>South Literal</name>
+    <params>
+      <offs>-180</offs>
+      <offb>180</offb>
+      <txt> S</txt>
+    </params>
+  </layer>
+
+  <layer include="navd-rose-nums.xml">
+    <name>East Literal</name>
+    <params>
+      <offs>-90</offs>
+      <offb>90</offb>
+      <txt>E</txt>
+    </params>
+  </layer>
+
+  <layer include="navd-rose-nums.xml">
+    <name>West Literal</name>
+    <params>
+      <offs>-270</offs>
+      <offb>270</offb>
+      <txt> W</txt>
+    </params>
+  </layer>
+
+
+  <layer include="navd-rose-nums.xml">
+    <params>
+      <offs>-30</offs>
+      <offb>30</offb>
+      <txt> 3</txt>
+    </params>
+  </layer>
+
+  <layer include="navd-rose-nums.xml">
+    <params>
+      <offs>-60</offs>
+      <offb>60</offb>
+      <txt> 6</txt>
+    </params>
+  </layer>
+
+  <layer include="navd-rose-nums.xml">
+    <params>
+      <offs>-120</offs>
+      <offb>120</offb>
+      <txt>12</txt>
+    </params>
+  </layer>
+
+  <layer include="navd-rose-nums.xml">
+    <params>
+      <offs>-150</offs>
+      <offb>150</offb>
+      <txt>15</txt>
+    </params>
+  </layer>
+  
+  <layer include="navd-rose-nums.xml">
+    <params>
+      <offs>-210</offs>
+      <offb>210</offb>
+      <txt>21</txt>
+    </params>
+  </layer>
+  
+  <layer include="navd-rose-nums.xml">
+    <params>
+      <offs>-240</offs>
+      <offb>240</offb>
+      <txt>24</txt>
+    </params>
+  </layer>
+
+  <layer include="navd-rose-nums.xml">
+    <params>
+      <offs>-300</offs>
+      <offb>300</offb>
+      <txt>30</txt>
+    </params>
+  </layer>
+ 
+  <layer include="navd-rose-nums.xml">
+    <params>
+      <offs>-330</offs>
+      <offb>330</offb>
+      <txt>33</txt>
+    </params>
+  </layer>
+
+  <layer>
+    <name>Heading Bug</name>
+    <w>15</w>
+    <h>30</h>
+    <condition>
+<!--  <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>dg-heading-hold</value>
+      </equals>
+-->      
+      <not><property>/instrumentation/efis/fnd/ap-target-blink</property></not>
+    </condition> 
+    <texture>
+        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+        <x1>    0.95898400      </x1>
+        <y1>    0.98974600      </y1>
+        <x2>    1.00000000      </x2>
+        <y2>    1.00000000      </y2>
+    </texture>  
+    <emissive>true</emissive>
+    
+    <transformations>
+      <transformation> 
+          <type>rotation</type> 
+          <property alias="../../../../../params/hdg-err"/>
+      </transformation>
+      <transformation> <type>y-shift</type> <offset>180</offset> </transformation>
+    </transformations>
+  </layer>
+  
+</layers>		
+</PropertyList>  

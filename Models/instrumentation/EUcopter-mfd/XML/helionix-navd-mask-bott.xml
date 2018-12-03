@@ -1,0 +1,613 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <name>Helionix Navigation Display NAVD bottom mask</name>
+
+  <w-base>580</w-base>
+  <h-base>200</h-base>
+  
+  <layers>
+
+
+<!--   <layer>		
+      <name>DTK</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>FMS</value>
+              </equals>
+            </condition>    
+            <type>number-value</type>
+            <format>DTK</format>
+	  </chunk>
+	  <chunk>
+            <condition>
+              <or>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value></value>
+              </equals>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>NAV2</value>
+              </equals>
+              </or>
+            </condition>    
+            <type>number-value</type>
+            <format>CRS</format>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-280</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-60</offset> </transformation> 
+      </transformations>
+  </layer>-->
+  
+<!--   <layer>		
+      <name>CRS value</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>FMS</value>
+              </equals>
+              </condition>    
+	      <type>number-value</type>
+	      <property>/instrumentation/gps/wp/wp[1]/desired-course-deg</property>
+	      <format>%3.0f</format>	      
+	  </chunk>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>NAV2</value>
+              </equals>
+            </condition>    
+            <type>number-value</type>
+            <property>/instrumentation/nav[1]/radials/selected-deg</property>
+            <format>%3.0f</format>
+	  </chunk>
+          <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value></value>
+              </equals>
+            </condition>    
+            <type>number-value</type>
+            <property>/instrumentation/nav[0]/radials/selected-deg</property>
+            <format>%3.0f</format>
+          </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-280</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-75</offset> </transformation> 
+      </transformations>
+  </layer>-->
+
+   <layer>		
+      <name>FMS Literal</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+            <type>literal</type>
+            <text>FMS</text>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-280</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>25</offset> </transformation> 
+      </transformations>
+  </layer>
+
+   <layer>		
+      <name>WYPT ID</name>
+      <condition>
+           <property>/autopilot/route-manager/active</property>
+      </condition>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>  
+            <type>text-value</type>
+            <format>TO %1.6s</format>
+            <property>/instrumentation/gps/wp/wp[1]/ID</property>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-280</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-25</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>               
+      <name>FMS HDG</name>
+      <condition>
+           <property>/autopilot/route-manager/active</property>
+      </condition>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      
+      <chunks>
+          <chunk>
+            <type>number-value</type>
+            <property>/instrumentation/gps/wp/wp[1]/bearing-mag-deg</property>
+            <format>%3.0f*</format>
+          </chunk>
+          
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>-280</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-50</offset> </transformation> 
+      </transformations>
+  </layer>
+
+   <layer>		
+      <name>WPT distance</name>
+      <condition>
+           <property>/autopilot/route-manager/active</property>
+      </condition>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+          <chunk>
+	      <type>number-value</type>
+	      <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+	      <format>%5.1fNM</format>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-280</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-75</offset> </transformation> 
+      </transformations>
+  </layer>  
+
+   <layer>		
+      <name>TIME TO WPT</name>
+      <condition>
+           <property>/autopilot/route-manager/active</property>
+      </condition>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      
+      <chunks include="sec-2-time.xml">
+          <params>
+             <sec>/instrumentation/gps/wp/wp[1]/TTW-sec</sec>
+          </params>
+      </chunks>
+      
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-280</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-100</offset> </transformation> 
+      </transformations>
+  </layer>  
+  
+  <layer>		
+      <name>VOR1 mode</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+      
+	  <chunk>
+	    <condition>
+	      <not><property>/instrumentation/nav[0]/has-gs</property></not>
+	    </condition>
+	    <type>literal</type>
+	    <text>VOR1</text>
+	  </chunk>
+	  
+	  <chunk>
+	    <condition>
+	      <property>/instrumentation/nav[0]/has-gs</property>
+	    </condition>
+	    <type>literal</type>
+	    <text>ILS1</text>
+	  </chunk>
+	  
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-130</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>25</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>		
+      <name>VOR1 Frq</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+      
+	  <chunk>
+	    <type>number-value</type>
+	    <property>/instrumentation/nav[0]/frequencies/selected-mhz</property>
+	    <format>%06.2f</format>
+	  </chunk>
+	  
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-130</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-25</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>               
+      <name>VOR1 HDG</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      
+      <chunks>
+          <chunk>
+            <type>number-value</type>
+            <property>/instrumentation/nav[0]/heading-deg</property>
+            <format>%3.0f*</format>
+          </chunk>
+      </chunks>
+      
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>-130</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-50</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+  <layer>		
+      <name>VOR1 distance</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+      
+	  <chunk>
+	      <type>number-value</type>
+	      <property>/instrumentation/nav[0]/nav-distance</property>
+	      <scale>0.0005399</scale>
+	      <format>%5.1fNM</format>
+	  </chunk>
+
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-130</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-75</offset> </transformation> 
+      </transformations>
+  </layer>
+
+     <layer>            
+      <name>TIME TO GO VOR1</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks include="sec-2-time.xml">
+          <params>
+             <sec>/instrumentation/nav/TTG-sec</sec>
+          </params>
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>-130</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-100</offset> </transformation> 
+      </transformations>
+  </layer>  
+  
+  <layer>
+    <name>VOR2 mode</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  
+	  <chunk>
+	    <condition>
+	      <not><property>/instrumentation/nav[1]/has-gs</property></not>
+	    </condition>
+	    <type>literal</type>
+	    <text>VOR2</text>
+	  </chunk>
+
+	  <chunk>
+	    <condition>
+	      <property>/instrumentation/nav[1]/has-gs</property>
+	    </condition>
+	    <type>literal</type>
+	    <text>ILS2</text>
+	  </chunk>
+	  
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>15</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>25</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>		
+      <name>VOR2 Frq</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  
+	  <chunk>
+	    <type>number-value</type>
+	    <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+	    <format>%06.2f</format>
+	  </chunk>
+	  
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>15</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-25</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>               
+      <name>VOR2 HDG</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+
+          <chunk>
+            <type>number-value</type>
+            <property>/instrumentation/nav[1]/heading-deg</property>
+            <format>%3.0f*</format>
+          </chunk>
+          
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>15</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-50</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+    <layer>		
+      <name>VOR2 distance</name>
+      <w>580</w>
+      <h>400</h>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  
+	  <chunk>
+	      <type>number-value</type>
+	      <property>/instrumentation/nav[1]/nav-distance</property>
+	      <scale>0.0005399</scale>
+	      <format>%5.1fNM</format>
+	  </chunk>
+
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>15</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-75</offset> </transformation> 
+      </transformations>
+  </layer>
+
+     <layer>            
+      <name>TIME TO GO VOR2</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks include="sec-2-time.xml">
+          <params>
+             <sec>/instrumentation/nav[1]/TTG-sec</sec>
+          </params>
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>15</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-100</offset> </transformation> 
+      </transformations>
+  </layer>  
+  
+  <layer>             
+      <name>GPS</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+          <chunk>
+            <type>literal</type>
+            <text>GPS</text>
+          </chunk>
+       </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>150</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>25</offset> </transformation> 
+      </transformations>
+  </layer>
+ 
+    <layer>             
+      <name>GPS latitute display</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      
+      <chunks>
+          <chunk>
+            <condition>
+              <greater-than>
+                 <property>/instrumentation/gps/indicated-latitude-deg</property>
+                 <value>0</value>
+              </greater-than>
+            </condition>                        
+            <type>number-value</type>
+            <format>N %08.5f</format>
+            <property>/instrumentation/gps/indicated-latitude-deg</property>
+        </chunk>
+        
+        <chunk>
+            <condition>
+              <less-than>
+                 <property>/instrumentation/gps/indicated-latitude-deg</property>
+                 <value>0</value>
+              </less-than>
+            </condition>                        
+            <type>number-value</type>
+            <format>S %08.5f</format>
+            <property>/instrumentation/gps/indicated-latitude-deg</property>
+            <scale>-1.0</scale>
+          </chunk>
+          
+       </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>150</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-25</offset> </transformation> 
+      </transformations>
+  </layer>
+
+    <layer>             
+      <name>GPS longitude display</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+      
+          <chunk>
+            <condition>
+              <greater-than>
+                 <property>/instrumentation/gps/indicated-longitude-deg</property>
+                 <value>0</value>
+              </greater-than>
+            </condition>            
+            <type>number-value</type>
+            <format>E %08.4f</format>
+            <property>/instrumentation/gps/indicated-longitude-deg</property>
+          </chunk>
+          
+          <chunk>
+            <condition>
+              <less-than>
+                 <property>/instrumentation/gps/indicated-longitude-deg</property>
+                 <value>0</value>
+              </less-than>
+            </condition>            
+            <type>number-value</type>
+            <format>W %08.4f</format>
+            <scale>-1.0</scale>
+            <property>/instrumentation/gps/indicated-longitude-deg</property>
+          </chunk>
+          
+       </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>150</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-50</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  </layers>
+</PropertyList>

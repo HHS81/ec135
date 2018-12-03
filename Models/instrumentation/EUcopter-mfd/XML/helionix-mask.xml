@@ -1,0 +1,802 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <name>Helionix PFD Mask 2</name>
+
+  <w-base>580</w-base>
+  <h-base>405</h-base>
+  
+  <layers>
+
+  <layer>
+        <name>total fuel indicator</name>
+        <w>70</w>
+        <h>100</h>
+        <texture>
+            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
+	    <x1>0.9</x1>
+            <y1>0.75</y1>
+            <x2>1.0</x2>
+            <y2>1.0</y2>
+        </texture>
+	<transformations>
+	    <transformation> 
+		<type>x-shift</type> 
+		<offset>190</offset> 
+	    </transformation> 
+            <transformation>
+               <type>y-shift</type>
+               <offset>-177</offset>
+            </transformation>
+	    <transformation>
+                <type>y-shift</type>
+                <property>/consumables/fuel/total-fuel-norm</property>
+                <scale>80</scale>
+		<max>1</max>
+		<min>0</min>
+            </transformation>
+        </transformations>
+        <emissive>true</emissive>
+    </layer>
+
+    <layer>
+    <name>mask</name>
+    <emissive>true</emissive>
+    <w>580</w>
+    <h>410</h>
+    <texture>   
+      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
+	  <x1>	0	</x1>
+	  <y1>	0.100	</y1>
+	  <x2>	0.625	</x2>
+	  <y2>	1	</y2>
+      </texture>
+    </layer>
+
+    <layer>
+      <name>HPA</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>16</point-size>
+      <color>
+          <red>1</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+         <chunk>
+              <condition>
+                <equals>
+                  <property>/instrumentation/altimeter/setting-inhg</property>
+                  <value>29.92</value>
+                </equals>
+              </condition>    
+           
+              <type>number-value</type>
+              <property>/instrumentation/altimeter/setting-inhg</property>
+              <format>STD</format>
+         </chunk>
+        
+         <chunk>
+              <condition>
+                <not-equals>
+                  <property>/instrumentation/altimeter/setting-inhg</property>
+                  <value>29.92</value>
+                </not-equals>
+              </condition>    
+           
+              <type>number-value</type>
+              <property>/instrumentation/altimeter/setting-inhg</property>
+              <format>%04.0f</format>
+              <scale>33.8639</scale>
+           </chunk>
+         </chunks>
+      <transformations>
+              <transformation> <type>x-shift</type> <offset>164</offset> </transformation> 
+              <transformation> <type>y-shift</type> <offset>182</offset> </transformation> 
+      </transformations>
+  </layer>
+
+   <layer>		
+      <name>DTK</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>12</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>FMS</value>
+              </equals>
+            </condition>    
+            <type>number-value</type>
+            <format>DTK</format>
+	  </chunk>
+	  <chunk>
+            <condition>
+              <or>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value></value>
+              </equals>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>NAV2</value>
+              </equals>
+              </or>
+            </condition>    
+            <type>number-value</type>
+            <format>CRS</format>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-250</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-60</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+   <layer>		
+      <name>CRS value</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>16</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>FMS</value>
+              </equals>
+              </condition>    
+	      <type>number-value</type>
+	      <property>/instrumentation/gps/wp/wp[1]/desired-course-deg</property>
+	      <format>%3.0f</format>	      
+	  </chunk>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>NAV2</value>
+              </equals>
+            </condition>    
+            <type>number-value</type>
+            <property>/instrumentation/nav[1]/radials/selected-deg</property>
+            <format>%3.0f</format>
+	  </chunk>
+          <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value></value>
+              </equals>
+            </condition>    
+            <type>number-value</type>
+            <property>/instrumentation/nav[0]/radials/selected-deg</property>
+            <format>%3.0f</format>
+          </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-250</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-75</offset> </transformation> 
+      </transformations>
+  </layer>
+
+   <layer>		
+      <name>NAV type</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>FMS</value>
+              </equals>
+            </condition>    
+            <type>number-value</type>
+            <format>FMS</format>
+	  </chunk>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value></value>
+              </equals>
+	      <not><property>/instrumentation/nav[0]/has-gs</property></not>
+	    </condition>
+	    <type>literal</type>
+	    <text>VOR1</text>
+	  </chunk>
+          <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>NAV2</value>
+              </equals>
+              <not><property>/instrumentation/nav[1]/has-gs</property></not>
+            </condition>
+            <type>literal</type>
+            <text>VOR2</text>
+          </chunk>          
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value></value>
+              </equals>
+              <property>/instrumentation/nav[0]/has-gs</property>
+            </condition>
+	    <type>literal</type>
+	    <text>ILS1</text>
+	  </chunk>
+          <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>NAV2</value>
+              </equals>
+              <property>/instrumentation/nav[1]/has-gs</property>
+            </condition>
+            <type>literal</type>
+            <text>ILS1</text>
+          </chunk>
+       </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-250</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-96</offset> </transformation> 
+      </transformations>
+  </layer>
+
+   <layer>		
+      <name>NAV source</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>FMS</value>
+              </equals>
+            </condition>    
+            <type>number-value</type>
+            <format>GPS</format>
+	  </chunk>
+	  <chunk>
+	      <condition>
+		<property>/instrumentation/nav[0]/in-range</property>
+                <equals>
+                  <property>/instrumentation/efis/fnd/navsource</property>
+                  <value></value>
+                </equals>
+	      </condition>
+	      <type>number-value</type>
+	      <property>/instrumentation/nav[0]/frequencies/selected-mhz</property>
+	      <format>%6.2f</format>
+	  </chunk>
+          <chunk>
+              <condition>
+                <property>/instrumentation/nav[1]/in-range</property>
+                <equals>
+                  <property>/instrumentation/efis/fnd/navsource</property>
+                  <value>NAV2</value>
+                </equals>
+              </condition>
+              <type>number-value</type>
+              <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+              <format>%6.2f</format>
+          </chunk>
+
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-240</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-110</offset> </transformation> 
+      </transformations>
+  </layer>
+
+   <layer>		
+      <name>WPT ID</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+            <condition>
+              <equals>
+                <property>/instrumentation/efis/fnd/navsource</property>
+                <value>FMS</value>
+              </equals>
+            </condition>    
+            <type>text-value</type>
+	    <format>%1.6s</format>
+	    <property>/instrumentation/gps/wp/wp[1]/ID</property>
+	  </chunk>
+	  <chunk>
+              <condition>
+                <equals>
+                  <property>/instrumentation/efis/fnd/navsource</property>
+                  <value></value>
+                </equals>
+		<property>/instrumentation/nav[0]/in-range</property>
+	      </condition>
+	      <type>text-value</type>
+	      <format>%1.6s</format>
+	      <property>/instrumentation/nav[0]/nav-id</property>
+	  </chunk>
+          <chunk>
+              <condition>
+                <equals>
+                  <property>/instrumentation/efis/fnd/navsource</property>
+                  <value>NAV2</value>
+                </equals>
+                <property>/instrumentation/nav[1]/in-range</property>
+              </condition>
+              <type>text-value</type>
+              <format>%1.6s</format>
+              <property>/instrumentation/nav[1]/nav-id</property>
+          </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-255</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-135</offset> </transformation> 
+      </transformations>
+  </layer>  
+
+   <layer>		
+      <name>WPT distance</name>
+      <condition>
+          <equals>
+            <property>/instrumentation/efis/fnd/navsource</property>
+            <value>FMS</value>
+          </equals>
+          <property>/autopilot/route-manager/active</property>
+      </condition>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	      <condition>
+		  <greater-than>
+		    <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+		    <value>10</value>
+		  </greater-than>		
+	      </condition>
+	      <type>number-value</type>
+	      <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+	      <format>%3.0f NM</format>
+	  </chunk>
+	  
+	  <chunk>
+	      <condition>
+		  <less-than>
+		    <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+		    <value>10</value>
+		  </less-than>		
+	      </condition>
+	      <type>number-value</type>
+	      <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+	      <format>%03.1f NM</format>
+	  </chunk>
+	
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-255</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-150</offset> </transformation> 
+      </transformations>
+  </layer>  
+
+   <layer>		
+      <name>TIME TO WPT</name>
+      <condition>
+          <equals>
+            <property>/instrumentation/efis/fnd/navsource</property>
+            <value>FMS</value>
+          </equals>
+          <property>/autopilot/route-manager/active</property>
+      </condition>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks include="sec-2-time.xml">
+          <params>
+             <sec>/instrumentation/gps/wp/wp[1]/TTW-sec</sec>
+          </params>
+      </chunks>
+
+<!--      <chunks>
+	  <chunk>
+              <condition>
+                  <greater-than>
+                    <property>/instrumentation/gps/wp/wp[1]/TTW-sec</property>
+                    <value>50</value>
+                  </greater-than>               
+              </condition>
+	      <type>number-value</type>
+	      <format>%3.0f MIN</format>
+	      <scale>0.016666</scale>
+	      <property>/instrumentation/gps/wp/wp[1]/TTW-sec</property>
+	  </chunk>
+      </chunks>-->
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-255</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-165</offset> </transformation> 
+      </transformations>
+  </layer>  
+
+  <layer>		
+      <name>OAT</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>16</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	      <type>number-value</type>
+	      <property>/environment/temperature-degc</property>
+	      <format>%2.0f C</format>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>200</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-180</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>		
+      <name>Fuel</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>16</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	      <type>number-value</type>
+	      <property>/consumables/fuel/total-fuel-lbs</property>
+	      <scale>0.4535</scale>
+	      <format>%5.0f kg</format>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>180</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-150</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+  <layer>		
+      <name>NAV1 mode</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	    <condition>
+	      <not><property>/instrumentation/nav[0]/has-gs</property></not>
+	      <not><property>/instrumentation/efis/fnd/bearingsource</property></not>
+	    </condition>
+	    <type>literal</type>
+	    <text>VOR1</text>
+	  </chunk>
+
+	  <chunk>
+	    <condition>
+	      <property>/instrumentation/nav[0]/has-gs</property>
+	      <not><property>/instrumentation/efis/fnd/bearingsource</property></not>
+	    </condition>
+	    <type>literal</type>
+	    <text> ILS1</text>
+	  </chunk>
+	  
+	  <chunk>
+	    <condition>
+	      <property>/instrumentation/efis/fnd/bearingsource</property>
+	    </condition>
+	    <type>literal</type>
+	    <text>  FMS</text>
+	  </chunk>
+      </chunks>
+
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>217</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>115</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>		
+      <name>NAV1 Frq or FMS wypt</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+      
+	  <chunk>
+	  	<condition>
+	      <not><property>/instrumentation/efis/fnd/bearingsource</property></not>
+	    </condition>
+	    <type>number-value</type>
+	    <property>/instrumentation/nav[0]/frequencies/selected-mhz</property>
+	    <format>%06.2f</format>
+	  </chunk>
+	  
+	  <chunk>
+	  	<condition>
+	      <property>/instrumentation/efis/fnd/bearingsource</property>
+	    </condition>
+	    <type>text-value</type>
+	    <format>%1.5s</format>
+	    <property>/instrumentation/gps/wp/wp[1]/ID</property>
+	  </chunk>
+	  
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>205</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>95</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>		
+      <name>NAV1 DME or FMS wypt dst</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	      <condition>
+	      	<not><property>/instrumentation/efis/fnd/bearingsource</property></not>
+            <property>/instrumentation/nav[0]/dme-in-range</property>
+            <property>/instrumentation/nav[0]/in-range</property>
+		    <greater-than>
+		      <property>/instrumentation/nav[0]/nav-distance</property>
+		      <value>18500</value>
+		    </greater-than>		
+	      </condition>
+	      <type>number-value</type>
+	      <property>/instrumentation/nav[0]/nav-distance</property>
+	      <scale>0.0005399</scale>
+	      <format>%3.0fNM</format>
+	  </chunk>
+	  
+	  <chunk>
+	      <condition>
+	        <not><property>/instrumentation/efis/fnd/bearingsource</property></not>
+            <property>/instrumentation/nav[0]/dme-in-range</property>
+            <property>/instrumentation/nav[0]/in-range</property>
+		  <less-than>
+		    <property>/instrumentation/nav[0]/nav-distance</property>
+		    <value>18500</value>
+		  </less-than>		
+	      </condition>
+	      <type>number-value</type>
+	      <property>/instrumentation/nav[0]/nav-distance</property>
+	      <scale>0.0005399</scale>
+	      <format>%03.1fNM</format>
+	  </chunk>
+	  
+	  <chunk>
+	    <condition>
+	      <property>/instrumentation/efis/fnd/bearingsource</property>
+		  <greater-than>
+		    <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+		    <value>10</value>
+		  </greater-than>
+	    </condition>
+	    <type>number-value</type>
+	    <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+	    <format>%3.0fNM</format>
+	  </chunk>
+	  
+	  <chunk>
+	    <condition>
+	      <property>/instrumentation/efis/fnd/bearingsource</property>
+		  <less-than>
+		    <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+		    <value>10</value>
+		  </less-than>		
+	    </condition>
+	    <type>number-value</type>
+	    <property>/instrumentation/gps/wp/wp[1]/distance-nm</property>
+	    <format>%03.1fNM</format>
+	  </chunk>
+	  
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>205</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>75</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>
+    <name>VOR2 or ADF mode</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	  	<condition>
+	        <not><property>/instrumentation/efis/fnd/bearingsource[1]</property></not>
+	    </condition>
+	    <type>literal</type>
+	    <text>ADF1</text>
+	  </chunk>
+	  
+	  <chunk>
+	    <condition>
+	      <not><property>/instrumentation/nav[1]/has-gs</property></not>
+	      <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+	    </condition>
+	    <type>literal</type>
+	    <text>VOR2</text>
+	  </chunk>
+
+	  <chunk>
+	    <condition>
+	      <property>/instrumentation/nav[1]/has-gs</property>
+	      <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+	    </condition>
+	    <type>literal</type>
+	    <text> ILS2</text>
+	  </chunk>
+	  
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>217</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>25</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>		
+      <name>ADF or VOR2 Frq</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+      
+	  <chunk>
+	    <condition>
+	        <not><property>/instrumentation/efis/fnd/bearingsource[1]</property></not>
+	    </condition>
+	    <type>number-value</type>
+	    <property>/instrumentation/adf[0]/frequencies/selected-khz</property>
+	    <format>%06.2f</format>
+	  </chunk>
+	  
+	  <chunk>
+	  	<condition>
+	      <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+	    </condition>
+	    <type>number-value</type>
+	    <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+	    <format>%06.2f</format>
+	  </chunk>
+	  
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>205</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>5</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+    <layer>		
+      <name>VOR2 DME</name>
+      <w>580</w>
+      <h>400</h>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+          <chunk>
+              <condition>
+                <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+            <property>/instrumentation/nav[1]/dme-in-range</property>
+            <property>/instrumentation/nav[1]/in-range</property>
+                  <greater-than>
+                    <property>/instrumentation/nav[1]/nav-distance</property>
+                    <value>18500</value>
+                  </greater-than>          
+              </condition>
+              <type>number-value</type>
+              <property>/instrumentation/nav[1]/nav-distance</property>
+              <scale>0.0005399</scale>
+              <format>%3.0fNM</format>
+          </chunk>
+          <chunk>
+	      <condition>
+	        <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+            <property>/instrumentation/nav[1]/dme-in-range</property>
+            <property>/instrumentation/nav[1]/in-range</property>
+		  <less-than>
+		    <property>/instrumentation/nav[1]/nav-distance</property>
+		    <value>18500</value>
+		  </less-than>		
+	      </condition>
+	      <type>number-value</type>
+	      <property>/instrumentation/nav[1]/nav-distance</property>
+	      <scale>0.0005399</scale>
+	      <format>%03.1fNM</format>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>205</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-15</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+ </layers>
+</PropertyList>

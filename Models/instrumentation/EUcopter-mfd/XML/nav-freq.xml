@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+
+<!-- 
+NAV Frequency page of MFD
+-->
+
+<PropertyList>
+ <name>MFD NAV Freq Page</name>
+ <w-base>120</w-base>
+ <h-base>280</h-base>
+ <layers>
+
+   <layer>
+    <name>blackbitmap</name>
+    <emissive>true</emissive>
+    <texture>   
+      <path>Aircraft/Instruments/glass/glass-2-bkg.rgb</path>
+	  <x1>	0.25	</x1>
+	  <y1>	0	</y1>
+	  <x2>	0.75	</x2>
+	  <y2>	1	</y2>
+      </texture>
+    </layer>    
+
+    <layer>
+      <name>VOR1 Freq</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>0.2</red>
+	<green>0.8</green>
+	<blue>0.3</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>literal</type>
+	  <text>VOR1</text>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>0</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>110</offset> </transformation> 
+	</transformations>
+      </layer>
+   
+   <layer>
+      <name>VOR1 Freq act</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>0.2</red>
+	<green>0.8</green>
+	<blue>0.3</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>number-value</type>
+	  <property>/instrumentation/nav/frequencies/selected-mhz</property>
+	  <format>%8.2f</format>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>-25</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>90</offset> </transformation> 
+	</transformations>
+      </layer>
+
+    <layer>
+      <name>VOR1 Freq stby</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>0.2</red>
+	<green>0.8</green>
+	<blue>0.3</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>number-value</type>
+	  <property>/instrumentation/nav/frequencies/standby-mhz</property>
+	  <format>%8.2f</format>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>-25</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>70</offset> </transformation> 
+	</transformations>
+      </layer>
+      
+    <layer>
+      <name>VOR2 Freq</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>literal</type>
+	  <text>VOR2</text>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>0</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>20</offset> </transformation> 
+	</transformations>
+      </layer>
+   
+   <layer>
+      <name>VOR1 Freq act</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>number-value</type>
+	  <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+	  <format>%8.2f</format>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>-25</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
+	</transformations>
+      </layer>
+
+    <layer>
+      <name>VOR1 Freq stby</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>number-value</type>
+	  <property>/instrumentation/nav[1]/frequencies/standby-mhz</property>
+	  <format>%8.2f</format>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>-25</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>-20</offset> </transformation> 
+	</transformations>
+      </layer>
+      
+    <layer>
+      <name>ADF Freq</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>0.204</red>
+	<green>0.615</green>
+	<blue>0.820</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>literal</type>
+	  <text>ADF</text>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>15</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>-70</offset> </transformation> 
+	</transformations>
+      </layer>
+      
+    <layer>
+      <name>ADF Freq act</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>0.204</red>
+	<green>0.615</green>
+	<blue>0.820</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>number-value</type>
+	  <property>/instrumentation/adf/frequencies/selected-khz</property>
+	  <format>%3.0f</format>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>15</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>-90</offset> </transformation> 
+	</transformations>
+      </layer>
+
+    <layer>
+      <name>ADF Freq stby</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>14</point-size>
+      <color>
+	<red>0.204</red>
+	<green>0.615</green>
+	<blue>0.820</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <type>number-value</type>
+	  <property>/instrumentation/adf/frequencies/standby-khz</property>
+	  <format>%3.0f</format>
+	</chunk>
+	</chunks>
+	<transformations>
+	    <transformation> <type>x-shift</type> <offset>15</offset> </transformation> 
+	    <transformation> <type>y-shift</type> <offset>-110</offset> </transformation> 
+	</transformations>
+      </layer>
+
+
+
+      </layers>
+ 
+ </PropertyList>

@@ -49,11 +49,11 @@
 		<name>H135Dual</name>
 		<path>Aircraft/ec135/Models/h135Dual.xml</path>
 		<offsets>
-			<x-m>0.634</x-m>
+			<x-m>0</x-m>
 			<y-m>0</y-m>
-			<z-m>-0.019</z-m>
+			<z-m>0</z-m>
 
-			<pitch-deg>-21</pitch-deg>
+			<pitch-deg>0</pitch-deg>
 
 		</offsets>
 	<condition>

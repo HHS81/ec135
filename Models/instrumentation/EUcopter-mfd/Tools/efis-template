@@ -1,0 +1,22 @@
+                  <!-- For the Helionix panels add this to the efis section of the aircraft set file. -->
+                  <vmd>
+                      <!--
+                          Parameters for engine torque calculation.
+                          This approach is indepent of known engine max. torque or gear-ratios and 
+                          needs only the max. cont. power rating of the engine.
+                    
+                          See YASIM config file for engine power:
+                          in rotorgear-element   max-power-engine="1100" = 1100 kW both engines, i.e.550 kW per engine
+ 
+                          torque factor 1/max. power in Watts /100 pct : 
+                           1/(550 000W) x 100% for engine power in % = 0.000181818 
+                      -->
+                      <eng-trq-factor type="float">0.000181818</eng-trq-factor>
+                      <rotor-rpmN type="float">383</rotor-rpmN>                      
+                      
+                      <!-- set caution ranges for enigines oil temp and pressure gauges -->
+                      <oilt-caution-lo-degc type="float">30</oilt-caution-lo-degc>
+                      <oilt-caution-hi-degc type="float">120</oilt-caution-hi-degc> 
+                      <oilp-caution-lo-bar type="float">1.5</oilp-caution-lo-bar> 
+                      <oilp-caution-hi-bar type="float">8</oilp-caution-hi-bar>
+                  </vmd>

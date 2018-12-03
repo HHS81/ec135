@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <name>Helionix FND master list</name>
+  <w-base>450</w-base>
+  <h-base>150</h-base>
+
+
+  <!--  
+    Column 1 (Left) of Masterlist , typ "ENG1"
+  -->
+  
+  <layers>
+      
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 1</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[0]/msg[0]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[0]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>25</offset></transformation>
+        <transformation><type>x-shift</type><offset>-62</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 2</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[1]/msg[0]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[1]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>11</offset></transformation>
+        <transformation><type>x-shift</type><offset>-62</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 3</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[2]/msg[0]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[2]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-5</offset></transformation>
+        <transformation><type>x-shift</type><offset>-62</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 4</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[3]/msg[0]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[3]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-21</offset></transformation>
+        <transformation><type>x-shift</type><offset>-62</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 5</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[4]/msg[0]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[4]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-37</offset></transformation>
+        <transformation><type>x-shift</type><offset>-62</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 6</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[5]/msg[0]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[5]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-53</offset></transformation>
+        <transformation><type>x-shift</type><offset>-62</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 7</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[6]/msg[0]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[6]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-69</offset></transformation>
+        <transformation><type>x-shift</type><offset>-62</offset></transformation>
+      </transformations>
+    </layer>
+
+  <!--  
+    Column 2 of Masterlist
+  -->
+  
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 1</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[0]/msg[2]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[0]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>25</offset></transformation>
+        <transformation><type>x-shift</type><offset>0</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 2</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[1]/msg[2]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[1]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>11</offset></transformation>
+        <transformation><type>x-shift</type><offset>0</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 3</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[2]/msg[2]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[2]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-5</offset></transformation>
+        <transformation><type>x-shift</type><offset>0</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 4</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[3]/msg[2]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[3]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-21</offset></transformation>
+        <transformation><type>x-shift</type><offset>0</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 5</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[4]/msg[2]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[4]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-37</offset></transformation>
+        <transformation><type>x-shift</type><offset>0</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 6</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[5]/msg[2]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[5]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-53</offset></transformation>
+        <transformation><type>x-shift</type><offset>0</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 7</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[6]/msg[2]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[6]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-69</offset></transformation>
+        <transformation><type>x-shift</type><offset>0</offset></transformation>
+      </transformations>
+    </layer>
+    
+  <!--  
+    Column 3 (Right) of Masterlist , typ "ENG2"
+  -->
+  
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 1</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[0]/msg[1]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[0]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>25</offset></transformation>
+        <transformation><type>x-shift</type><offset>170</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 2</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[1]/msg[1]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[1]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>11</offset></transformation>
+        <transformation><type>x-shift</type><offset>170</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 3</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[2]/msg[1]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[2]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-5</offset></transformation>
+        <transformation><type>x-shift</type><offset>170</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 4</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[3]/msg[1]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[3]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-21</offset></transformation>
+        <transformation><type>x-shift</type><offset>170</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 5</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[4]/msg[1]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[4]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-37</offset></transformation>
+        <transformation><type>x-shift</type><offset>170</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 6</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[5]/msg[1]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[5]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-53</offset></transformation>
+        <transformation><type>x-shift</type><offset>170</offset></transformation>
+      </transformations>
+    </layer>
+
+    <layer include="masterlist-item.xml">
+      <name>masterlist line 7</name>
+      <params>
+        <mytxt>/instrumentation/efis/fnd/masterlist[6]/msg[1]</mytxt>
+        <myrgb>/instrumentation/efis/fnd/masterlist[6]/rgb</myrgb>
+      </params>
+      <transformations>
+        <transformation><type>y-shift</type><offset>-69</offset></transformation>
+        <transformation><type>x-shift</type><offset>170</offset></transformation>
+      </transformations>
+    </layer>
+
+
+  </layers>
+</PropertyList>

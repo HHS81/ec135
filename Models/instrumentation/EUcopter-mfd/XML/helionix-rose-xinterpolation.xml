@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- x interpolation table-->
+<PropertyList>						
+<entry><ind>	-180	</ind><dep>		0.00000	</dep></entry>
+<entry><ind>	-165	</ind><dep>		-0.25882	</dep></entry>
+<entry><ind>	-150	</ind><dep>		-0.50000	</dep></entry>
+<entry><ind>	-135	</ind><dep>		-0.70711	</dep></entry>
+<entry><ind>	-120	</ind><dep>		-0.86603	</dep></entry>
+<entry><ind>	-105	</ind><dep>		-0.96593	</dep></entry>
+<entry><ind>	-90	</ind><dep>		-1.00000	</dep></entry>
+<entry><ind>	-75	</ind><dep>		-0.96593	</dep></entry>
+<entry><ind>	-60	</ind><dep>		-0.86603	</dep></entry>
+<entry><ind>	-45	</ind><dep>		-0.70711	</dep></entry>
+<entry><ind>	-30	</ind><dep>		-0.50000	</dep></entry>
+<entry><ind>	-15	</ind><dep>		-0.25882	</dep></entry>
+<entry><ind>	0	</ind><dep>		0.00000	</dep></entry>
+<entry><ind>	15	</ind><dep>		0.25882	</dep></entry>
+<entry><ind>	30	</ind><dep>		0.50000	</dep></entry>
+<entry><ind>	45	</ind><dep>		0.70711	</dep></entry>
+<entry><ind>	60	</ind><dep>		0.86603	</dep></entry>
+<entry><ind>	75	</ind><dep>		0.96593	</dep></entry>
+<entry><ind>	90	</ind><dep>		1.00000	</dep></entry>
+<entry><ind>	105	</ind><dep>		0.96593	</dep></entry>
+<entry><ind>	120	</ind><dep>		0.86603	</dep></entry>
+<entry><ind>	135	</ind><dep>		0.70711	</dep></entry>
+<entry><ind>	150	</ind><dep>		0.50000	</dep></entry>
+<entry><ind>	165	</ind><dep>		0.25882	</dep></entry>
+<entry><ind>	180	</ind><dep>		0.00000	</dep></entry>
+<entry><ind>	195	</ind><dep>		-0.25882	</dep></entry>
+<entry><ind>	210	</ind><dep>		-0.50000	</dep></entry>
+<entry><ind>	225	</ind><dep>		-0.70711	</dep></entry>
+<entry><ind>	240	</ind><dep>		-0.86603	</dep></entry>
+<entry><ind>	255	</ind><dep>		-0.96593	</dep></entry>
+<entry><ind>	270	</ind><dep>		-1.00000	</dep></entry>
+<entry><ind>	285	</ind><dep>		-0.96593	</dep></entry>
+<entry><ind>	300	</ind><dep>		-0.86603	</dep></entry>
+<entry><ind>	315	</ind><dep>		-0.70711	</dep></entry>
+<entry><ind>	330	</ind><dep>		-0.50000	</dep></entry>
+<entry><ind>	345	</ind><dep>		-0.25882	</dep></entry>
+<entry><ind>	360	</ind><dep>		0.00000	</dep></entry>
+</PropertyList>						

@@ -1,0 +1,675 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <name>Helionix PFD AP Mask</name>
+
+  <w-base>500</w-base>
+  <h-base>110</h-base>
+  
+  <layers>
+   <layer>		
+      <name>AFCS active</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>0</green>
+	  <blue>0</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	      <condition>
+		<not><property>/controls/flight/fcs/sas-enabled</property></not>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>SAS DISENGAGED</format>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-60</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+      </transformations>
+  </layer>
+
+   <layer>              
+      <name>ALT mode reference</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>17</point-size>
+      <color>
+          <red>0</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+          <chunk>
+              <condition>
+                  <equals>
+                    <property>/autopilot/locks/altitude</property>
+                    <value>agl-hold</value>
+                  </equals>
+              </condition>    
+              <type>number-value</type>
+              <format>CR.HT</format>
+          </chunk>
+          <chunk>
+              <condition>
+                <equals>
+                  <property>/autopilot/locks/altitude</property>
+                  <value>altitude-hold</value>
+                </equals>
+              </condition>    
+              <type>number-value</type>
+              <format>ALT</format>
+          </chunk>
+          <chunk>
+              <condition>
+                  <equals>
+                    <property>/autopilot/locks/altitude-arm</property>
+                    <value>altitude-hold</value>
+                  </equals>
+              </condition>    
+              <type>number-value</type>
+              <format>ALT.A</format>
+          </chunk>
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>140</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-30</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>              
+      <name>AP ALT reference value</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>17</point-size>
+      <color>
+          <red>0</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+          <chunk>
+              <condition>
+                <or>
+                  <equals>
+                    <property>/autopilot/locks/altitude</property>
+                    <value>altitude-hold</value>
+                  </equals>
+                  <equals>
+                    <property>/autopilot/locks/altitude-arm</property>
+                    <value>altitude-hold</value>
+                  </equals>
+                </or>                  
+              </condition>    
+              <type>number-value</type>
+              <format>%5.0f</format>
+              <property>/autopilot/settings/target-altitude-ft</property>
+          </chunk>
+          <chunk>
+              <condition>
+                  <equals>
+                    <property>/autopilot/locks/altitude</property>
+                    <value>agl-hold</value>
+                  </equals>
+              </condition>    
+              <type>number-value</type>
+              <format>%5.0f</format>
+              <property>/autopilot/settings/target-agl-ft</property>
+          </chunk>          
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>140</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-47</offset> </transformation> 
+      </transformations>
+  </layer>
+
+
+  <layer>              
+      <name>FP target</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>17</point-size>
+      <color>
+          <red>0</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+          <chunk>
+            <condition>
+                  <equals>
+                    <property>/autopilot/locks/altitude</property>
+                    <value>fpa-hold</value>
+                  </equals>
+            </condition> 
+            <type>number-value</type>
+            <format>%2.0f%%</format>
+            <property>/autopilot/settings/fpa-pct</property>
+          </chunk>
+        </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>90</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-51</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  <layer>		
+      <name>ROLL (lateral) mode axis</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>0</red>
+	  <green>1</green>
+	  <blue>0</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	      <condition>
+		<equals>
+		   <property>/autopilot/locks/heading</property>
+		   <value>wing-leveler</value>
+		</equals>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>SAS</format>
+	  </chunk>
+	  <chunk>
+	      <condition>
+		<equals>
+		   <property>/autopilot/locks/heading</property>
+		   <value>dg-heading-hold</value>
+		</equals>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>HDG</format>
+	  </chunk>
+	  <chunk>
+	      <condition>
+                  <equals>
+                    <property>/autopilot/locks/heading</property>
+                    <value>nav1-hold</value>
+                  </equals>
+                  <equals>
+                    <property>/autopilot/settings/nav-source</property>
+                    <value>NAV2</value>
+                  </equals>
+		  <property>/instrumentation/nav[1]/nav-loc</property>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>LOC</format>
+	  </chunk>
+	  <chunk>
+	      <condition>
+                <equals>
+                  <property>/autopilot/locks/heading</property>
+                  <value>nav1-hold</value>
+                </equals>
+                <equals>
+                  <property>/autopilot/settings/nav-source</property>
+                  <value>NAV2</value>
+                </equals>
+                <not><property>/instrumentation/nav[1]/nav-loc</property></not>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>VOR</format>
+	  </chunk>
+          <chunk>
+              <condition>
+                  <equals>
+                    <property>/autopilot/locks/heading</property>
+                    <value>nav1-hold</value>
+                  </equals>
+                  <equals>
+                    <property>/autopilot/settings/nav-source</property>
+                    <value></value>
+                  </equals>
+                  <property>/instrumentation/nav/nav-loc</property>
+              </condition>    
+              <type>number-value</type>
+              <format>LOC</format>
+          </chunk>
+          <chunk>
+              <condition>
+                <equals>
+                  <property>/autopilot/locks/heading</property>
+                  <value>nav1-hold</value>
+                </equals>
+                <equals>
+                  <property>/autopilot/settings/nav-source</property>
+                  <value></value>
+                </equals>
+                <not><property>/instrumentation/nav/nav-loc</property></not>
+              </condition>    
+              <type>number-value</type>
+              <format>VOR</format>
+          </chunk>
+          <chunk>
+              <condition>
+                <equals>
+                  <property>/autopilot/locks/heading</property>
+                  <value>nav1-hold</value>
+                </equals>
+                <equals>
+                    <property>/autopilot/settings/nav-source</property>
+                    <value>FMS</value>
+                </equals>
+              </condition>    
+              <type>number-value</type>
+              <format>NAV</format>
+          </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>0</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>15</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+  
+  <layer>               
+      <name>ROLL (lateral) armed mode </name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>0</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+          <chunk>
+              <condition>
+                  <equals>
+                    <property>/autopilot/locks/heading-arm</property>
+                    <value>nav1-hold</value>
+                  </equals>
+                  <equals>
+                    <property>/autopilot/settings/nav-source</property>
+                    <value>NAV2</value>
+                  </equals>
+                  <property>/instrumentation/nav[1]/nav-loc</property>
+              </condition>    
+              <type>number-value</type>
+              <format>LOC</format>
+          </chunk>
+          <chunk>
+              <condition>
+                <equals>
+                  <property>/autopilot/locks/heading-arm</property>
+                  <value>nav1-hold</value>
+                </equals>
+                <equals>
+                  <property>/autopilot/settings/nav-source</property>
+                  <value>NAV2</value>
+                </equals>
+                <not><property>/instrumentation/nav[1]/nav-loc</property></not>
+              </condition>    
+              <type>number-value</type>
+              <format>VOR</format>
+          </chunk>
+          <chunk>
+              <condition>
+                  <equals>
+                    <property>/autopilot/locks/heading-arm</property>
+                    <value>nav1-hold</value>
+                  </equals>
+                  <equals>
+                    <property>/autopilot/settings/nav-source</property>
+                    <value></value>
+                  </equals>
+                  <property>/instrumentation/nav/nav-loc</property>
+              </condition>    
+              <type>number-value</type>
+              <format>LOC</format>
+          </chunk>
+          <chunk>
+              <condition>
+                <equals>
+                  <property>/autopilot/locks/heading-arm</property>
+                  <value>nav1-hold</value>
+                </equals>
+                <equals>
+                  <property>/autopilot/settings/nav-source</property>
+                  <value></value>
+                </equals>
+                <not><property>/instrumentation/nav/nav-loc</property></not>
+              </condition>    
+              <type>number-value</type>
+              <format>VOR</format>
+          </chunk>
+          <chunk>
+              <condition>
+                <equals>
+                  <property>/autopilot/locks/heading-arm</property>
+                  <value>nav1-hold</value>
+                </equals>
+                <equals>
+                    <property>/autopilot/settings/nav-source</property>
+                    <value>FMS</value>
+                </equals>
+              </condition>    
+              <type>number-value</type>
+              <format>NAV</format>
+          </chunk>
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>0</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+  
+  <!-- in real H145 the ALT modes depend on the airspeed. At low airspeed ALT modes controls COLLECTIVE, -->
+  <!-- At high ALT modes controls Pitch -->
+  
+  <layer>		
+      <name>collective mode axis</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>0</red>
+	  <green>1</green>
+	  <blue>0</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	      <condition>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>go-around</value>
+		  </equals>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>GA</format>
+	  </chunk>
+	
+	  <chunk>
+	      <condition>
+		<and>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>agl-hold</value>
+		  </equals>
+		  <property>/autopilot/internal/use-collective-for-alt</property>
+		</and>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>CR.HT</format>
+	  </chunk>
+
+	  <chunk>
+	      <condition>
+		<and>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>altitude-hold</value>
+		  </equals>
+		  <property>/autopilot/internal/use-collective-for-alt</property>
+		</and>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>ALT</format>
+	  </chunk>
+	  
+	  <chunk>
+	      <condition>
+		<and>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>vertical-speed-hold</value>
+		  </equals>
+		  <property>/autopilot/internal/use-collective-for-alt</property>
+		</and>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>VS</format>
+	  </chunk>
+
+	  <chunk>
+	      <condition>
+		<and>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>gs1-hold</value>
+		  </equals>
+		  <property>/autopilot/internal/use-collective-for-alt</property>
+		</and>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>GS</format>
+	  </chunk>
+
+	  <chunk>
+	      <condition>
+		<and>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>fpa-hold</value>
+		  </equals>
+		  <property>/autopilot/internal/use-collective-for-alt</property>
+		</and>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>FPA</format>
+	  </chunk>
+
+	  </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-120</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>15</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  
+  
+  <layer>               
+      <name>COLLECTIVE axis armed modes</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>0</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+
+          <chunk>
+              <condition>
+                <and>
+                  <equals>
+                    <property>/autopilot/locks/altitude-arm</property>
+                    <value>altitude-hold</value>
+                  </equals>
+                  <property>/autopilot/internal/use-collective-for-alt</property>
+                </and>
+              </condition>    
+              <type>number-value</type>
+              <format>ALT.A</format>
+          </chunk>
+
+          <chunk>
+              <condition>
+                <and>
+                  <equals>
+                    <property>/autopilot/locks/altitude-arm</property>
+                    <value>gs1-hold</value>
+                  </equals>
+                  <property>/autopilot/internal/use-collective-for-alt</property>
+                </and>
+              </condition>    
+              <type>number-value</type>
+              <format>GS</format>
+          </chunk>
+          
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>-120</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+
+  <layer>		
+      <name>PITCH mode axis</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>0</red>
+	  <green>1</green>
+	  <blue>0</blue>
+      </color>
+      <chunks>
+	  <chunk>
+	      <condition>
+		  <equals>
+		    <property>/autopilot/locks/speed</property>
+		    <value>go-around</value>
+		  </equals>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>GA</format>
+	  </chunk>
+
+          <chunk>
+              <condition>
+                  <equals>
+                    <property>/autopilot/locks/altitude</property>
+                    <value>pitch-hold</value>
+                  </equals>
+              </condition>    
+              <type>number-value</type>
+              <format>SAS</format>
+          </chunk>
+
+          <chunk>
+	      <condition>
+		<and>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>altitude-hold</value>
+		  </equals>
+                  <not><property>/autopilot/internal/use-collective-for-alt</property></not>
+		</and>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>ALT</format>
+	  </chunk>
+	  
+	  <chunk>
+	      <condition>
+		<and>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>vertical-speed-hold</value>
+		  </equals>
+		  <not><property>/autopilot/internal/use-collective-for-alt</property></not>
+		</and>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>VS</format>
+	  </chunk>
+
+	  <chunk>
+	      <condition>
+		<and>
+		  <equals>
+		    <property>/autopilot/locks/altitude</property>
+		    <value>gs1-hold</value>
+		  </equals>
+		  <not><property>/autopilot/internal/use-collective-for-alt</property></not>
+		</and>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>GS</format>
+	  </chunk>
+
+          <chunk>
+              <condition>
+                <and>
+                  <equals>
+                    <property>/autopilot/locks/altitude</property>
+                    <value>agl-hold</value>
+                  </equals>
+                  <not><property>/autopilot/internal/use-collective-for-alt</property></not>
+                </and>
+              </condition>    
+              <type>number-value</type>
+              <format>CR.HT</format>
+          </chunk>
+
+          <chunk>
+	      <condition>
+		  <equals>
+		    <property>/autopilot/locks/speed</property>
+		    <value>speed-with-pitch-trim</value>
+		  </equals>
+	      </condition>    
+	      <type>number-value</type>
+	      <format>IAS</format>
+	  </chunk>
+
+          
+	  </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>120</offset> </transformation> 
+	  <transformation> <type>y-shift</type> <offset>15</offset> </transformation> 
+      </transformations>
+  </layer>
+
+  
+  <layer>               
+      <name>PITCH mode axis armed</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+          <red>0</red>
+          <green>1</green>
+          <blue>1</blue>
+      </color>
+      <chunks>
+
+          <chunk>
+              <condition>
+                <and>
+                  <equals>
+                    <property>/autopilot/locks/altitude-arm</property>
+                    <value>altitude-hold</value>
+                  </equals>
+                  <not><property>/autopilot/internal/use-collective-for-alt</property></not>
+                </and>
+              </condition>    
+              <type>number-value</type>
+              <format>ALT.A</format>
+          </chunk>
+
+          <chunk>
+              <condition>
+                <and>
+                  <equals>
+                    <property>/autopilot/locks/altitude-arm</property>
+                    <value>gs1-hold</value>
+                  </equals>
+                  <not><property>/autopilot/internal/use-collective-for-alt</property></not>
+                </and>
+              </condition>    
+              <type>number-value</type>
+              <format>GS</format>
+          </chunk>
+          
+          </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>120</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+  </layers>
+</PropertyList>

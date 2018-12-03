@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!--
+Helionix MFD - Flight Navigation Display, Vehicle Management Display and Navigation Display for Eurocopter
+Author : litzi
+-->
+
+<PropertyList>
+  <params>
+    <mode>/instrumentation/mfd[3]/mode</mode>
+    <init>Aircraft/ec145/Models/instruments/EUcopter-mfd/Panels/init-screen-mfd3.xml</init>
+    <hotspots>Aircraft/ec145/Models/instruments/EUcopter-mfd/Panels/mfd3-hotspots.xml</hotspots>
+  </params>
+  
+  <path>mfd.ac</path> 
+
+  <animation>    
+    <type>select</type>
+    <object-name>panel-fnd</object-name>
+    <condition>
+	<property>sim/current-view/internal</property>
+        <equals>
+          <property alias="/params/mode"/>
+          <value>FND</value>
+        </equals>
+    </condition>
+  </animation>
+
+  <animation>    
+    <type>select</type>
+    <object-name>panel-vmd</object-name>
+    <condition>
+        <property>sim/current-view/internal</property>
+        <equals>
+          <property alias="/params/mode"/>
+          <value>VMD</value>
+        </equals>
+    </condition>
+  </animation>
+
+  <animation>    
+    <type>select</type>
+    <object-name>panel-nd</object-name>
+    <condition>
+        <property>sim/current-view/internal</property>
+        <equals>
+          <property alias="/params/mode"/>
+          <value>NAVD</value>
+        </equals>
+    </condition>
+  </animation>
+  
+  <animation>    
+    <type>select</type>
+    <object-name>panel-map</object-name>
+    <condition>
+        <property>sim/current-view/internal</property>
+        <equals>
+          <property alias="/params/mode"/>
+          <value>DMAP</value>
+        </equals>
+    </condition>
+  </animation>
+
+  <animation>    
+    <type>select</type>
+    <object-name>panel-init</object-name>
+    <condition>
+        <property>sim/current-view/internal</property>
+        <equals>
+          <property alias="/params/mode"/>
+          <value>INIT</value>
+        </equals>
+    </condition>
+  </animation>
+
+  <panel>
+    <name>panel-fnd</name>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Panels/EUcopter-fnd-panel.xml</path>
+    <top-left>
+        <x-m>0.012</x-m>
+        <y-m>-0.075</y-m>
+        <z-m>0.106</z-m>
+    </top-left>
+    <bottom-left>
+        <x-m>0.012</x-m> 
+        <y-m>-0.075</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-left>                      
+    <bottom-right>
+        <x-m>0.012</x-m>
+        <y-m>0.08</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-right>
+  </panel>
+    
+  <panel>
+    <name>panel-vmd</name>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Panels/EUcopter-vmd-panel.xml</path>
+    <top-left>
+        <x-m>0.012</x-m>
+        <y-m>-0.075</y-m>
+        <z-m>0.106</z-m>
+    </top-left>
+    <bottom-left>
+        <x-m>0.012</x-m> 
+        <y-m>-0.075</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-left>                      
+    <bottom-right>
+        <x-m>0.012</x-m>
+        <y-m>0.08</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-right>
+  </panel>
+  
+  <panel>
+    <name>panel-nd</name>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Panels/EUcopter-navd-panel.xml</path>
+    <top-left>
+        <x-m>0.012</x-m>
+        <y-m>-0.075</y-m>
+        <z-m>0.106</z-m>
+    </top-left>
+    <bottom-left>
+        <x-m>0.012</x-m> 
+        <y-m>-0.075</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-left>                      
+    <bottom-right>
+        <x-m>0.012</x-m>
+        <y-m>0.08</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-right>
+  </panel>
+
+  <panel>
+    <name>panel-map</name>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Panels/EUcopter-dmap-panel.xml</path>
+    <top-left>
+        <x-m>0.012</x-m>
+        <y-m>-0.075</y-m>
+        <z-m>0.106</z-m>
+    </top-left>
+    <bottom-left>
+        <x-m>0.012</x-m> 
+        <y-m>-0.075</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-left>                      
+    <bottom-right>
+        <x-m>0.012</x-m>
+        <y-m>0.08</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-right>
+  </panel>
+  
+  <panel>
+    <name>panel-init</name>
+    <path alias="/params/init"/>
+    <top-left>
+        <x-m>0.012</x-m>
+        <y-m>-0.075</y-m>
+        <z-m>0.106</z-m>
+    </top-left>
+    <bottom-left>
+        <x-m>0.012</x-m> 
+        <y-m>-0.075</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-left>                      
+    <bottom-right>
+        <x-m>0.012</x-m>
+        <y-m>0.08</y-m>
+        <z-m>-0.105</z-m>
+    </bottom-right>
+  </panel>
+
+  <!-- all interactions are done via panel with action-elements -->
+  <panel>
+    <name>panel-hotspots</name>
+    <path alias="/params/hotspots"/>
+    <top-left>
+        <x-m>0.028</x-m>
+        <y-m>-0.105</y-m>
+        <z-m>0.132</z-m>
+    </top-left>
+    <bottom-left>
+        <x-m>0.028</x-m> 
+        <y-m>-0.105</y-m>
+        <z-m>-0.13</z-m>
+    </bottom-left>                      
+    <bottom-right>
+        <x-m>0.028</x-m>
+        <y-m>0.105</y-m>
+        <z-m>-0.13</z-m>
+    </bottom-right>
+  </panel>
+  
+</PropertyList>

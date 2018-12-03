@@ -1,0 +1,189 @@
+EuCopter-MFD Version 4, Oct. 2017
+Author: Martin Litzenberger (litzi)
+
+This instrument simulates a MFD found in Eurocopter (Airbus Helicopters) 
+series helicopters (H135, H145, H160, H175).
+
+Technically the 3D instruments are realized as four 2D panels
+ FND (flight navigation display),
+ NAVD (navigation display), 
+ MAPD (moving terrain map display) and 
+ VMD (vehicle management display)
+embedded in the 3D model of the MFD display bezel. 
+
+Acknowledgements:
+
+Some components of the panels are based on original code and textures 
+of Syd Adams' Primus-1000 instrument[1]. Code for engine 
+oil pressure and temperatures are taken from EC130 Nasal code, original author
+Melchior Franz[2]. Moving map Nasal concept and code adapted from the Boeing B787-8 [3](author?).
+
+Things to consider:
+
+-Engine's torque indications on the VMD are a best guess model 
+ at the moment where total gearbox power from the YaSIM FDM is 
+ distributed between the two engines according to rotor rpm,
+ the engines power settings and n2 rpm's.
+ 
+-FLI (first limit indicator) tape on the left hand side on the FND
+ is showing torque limits (74% MCP - max. continous power, 
+ 95% TOP - take off power, 104% TTOP - transient take off p., 
+ 0% rotor/engine desychronisation limit)
+ according to Neuhaus/Ockier - "Helionix Cockpit Concept" [4]. The implemented
+ scaling factors are just from experience with the ec145 model, there is currently
+ no 'real model' behind it. Note: Only torque related limits are shown, regardless
+ of N1 or TOT limits.
+ 
+Integration:
+
+To incorporate the 3D instrument into your aircraft,
+you need to add the following to your files:
+
+Place up to 4 MFD instruments in the cockpit, 
+add this to the aircrafts animation file, similar as:
+
+  <model>
+      <name>MFD0</name>
+      <path>Aircraft/youraircraft/path/EUcopter-mfd/mfd0.xml</path>
+      <offsets>
+	  <x-m> -2.75</x-m>
+	  <y-m> 0.25</y-m>
+	  <z-m> 0.34</z-m>
+	  <pitch-deg>-14</pitch-deg>
+      </offsets>
+  </model>
+    
+  <model>
+    <name>MFD1</name>
+    <path>Aircraft/youraircraft/path/EUcopter-mfd/mfd1.xml</path>
+    <offsets>
+	    <x-m>-2.75</x-m>
+	    <y-m>0.035</y-m>
+	    <z-m>0.34</z-m>
+	    <pitch-deg>-14</pitch-deg>
+    </offsets>
+  </model>	
+
+Five files (one property rule XML and four Nasal scripts) act as
+interface between aircraft and panels and need to be adapted to 
+the individual aircraft.
+
+load the filter.xml file via your aircraft -set.xml file. To avoid
+overwriting an existing autopilot in place use "n=" with some 
+high number as in:
+
+  <sim>
+    <systems>
+      <!-- many other elements live here -->
+      <autopilot n=101>
+         <name>Helionix instrumentation drivers</name>
+         <path>Aircraft/youraircraft/path/EUcopter-mfd/XML/filter.xml</path>
+      </autopilot>
+    </systems>
+  </sim>
+
+Copy the masterlist-aircraft.nas files to your aircraft Nasal folder 
+and modify the parameters that drive the caution, warning and advisory messages 
+on the FND according to your helicopter parameters.
+
+load the *.nas files in your aircraft -set.xml file, similar as in:
+
+<nasal>
+        <!-- many other elements may live here ... --> 
+        <mfd>
+                <file>Aircraft/youraircraft/path/EUcopter-mfd/Nasal/mfd.nas</file>
+                <file>Aircraft/youraircraft/path/EUcopter-mfd/Nasal/masterlist.nas</file>
+                <file>Aircraft/youraircraft/path/EUcopter-mfd/Nasal/helionix-terrain-map.nas</file>
+                <file>Aircraft/YourAircraft/Nasal/masterlist-ec145.nas</file>
+        </mfd>
+</nasal>
+
+
+Configure the basic panel parameters in the instrumentation
+section of the aircraft-set.xml file:
+
+<instrumentation>
+        <!--dummy supply bus-->
+        <mfdsupply type="float">24</mfdsupply> 
+        
+        <!-- Note: You need to provide parameters for all 4 MFDs even if your
+        aircraft does not all use them .-->
+    
+        <mfd n="0">
+            <mode-list type="string">FND,NAVD,VMD,MAPD</mode-list> <!--list of modes that can be active for this screen, initial first-->
+            <pwr-sw-pos type="bool">1</pwr-sw-pos>            <!--initial position of the screens power switch-->
+            <supply>instrumentation/mfdsupply</supply>        <!--uses dummy supply bus, can be replaced by any real electrical bus-->
+        </mfd>
+        
+        <!--repeat for mfd1 .. mfd3 as needed-->
+
+        <efis>
+             <!-- many other elements may live here ... -->
+             
+             <!-- For the Helionix panels add this to the efis section of the aircraft set file. -->
+                  <vmd>
+                      <!--
+                          Parameters for engine torque calculation in %.
+                          This approach is based on normalized power and n2 values and 
+                          is independent of engine max. torque or gear-ratios and 
+                          uses only the max. continous power rating of the
+                          engine.
+                    
+                          See in YASIM config file for engine power
+                          in rotorgear-element : max-power-engine="1100" 
+                          = 1100 kW both engines, 550 kW per engine
+ 
+                          torque factor 1/(max. power in Watts) *100 % :
+                           1/550 000W * 100 for power in % = 0.000181818 
+                      -->
+                      <eng-trq-factor type="float">0.000181818</eng-trq-factor>
+                      <rotor-rpmN type="float">383</rotor-rpmN>                   
+                      
+                      <!-- set caution ranges for enigines oil temp and pressure gauges -->
+                      <oilt-caution-lo-degc type="float">30</oilt-caution-lo-degc>
+                      <oilt-caution-hi-degc type="float">120</oilt-caution-hi-degc> 
+                      <oilp-caution-lo-bar type="float">1.5</oilp-caution-lo-bar> 
+                      <oilp-caution-hi-bar type="float">8</oilp-caution-hi-bar>
+                  </vmd>
+        </efis> 
+</instrumentation>
+
+
+Version notes:
+
+* Buttons on the MFD bezel are now modeled in 3D and are clickable.
+
+* MFDs are now connectable to a power bus and have a functional power button.
+
+* Panel power-up sequence modeled after some Airbus maintenance video found on internet.
+
+* NAVD display improvements: Display shows active waypoints, airports and other nav-aids positions and navaid data
+
+* New DMAP display: Moving map (adapted from existing B787-1 Nasal code) and "database" list of navaids, airports and waypoints around, with auxiliary 
+information.
+
+* Engine torque calculation refined to match behaviour found in some EC145 engine spoolup videos found on youtube.
+
+* All MFD source files and textures are now collected under one common path "ec145/Model/instruments/EUcopter-mfd/"
+
+* Up to four screens can be included in an aircraft mfd0.xml ... mfd3.xml (think of H175 or H160 models to come).
+
+* All screens can be individually configured through properties in the ec145-set file (I provide the example ec145-set file in the package).
+
+* All the MFD related properties have been moved from property tree node "/instrumentation/glass/" to "/instrumentation/efis/" where other similar EFIS instruments use to live.
+
+
+
+References:
+
+[1] https://sourceforge.net/p/flightgear/fgdata/ci/next/tree/Aircraft/Instruments-3d/primus-1000/
+
+[2] https://sourceforge.net/p/flightgear/fgaddon/HEAD/tree/branches/release-3.6.0/Aircraft/ec130/Nasal/ec130.nas
+
+[3] https://sourceforge.net/p/flightgear/fgaddon/HEAD/tree/branches/release-2016.1/Aircraft/787-8/Nasal/terrain-map.nas
+
+[4] 'Helionix Cockpit Concept' slide presentation, downloaded from 
+www.slideshare.net in Jan. 2017.
+
+
+

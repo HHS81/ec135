@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<!--
+FND Helicopter Glass Cockpit Panel.
+_______________________________________________________________________
+
+Author: litzi
+
+This 2D panel simulates a FND flight navigation display found in EC type helicopters. 
+This panel can be used either in a 'stand alone' window with fgpanel or can be included 
+as a panel from the central 3D model file with the 'panel' statement.
+
+The panel is in portrait orientation with 600x800 resolution
+-->
+
+<PropertyList>
+ <name>Helicopter Glass Cockpit Startup Screen</name>
+ <!--<background>Aircraft/Instruments/glass/glass-2-bkg.rgb</background> -->
+ <w>600</w> 
+ <h>800</h>
+  
+ <instruments> 
+
+ <instrument> 
+  <name>Startup Screen test pattern</name>
+  <w-base>600</w-base>
+  <h-base>800</h-base>
+  <x>300</x>
+  <y>400</y>
+    
+  <layers>
+   <layer>
+    <w>600</w>
+    <h>800</h>
+    <name>stripe test pattern for screen startup</name>
+    <emissive>true</emissive>
+    <texture>   
+      <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/init-screen.rgb</path>
+      <x1>0.0</x1>
+      <y1>0.0</y1>
+      <x2>0.75</x2>
+      <y2>1</y2>
+    </texture>
+   </layer>
+   
+   <layer>
+      <name>MFD ID</name>
+      <emissive>true</emissive>    
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>30</point-size>
+      <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+      </color>
+      <chunks>
+        <chunk>
+          <type>literal</type>
+          <text>MFD1</text>
+        </chunk>
+      </chunks>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>-280</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>350</offset> </transformation> 
+      </transformations>
+  </layer>
+  
+ </layers>
+</instrument>
+
+</instruments> 
+ 
+</PropertyList>

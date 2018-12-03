@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+
+<!-- Button labels for Helionix MFD screen
+
+     three labels e.g. FND VMD NAVD for use on top or bottom of screen.
+     the one, currently active screen type can be covered depending
+     on the type parameter.
+
+     Parameters
+     
+     <type> .. 0,10,20,40 selects the label to hide.
+ -->
+
+<PropertyList>
+ <name>mfd button labels</name>
+ <w-base>400</w-base>
+ <h-base>20</h-base>
+ 
+ <params>
+  <btn1>FND</btn1>
+  <btn2>VMD</btn2>
+  <btn3>NAVD</btn3>
+  <btn4>PFD</btn4>
+  <type>0</type>
+ </params>
+
+<layers>
+
+  <layer>
+   <name>mask backgrd</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-btn-hor.rgb</path>
+	<x1>	0	</x1>
+	<y1>	0	</y1>
+	<x2>	1	</x2>
+	<y2>	1	</y2>
+     </texture>
+     <w>400</w>
+     <h>20</h>
+   </layer>
+   
+  <layer>
+    <name>label 1</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>16</point-size>
+	<color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+	</color>
+	<chunks>
+	    <chunk>
+		  <type>number-value</type>
+		  <format alias="../../../../../params/btn1"/>
+	    </chunk>
+	</chunks>
+	<transformations>
+	   <transformation><type>x-shift</type><offset>-195</offset></transformation>
+           <transformation><type>y-shift</type><offset>-7</offset></transformation>
+	</transformations>
+  </layer>
+
+  <layer>
+    <name>label 2</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>16</point-size>
+	<color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+	</color>
+	<chunks>
+	    <chunk>
+		  <type>number-value</type>
+		  <format alias="../../../../../params/btn2"/>
+	    </chunk>
+	</chunks>
+	<transformations>
+	   <transformation><type>x-shift</type><offset>-95</offset></transformation>
+           <transformation><type>y-shift</type><offset>-7</offset></transformation>
+	</transformations>
+  </layer>
+
+  <layer>
+    <name>label 3</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>16</point-size>
+	<color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+	</color>
+	<chunks>
+	    <chunk>
+		  <type>number-value</type>
+		  <format alias="../../../../../params/btn3"/>
+	    </chunk>
+	</chunks>
+	<transformations>
+	   <transformation><type>x-shift</type><offset>5</offset></transformation>
+           <transformation><type>y-shift</type><offset>-7</offset></transformation>
+	</transformations>
+  </layer>
+
+  <layer>
+    <name>label 3</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>16</point-size>
+	<color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+	</color>
+	<chunks>
+	    <chunk>
+		  <type>number-value</type>
+		  <format alias="../../../../../params/btn4"/>
+	    </chunk>
+	</chunks>
+	<transformations>
+	   <transformation><type>x-shift</type><offset>105</offset></transformation>
+           <transformation><type>y-shift</type><offset>-7</offset></transformation>
+	</transformations>
+  </layer>
+
+  <layer>
+   <name>cover mask</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/black.rgb</path>
+	<x1>	0	</x1>
+	<y1>	0	</y1>
+	<x2>	1	</x2>
+	<y2>	1	</y2>
+   </texture>
+   <w>80</w>
+   <h>20</h>
+   <transformations>
+	  <transformation>
+         <type>x-shift</type>
+         <offset alias="../../../../../params/type"/>
+      </transformation>
+      <transformation><type>x-shift</type><offset>-170</offset></transformation>
+   </transformations>
+   </layer>
+   
+  </layers>
+</PropertyList>

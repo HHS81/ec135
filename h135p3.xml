@@ -140,7 +140,8 @@
 	rel-len-where-incidence-is-measured="0.7"
 	rel-len-blade-start="0.29"
 	
-	airfoil-incidence-no-lift="-0.1"
+	
+airfoil-incidence-no-lift="-0.1"
 	airfoil-lift-coefficient="6.37"
 	airfoil-drag-coefficient0="0.01036"
 	airfoil-drag-coefficient1="0.21"
@@ -153,6 +154,19 @@
 	rotor-correction-factor="0.9"
 	downwashfactor="1.0"
 	>
+	
+		<!--airfoil-incidence-no-lift="-0.1"
+	airfoil-lift-coefficient="4.55"
+	airfoil-drag-coefficient0="0.0074"
+	airfoil-drag-coefficient1="0.15"
+	incidence-stall-zero-speed="16"
+	incidence-stall-half-sonic-speed="15.5"
+	lift-factor-stall="0.18"
+	stall-change-over="5.5"
+	drag-factor-stall="2.0"
+	cyclic-factor="1.1"
+	rotor-correction-factor="0.9"
+	downwashfactor="1.0">-->
 	<!--lst values: 1.35;0.1;-0.3;3.80;0.0074;0.04; to-do: play with lift-coeff and translift-factor-->
 <control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"/>
 	<control-input axis="/controls/flight/aileron-cmd" control="CYCLICAIL"
@@ -210,7 +224,7 @@
 	rotor-correction-factor="0.8"
 	downwashfactor="1.0"
 	>
-	<control-input axis="/controls/flight/fcs/yaw" control="COLLECTIVE" invert="true"
+	<control-input axis="/controls/flight/rudder-cmd" control="COLLECTIVE" invert="true"
 					src0="-1.0" src1="1.0"
 					dst0="-1.0" dst1="1.0"/>
 	<control-input axis="/controls/flight/fcs/tail-rotor/throttle" control="COLLECTIVE" invert="true"

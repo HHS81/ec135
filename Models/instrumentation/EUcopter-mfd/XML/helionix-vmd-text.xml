@@ -1,0 +1,989 @@
+<?xml version="1.0"?>
+
+<!-- Text and symbolic annunciators and background for EUcopter VMD display   
+ -->
+
+<PropertyList>
+ <name>helionix-text-mask</name>
+ <w-base>600</w-base>
+ <h-base>800</h-base>
+
+  <layers>
+    
+     <layer>
+        <name>main tank fuel indicator</name>
+        <w>140</w>
+        <h>100</h>
+        <texture>
+            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
+	    <x1>0.9</x1>
+            <y1>0.75</y1>
+            <x2>1.0</x2>
+            <y2>1.0</y2>
+        </texture>
+	<transformations>
+	    <transformation> 
+		<type>x-shift</type> 
+		<offset>-151</offset> 
+	    </transformation> 
+            <transformation>
+               <type>y-shift</type>
+               <offset>-145</offset>
+            </transformation>
+	    <transformation>
+                <type>y-shift</type>
+                <property>/consumables/fuel/tank[0]/level-norm</property>
+                <scale>43</scale>
+		<max>1</max>
+		<min>0</min>
+            </transformation>
+        </transformations>
+        <emissive>true</emissive>
+    </layer>
+
+     <layer>
+        <name>LH supply tank fuel indicator</name>
+        <w>40</w>
+        <h>100</h>
+        <texture>
+            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
+            <x1>0.9</x1>
+            <y1>0.75</y1>
+            <x2>1.0</x2>
+            <y2>1.0</y2>
+        </texture>
+        <transformations>
+            <transformation> 
+                <type>x-shift</type> 
+                <offset>-195</offset> 
+            </transformation> 
+            <transformation>
+               <type>y-shift</type>
+               <offset>-145</offset>
+            </transformation>
+            <transformation>
+                <type>y-shift</type>
+                <property>/consumables/fuel/tank[1]/level-norm</property>
+                <scale>43</scale>
+                <max>1</max>
+                <min>0</min>
+            </transformation>
+        </transformations>
+        <emissive>true</emissive>
+    </layer>
+
+     <layer>
+        <name>RH supply tank fuel indicator</name>
+        <w>40</w>
+        <h>100</h>
+        <texture>
+            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
+            <x1>0.9</x1>
+            <y1>0.75</y1>
+            <x2>1.0</x2>
+            <y2>1.0</y2>
+        </texture>
+        <transformations>
+            <transformation> 
+                <type>x-shift</type> 
+                <offset>-80</offset> 
+            </transformation> 
+            <transformation>
+               <type>y-shift</type>
+               <offset>-145</offset>
+            </transformation>
+            <transformation>
+                <type>y-shift</type>
+                <property>/consumables/fuel/tank[2]/level-norm</property>
+                <scale>43</scale>
+                <max>1</max>
+                <min>0</min>
+            </transformation>
+        </transformations>
+        <emissive>true</emissive>
+    </layer>
+
+    <layer>
+    <w>600</w>
+    <h>800</h>
+    <name>test overlay mask for element proportions</name>
+    <emissive>true</emissive>
+    <texture>   
+      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-overl-vmd.rgb</path>
+      <x1>	0.00	</x1>
+      <y1>	0.22	</y1>
+      <x2>	0.58	</x2>
+      <y2>	0.98	</y2>
+     </texture>
+  </layer>    
+
+  <!-- note on bleed air: as cabin heating is not simulated, bleed air 
+       symbols are shown by default. 
+  -->
+  
+  <layer>
+   <name>bleed air symbol eng 1</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vmd-symbols.rgb</path>
+        <x1>    0       </x1>
+        <y1>    0.75    </y1>
+        <x2>    0.25    </x2>
+        <y2>    1       </y2>
+     </texture>
+     <w>40</w>
+     <h>30</h>
+      <transformations>
+          <transformation><type>x-shift</type><offset>-255</offset></transformation>
+          <transformation><type>y-shift</type><offset>350</offset></transformation>
+      </transformations>
+   </layer>
+   
+  <layer>
+   <name>bleed air symbol eng 2</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vmd-symbols.rgb</path>
+        <x1>    0       </x1>
+        <y1>    0.75    </y1>
+        <x2>    0.25    </x2>
+        <y2>    1       </y2>
+     </texture>
+     <w>40</w>
+     <h>30</h>
+      <transformations>
+          <transformation><type>x-shift</type><offset>255</offset></transformation>
+          <transformation><type>y-shift</type><offset>350</offset></transformation>
+      </transformations>
+   </layer>
+ 
+  <layer>
+   <name>symbol OEI training mode</name>
+   <emissive>true</emissive>
+   <condition>
+        <property>/controls/switches/ecp/trainswitch</property>
+    </condition>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vmd-symbols.rgb</path>
+        <x1>    0  </x1>
+        <y1>    0.01 </y1>
+        <x2>    0.4 </x2>
+        <y2>    0.4 </y2>
+     </texture>
+     <w>65</w>
+     <h>65</h>
+      <transformations>
+          <transformation><type>x-shift</type><offset>0</offset></transformation>
+          <transformation><type>y-shift</type><offset>221</offset></transformation>
+      </transformations>
+   </layer>
+  
+  <layer>
+   <name>eng 1 FAIL indication</name>
+   <emissive>true</emissive>
+   <condition>
+        <property>/engines/engine[0]/running</property>
+        <less-than>
+          <property>/engines/engine[0]/n1-pct</property>
+          <value>50</value>
+        </less-than>
+   </condition>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vmd-symbols.rgb</path>
+        <x1>    0.6       </x1>
+        <y1>    0       </y1>
+        <x2>    1       </x2>
+        <y2>    0.3      </y2>
+     </texture>
+     <w>95</w>
+     <h>40</h>
+      <transformations>
+          <transformation><type>x-shift</type><offset>-200</offset></transformation>
+          <transformation><type>y-shift</type><offset>351</offset></transformation>
+      </transformations>
+   </layer>
+
+   <layer>
+    <name>eng 1 fail indicator</name>
+    <condition>
+          <property>/engines/engine[0]/running</property>
+          <less-than>
+            <property>/engines/engine[0]/n1-pct</property>
+            <value>50</value>
+          </less-than>
+    </condition>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>18</point-size>
+    <color>
+        <red>1</red>
+        <green>0</green>
+        <blue>0</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>literal</type>
+            <text>FAIL</text>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-228</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>340</offset> </transformation> 
+    </transformations>
+  </layer>
+   
+  <layer>
+   <name>eng 1 IDLE indication</name>
+   <emissive>true</emissive>
+   <condition>
+        <greater-than>
+          <property>/engines/engine[0]/n1-pct</property>
+          <value>60</value>
+        </greater-than>
+        <less-than>
+          <property>/engines/engine[0]/n1-pct</property>
+          <value>70</value>
+        </less-than>
+    </condition>   
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vmd-symbols.rgb</path>
+        <x1>    0.6       </x1>
+        <y1>    0.7       </y1>
+        <x2>    0.99       </x2>
+        <y2>    1      </y2>
+     </texture>
+     <w>95</w>
+     <h>40</h>
+      <transformations>
+          <transformation><type>x-shift</type><offset>-200</offset></transformation>
+          <transformation><type>y-shift</type><offset>350</offset></transformation>
+      </transformations>
+   </layer>
+
+   
+   <layer>
+    <name>eng 1 IDLE indicator</name>
+   <condition>
+        <greater-than>
+          <property>/engines/engine[0]/n1-pct</property>
+          <value>60</value>
+        </greater-than>
+        <less-than>
+          <property>/engines/engine[0]/n1-pct</property>
+          <value>70</value>
+        </less-than>
+    </condition>   
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>18</point-size>
+    <color>
+        <red>1</red>
+        <green>0.76</green>
+        <blue>0</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>literal</type>
+            <text>IDLE</text>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-228</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>343</offset> </transformation> 
+    </transformations>
+  </layer>
+
+  
+  
+   <layer>
+   <name>eng 2 FAIL indication</name>
+   <emissive>true</emissive>
+   <condition>
+        <property>/engines/engine[1]/running</property>
+        <less-than>
+          <property>/engines/engine[1]/n1-pct</property>
+          <value>50</value>
+        </less-than>
+    </condition>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vmd-symbols.rgb</path>
+        <x1>    0.6       </x1>
+        <y1>    0       </y1>
+        <x2>    1       </x2>
+        <y2>    0.3      </y2>
+     </texture>
+     <w>95</w>
+     <h>40</h>
+      <transformations>
+          <transformation><type>x-shift</type><offset>200</offset></transformation>
+          <transformation><type>y-shift</type><offset>351</offset></transformation>
+      </transformations>
+   </layer>
+
+   <layer>
+    <name>eng 2 fail indicator</name>
+    <condition>
+          <property>/engines/engine[1]/running</property>
+          <less-than>
+            <property>/engines/engine[1]/n1-pct</property>
+            <value>50</value>
+          </less-than>
+    </condition>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>18</point-size>
+    <color>
+        <red>1</red>
+        <green>0</green>
+        <blue>0</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>literal</type>
+            <text>FAIL</text>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>175</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>343</offset> </transformation> 
+    </transformations>
+  </layer>
+  
+  <layer>
+   <name>eng 2 IDLE indication</name>
+   <emissive>true</emissive>
+   <condition>
+        <greater-than>
+          <property>/engines/engine[1]/n1-pct</property>
+          <value>60</value>
+        </greater-than>
+        <less-than>
+          <property>/engines/engine[1]/n1-pct</property>
+          <value>70</value>
+        </less-than>
+    </condition>   
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vmd-symbols.rgb</path>
+        <x1>    0.6       </x1>
+        <y1>    0.7       </y1>
+        <x2>    0.99       </x2>
+        <y2>    1      </y2>
+     </texture>
+     <w>95</w>
+     <h>40</h>
+      <transformations>
+          <transformation><type>x-shift</type><offset>200</offset></transformation>
+          <transformation><type>y-shift</type><offset>350</offset></transformation>
+      </transformations>
+   </layer>
+
+   
+   <layer>
+    <name>eng 2 IDLE indicator</name>
+   <condition>
+        <greater-than>
+          <property>/engines/engine[1]/n1-pct</property>
+          <value>60</value>
+        </greater-than>
+        <less-than>
+          <property>/engines/engine[1]/n1-pct</property>
+          <value>70</value>
+        </less-than>
+    </condition>   
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>18</point-size>
+    <color>
+        <red>1</red>
+        <green>0.76</green>
+        <blue>0</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>literal</type>
+            <text>IDLE</text>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>175</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>343</offset> </transformation> 
+    </transformations>
+  </layer>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <layer>
+    <name>TOT engine 0</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>22</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <property>engines/engine/tot-degc</property>
+	    <format>%3.0f*C</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-250</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>180</offset> </transformation> 
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>TOT engine 1</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>22</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <property>engines/engine[1]/tot-degc</property>
+	    <format>%3.0f*C</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>180</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>180</offset> </transformation> 
+    </transformations>
+  </layer>
+
+
+  <layer>
+    <name>n2 text</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>20</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <format>N2</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>150</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-340</offset> </transformation> 
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>fuel kg</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>14</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <format>fuel kg</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-170</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-28</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>fuel kg</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <property>/consumables/fuel/tank[0]/level-lbs</property>
+	    <scale>0.4535</scale>
+	    <format>%4.0f</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-155</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-120</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>fuel kg</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>number-value</type>
+            <property>/consumables/fuel/tank[1]/level-lbs</property>
+            <scale>0.4535</scale>
+            <format>%4.0f</format>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-215</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-120</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>fuel kg</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>number-value</type>
+            <property>/consumables/fuel/tank[2]/level-lbs</property>
+            <scale>0.4535</scale>
+            <format>%4.0f</format>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-100</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-120</offset> </transformation>
+    </transformations>
+  </layer>
+  
+  <layer>
+    <name>G1</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <format>G1</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>65</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-42</offset> </transformation>
+    </transformations>
+  </layer>
+  
+  <layer>
+    <name>G2</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <format>G2</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>227</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-42</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>FF LH Eng</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>14</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <format>FF</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-257</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-72</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>FF LH Eng</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>14</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>literal</type>
+	    <text>kgIh</text>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-267</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-92</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>FF LH Eng</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <format>%4.0f</format>
+	    <property>/engines/engine/fuel-flow_pph</property>
+	    <scale>0.4535</scale>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-267</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-120</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>FF RH Eng</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>14</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <format>FF</format>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-27</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-72</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>FF RH Eng</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>14</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>literal</type>
+	    <text>kgIh</text>
+	</chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-37</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-92</offset> </transformation>
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>FF RH Eng</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+	<red>1</red>
+	<green>1</green>
+	<blue>1</blue>
+    </color>
+    <chunks>
+	<chunk>
+	    <type>number-value</type>
+	    <format>%4.0f</format>
+	    <property>/engines/engine[1]/fuel-flow_pph</property>
+	    <scale>0.4535</scale>
+	  </chunk>
+    </chunks>
+    <transformations>
+	<transformation> <type>x-shift</type> <offset>-37</offset> </transformation> 
+	<transformation> <type>y-shift</type> <offset>-120</offset> </transformation>
+    </transformations>
+  </layer>
+ 
+  <layer>
+    <name>Fuel Endurance</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks include = "sec-2-time.xml">
+       <params>
+           <sec>/consumables/fuel/endurance-sec</sec>
+       </params>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-290</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-28</offset> </transformation>
+    </transformations>
+  </layer>
+
+  
+  <layer>
+    <name>data page section</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <condition>
+          <equals>
+          <property>/instrumentation/efis/vmd/datapage</property>
+          <value>0</value>
+          </equals>  
+        </condition>    
+            <type>literal</type>
+            <text>total weight</text>
+        </chunk>
+        
+    <chunk>
+            <condition>
+          <equals>
+          <property>/instrumentation/efis/vmd/datapage</property>
+          <value>1</value>
+          </equals>  
+        </condition>    
+            <type>literal</type>
+            <text>time zone</text>
+        </chunk>
+        
+        <chunk>
+            <condition>
+          <equals>
+          <property>/instrumentation/efis/vmd/datapage</property>
+          <value>2</value>
+          </equals>  
+        </condition>    
+            <type>literal</type>
+            <text>cable length</text>
+        </chunk>
+        
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-255</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-170</offset> </transformation> 
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>total weight</name>
+    <condition>
+          <equals>
+          <property>/instrumentation/efis/vmd/datapage</property>
+          <value>0</value>
+          </equals>  
+     </condition>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>16</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>number-value</type>
+            <property>/yasim/gross-weight-lbs</property>
+            <scale>0.453592</scale>
+            <format>%6.0f kg</format>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-255</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-190</offset> </transformation> 
+    </transformations>
+  </layer>
+
+<!--  <layer>
+    <name>clock</name>
+    <condition>
+          <equals>
+          <property>/instrumentation/efis/vmd/datapage</property>
+          <value>1</value>
+          </equals>  
+     </condition>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>36</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>text-value</type>
+            <property>/instrumentation/clock/indicated-string</property>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-215</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-270</offset> </transformation> 
+    </transformations>
+  </layer>-->
+  
+  <layer>
+    <name>time zone</name>
+    <condition>
+          <equals>
+          <property>/instrumentation/efis/vmd/datapage</property>
+          <value>1</value>
+          </equals>  
+     </condition>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>22</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>literal</type>
+            <text>UTC+00h00</text>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-215</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-230</offset> </transformation> 
+    </transformations>
+  </layer>
+
+  <layer>
+    <name>cable</name>
+    <condition>
+          <equals>
+          <property>/instrumentation/efis/vmd/datapage</property>
+          <value>2</value>
+          </equals>  
+     </condition>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>36</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+        <chunk>
+            <type>number-value</type>
+            <property>/sim/model/rescue-lift</property>
+            <scale>10</scale>
+            <format>%4.1f m</format>
+            
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-215</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-270</offset> </transformation> 
+    </transformations>
+  </layer>
+
+  </layers>
+     
+</PropertyList>

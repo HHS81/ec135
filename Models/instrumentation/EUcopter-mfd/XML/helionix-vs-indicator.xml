@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<name>Helionix Helicopter PDF VS indicator</name>
+<background>Aircraft/ec145/Models/instruments/EUcopter-mfd/XML/transparent.rgb</background>
+
+<w-base>45</w-base>
+<h-base>256</h-base>
+
+<layers>
+    <layer>
+      <name>vs-indicator-ticks</name>
+      <w>24</w>
+      <h>256</h>
+      <texture>
+	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vs-indicator.rgb</path>
+	  <x1>	0.68750000	</x1>
+	  <y1>	0.00000000	</y1>
+	  <x2>	0.87500000	</x2>
+	  <y2>	1.00000000	</y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+                <type>x-shift</type>
+                <offset>10</offset>
+          </transformation>
+      </transformations>
+	  
+  </layer>
+
+  <layer>
+      <name>vs-indicator-needle</name>
+      <w>20</w>
+      <h>256</h>
+      <condition>
+	<or>
+	  <greater-than>
+	      <property>/velocities/vertical-speed-fps</property>
+	      <value>1</value>
+	  </greater-than>
+	  <less-than>
+	      <property>/velocities/vertical-speed-fps</property>
+	      <value>-1</value>
+	  </less-than>
+	</or>
+      </condition>
+      <texture>
+	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vs-indicator.rgb</path>
+	  <x1>	0.00000000	</x1>
+	  <y1>	0.00000000	</y1>
+	  <x2>	0.15625000	</x2>
+	  <y2>	1.00000000	</y2>
+      </texture>
+      <transformations>
+          <transformation>
+                <type>x-shift</type>
+                <offset>-80</offset>
+          </transformation>
+
+	  <transformation> 
+	      <type>rotation</type>
+                <property>/velocities/vertical-speed-fps</property>
+                <scale>-1.2</scale>
+		<max>40</max>
+		<min>-40</min>
+	      <offset>90</offset>
+	  </transformation>
+          <transformation>
+                <type>y-shift</type>
+                <offset>100</offset>
+          </transformation>
+	  </transformations>
+      <emissive>true</emissive>
+ </layer>
+
+   <layer>
+      <name>vs-indicator-numeral</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>0.8</red>
+	  <green>0.8</green>
+	  <blue>0.8</blue>
+      </color>
+      <chunks>
+	<chunk>
+	  <condition>
+	      <less-than>
+		  <property>/velocities/vertical-speed-fps</property>
+		  <value>-2.5</value>
+	      </less-than>
+	  </condition>
+	  <type>number-value</type>
+	    <format>%2.0f</format>
+            <property>/velocities/vertical-speed-fps</property>
+	    <scale>-0.6</scale>
+        </chunk>      
+	<chunk>
+	  <condition>
+	      <greater-than>
+		  <property>/velocities/vertical-speed-fps</property>
+		  <value>2.5</value>
+	      </greater-than>
+	  </condition>
+	  <type>number-value</type>
+	    <format>%2.0f</format>
+            <property>/velocities/vertical-speed-fps</property>
+	    <scale>0.6</scale>
+	 </chunk>
+      </chunks>
+
+      <transformations>
+	  <transformation>
+	      <type>y-shift</type>
+	      <property>/velocities/vertical-speed-fps</property>
+	      <scale>2</scale>
+	  </transformation>
+
+	  <transformation>
+	      <type>y-shift</type>
+	      <condition>
+		  <less-than>
+		      <property>/velocities/vertical-speed-fps</property>
+		      <value>-2.5</value>
+		  </less-than>
+	      </condition>
+	      <offset>-15</offset>
+	  </transformation>
+	      
+	  <transformation>
+	      <condition>
+		  <greater-than>
+		      <property>/velocities/vertical-speed-fps</property>
+		      <value>2.5</value>
+		  </greater-than>
+	      </condition>
+	      <type>y-shift</type>
+	      <offset>10</offset>
+	  </transformation>
+
+	  <transformation>
+	      <type>x-shift</type><offset>-20</offset>
+	  </transformation>
+      </transformations>
+      <emissive>true</emissive>
+ </layer>
+
+ <layer>
+        <name>altimeter tape bug</name>
+        <condition>
+         <or>
+          <equals>
+              <property>/autopilot/locks/altitude</property>
+              <value>altitude-hold</value>
+          </equals>
+          <equals>
+              <property>/autopilot/locks/altitude</property>
+              <value>vertical-speed-hold</value>
+          </equals>
+          <equals>
+              <property>/autopilot/locks/altitude</property>
+              <value>fpa-hold</value>
+          </equals>
+          <equals>
+              <property>/autopilot/locks/altitude</property>
+              <value>gs1-hold</value>
+          </equals>          
+          <equals>
+              <property>/autopilot/locks/altitude</property>
+              <value>go-around</value>
+          </equals>          
+         </or>
+        </condition> 
+        <w>26</w>
+        <h>18</h>
+        <texture>
+              <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+              <x1>      0.95703100      </x1>
+              <y1>      0.19726500      </y1>
+              <x2>      0.99414000      </x2>
+              <y2>      0.22851500      </y2>
+        </texture>
+        <transformations>
+          <transformation> <type>x-shift</type> <offset>10</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
+            <transformation>
+                <condition>
+                    <not-equals>
+                        <property>/autopilot/locks/altitude</property>
+                        <value>vertical-speed-hold</value>
+                    </not-equals>
+                </condition>
+                <type>y-shift</type>
+                <property>/autopilot/internal/target-climb-rate-fps</property>
+                  <interpolation>             
+                      <entry><ind>    -33.33  </ind><dep>             -80       </dep></entry>
+                      <entry><ind>    -25     </ind><dep>             -55     </dep></entry>
+                      <entry><ind>    -16.66  </ind><dep>             -33    </dep></entry>
+                      <entry><ind>    -8.33   </ind><dep>             -15   </dep></entry>
+                      <entry><ind>    0       </ind><dep>             0   </dep></entry>
+                      <entry><ind>    8.33    </ind><dep>             15   </dep></entry>
+                      <entry><ind>    16.66   </ind><dep>             33    </dep></entry>
+                      <entry><ind>    25      </ind><dep>             55     </dep></entry>
+                      <entry><ind>    33.33   </ind><dep>             80       </dep></entry>
+                  </interpolation>
+                </transformation>
+
+                <transformation>
+                <condition>
+                    <equals>
+                        <property>/autopilot/locks/altitude</property>
+                        <value>vertical-speed-hold</value>
+                    </equals>
+                </condition>
+                <type>y-shift</type>
+                <property>/autopilot/settings/vertical-speed-fpm</property>
+                  <interpolation>             
+                      <entry><ind>    -2000  </ind><dep>             -80       </dep></entry>
+                      <entry><ind>    -1500    </ind><dep>             -55     </dep></entry>
+                      <entry><ind>    -1000  </ind><dep>             -33    </dep></entry>
+                      <entry><ind>    -500   </ind><dep>             -15   </dep></entry>
+                      <entry><ind>    0       </ind><dep>             0   </dep></entry>
+                      <entry><ind>    500   </ind><dep>             15   </dep></entry>
+                      <entry><ind>    1000   </ind><dep>             33    </dep></entry>
+                      <entry><ind>    1500    </ind><dep>             55     </dep></entry>
+                      <entry><ind>    2000   </ind><dep>             80       </dep></entry>
+                  </interpolation>                  
+                </transformation>
+
+                <transformation><type>rotation</type><offset>90</offset></transformation>
+          </transformations>   
+        <emissive>true</emissive>
+ </layer>
+    
+</layers>
+</PropertyList>

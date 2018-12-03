@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+VMD Vehicle Management Display for Eurocopter
+
+Author : litzi
+-->
+<PropertyList>
+  <path>EUcopter-mfd.ac</path> 
+
+  <animation>    
+  <type>select</type>
+    <object-name>panel-area</object-name>
+    <condition>
+	<property>sim/current-view/internal</property>
+    </condition>
+  </animation>
+
+  <panel>
+        <name>panel-area</name>
+	<path>Aircraft/ec145/Models/instruments/glass/EUcopter-vmd-panel.xml</path>
+        <bottom-left>
+            <x-m>0.01</x-m> 
+            <y-m>-0.076</y-m>
+            <z-m>-0.105</z-m>
+        </bottom-left>			
+        <bottom-right>
+	    <x-m>0.01</x-m>
+            <y-m>0.076</y-m>
+            <z-m>-0.105</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>0.01</x-m>
+            <y-m>-0.076</y-m>
+            <z-m>0.105</z-m>
+        </top-left>
+    </panel>
+        
+</PropertyList>

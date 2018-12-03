@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+
+<!-- Set Pixel colors for the terrain map
+
+     this selects the color for each terrain map pixel
+     from the row/col relative step property in -/+8 layers-->
+
+<PropertyList>
+    <params>
+      <x>0</x>
+      <y>0</y>
+      <p>/instrumentation/terrain/row[0]/col[0]/step</p>
+    </params>
+    <type>switch</type>
+
+    <layer>
+      <name>BOTTOM layer -8 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>-7</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.01  </y1>
+          <y2>    0.05   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>layer -7 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>-6</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.07   </y1>
+          <y2>    0.08   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>    
+    
+    <layer>
+      <name>layer -6 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>-5</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.12   </y1>
+          <y2>    0.17  </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>    
+
+    <layer>
+      <name>layer -5 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>-4</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.19   </y1>
+          <y2>    0.23   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+    
+    <layer>
+      <name>layer -4 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>-3</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.26   </y1>
+          <y2>    0.30  </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+    
+    <layer>
+      <name>middle layer -3 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>-2</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.32   </y1>
+          <y2>    0.36   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>layer -2 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>-1</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.38   </y1>
+          <y2>    0.42   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+    
+    <layer>
+      <name>layer -1 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>0</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.44   </y1>
+          <y2>    0.49  </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+    
+    <layer>
+      <name>layer 1 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>1</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.51   </y1>
+          <y2>    0.54   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+    
+    <layer>
+      <name>layer 2 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>2</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.57   </y1>
+          <y2>    0.61   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>layer 3 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>3</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.64   </y1>
+          <y2>    0.67   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>layer 4 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>4</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.69   </y1>
+          <y2>    0.73   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>layer 5 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>5</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.76   </y1>
+          <y2>    0.80   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>layer 6 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>6</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.83   </y1>
+          <y2>    0.86   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>layer 7 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>7</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.89   </y1>
+          <y2>    0.91   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+    <layer>
+      <name>layer 8 color</name>
+      <condition>
+        <less-than>
+          <property alias="../../../../params/p"/>
+          <value>8</value>
+        </less-than>  
+      </condition>
+      <w>12</w><h>12</h>
+      <texture>
+          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/terrain-map.rgb</path>
+          <x1>    0      </x1>
+          <x2>    1      </x2>
+          <y1>    0.95  </y1>
+          <y2>    0.99   </y2>
+      </texture>
+      <emissive>true</emissive>
+      <transformations>
+          <transformation>
+            <type>y-shift</type> <offset alias="../../../../params/y"/> 
+          </transformation>
+          <transformation> 
+            <type>x-shift</type> <offset alias="../../../../params/x"/>
+          </transformation> 
+      </transformations>
+    </layer>
+
+</PropertyList>

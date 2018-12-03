@@ -1,0 +1,473 @@
+<?xml version="1.0"?>
+<!-- Some filters for various instruments -->
+  
+<PropertyList>
+ 
+<!-- 
+  PFD airspeed trend vector 
+-->
+<params>
+ <rotorgear-torque type="string">/rotors/gear/total-torque</rotorgear-torque>
+  
+ <!-- Alternatively you can use "/sim/model/bk117/torque-pct" 
+      computed by bk117.nas as the source for total torque.
+      Then set "/instrumentation/efis/vmd/eng-trq-factor" to 200
+      as 50% total torque equals 100% torque on a single
+      engine. -->  
+<!--       <rotorgear-torque type="string">/sim/model/bk117/torque-pct</rotorgear-torque> -->
+    
+</params>  
+
+<predict-simple>
+      <name>airspeed trend</name>  
+      <input>/velocities/airspeed-kt</input>
+      <seconds>8</seconds>
+      <filter-gain>0</filter-gain>
+      <output>/velocities/airspeed-lookahead</output>
+</predict-simple>
+
+<filter>
+      <name>airspeed trend delta</name> 
+      <type>gain</type>
+      <gain>1</gain>      
+      <input>/velocities/airspeed-lookahead</input>
+      <reference>/velocities/airspeed-kt</reference>
+      <output>/velocities/airspeed-delta-kt-sec</output>
+</filter>
+
+<!-- relative bearings and course for needles in compass rose and in navd-->
+
+<filter>
+  <name>fms course error computer/normalizer</name>
+  <type>gain</type>
+  <gain>1.0</gain>
+  <input>/instrumentation/gps/wp/wp[1]/desired-course-deg</input>
+  <reference>/orientation/heading-magnetic-deg</reference>
+  <output>/autopilot/internal/fms-course-error</output>
+  <period>
+    <min>-180.0</min>
+    <max>180.0</max>
+  </period>
+</filter> 
+
+<filter>
+  <name>fms rel. bearing computer</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <input>instrumentation/gps/wp/wp[1]/bearing-mag-deg</input>
+  <reference>orientation/heading-magnetic-deg</reference>
+  <output>instrumentation/gps/wp/wp[1]/relative-bearing-deg</output>
+  <period>
+    <min>-180</min>
+    <max>180</max>
+  </period>
+  <gain>1.0</gain>
+</filter>
+
+<!-- the deflection needs to be 2x as strong as for VOR (10deg vs. 5nm in FMS for full deflection)-->
+<filter>
+  <name>fms cdi computer/normalizer</name>
+  <type>gain</type>
+  <gain>2.0</gain>
+  <input>/instrumentation/gps/wp/wp[1]/course-error-nm</input>
+  <output>/instrumentation/gps/wp/wp[1]/heading-needle-deflection</output>
+</filter> 
+
+<filter>
+  <name>nav1 bearing computer/normalizer</name>
+  <type>gain</type>
+  <gain>1.0</gain>
+  <input>/instrumentation/nav[0]/heading-deg</input>
+  <reference>/orientation/heading-magnetic-deg</reference>
+  <output>/instrumentation/nav[0]/rel-bearing-deg</output>
+  <period>
+    <min>-180.0</min>
+    <max>180.0</max>
+  </period>
+</filter> 
+
+<filter>
+  <name>time-to-go-nav-1</name> 
+  <enable>
+   <condition>
+    <greater-than>
+      <property>/instrumentation/gps/indicated-ground-speed-kt</property>
+      <value>20</value>
+    </greater-than>
+   </condition>
+  </enable>
+  <type>gain</type>
+  <gain>1.94384</gain> <!-- 1/ kt in m/s -->
+  <input>
+    <expression>
+          <div>
+              <property>/instrumentation/nav/nav-distance</property>
+              <property>/instrumentation/gps/indicated-ground-speed-kt</property>
+          </div>
+    </expression>
+  </input>
+  <output>/instrumentation/nav/TTG-sec</output>
+</filter> 
+
+<filter>
+  <name>nav2 rel. bearing computer</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <gain>1.0</gain>
+  <input>/instrumentation/nav[1]/heading-deg</input>
+  <reference>/orientation/heading-magnetic-deg</reference>
+  <output>/instrumentation/nav[1]/rel-bearing-deg</output>
+  <period>
+    <min>-180.0</min>
+    <max>180.0</max>
+  </period>
+</filter> 
+
+<filter>
+  <name>nav2 selected course error computer/normalizer</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <input>instrumentation/nav[1]/radials/selected-deg</input>
+  <reference>orientation/heading-magnetic-deg</reference>
+  <output>autopilot/internal/nav2-course-error</output>
+  <period>
+    <min>-180</min>
+    <max>180</max>
+  </period>
+  <gain>1.0</gain>
+</filter>
+
+<filter>
+  <name>time-to-go-nav-2</name> 
+  <enable>
+   <condition>
+    <greater-than>
+      <property>/instrumentation/gps/indicated-ground-speed-kt</property>
+      <value>20</value>
+    </greater-than>
+   </condition>
+  </enable>
+  <type>gain</type>
+  <gain>1.94384</gain> <!-- 1/ kt in m/s -->
+  <input>
+    <expression>
+          <div>
+              <property>/instrumentation/nav[1]/nav-distance</property>
+              <property>/instrumentation/gps/indicated-ground-speed-kt</property>
+          </div>
+    </expression>
+  </input>
+  <output>/instrumentation/nav[1]/TTG-sec</output>
+</filter> 
+
+<filter>
+  <name>adf heading computer</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <gain>1.0</gain>
+  <input>
+    <property>/instrumentation/adf/rotation-deg</property>
+    <offset><property>/instrumentation/adf/indicated-bearing-deg</property></offset>
+  </input>
+  <output>/instrumentation/adf/heading-deg</output>
+  <period>
+    <min>1</min>
+    <max>360</max>
+  </period>
+</filter> 
+
+<!-- percent main rotor rpm,
+     configure /instrumentation/efis/vmd/rotor-rpmN in
+     aircraft setting file.
+-->
+
+<filter>
+      <type>gain</type>
+      <gain>100</gain>
+      <input>
+	<expression>
+	    <div>
+		<property>/rotors/main/rpm</property>
+		<property>/instrumentation/efis/vmd/rotor-rpmN</property>
+	    </div>
+	</expression>
+      </input>
+      <output>/rotors/main/rpm-pct</output>
+      <min>0</min>
+      <max>200</max>      
+</filter> 
+
+<!--  Distribute total gearbox torque between the 2 engines:
+
+      The engines power shafts are connected to the rotor via the gear box 
+      and with a free-wheeling mechanism.
+
+      As long as both engines shaft speeds n2-rpm are approx. 
+      equal both power shafts drive the gearbox and the gearbox 
+      torque is distributed between the engines according to the 
+      engines power settings. If one engine n2-rpm falls behind, 
+      the power shaft gets disconnected from the gearbox 
+      and this engines torque drops to zero. The other engine takes
+      the full gearbox torque.
+      This modelled by a torque factor that is controlled by the 
+      delta-power and (with 15-times the weight) by delta-n2. 
+      The torque factor is fed into two non-linear functions, 
+      one for each engine, that sum up to 1 for any given value of torque factor.
+
+      Assumptions: YASIM provided prop. /rotors/gear/total-torque is actually 
+      total power of the gearbox in Watts.
+-->
+
+<filter>
+  <name>engines delta power</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <input>
+     <property>/controls/engines/engine/power</property>
+     <!-- 100% power diff scales to weight 15 -->
+     <scale>15</scale>
+  </input>
+  <reference>
+     <property>/controls/engines/engine[1]/power</property>
+     <scale>15</scale>
+  </reference>
+  <output>
+    <property>/engines/delta-power-factor</property>
+  </output>
+</filter>
+
+<filter>
+  <name>engines torque factor</name>
+  <debug>false</debug>
+  <type>noise-spike</type>
+  <max-rate-of-change>10</max-rate-of-change>
+  <input>
+     <property>/engines/engine/n2-pct</property>
+     <offset>
+       <property>/engines/delta-power-factor</property>
+     </offset>
+  </input>
+  <reference>/engines/engine[1]/n2-pct</reference>
+  <output>
+    <property>/engines/torque-factor</property>
+  </output>
+</filter>
+
+<filter>
+  <name>engine 0 power</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <gain>
+    <expression>
+      <table>
+        <property>/engines/torque-factor</property>
+        <entry><ind>-100</ind><dep>0</dep></entry>
+        <entry><ind>-15</ind><dep>0</dep></entry>
+<!--        <entry><ind>1</ind><dep>0.5</dep></entry>
+        <entry><ind>-1</ind><dep>0.5</dep></entry>-->
+        <entry><ind>15</ind><dep>1</dep></entry>
+        <entry><ind>100</ind><dep>1</dep></entry>
+      </table>
+    </expression>  
+  </gain>
+  <input>
+     <property alias="/params/rotorgear-torque"/>
+      <scale>
+        <property>/instrumentation/efis/vmd/eng-trq-factor</property>
+      </scale>
+  </input>
+  <output>
+    <property>/engines/engine[0]/pwr-pct</property>
+  </output>
+</filter>
+
+
+<filter>
+  <name>eng 0 TRQ</name> 
+  <type>noise-spike</type>
+  <max-rate-of-change>5</max-rate-of-change>
+  <enable>  
+    <not>
+       <property>/instrumentation/efis/vmd/torque-experimental</property>
+    </not>  
+  </enable>
+  <input>
+    <condition>
+      <greater-than>
+        <property>/engines/engine[0]/n2-pct</property>
+        <value>15</value>
+      </greater-than>
+    </condition>
+    <expression>
+        <div>
+          <property>/engines/engine[0]/pwr-pct</property>
+          <property>/engines/engine[0]/n2-pct</property>            
+      </div>
+    </expression>
+    <scale>100</scale>
+  </input>
+  <input>
+    <condition>
+      <less-than>
+        <property>/engines/engine[0]/n2-pct</property>
+        <value>15</value>
+      </less-than>
+    </condition>
+    <value>0</value>
+  </input>
+  <output>
+    <property>/engines/engine[0]/torque-pct</property>
+  </output>
+  <min>0</min>
+  <max>200</max>          
+</filter> 
+
+
+<filter>
+  <name>engine 1 power</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <gain>
+    <expression>
+      <table>
+        <property>/engines/torque-factor</property>
+        <entry><ind>100</ind><dep>0</dep></entry>
+        <entry><ind>15</ind><dep>0</dep></entry>
+<!--        <entry><ind>1</ind><dep>0.5</dep></entry>
+        <entry><ind>-1</ind><dep>0.5</dep></entry>-->
+        <entry><ind>-15</ind><dep>1</dep></entry>
+        <entry><ind>-100</ind><dep>1</dep></entry>
+      </table>
+    </expression>  
+  </gain>
+  <input>
+     <property alias="/params/rotorgear-torque"/>
+      <scale>
+        <property>/instrumentation/efis/vmd/eng-trq-factor</property>
+      </scale>
+  </input>
+  <output>
+    <property>/engines/engine[1]/pwr-pct</property>
+  </output>
+</filter>
+
+
+<filter>
+  <name>eng 1 TRQ</name> 
+  <type>noise-spike</type>
+  <max-rate-of-change>5</max-rate-of-change>
+  <enable>  
+    <not>
+       <property>/instrumentation/efis/vmd/torque-experimental</property>
+    </not>  
+  </enable>
+  <input>
+    <condition>
+      <greater-than>
+        <property>/engines/engine[1]/n2-pct</property>
+        <value>15</value>
+      </greater-than>
+    </condition>
+    <expression>
+        <div>
+          <property>/engines/engine[1]/pwr-pct</property>
+          <property>/engines/engine[1]/n2-pct</property>            
+      </div>
+    </expression>
+    <scale>100</scale>
+  </input>
+  <input>
+    <condition>
+      <less-than>
+        <property>/engines/engine[1]/n2-pct</property>
+        <value>15</value>
+      </less-than>
+    </condition>
+    <value>0</value>
+  </input>
+  <output>
+    <property>/engines/engine[1]/torque-pct</property>
+  </output>
+  <min>0</min>
+  <max>200</max>        
+</filter> 
+  
+  
+ 
+
+  <!-- A FADEC engine controller that                                       -->
+  <!-- tries to keep the n2 datum at the setpoint defined by target power   -->
+  <!-- by modulating power-fadec.                                           -->
+
+<!--      <Kp>0.004</Kp>
+      <beta>2</beta>
+      <alpha>0.1</alpha>
+      <gamma>1.5</gamma>
+      <Ti>0.1</Ti>
+      <Td>0.8</Td>    -->
+
+
+<!--  <pid-controller>
+    <name>FADEC engine 0</name>
+    <debug>false</debug>
+    <initialize-to>output</initialize-to>
+    <enable>
+        <condition>
+          <property>/engines/engine[0]/running</property>
+        </condition>
+    </enable>
+    <input>
+      <property>/engines/engine[0]/n2-pct</property>
+      <scale>0.01</scale>
+    </input>
+    <reference>
+      <property>/controls/engines/engine[0]/power</property>
+    </reference>
+    <output>
+      <property>/controls/engines/engine[0]/power-fadec</property>
+    </output>
+    <config>
+      <Kp>0.02</Kp>
+      <beta>2</beta>
+      <alpha>0.1</alpha>
+      <gamma>25</gamma>
+      <Ti>0.1</Ti>
+      <Td>0.8</Td>    
+      <u_min>0</u_min> 
+      <u_max>1.2</u_max>  
+    </config>
+  </pid-controller>
+  
+  <pid-controller>
+    <name>FADEC engine 1</name>
+    <debug>false</debug>
+    <initialize-to>input</initialize-to>
+    <enable>
+        <condition>
+          <property>/engines/engine[1]/running</property>
+        </condition>
+     </enable>
+    <input>
+      <property>/engines/engine[1]/n2-pct</property>
+      <scale>0.01</scale>
+    </input>
+    <reference>
+      <property>/controls/engines/engine[1]/power</property>
+    </reference>
+    <output>
+      <property>/controls/engines/engine[1]/power-fadec</property>
+    </output>
+    <config>
+      <Kp>0.004</Kp>
+      <beta>2</beta>
+      <alpha>0.1</alpha>
+      <gamma>1.5</gamma>
+      <Ti>0.1</Ti>
+      <Td>0.8</Td>    
+      <u_min>0</u_min> 
+      <u_max>1.2</u_max>  
+    </config>
+  </pid-controller>-->
+  
+
+</PropertyList>  

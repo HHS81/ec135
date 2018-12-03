@@ -1,0 +1,729 @@
+<?xml version="1.0"?>
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<!--  Digital Map (DMAP) Navigation Display Glass Cockpit Panel.
+
+      Author: litzi
+
+      The panel is in portrait orientation with 600x800 resolution
+-->
+
+<PropertyList>
+
+ <name>Glass Cockpit DMAP Panel</name>
+ <params>
+     <ycenter>500</ycenter>
+     <diameter>600</diameter>
+ </params>
+
+ <background>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/black.rgb</background>
+ <w>600</w> 
+ <h>800</h>
+  
+ <instruments> 
+    
+ <instrument include = "../XML/terrain-map.xml">
+   <condition>
+       <property>instrumentation/efis/dmap/planmode</property>
+   </condition>
+   <x>300</x>
+   <y>500</y>
+   <w>600</w> 
+   <h>600</h> 
+ </instrument> 
+  
+ <instrument include = "../XML/terrain-map-mask.xml">
+   <x>300</x>
+   <y>500</y>
+   <w>600</w> 
+   <h>600</h> 
+ </instrument> 
+ 
+
+ <instrument include="../XML/navd-plan.xml">
+        <name>overlay flight plan symbols</name>
+        <condition>
+            <property>/instrumentation/efis/navd/range</property>
+        </condition>
+        <x>300</x>
+        <y alias="../../../params/ycenter"/>
+        <w alias="../../../params/diameter"/>    
+        <h alias="../../../params/diameter"/> 
+  </instrument>
+
+ <instrument include = "../XML/helionix-btn-hor.xml">
+   <name>button labels on top</name>
+    <params>
+        <btn1> FND</btn1>
+        <btn2>NAVD</btn2>
+        <btn3> VMS</btn3>
+        <btn4>DMAP</btn4>
+        <type>300</type>
+    </params>
+   <x>220</x>
+   <y>785</y>
+   <w>400</w> 
+   <h>20</h> 
+ </instrument> 
+ 
+  <instrument>
+   <condition>
+       <property>instrumentation/efis/dmap/db-mode</property>
+   </condition>
+    <background>Aircraft/Instruments/EUcopter-mfd/Textures/glass-black-bkg.rbg</background>
+ 
+    <name>database literal</name>
+    <w-base>600</w-base>
+    <h-base>300</h-base>
+    <w>600</w>
+    <h>300</h>
+    <x>300</x>
+    <y>165</y>
+    
+    <layers>      
+      <layer>
+        <name>background</name>
+        <w>600</w>
+        <h>300</h>
+        <emissive>true</emissive>
+        <texture>
+          <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/black.rgb</path>
+        </texture>
+      </layer>
+      
+      <layer>
+        <name>blue bar</name>
+        <w>600</w>
+        <h>38</h>
+        <emissive>true</emissive>
+        <texture>
+          <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/mapdisplay.rgb</path>
+          <x1>0.0</x1>
+          <y1>0.0</y1>
+          <x2>0.45</x2>
+          <y2>0.065</y2>
+        </texture>
+        <transformations>
+        <transformation><type>y-shift</type><offset>130</offset></transformation>
+        </transformations>
+      </layer>
+      
+      <layer> 
+        <point-size>18</point-size>    
+        <type>text</type>
+        <font>arial_black</font>
+        <color>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+        </color>
+        <chunks>
+          <chunk>
+              <type>literal</type>
+              <text>DATABASE</text>
+            </chunk>
+        </chunks>
+        <emissive>true</emissive>
+        <transformations>
+              <transformation><type>x-shift</type><offset>-60</offset></transformation>
+              <transformation><type>y-shift</type><offset>125</offset></transformation>
+        </transformations>
+      </layer>      
+      
+      <layer> 
+        <point-size>16</point-size>    
+        <type>text</type>
+        <font>arial_black</font>
+        <color>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+        </color>
+        <chunks>
+          <chunk>
+              <type>number-value</type>
+              <format>%1.0fI3</format>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <offset>1</offset>
+            </chunk>
+        </chunks>
+        <emissive>true</emissive>
+        <transformations>
+              <transformation><type>x-shift</type><offset>240</offset></transformation>
+              <transformation><type>y-shift</type><offset>125</offset></transformation>
+        </transformations>
+      </layer>      
+    </layers>    
+  </instrument>
+
+  <!-- page 1 of database -->
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>0</value>
+            </equals>              
+        </condition>
+        <name>1st line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[0]/id</id>
+            <bear>/instrumentation/efis/navd/sym[0]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[0]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[0]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[0]/info</info>
+        </params>
+        <x>300</x>
+        <y>260</y>
+  </instrument>
+ 
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>0</value>
+            </equals>              
+        </condition>
+        <name>2dn line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[1]/id</id>
+            <bear>/instrumentation/efis/navd/sym[1]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[1]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[1]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[1]/info</info>
+        </params>
+        <x>300</x>
+        <y>225</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>0</value>
+            </equals>              
+        </condition>
+        <name>3rd line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[2]/id</id>
+            <bear>/instrumentation/efis/navd/sym[2]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[2]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[2]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[2]/info</info>
+        </params>
+        <x>300</x>
+        <y>190</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>0</value>
+            </equals>              
+        </condition>
+        <name>4th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[3]/id</id>
+            <bear>/instrumentation/efis/navd/sym[3]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[3]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[3]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[3]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>155</y>
+  </instrument>
+
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>0</value>
+            </equals>              
+        </condition>
+        <name>5th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[4]/id</id>
+            <bear>/instrumentation/efis/navd/sym[4]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[4]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[4]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[4]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>120</y>
+  </instrument>
+
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>0</value>
+            </equals>              
+        </condition>
+        <name>6th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[5]/id</id>
+            <bear>/instrumentation/efis/navd/sym[5]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[5]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[5]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[5]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>85</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>0</value>
+            </equals>              
+        </condition>
+        <name>7th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[6]/id</id>
+            <bear>/instrumentation/efis/navd/sym[6]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[6]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[6]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[6]/info</info>
+        </params>
+        <x>300</x>
+        <y>50</y>
+  </instrument>
+ 
+
+  <!-- page 2 of database -->
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>1</value>
+            </equals>              
+        </condition>
+        <name>1st line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[7]/id</id>
+            <bear>/instrumentation/efis/navd/sym[7]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[7]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[7]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[7]/info</info>
+        </params>
+        <x>300</x>
+        <y>260</y>
+  </instrument>
+ 
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>1</value>
+            </equals>              
+        </condition>
+        <name>2dn line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[8]/id</id>
+            <bear>/instrumentation/efis/navd/sym[8]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[8]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[8]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[8]/info</info>
+        </params>
+        <x>300</x>
+        <y>225</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>1</value>
+            </equals>              
+        </condition>
+        <name>3rd line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[9]/id</id>
+            <bear>/instrumentation/efis/navd/sym[9]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[9]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[9]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[9]/info</info>
+        </params>
+        <x>300</x>
+        <y>190</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>1</value>
+            </equals>              
+        </condition>
+        <name>4th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[10]/id</id>
+            <bear>/instrumentation/efis/navd/sym[10]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[10]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[10]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[10]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>155</y>
+  </instrument>
+
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>1</value>
+            </equals>              
+        </condition>
+        <name>5th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[11]/id</id>
+            <bear>/instrumentation/efis/navd/sym[11]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[11]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[11]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[11]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>120</y>
+  </instrument>
+
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>1</value>
+            </equals>              
+        </condition>
+        <name>6th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[12]/id</id>
+            <bear>/instrumentation/efis/navd/sym[12]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[12]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[12]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[12]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>85</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>1</value>
+            </equals>              
+        </condition>
+        <name>7th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[13]/id</id>
+            <bear>/instrumentation/efis/navd/sym[13]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[13]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[13]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[13]/info</info>
+        </params>
+        <x>300</x>
+        <y>50</y>
+  </instrument>
+
+  
+  
+  <!-- page 3 of database -->
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>2</value>
+            </equals>              
+        </condition>
+        <name>1st line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[14]/id</id>
+            <bear>/instrumentation/efis/navd/sym[14]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[14]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[14]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[14]/info</info>
+        </params>
+        <x>300</x>
+        <y>260</y>
+  </instrument>
+ 
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>2</value>
+            </equals>              
+        </condition>
+        <name>2dn line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[15]/id</id>
+            <bear>/instrumentation/efis/navd/sym[15]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[15]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[15]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[15]/info</info>
+        </params>
+        <x>300</x>
+        <y>225</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>2</value>
+            </equals>              
+        </condition>
+        <name>3rd line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[16]/id</id>
+            <bear>/instrumentation/efis/navd/sym[16]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[16]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[16]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[16]/info</info>
+        </params>
+        <x>300</x>
+        <y>190</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>2</value>
+            </equals>              
+        </condition>
+        <name>4th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[17]/id</id>
+            <bear>/instrumentation/efis/navd/sym[17]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[17]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[17]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[17]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>155</y>
+  </instrument>
+
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>2</value>
+            </equals>              
+        </condition>
+        <name>5th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[18]/id</id>
+            <bear>/instrumentation/efis/navd/sym[18]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[18]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[18]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[18]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>120</y>
+  </instrument>
+
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>2</value>
+            </equals>              
+        </condition>
+        <name>6th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[19]/id</id>
+            <bear>/instrumentation/efis/navd/sym[19]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[19]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[19]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[19]/info</info>
+        </params>
+        
+        <x>300</x>
+        <y>85</y>
+  </instrument>
+  
+  <instrument include="../XML/dmap-waypt.xml">
+        <condition>
+            <property>instrumentation/efis/dmap/db-mode</property>
+            <equals>
+              <property>instrumentation/efis/dmap/db-page</property>
+              <value>2</value>
+            </equals>              
+        </condition>
+        <name>7th line of way point list</name>
+        <params>
+            <id>/instrumentation/efis/navd/sym[20]/id</id>
+            <bear>/instrumentation/efis/navd/sym[20]/bearing-deg</bear>
+            <dst>/instrumentation/efis/navd/sym[20]/distance-nm</dst>
+            <sym>/instrumentation/efis/navd/sym[20]/sym</sym>
+            <info>/instrumentation/efis/navd/sym[20]/info</info>
+        </params>
+        <x>300</x>
+        <y>50</y>
+  </instrument>
+  
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>map mode button label</name>
+   <condition>
+     <not>
+       <property>instrumentation/efis/dmap/terrainmode</property>
+     </not>
+    </condition>
+    <params>
+    <chr1>T</chr1>
+    <chr2>E</chr2>
+    <chr3>R</chr3>
+    <chr4>R</chr4>
+    </params>
+   <x>20</x>
+   <y>670</y>
+   <w>30</w>
+   <h>100</h> 
+ </instrument>
+
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>map mode button label</name>
+   <condition>
+       <property>instrumentation/efis/dmap/terrainmode</property>
+    </condition>
+    <params>
+    <chr1>M</chr1>
+    <chr2>A</chr2>
+    <chr3>P</chr3>
+    <chr4> </chr4>
+    </params>
+   <x>20</x>
+   <y>670</y>
+   <w>30</w>
+   <h>100</h> 
+ </instrument>
+
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>range button label</name>
+    <params>
+    <chr1>R</chr1>
+    <chr2>N</chr2>
+    <chr3>G</chr3>
+    <chr4> </chr4>
+    </params>
+   <x>20</x>
+   <y>550</y>
+   <w>30</w>
+   <h>100</h> 
+ </instrument>
+  
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>plan mode button label</name>
+    <params>
+    <chr1>P</chr1>
+    <chr2>L</chr2>
+    <chr3>N</chr3>
+    <chr4> </chr4>
+    </params>
+   <x>580</x>
+   <y>550</y>
+   <w>30</w>
+   <h>100</h> 
+ </instrument>
+
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>database button label</name>
+    <params>
+    <chr1> </chr1>
+    <chr2>D</chr2>
+    <chr3>B</chr3>
+    <chr4> </chr4>
+    </params>
+   <x>580</x>
+   <y>430</y>
+   <w>30</w>
+   <h>100</h> 
+ </instrument>
+
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>database button label</name>
+    <condition>
+        <property>instrumentation/efis/dmap/db-mode</property>
+    </condition>
+    <params>
+    <chr1>F</chr1>
+    <chr2>L</chr2>
+    <chr3>T</chr3>
+    <chr4>R</chr4>
+    </params>
+   <x>580</x>
+   <y>220</y>
+   <w>30</w>
+   <h>100</h> 
+ </instrument>
+ 
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>database button label</name>
+    <condition>
+        <property>instrumentation/efis/dmap/db-mode</property>
+    </condition>
+    <params>
+    <chr1>P</chr1>
+    <chr2>A</chr2>
+    <chr3>G</chr3>
+    <chr4>E</chr4>
+    </params>
+   <x>580</x>
+   <y>100</y>
+   <w>30</w>
+   <h>100</h> 
+ </instrument>
+
+ <instrument include = "../XML/helionix-btn-hor.xml">
+   <name>button labels on bottom</name>
+   <condition>
+       <property>instrumentation/efis/dmap/db-mode</property>
+   </condition>
+    <params>
+        <btn1> NXT</btn1>
+        <btn2>NAV1</btn2>
+        <btn3>NAV2</btn3>
+        <btn4>WYPT</btn4>
+        <type>400</type>
+    </params>
+   <x>200</x>
+   <y>15</y>
+   <w>380</w>
+   <h>20</h>
+ </instrument>
+  
+</instruments>
+
+</PropertyList>

@@ -31,7 +31,39 @@
 </effect>	
 	
 	
-
+<!-- Helionix -->
+<model>
+      <name>MFD0</name>
+      <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/mfd0.xml</path>
+      <offsets>
+	  <x-m> 0.5492</x-m>
+	  <y-m> 0.25431</y-m>
+	  <z-m> 0.1926</z-m>
+	  <pitch-deg>-21</pitch-deg>
+      </offsets>
+  </model>
+    
+  <model>
+    <name>MFD1</name>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/mfd1.xml</path>
+    <offsets>
+	  <x-m> 0.5492</x-m>
+	  <y-m> 0.0411</y-m>
+	  <z-m> 0.1926</z-m>
+	  <pitch-deg>-21</pitch-deg>
+    </offsets>
+  </model>	
+  
+  <model>
+    <name>MFD2</name>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/mfd2.xml</path>
+    <offsets>
+	  <x-m> 0.5492</x-m>
+	  <y-m> -0.25262</y-m>
+	  <z-m> 0.1926</z-m>
+	  <pitch-deg>-21</pitch-deg>
+    </offsets>
+  </model>	
  
  
 <!--EngineControlPanel-->

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<!-- This is a <CHUNKS> element to be included from a TEXT layer.
+     It provides a clock string in hh:mm:ss format
+-->
+
+<PropertyList>
+  
+          <name>clock chunks</name>
+          <chunk>
+              <type>number-value</type>
+              <format>%02.0f</format>
+              <property>/sim/time/utc/hour</property> 
+          </chunk>
+          <chunk>
+              <type>literal</type>
+              <text>.</text>
+          </chunk>         
+          <chunk>
+              <type>number-value</type>
+              <format>%02.0f</format>
+              <property>/sim/time/utc/minute</property> 
+          </chunk>
+          <chunk>
+              <type>literal</type>
+              <text>.</text>
+          </chunk>
+          <chunk>
+              <type>number-value</type>
+              <format>%02.0f</format>
+              <property>/sim/time/utc/second</property> 
+          </chunk>
+          
+</PropertyList>

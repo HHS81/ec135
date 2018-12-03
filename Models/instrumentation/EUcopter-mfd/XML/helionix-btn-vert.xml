@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+
+<!-- Push Button label for Helionix MFD screen
+
+     1 vertical label (e.g. NAV) for use at edges of screen.
+     the label will be set next to a push button on the bezel.
+     the label can contain max. 4 characters.
+     
+     Parameters
+     
+     <chr1> .. <chr4> labels chars. from top to bottom
+     <bkg> .. true shows grey background, false tranparent
+ -->
+
+<PropertyList>
+
+  <name>vert. button label</name>
+  <w-base>30</w-base>
+  <h-base>100</h-base>
+  <background>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/grey.rgb</background>
+  
+  <params>
+    <chr1>N</chr1>
+    <chr2>A</chr2>
+    <chr3>V</chr3>
+    <chr4>1</chr4>
+    <bkg>/constants/true</bkg>
+  </params>
+  
+  <layers>
+    <layer>
+      <name>background</name>
+      <condition>
+        <property alias="../../../../params/bkg"/>
+      </condition>
+     <emissive>true</emissive>
+      <w>20</w>
+      <h>100</h>
+      <texture>
+        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/grey.rgb</path>
+      </texture>
+    </layer>
+    
+   <layer>		
+      <name>char1</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>  
+           <type>literal</type>
+           <text alias="../../../../../params/chr1"/>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-7</offset> </transformation>
+	  <transformation> <type>y-shift</type> <offset>26</offset> </transformation>
+      </transformations>
+   </layer>
+  
+     <layer>
+      <name>char2</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>  
+           <type>literal</type>
+           <text alias="../../../../../params/chr2"/>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-7</offset> </transformation>
+	  <transformation> <type>y-shift</type> <offset>6</offset> </transformation>
+      </transformations>
+   </layer>
+   
+   <layer>
+      <name>char3</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>  
+           <type>literal</type>
+           <text alias="../../../../../params/chr3"/>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-7</offset> </transformation>
+	  <transformation> <type>y-shift</type> <offset>-14</offset> </transformation>
+      </transformations>
+   </layer>
+  
+   <layer>		
+      <name>char4</name>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	  <red>1</red>
+	  <green>1</green>
+	  <blue>1</blue>
+      </color>
+      <chunks>
+	  <chunk>  
+           <type>literal</type>
+           <text alias="../../../../../params/chr4"/>
+	  </chunk>
+      </chunks>
+      <transformations>
+	  <transformation> <type>x-shift</type> <offset>-7</offset> </transformation>
+	  <transformation> <type>y-shift</type> <offset>-34</offset> </transformation>
+      </transformations>
+   </layer>
+  </layers>
+</PropertyList>
+  

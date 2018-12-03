@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<!-- A generic bar gauge for a MFD
+
+     The bar gauge can be customized to any range by setting parameters
+     for the minimum and maximum bar deflection.
+     
+     Parameters
+     
+     <value> the property to display, must be a property tree path
+     <max>  the max value for max gauge deflection
+     <min>  the min value for min gauge deflection	 
+     <type>  0,1,2 selects a bar type 
+    
+ -->
+
+<PropertyList>
+ <name>Generic MFD bar gauge</name>
+ <w-base>16</w-base>
+ <h-base>80</h-base>
+ 
+ <params>
+  <value>surface-positions/flap-pos-norm</value>
+  <min>0</min>
+  <max>1</max>
+  <type>0</type>
+ </params>
+
+<layers>
+  <layer>
+   <name>bar</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/bar-gauge.rgb</path>
+	<x1>	0	</x1>
+	<y1>	0	</y1>
+	<x2>	1	</x2>
+	<y2>	1	</y2>
+   </texture>
+   <w>256</w>
+   <h>256</h>
+   <transformations>
+	<transformation>
+     <type>x-shift</type>
+     <offset alias="../../../../../params/type"/>
+   </transformation>
+
+   <transformation>
+     <type>y-shift</type>
+     <property alias="../../../../../params/value"/>
+	<interpolation>
+		<entry><ind>-9999999</ind><dep>-80</dep></entry>	
+    	        <entry><ind alias="../../../../../../../params/min"/><dep>-80</dep></entry>	
+		<entry><ind alias="../../../../../../../params/max"/><dep>80</dep></entry>	
+		<entry><ind>9999999</ind><dep>80</dep></entry>	
+	</interpolation>
+   </transformation> 
+   </transformations> 
+  </layer> 
+  
+  </layers>
+</PropertyList>
+

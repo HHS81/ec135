@@ -1,0 +1,430 @@
+<?xml version="1.0"?>
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<!--
+VMD Helicopter Glass Cockpit Panel.
+_______________________________________________________________________
+
+Author: litzi
+
+This 2D panel simulates the Vehicle Management Display (VMD) found in EC type helicopters. 
+This panel can be used either in a 'stand alone' window with fgpanel or can be included as a panel from the central 3D model file with the 'panel' statement.
+
+Dependencies:
+
+This panel includes other instruments residing in Aircraft/Instruments-3d/EUcopter-mfd/XML
+
+The panel code expects a number of parameters to be present in the property tree
+
+/engines/engine/engine[0..1]/n2-pct
+/engines/engine/engine[0..1]/n1-pct
+/engines/engine/engine[0..1]/torque-pct
+/rotors/main/rpm-pct
+
+The autopilot filter file filter.xml must be loaded in the /sim/systems/autopilot section of you aircraft to provide these parameters.
+
+The panel is in portrait Orientation with 600x800 resolution
+-->
+
+<PropertyList>
+ <name>Helicopter Glass Cockpit VMD Panel</name>
+ <w>600</w> 
+ <h>800</h>
+  
+ <instruments> 
+
+  <instrument> 
+  <name>Background in Black as an instrument background is not working</name>
+  <x>300</x>
+  <y>400</y>
+  <w>600</w>
+  <h>800</h>
+    
+  <layers>
+    <layer>
+    <name>blackbitmap</name>
+    <emissive>true</emissive>
+    <texture>   
+      <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/black.rgb</path>
+    </texture>
+    </layer>    
+  </layers>
+  </instrument>
+
+  <instrument include = "../XML/helionix-vmd-text.xml">
+    <name>text and background</name>
+    <x>300</x>
+    <y>400</y>
+  </instrument>
+ 
+  <instrument include = "../XML/helionix-gauge-2.xml">
+    <name>torque engine 2</name>
+    <params>
+      <value1>/engines/engine[1]/torque-pct</value1>
+      <value2></value2>
+      <value3></value3>
+      <value4></value4>
+      <name></name>
+      <fmt>TRQ</fmt>
+      <min>10</min>
+      <mid>74</mid>  
+      <max>110</max>
+      <scale>1.0</scale>     
+    </params>
+    <x>390</x>
+    <y>690</y>
+    <w>160</w>
+    <h>160</h>
+  </instrument>
+
+  <instrument include = "../XML/helionix-gauge-2.xml">
+    <name>torque engine 1</name>
+    <params>
+      <value1>/engines/engine[0]/torque-pct</value1>
+      <value2></value2>
+      <value3></value3>
+      <value4></value4>
+      <name></name>
+      <fmt>TRQ</fmt>
+      <min>10</min>
+      <mid>74</mid>  
+      <max>110</max>
+      <scale>1.0</scale>     
+    </params>
+    <x>210</x>
+    <y>690</y>
+    <w>160</w>
+    <h>160</h>
+  </instrument>
+
+  <instrument include = "../XML/helionix-percent-numeral.xml">
+    <name>torque engine 1 numeral</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <params>
+      <value>/engines/engine[0]/torque-pct</value>
+      <low>/instrumentation/efis/vmd/trq-low</low>
+      <hi>/instrumentation/efis/vmd/trq-hi</hi>
+    </params>
+    <x>220</x>
+    <y>670</y>
+  </instrument>
+
+  <instrument include = "../XML/helionix-percent-numeral.xml">
+    <name>torque engine 2 numeral</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <params>
+      <value>/engines/engine[1]/torque-pct</value>
+      <low>/instrumentation/efis/vmd/trq-low</low>
+      <hi>/instrumentation/efis/vmd/trq-hi</hi>
+    </params>
+    <x>405</x>
+    <y>670</y>
+  </instrument>
+
+  <instrument include = "../XML/helionix-percent-numeral.xml">
+    <name>engine 1 n2 numeral</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <params>
+      <value>/engines/engine[0]/n2-pct</value>
+      <low>/instrumentation/efis/vmd/n2-low</low>
+      <hi>/instrumentation/efis/vmd/n2-hi</hi>
+    </params>
+    <x>390</x>
+    <y>70</y>
+  </instrument>
+
+  <instrument include = "../XML/helionix-percent-numeral.xml">
+    <name>engine 2 n2 numeral</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <params>
+      <value>/engines/engine[1]/n2-pct</value>
+      <low>/instrumentation/efis/vmd/n2-low</low>
+      <hi>/instrumentation/efis/vmd/n2-hi</hi>
+    </params>
+    <x>540</x>
+    <y>70</y>
+  </instrument>
+
+  <instrument include = "../XML/helionix-gauge.xml">
+    <name>tachymeter engine 1</name>
+    <params>
+      <value1>/engines/engine[0]/n1-pct</value1>
+      <value2></value2>
+      <value3></value3>
+      <value4></value4>
+      <name></name>
+      <fmt>N1</fmt>
+      <min>75</min>
+      <mid>95</mid>  
+      <max>115</max>
+      <scale>1.0</scale>     
+    </params>
+    <x>215</x>
+    <y>600</y>
+    <w>160</w>
+    <h>80</h>
+  </instrument>
+
+  <instrument include = "../XML/helionix-gauge.xml">
+    <name>tachymeter engine 2</name>
+    <params>
+      <value1>/engines/engine[1]/n1-pct</value1>
+      <value2></value2>
+      <value3></value3>
+      <value4></value4>
+      <name></name>
+      <fmt>N1</fmt>
+      <min>75</min>
+      <mid>95</mid>  
+      <max>115</max>
+      <scale>1.0</scale>     
+    </params>
+    <x>385</x>
+    <y>600</y>
+    <w>160</w>
+    <h>80</h>
+  </instrument>
+
+  <instrument include = "../XML/helionix-gauge.xml">
+    <name>TOT engine 1</name>
+    <params>
+      <value1>/engines/engine[0]/tot-degc</value1>
+      <value2></value2>
+      <value3></value3>
+      <value4></value4>
+      <name></name>
+      <fmt>TOT</fmt>
+      <min>100</min>
+      <mid>800</mid>  
+      <max>900</max>
+      <scale>1.0</scale>     
+    </params>
+    <x>80</x>
+    <y>650</y>
+    <w>160</w>
+    <h>80</h>
+  </instrument>
+
+  <instrument include = "../XML/helionix-gauge.xml">
+    <name>TOT engine 2</name>
+    <params>
+      <value1>/engines/engine[1]/tot-degc</value1>
+      <value2></value2>
+      <value3></value3>
+      <value4></value4>
+      <name></name>
+      <fmt>TOT</fmt>
+      <min>100</min>
+      <mid>800</mid>  
+      <max>900</max>
+      <scale>1.0</scale>     
+    </params>
+    <x>520</x>
+    <y>650</y>
+    <w>160</w>
+    <h>80</h>
+  </instrument>
+
+  <instrument include = "../XML/helionix-gauge-3.xml">
+    <name>tachymeter rotor and n2 engine</name>
+    <params>
+      <value1>/rotors/main/rpm-pct</value1>
+      <value2>/engines/engine[0]/n2-pct</value2>
+      <value3>/engines/engine[1]/n2-pct</value3>
+      <value4>/engines/engine[1]/n2-pct</value4>
+      <name></name>
+      <fmt> </fmt>
+      <min>0</min>
+      <quart>80</quart>
+      <mid>100</mid>  
+      <max>120</max>
+      <scale>1.0</scale>     
+    </params>
+    <x>460</x>
+    <y>165</y>
+    <w>170</w>
+    <h>170</h>
+  </instrument>
+
+  <instrument include = "../XML/helionix-percent-numeral.xml">
+    <name>engine 1 n1 numeral</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <params>
+      <value>/engines/engine[0]/n1-pct</value>
+      <low>/instrumentation/efis/vmd/n1-low</low>
+      <hi>/instrumentation/efis/vmd/n1-hi</hi>
+    </params>
+    <x>210</x>
+    <y>545</y>
+  </instrument>
+
+  <instrument include = "../XML/helionix-percent-numeral.xml">
+    <name>engine 2 n1 numeral</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <params>
+      <value>/engines/engine[1]/n1-pct</value>
+      <low>/instrumentation/efis/vmd/n1-low</low>
+      <hi>/instrumentation/efis/vmd/n1-hi</hi>
+    </params>
+    <x>375</x>
+    <y>545</y>
+  </instrument>
+ 
+  <instrument include = "../XML/dual-linear-gauge.xml">
+    <name>Left Engine Oil gauge</name>
+    <x>210</x>
+    <y>464</y>
+    
+    <w>110</w> 
+    <h>120</h>
+    <params>
+	<name> ENG OIL</name>
+	<scaleL>0.75</scaleL>
+	
+	<valLarr>engines/engine/oil-temperature-degc</valLarr>
+	<limLoL>instrumentation/efis/vmd/oilt-caution-lo-degc</limLoL>
+	<limHiL>instrumentation/efis/vmd/oilt-caution-hi-degc</limHiL>
+
+	<scaleR>18</scaleR>  
+	<valRarr>engines/engine/oil-pressure-bar</valRarr>
+	<limLoR>instrumentation/efis/vmd/oilp-caution-lo-bar</limLoR>
+	<limHiR>instrumentation/efis/vmd/oilp-caution-hi-bar</limHiR>
+
+	<unitL1>C</unitL1>
+	<unitR1>B</unitR1>
+	<unitR2>A</unitR2>
+	<unitR3>R</unitR3>
+	<nums>/instrumentation/efis/vmd/nums</nums>
+    </params>
+  </instrument>
+
+  <instrument include = "../XML/dual-linear-gauge.xml">
+    <name>Right engine oil gauge</name>
+    <x>360</x>
+    <y>464</y>
+
+    <w>110</w> 
+    <h>120</h>
+    <params>
+	<name> ENG OIL</name>
+	<scaleL>0.75</scaleL>  
+	<valLarr>engines/engine[1]/oil-temperature-degc</valLarr>
+	<limLoL>instrumentation/efis/vmd/oilt-caution-lo-degc</limLoL>
+	<limHiL>instrumentation/efis/vmd/oilt-caution-hi-degc</limHiL>
+
+	<scaleR>18</scaleR>  
+	<valRarr>engines/engine[1]/oil-pressure-bar</valRarr>
+	<limLoR>instrumentation/efis/vmd/oilp-caution-lo-bar</limLoR>
+	<limHiR>instrumentation/efis/vmd/oilp-caution-hi-bar</limHiR>
+
+	<unitL1>C</unitL1>
+	<unitR1>B</unitR1>
+	<unitR2>A</unitR2>
+	<unitR3>R</unitR3>
+	<nums>/instrumentation/efis/vmd/nums</nums>
+    </params>
+  </instrument>
+
+  <instrument include = "../XML/dual-linear-gauge.xml">
+    <name>Main Gearbox Oil</name>
+    <x>500</x>
+    <y>464</y>
+
+    <w>110</w> 
+    <h>120</h>
+    <params>
+	<name> MGB OIL</name>
+	<valLarr></valLarr>
+
+	<scaleR>10</scaleR>    
+	<valRarr>rotors/gear/mgb-oil-pressure-bar</valRarr>
+	<limLoR>instrumentation/efis/vmd/oilp-caution-lo-bar</limLoR>
+	<limHiR>instrumentation/efis/vmd/oilp-caution-hi-bar</limHiR>
+	<unitL1></unitL1>
+	<unitR1>B</unitR1>
+	<unitR2>A</unitR2>
+	<unitR3>R</unitR3>
+	<nums>/instrumentation/efis/vmd/nums</nums>
+    </params>
+  </instrument>
+
+  <instrument include = "../XML/helionix-percent-numeral.xml">
+    <name>main rotor NR numeral</name>
+    <condition>
+        <property>/instrumentation/efis/vmd/nums</property>
+    </condition>
+    <params>
+      <value>/rotors/main/rpm-pct</value>
+      <low>/instrumentation/efis/vmd/n1-low</low>
+      <hi>/instrumentation/efis/vmd/n2-hi</hi>
+      <unit> </unit>
+    </params>
+    <x>470</x>
+    <y>165</y>
+  </instrument>
+
+  <instrument include = "../XML/helionix-btn-hor.xml">
+   <name>button labels</name>
+    <params>
+        <btn1> FND</btn1>
+        <btn2>NAVD</btn2>
+        <btn3> VMS</btn3>
+        <btn4>DMAP</btn4>
+        <type>200</type>
+    </params>
+   <x>220</x>
+   <y>785</y>
+   <w>400</w> 
+   <h>20</h> 
+ </instrument>  
+ 
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>declutter remove numerics button label</name>
+    <params>
+    <chr1>N</chr1>
+    <chr2>U</chr2>
+    <chr3>M</chr3>
+    <chr4> </chr4>
+    </params>
+   <x>585</x>
+   <y>430</y>
+ </instrument>
+ 
+ <instrument include = "../XML/helionix-btn-vert.xml">
+   <name>cycle data pages button label</name>
+    <params>
+    <chr1>D</chr1>
+    <chr2>A</chr2>
+    <chr3>T</chr3>
+    <chr4>A</chr4>
+    </params>
+   <x>15</x>
+   <y>210</y>
+ </instrument>
+  
+ <instrument include = "../XML/clock.xml"> 
+    <condition>
+          <equals>
+          <property>/instrumentation/efis/vmd/datapage</property>
+          <value>1</value>
+          </equals>  
+    </condition>
+    <x>220</x>
+    <y>140</y>
+ </instrument>
+
+</instruments>
+
+</PropertyList>

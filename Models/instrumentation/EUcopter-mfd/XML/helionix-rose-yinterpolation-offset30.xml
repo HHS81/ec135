@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- y interpolation table with 30deg offset for '3','12','21' and '30' rose markers-->
+<PropertyList>						
+    <entry><ind>	0	</ind><dep>		0.8660	</dep></entry>
+    <entry><ind>	30	</ind><dep>		1.0000	</dep></entry>
+    <entry><ind>	60	</ind><dep>		0.8660	</dep></entry>
+    <entry><ind>	90	</ind><dep>		0.5000	</dep></entry>
+    <entry><ind>	120	</ind><dep>		0.0000	</dep></entry>
+    <entry><ind>	150	</ind><dep>		-0.5000	</dep></entry>
+    <entry><ind>	180	</ind><dep>		-0.8660	</dep></entry>
+    <entry><ind>	210	</ind><dep>		-1.0000	</dep></entry>
+    <entry><ind>	240	</ind><dep>		-0.8660	</dep></entry>
+    <entry><ind>	270	</ind><dep>		-0.5000	</dep></entry>
+    <entry><ind>	300	</ind><dep>		0.0000	</dep></entry>
+    <entry><ind>	330	</ind><dep>		0.5000	</dep></entry>
+    <entry><ind>	360	</ind><dep>		0.8660	</dep></entry>
+</PropertyList>						

@@ -1,0 +1,1001 @@
+<?xml version="1.0"?>
+
+<!-- 
+EC PFD compass rose
+
+Author: litzi
+
+This instrument is part of a 2D-panel simulating a PFD found in EC series
+helicopters. This instrument is called from the central EUcopter-pfd-panel.xml file with a xml include statement.
+
+Some components of this instrument are based on code and bitmaps of Syd Adams' Primus-1000 instrument.
+
+Dependencies:
+This instrument includes interpolation tables for the compass rose and needles animations.
+
+-->
+
+<PropertyList>
+<params>  
+  <pvert>145</pvert>
+  <nvert>-145</nvert>
+  <phor>225</phor>
+  <nhor>-225</nhor>
+  <!-- parameters for needles orientation-->
+  <nav1-err>/instrumentation/nav[0]/rel-bearing-deg</nav1-err>
+  <nav1-in-range>/instrumentation/nav[0]/in-range</nav1-in-range>
+  
+  <nav2-err>/instrumentation/adf[0]/indicated-bearing-deg</nav2-err>
+  <nav2-in-range>/instrumentation/adf[0]/in-range</nav2-in-range>
+
+  <nav3-err>/autopilot/internal/fms-course-error</nav3-err>
+  <nav3-in-range>/autopilot/route-manager/active</nav3-in-range>
+  <!-- parameters for course deviation indicator -->
+  <cdi-act>/instrumentation/nav[0]/in-range</cdi-act>  
+  <cdi-defl>/instrumentation/nav[0]/heading-needle-deflection</cdi-defl>
+  <cdi-err>/autopilot/internal/nav1-course-error</cdi-err>   
+  <cdi-to>/instrumentation/nav[0]/to-flag</cdi-to>
+  <cdi-from>/instrumentation/nav[0]/from-flag</cdi-from>  
+  <hdg-err>/autopilot/internal/heading-bug-error-deg</hdg-err>
+</params>
+
+<name>Helionix Helicopter Compass Rose</name>
+<background>Aircraft/ec145/Models/instruments/EUcopter-mfd/XML/transparent.rgb</background>
+
+<w-base>512</w-base>
+<h-base>350</h-base>
+
+<layers>
+
+  
+ <layer>
+    <name>NAV1 needle tip</name>
+    <w>30</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav1-in-range"/> 
+    </condition>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.90136700	</x1>
+	<x2>	0.93457000	</x2>
+	<y1>	0.94384700	</y1>
+	<y2>	0.97314400	</y2>
+    </texture>
+    <emissive>true</emissive>
+
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>140</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>87</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+
+ <layer>
+    <name>NAV1 needle tail</name>
+    <w>30</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav1-in-range"/> 
+    </condition>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.90136700	</x1>
+	<x2>	0.93457000	</x2>
+	<y1>	0.91894500	</y1>
+	<y2>	0.94384700	</y2>
+    </texture>
+    <emissive>true</emissive>
+
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>-140</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>-87</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav1-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+
+
+ <layer>
+    <name>NAV2 needle tip</name>
+    <w>55</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav2-in-range"/> 
+    </condition>
+
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.95898400	</x1>
+	<y1>	0.94384700	</y1>
+	<x2>	1.00000000	</x2>
+	<y2>	0.97314400	</y2>
+    </texture>
+    <emissive>true</emissive>
+
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>140</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>87</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+
+ <layer>
+    <name>NAV2 needle tail</name>
+    <w>55</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav2-in-range"/> 
+    </condition>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.95898400	</x1>
+	<y1>	0.91894500	</y1>
+	<x2>	1.00000000	</x2>
+	<y2>	0.94384700	</y2>
+    </texture>  
+    <emissive>true</emissive>
+
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>-140</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>-87</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav2-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+
+ <layer>
+    <name>NAV3 needle tip</name>
+    <w>35</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav3-in-range"/> 
+    </condition>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x2>	0.90136700	</x2>
+	<x1>	0.850	</x1>
+	<y1>	0.94384700	</y1>
+	<y2>	0.97314400	</y2>
+    </texture>
+    <emissive>true</emissive>
+ 
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/nav3-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>140</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/nav3-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>87</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav3-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+  
+ <layer>
+    <name>NAV3 needle tail</name>
+    <w>30</w>
+    <h>130</h>
+    <condition>
+	      <property alias="../../../../params/nav3-in-range"/> 
+    </condition>    
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.90136700	</x1>
+        <x2>    0.85      </x2>
+	<y1>	0.91894500	</y1>
+	<y2>	0.94384700	</y2>
+    </texture>
+    <emissive>true</emissive>
+  
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/nav3-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>-140</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/nav3-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>-87</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/nav3-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>  
+
+  <layer>
+      <name>mask to cover compass needles</name>
+      <w>228</w>
+      <h>135</h>
+      <texture>
+	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	  <x1>	0.47558500	</x1>
+	  <y1>	0.18359300	</y1>
+	  <x2>	0.69824200	</x2>
+	  <y2>	0.21655200	</y2>
+      </texture>
+      <emissive>true</emissive>
+  </layer>
+
+  <layer>  
+    <name>CDI Deflection needle</name>	
+    <w>20</w>
+    <h>230</h>
+    <condition>
+	      <property alias="../../../../params/cdi-act"/> 
+    </condition>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<y2>	0.94384700	</y2>
+	<y1>	0.91894500	</y1>
+	<x1>	0.93261700	</x1>
+	<x2>	0.95019500	</x2>
+    </texture>
+    <transformations>
+	  <transformation> 
+	    <type>rotation</type> 
+	    <property alias="../../../../../params/cdi-err"/>
+	    <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	    <scale>1.0</scale>
+	  </transformation>
+	  <transformation>
+		<type>x-shift</type>
+		<property  alias="../../../../../params/cdi-defl"/>
+		<scale>8.0</scale>
+		<min>-12</min>
+		<max>12</max>
+	  </transformation>
+    </transformations>
+    <emissive>true</emissive>
+  </layer>
+  
+  <layer>
+      <name>compass rose 1</name>
+      <w>400</w>
+      <h>2500</h>
+      <texture>
+	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	  <x1>	0.00000000	</x1>
+	  <y1>	0.38964800	</y1>
+	  <x2>	0.39062500	</x2>
+	  <y2>	1.00000000	</y2>  
+      </texture>
+      <transformations>	
+	    <transformation> 
+	      <type>y-shift</type> 
+	      <property>/orientation/heading-magnetic-deg</property>
+	      <scale>500</scale>
+	      <modulator>10</modulator>
+	      <interpolation include="step-interpolation-table.xml"/>
+	      <offset>-1125</offset>
+	  </transformation>
+      </transformations>
+      <emissive>true</emissive>
+  </layer>
+
+  <layer>
+      <name>compass rose 2</name>
+      <w>400</w>
+      <h>2500</h>
+      <texture>
+	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	  <x1>	0.39160100	</x1>
+	  <y1>	0.38964800	</y1>
+	  <x2>	0.78125000	</x2>
+	  <y2>	1.00000000	</y2>  
+      </texture>
+      <transformations>	
+	    <transformation> 
+	      <type>y-shift</type> 
+	      <property>/orientation/heading-magnetic-deg</property>
+	      <scale>500</scale>
+	      <modulator>10</modulator>
+	      <interpolation include="step-interpolation-table.xml"/>
+	      <offset>-3625</offset>
+	  </transformation>
+      </transformations>
+      <emissive>true</emissive>
+  </layer>
+  
+  <layer>
+      <name>to-indicator-arrow</name>      
+      <w>45</w>
+      <h>30</h>
+      <condition>
+         <property alias="../../../../params/cdi-to"/>
+         <property alias="../../../../params/cdi-act"/> 
+      </condition>
+      <texture>
+	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <x1>	0.95898400	</x1>
+	    <y2>	0.98000000	</y2>
+	    <x2>	1.00000000	</x2>
+	    <y1>	0.975	</y1>
+      </texture>
+      <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/cdi-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>98</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/cdi-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>61</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/cdi-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+    <emissive>true</emissive>
+  </layer>
+
+  <layer>
+      <name>from-indicator-arrow</name>      
+      <w>45</w>
+      <h>30</h>
+      <condition>
+         <property alias="../../../../params/cdi-from"/>
+         <property alias="../../../../params/cdi-act"/> 
+      </condition>
+      <texture>
+	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <x1>	0.95898400	</x1>
+	    <y2>	0.98000000	</y2>
+	    <x2>	1.00000000	</x2>
+	    <y1>	0.975	</y1>
+      </texture>
+      <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+  	  <property alias="../../../../../params/cdi-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>-98</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+  	  <property alias="../../../../../params/cdi-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>-61</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+  	  <property alias="../../../../../params/cdi-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <offset>180</offset>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+    <emissive>true</emissive>
+  </layer>
+
+  <layer>
+      <name>CDI Deflection Scale</name>      
+      <w>230</w>
+      <h>45</h>
+      <texture>
+	      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <x1>	0.89062500	</x1>
+	    <y1>	0.90795800	</y1>
+	    <x2>	1.00000000	</x2>
+	    <y2>	0.91381800	</y2>
+      </texture>
+      <transformations>
+	  <transformation> 
+	    <type>rotation</type> 
+	    <property alias="../../../../../params/cdi-err"/>
+	    <interpolation include="helionix-rose-angle-interpolation-table-offset90.xml"/>
+	    <scale>1.0</scale>
+	    <offset>90</offset>
+	  </transformation>
+      </transformations>
+      <emissive>true</emissive>
+  </layer>
+
+  <layer>
+      <name>mask to cover compass rose layer</name>
+      <w>800</w>
+      <h>578</h>
+      <texture>
+	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.19531250	</x1>
+	<y1>	0.24804688	</y1>
+	<x2>	0.97656250	</x2>
+	<y2>	0.38964844	</y2>
+      </texture>
+      <emissive>true</emissive>
+  </layer>
+
+  <layer>
+    <name>aircraft symbol in center</name>
+    <w>50</w>
+    <h>50</h>
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.95898400	</x1>
+	<y1>	0.98000000	</y1>
+	<x2>	1.00000000	</x2>
+	<y2>	0.98974600	</y2>
+    </texture>
+    <emissive>true</emissive>
+    
+  </layer>
+
+  <layer>
+    <name>Heading Bug</name>
+    <w>20</w>
+    <h>35</h>
+    <condition>
+<!--  <equals>
+          <property>/autopilot/locks/heading</property>
+          <value>dg-heading-hold</value>
+      </equals>
+-->      
+      <not><property>/instrumentation/efis/fnd/ap-target-blink</property></not>
+    </condition> 
+    <texture>
+	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<x1>	0.95898400	</x1>
+	<y1>	0.98974600	</y1>
+	<x2>	1.00000000	</x2>
+	<y2>	1.00000000	</y2>
+    </texture>  
+    <emissive>true</emissive>
+    
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <property alias="../../../../../params/hdg-err"/>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale>185</scale>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <property alias="../../../../../params/hdg-err"/>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale>120</scale>
+	</transformation>
+	<transformation> 
+	  <type>rotation</type> 
+	  <property alias="../../../../../params/hdg-err"/>
+	  <interpolation include="helionix-rose-angle-interpolation-table.xml"/>
+	  <scale>1.0</scale>
+	</transformation>
+    </transformations>
+  </layer>
+  
+  <layer>
+    <name>North Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+    
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>N</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-5</offset>  
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	  <scale alias="../../../../../params/nhor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	  <scale alias="../../../../../params/pvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>South Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+    
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>S</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-5</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	   
+	  <scale alias="../../../../../params/phor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	   
+	  <scale alias="../../../../../params/nvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>East Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+   
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>E</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-5</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	   
+	  <scale alias="../../../../../params/phor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	   
+	  <scale alias="../../../../../params/pvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>West Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+  
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>W</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-5</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation.xml"/>
+	   
+	  <scale alias="../../../../../params/nhor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation.xml"/>
+	   
+	  <scale alias="../../../../../params/nvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <!-- 
+  ================================
+  Rose markings with 30 deg offset
+  ================================
+  -->  
+
+  <layer>
+    <name>3 Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+ 
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>3</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-5</offset>  
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation-offset30.xml"/>
+	  <scale alias="../../../../../params/nhor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation-offset30.xml"/>
+	  <scale alias="../../../../../params/pvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>21 Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+   
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>21</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-15</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation-offset30.xml"/>
+	  <scale alias="../../../../../params/phor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation-offset30.xml"/>
+	  <scale alias="../../../../../params/nvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>12 Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+  
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>12</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-15</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation-offset30.xml"/>
+	  <scale alias="../../../../../params/phor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation-offset30.xml"/>
+	  <scale alias="../../../../../params/pvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>30 Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+  
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>30</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-15</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation-offset30.xml"/>
+	  <scale alias="../../../../../params/nhor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation-offset30.xml"/>
+	  <scale alias="../../../../../params/nvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+
+
+  <!-- 
+  ================================
+  Rose markings with 60 deg offset
+  ================================
+  -->  
+
+  <layer>
+    <name>60 deg Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+  
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>6</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-5</offset>  
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation-offset60.xml"/>
+	  <scale alias="../../../../../params/nhor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation-offset60.xml"/>
+	  <scale alias="../../../../../params/pvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>240 deg Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+ 
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>24</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-15</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation-offset60.xml"/>
+	  <scale alias="../../../../../params/phor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation-offset60.xml"/>
+	  <scale alias="../../../../../params/nvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>150 deg Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+  
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>15</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-15</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation-offset60.xml"/>
+	  <scale alias="../../../../../params/phor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation-offset60.xml"/>
+	  <scale alias="../../../../../params/pvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+  
+  <layer>
+    <name>330 deg Literal</name>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>25</point-size>
+    <color>
+	<red>0.8</red>
+	<green>0.8</green>
+	<blue>0.8</blue>
+    </color>
+    <emissive>true</emissive>
+   
+    <chunks>
+      <chunk>
+	  <type>literal</type>
+	  <text>33</text>
+	</chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+	  <type>x-shift</type> 
+	  <offset>-15</offset>
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-yinterpolation-offset60.xml"/>
+	  <scale alias="../../../../../params/nhor"/>
+	</transformation>
+	<transformation> 
+	  <type>y-shift</type> 
+	  <offset>-10</offset> 
+	  <property>/orientation/heading-magnetic-deg</property>
+	  <interpolation include="helionix-rose-xinterpolation-offset60.xml"/>
+	  <scale alias="../../../../../params/nvert"/>
+	</transformation> 
+	</transformations>
+  </layer>
+
+
+  
+</layers>		
+</PropertyList>  

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<PropertyList>						
+<entry><ind>	-180	</ind><dep>		-1	</dep></entry>
+<entry><ind>	-165	</ind><dep>		-0.9659258263	</dep></entry>
+<entry><ind>	-150	</ind><dep>		-0.8660254038	</dep></entry>
+<entry><ind>	-135	</ind><dep>		-0.7071067812	</dep></entry>
+<entry><ind>	-120	</ind><dep>		-0.5	</dep></entry>
+<entry><ind>	-105	</ind><dep>		-0.2588190451	</dep></entry>
+<entry><ind>	-90	</ind><dep>		6.12323399573677E-017	</dep></entry>
+<entry><ind>	-75	</ind><dep>		0.2588190451	</dep></entry>
+<entry><ind>	-60	</ind><dep>		0.5	</dep></entry>
+<entry><ind>	-45	</ind><dep>		0.7071067812	</dep></entry>
+<entry><ind>	-30	</ind><dep>		0.8660254038	</dep></entry>
+<entry><ind>	-15	</ind><dep>		0.9659258263	</dep></entry>
+<entry><ind>	0	</ind><dep>		1	</dep></entry>
+<entry><ind>	15	</ind><dep>		0.9659258263	</dep></entry>
+<entry><ind>	30	</ind><dep>		0.8660254038	</dep></entry>
+<entry><ind>	45	</ind><dep>		0.7071067812	</dep></entry>
+<entry><ind>	60	</ind><dep>		0.5	</dep></entry>
+<entry><ind>	75	</ind><dep>		0.2588190451	</dep></entry>
+<entry><ind>	90	</ind><dep>		6.12323399573677E-017	</dep></entry>
+<entry><ind>	105	</ind><dep>		-0.2588190451	</dep></entry>
+<entry><ind>	120	</ind><dep>		-0.5	</dep></entry>
+<entry><ind>	135	</ind><dep>		-0.7071067812	</dep></entry>
+<entry><ind>	150	</ind><dep>		-0.8660254038	</dep></entry>
+<entry><ind>	165	</ind><dep>		-0.9659258263	</dep></entry>
+<entry><ind>	180	</ind><dep>		-1	</dep></entry>
+<entry><ind>	195	</ind><dep>		-0.9659258263	</dep></entry>
+<entry><ind>	210	</ind><dep>		-0.8660254038	</dep></entry>
+<entry><ind>	225	</ind><dep>		-0.7071067812	</dep></entry>
+<entry><ind>	240	</ind><dep>		-0.5	</dep></entry>
+<entry><ind>	255	</ind><dep>		-0.2588190451	</dep></entry>
+<entry><ind>	270	</ind><dep>		-1.83697019872103E-016	</dep></entry>
+<entry><ind>	285	</ind><dep>		0.2588190451	</dep></entry>
+<entry><ind>	300	</ind><dep>		0.5	</dep></entry>
+<entry><ind>	315	</ind><dep>		0.7071067812	</dep></entry>
+<entry><ind>	330	</ind><dep>		0.8660254038	</dep></entry>
+<entry><ind>	345	</ind><dep>		0.9659258263	</dep></entry>
+<entry><ind>	360	</ind><dep>		1	</dep></entry>
+</PropertyList>						

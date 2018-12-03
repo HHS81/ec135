@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <params>
+      <offs>0</offs>
+      <offb>0</offb>
+      <txt>N</txt>
+      <rnum>220</rnum>
+    </params>
+
+    <name>Literal</name>
+    <type>text</type>
+    <point-size>25</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <emissive>true</emissive>
+    <chunks>
+      <chunk>
+          <type>literal</type>
+          <text alias="../../../params/txt"/>
+        </chunk>
+    </chunks>
+    <transformations>
+        <transformation> 
+          <type>y-shift</type> 
+          <offset>-7</offset>
+        </transformation>
+        <transformation> 
+          <type>x-shift</type> 
+          <offset>-15</offset>
+        </transformation>
+        <transformation> 
+          <type>rotation</type> 
+          <property>/orientation/heading-magnetic-deg</property>
+          <scale>-1</scale>
+          <offset alias="../../../params/offb"/>
+        </transformation> 
+        <transformation> 
+          <type>y-shift</type> 
+          <offset alias="../../../params/rnum"/>
+        </transformation>
+        <transformation> 
+          <type>rotation</type> 
+          <property>/orientation/heading-magnetic-deg</property>
+          <offset alias="../../../params/offs"/>
+        </transformation> 
+    </transformations>
+</PropertyList>

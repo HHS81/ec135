@@ -39,6 +39,7 @@
 				<wirecutter_up>false</wirecutter_up>
 				<wirecutter_down>false</wirecutter_down>
 				<OilCoolInlet>true</OilCoolInlet>
+				<HighTail>false</HighTail>
 				<IBFGrille>false</IBFGrille>
 				<winch>false</winch>
 				<SLLightR>false</SLLightR><!--Retractablelanding/SearchlightRight-->

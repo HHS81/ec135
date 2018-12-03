@@ -1,0 +1,108 @@
+<PropertyList>
+  <params>
+    <mytxt>/instrumentation/efis/fnd/masterlist[0]/msg[0]</mytxt>
+    <myrgb>/instrumentation/efis/fnd/masterlist[0]/rgb[0]</myrgb>
+  </params>
+
+  <type>switch</type>
+  <layer>
+      <name>masterlist white</name>
+      <type>text</type>                     
+      <condition>
+        <equals>
+          <property alias="../../../../params/myrgb"/>
+          <value>1</value>
+        </equals>
+      </condition>
+      <point-size>14</point-size>
+      <font>arial_black</font>
+      <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+      </color>
+      <chunks>
+        <chunk>                    
+          <type>text-value</type>
+          <format>%s</format>
+          <property alias="../../../../params/mytxt"/>
+        </chunk>
+      </chunks>
+  </layer>
+  
+  <layer>
+    <name>masterlist green</name>
+    <type>text</type>                     
+    <condition>
+      <equals>
+        <property alias="../../../../params/myrgb"/>
+        <value>2</value>
+      </equals>
+    </condition>
+    <point-size>14</point-size>
+    <font>arial_black</font>
+    <color>
+      <red>0</red>
+      <green>1</green>
+      <blue>0</blue>
+    </color>
+    <chunks>
+      <chunk>                    
+        <type>text-value</type>
+        <format>%s</format>
+          <property alias="../../../../params/mytxt"/>
+      </chunk>
+    </chunks>
+  </layer>
+  
+  <layer>
+    <name>masterlist line 1 red</name>
+    <type>text</type>                     
+    <condition>
+      <equals>
+        <property alias="../../../../params/myrgb"/>
+        <value>3</value>
+      </equals>
+    </condition>
+    <point-size>14</point-size>
+    <font>arial_black</font>
+    <color>
+      <red>1</red>
+      <green>0</green>
+      <blue>0</blue>
+    </color>
+    <chunks>
+      <chunk>                    
+        <type>text-value</type>
+        <format>%s</format>
+          <property alias="../../../../params/mytxt"/>
+      </chunk>
+    </chunks>
+  </layer>
+  
+  <layer>
+    <name>masterlist line 1 amber</name>
+    <type>text</type>                     
+    <condition>
+      <equals>
+        <property alias="../../../../params/myrgb"/>
+        <value>4</value>
+      </equals>
+    </condition>
+    <point-size>14</point-size>
+    <font>arial_black</font>
+    <color>
+      <red>1</red>
+      <green>0.76</green>
+      <blue>0</blue>
+    </color>
+    <chunks>
+      <chunk>                    
+        <type>text-value</type>
+        <format>%s</format>
+          <property alias="../../../../params/mytxt"/>
+      </chunk>
+    </chunks>
+  </layer>
+
+</PropertyList>

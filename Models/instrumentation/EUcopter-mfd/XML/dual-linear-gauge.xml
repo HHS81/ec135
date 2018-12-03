@@ -1,0 +1,713 @@
+<?xml version="1.0"?>
+
+<!-- A generic linear gauge with two values for a MFD
+
+     The gauge has two linear indicators that display the 
+     values as arrows (valLarr, valRarr) and limits (limHiL,limLoL, limHiR,limLoR).
+     The values for the arrowa are also displayed as digital numbers below the gauge.
+     The gauge can be customized to any range by setting parameters
+     for the left and right scale.
+     
+     Parameters
+     
+     <valRarr> the property to display, must be a property tree path
+     <valLarr> 
+     <limLoL> 
+     <limHiL>
+     <name>  the name of the gauge displayed at the centre of the gauge, 
+             must be  a literal string.
+     <scaleL>,<scaleR>   to display arrows displacement, the 100% index is at 100 pixel
+     
+ -->
+
+<PropertyList>
+ <name>Generic quad linear gauge</name>
+ <w-base>120</w-base>
+ <h-base>170</h-base>
+  
+ <!--default parameters are for left and righ engines N1 and N2-->
+ <params>
+  <limLoL></limLoL>
+  <limLoR></limLoR>
+  <limHiL></limHiL>
+  <limHiR></limHiR>
+  <valRarr>engines/engine[1]/n2</valRarr>
+  <valLarr>engines/engine/n2</valLarr>
+  <name>    RPM</name>
+  <scaleL>1.0</scaleL>  
+  <scaleR>1.0</scaleR>
+  <unitL1></unitL1>
+  <unitL2></unitL2>
+  <unitL3></unitL3>  
+  <unitR1></unitR1>
+  <unitR2></unitR2>
+  <unitR3></unitR3>
+ </params>
+ 
+<layers>
+  
+  <!-- High-Low red critical indicator behind left numeral -->  
+  <layer>
+   <name>left numeral critical</name>
+    <condition>
+      <or>
+      <greater-than>
+	<property alias="../../../../../../params/valLarr"/>
+	<property alias="../../../../../../params/limHiL"/>	
+      </greater-than>
+      <less-than>
+	<property alias="../../../../../../params/valLarr"/>
+	<property alias="../../../../../../params/limLoL"/>	
+      </less-than>
+     </or>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.9	</x1>
+	<x2>	1	</x2>
+	<y1>	0	</y1>
+	<y2>	0.1	</y2>
+    </texture>
+   <w>60</w>
+   <h>30</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>-30</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-72</offset></transformation>
+   </transformations>
+  </layer> 
+  
+  <!-- High-Low red critical indicator behind right numeral -->  
+  <layer>
+   <name>right numeral critical</name>
+    <condition>
+      <or>
+      <greater-than>
+	<property alias="../../../../../../params/valRarr"/>
+	<property alias="../../../../../../params/limHiR"/>	
+      </greater-than>
+      <less-than>
+	<property alias="../../../../../../params/valRarr"/>
+	<property alias="../../../../../../params/limLoR"/>	
+      </less-than>
+     </or>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.9	</x1>
+	<x2>	1	</x2>
+	<y1>	0	</y1>
+	<y2>	0.1	</y2>
+    </texture>
+   <w>60</w>
+   <h>30</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>30</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-72</offset></transformation>
+   </transformations>
+  </layer> 
+
+  <!-- LH limits indicators -->  
+  <layer>
+   <name>left hi limit critical</name>
+    <condition>
+      <greater-than>
+	<property alias="../../../../../params/valLarr"/>
+	<property alias="../../../../../params/limHiL"/>	
+      </greater-than>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.5	</x1>
+	<x2>	0.5625	</x2>
+	<y1>	0.875	</y1>
+	<y2>	1.0	</y2>
+    </texture>
+   <w>16</w>
+   <h>40</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>-9</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-50</offset></transformation>
+    <transformation>
+      <type>y-shift</type>
+      <property alias="../../../../../params/limHiL"/>
+      <scale alias="../../../../../params/scaleL"/>
+      <min>0</min>
+    </transformation>
+   </transformations>
+  </layer> 
+
+  <layer>
+    <name>left low limit critical</name>
+    <condition>
+      <less-than>
+	<property alias="../../../../../params/valLarr"/>
+	<property alias="../../../../../params/limLoL"/>	
+      </less-than>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.5	</x1>
+	<x2>	0.5625	</x2>
+	<y1>	0.875	</y1>
+	<y2>	1.0	</y2>
+    </texture>
+   <w>16</w>
+   <h>40</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>-9</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-50</offset></transformation>
+    <transformation>
+      <type>y-shift</type>
+      <property alias="../../../../../params/limLoL"/>
+      <scale alias="../../../../../params/scaleL"/>
+      <min>0</min>
+    </transformation>
+    <transformation><type>rotation</type><offset>180</offset></transformation> 
+   </transformations>
+  </layer> 
+
+  <layer>
+   <name>left hi limit always</name>
+    <condition>
+      <less-than>
+	<property alias="../../../../../params/valLarr"/>
+	<property alias="../../../../../params/limHiL"/>	
+      </less-than>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.5625	</x1>
+	<x2>	0.6250	</x2>
+	<y1>	0.875	</y1>
+	<y2>	1.0	</y2>
+    </texture>
+   <w>16</w>
+   <h>40</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>-9</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-50</offset></transformation>
+    <transformation>
+      <type>y-shift</type>
+      <property alias="../../../../../params/limHiL"/>
+      <scale alias="../../../../../params/scaleL"/>
+      <min>0</min>
+    </transformation>
+   </transformations>
+  </layer> 
+
+  <layer>
+    <name>left low limit always</name>
+    <condition>
+      <greater-than>
+	<property alias="../../../../../params/valLarr"/>
+	<property alias="../../../../../params/limLoL"/>	
+      </greater-than>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.375	</x1>
+	<x2>	0.4375	</x2>
+	<y1>	0.875	</y1>
+	<y2>	1.0	</y2>
+    </texture>
+   <w>16</w>
+   <h>40</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>-9</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-50</offset></transformation>
+    <transformation>
+      <type>y-shift</type>
+      <property alias="../../../../../params/limLoL"/>
+      <scale alias="../../../../../params/scaleL"/>
+      <min>0</min>
+    </transformation>
+    <transformation><type>rotation</type><offset>180</offset></transformation> 
+   </transformations>
+  </layer>   
+
+  <!-- RH limits indicators -->
+
+  <layer>
+   <name>right hi limit critical</name>
+    <condition>
+      <greater-than>
+	<property alias="../../../../../params/valRarr"/>
+	<property alias="../../../../../params/limHiR"/>	
+      </greater-than>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.5	</x1>
+	<x2>	0.5625	</x2>
+	<y1>	0.875	</y1>
+	<y2>	1.0	</y2>
+    </texture>
+   <w>16</w>
+   <h>40</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>14</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-50</offset></transformation>
+    <transformation>
+      <type>y-shift</type>
+      <property alias="../../../../../params/limHiR"/>
+      <scale alias="../../../../../params/scaleR"/>
+      <min>0</min>
+    </transformation>
+   </transformations>
+  </layer> 
+
+  <layer>
+    <name>right low limit critical</name>
+    <condition>
+      <less-than>
+	<property alias="../../../../../params/valRarr"/>
+	<property alias="../../../../../params/limLoR"/>	
+      </less-than>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.5	</x1>
+	<x2>	0.5625	</x2>
+	<y1>	0.875	</y1>
+	<y2>	1.0	</y2>
+    </texture>
+   <w>16</w>
+   <h>40</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>14</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-50</offset></transformation>
+    <transformation>
+      <type>y-shift</type>
+      <property alias="../../../../../params/limLoR"/>
+      <scale alias="../../../../../params/scaleR"/>
+      <min>0</min>
+    </transformation>
+    <transformation><type>rotation</type><offset>180</offset></transformation> 
+   </transformations>
+  </layer> 
+
+  <layer>
+   <name>right hi limit always</name>
+    <condition>
+      <less-than>
+	<property alias="../../../../../params/valRarr"/>
+	<property alias="../../../../../params/limHiR"/>	
+      </less-than>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+	<x1>	0.375	</x1>
+	<x2>	0.4375	</x2>
+	<y1>	0.875	</y1>
+	<y2>	1.0	</y2>
+    </texture>
+   <w>16</w>
+   <h>40</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>14</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-50</offset></transformation>
+    <transformation>
+      <type>y-shift</type>
+      <property alias="../../../../../params/limHiR"/>
+      <scale alias="../../../../../params/scaleR"/>
+      <min>0</min>
+    </transformation>
+   </transformations>
+  </layer> 
+
+  <layer>
+    <name>right low limit always</name>
+    <condition>
+      <greater-than>
+	<property alias="../../../../../params/valRarr"/>
+	<property alias="../../../../../params/limLoR"/>	
+      </greater-than>
+    </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+
+	
+	<x1>	0.5625	</x1>
+	<x2>	0.6250	</x2>
+	<y1>	0.875	</y1>
+	<y2>	1.0	</y2>	
+	
+	
+    </texture>
+   <w>16</w>
+   <h>40</h>
+   <transformations>
+    <transformation><type>x-shift</type><offset>14</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-50</offset></transformation>
+    <transformation>
+      <type>y-shift</type>
+      <property alias="../../../../../params/limLoR"/>
+      <scale alias="../../../../../params/scaleR"/>
+      <min>0</min>
+    </transformation>
+    <transformation><type>rotation</type><offset>180</offset></transformation> 
+   </transformations>
+  </layer>   
+
+ <layer>
+   <name>gauge face</name>
+   <emissive>true</emissive>
+   <texture>   
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+
+	<x1>	0.25390625	</x1>
+	<y1>	0.10937500	</y1>
+	<x2>	0.72265625	</x2>
+	<y2>	0.77343750	</y2>
+      </texture>			
+      <w>	120.0	</w>	
+      <h>	170.0	</h>	
+  </layer>   
+
+  <layer>
+   <name>left arrow</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+
+	      <x1>	0.07031250	</x1>
+	      <y1>	0.00000000	</y1>
+	      <x2>	0.14453125	</x2>
+	      <y2>	0.04296875	</y2>
+      </texture>			
+      <w>	32.0	</w>	
+      <h>	20.0	</h>	
+    <transformations>
+    <transformation><type>x-shift</type><offset>-34</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-55</offset></transformation>
+    <transformation>
+      <condition>
+	<equals>
+	  <value alias="../../../../../../../params/scaleL"/><value>0</value>
+	</equals>
+      </condition>
+      <type>y-shift</type>
+      <property alias="../../../../../params/valLarr"/>
+      <scale alias="../../../../../params/scaleL"/>
+      <min>0</min>
+    </transformation>
+    <transformation>
+      <condition>
+	<not-equals>
+	  <value alias="../../../../../../../params/scaleL"/><value>0</value>
+	</not-equals>
+      </condition>
+      <type>y-shift</type>
+      <property alias="../../../../../params/valLarr"/>
+      <scale alias="../../../../../params/scaleL"/>
+      <min>0</min>
+    </transformation>
+    </transformations>
+  </layer> 
+
+  <layer>
+   <name>right arrow</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/quad-linear-gauge.rgb</path>
+
+	      <x1>	0.000000	</x1>
+	      <y1>	0.000000	</y1>
+	      <x2>	0.071000	</x2>
+	      <y2>	0.042968	</y2>
+      </texture>			
+      <w>	32.0	</w>	
+      <h>	20.0	</h>	
+    <transformations>
+    <transformation><type>x-shift</type><offset>37</offset></transformation> 
+    <transformation><type>y-shift</type><offset>-55</offset></transformation>
+    
+    <transformation>
+      <condition>
+	<equals>
+	  <value alias="../../../../../../../params/scaleR"/><value>0</value>
+	</equals>
+      </condition>
+      <type>y-shift</type>
+      <property alias="../../../../../params/valRarr"/>
+      <scale alias="../../../../../params/scaleR"/>
+      <min>0</min>
+    </transformation>
+
+    <transformation>
+      <condition>
+	<not-equals>
+	  <value alias="../../../../../../../params/scaleR"/><value>0</value>
+	</not-equals>
+      </condition>
+      <type>y-shift</type>
+      <property alias="../../../../../params/valRarr"/>
+      <scale alias="../../../../../params/scaleR"/>
+      <min>0</min>
+    </transformation>    
+   </transformations>
+  </layer> 
+  
+    <layer>
+      <name>numeric value Right</name>
+      <emissive>true</emissive>
+      <type>text</type>
+      <font>arial_black</font>
+      <point-size>18</point-size>
+      <color>
+	      <red>1</red>
+	      <green>1</green>
+	      <blue>1</blue>
+      </color>
+      <chunks>
+	      <chunk>
+		      <condition>
+			<greater-than>
+			  <property alias="../../../../../../../params/valRarr"/>
+			  <value>9.99</value>
+			</greater-than>
+		      </condition>
+		      <type>number-value</type>
+		      <property alias="../../../../../params/valRarr"/>
+		      <format>%03.0f</format>
+	      </chunk>
+	      <chunk>
+		      <condition>
+			<less-than>
+			  <property alias="../../../../../../../params/valRarr"/>
+			  <value>10</value>
+			</less-than>
+		      </condition>
+		      <type>number-value</type>
+		      <property alias="../../../../../params/valRarr"/>
+		      <format>%3.1f</format>
+	      </chunk>
+	  </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>10</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>-80</offset> </transformation> 
+	</transformations>
+   </layer>
+
+  <layer>
+        
+       <name>numeric value Left</name>
+       <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>18</point-size>
+	<color>
+	    <red>1</red>
+	    <green>1</green>
+	    <blue>1</blue>
+	</color>
+	<chunks>
+	    <chunk>
+		    <condition>
+		      <greater-than>
+			<property alias="../../../../../../../params/valLarr"/>
+			<value>9.99</value>
+		      </greater-than>
+		    </condition>
+		    <type>number-value</type>
+		    <property alias="../../../../../params/valLarr"/>
+		    <format>%03.0f</format>
+	    </chunk>
+	    <chunk>
+		    <condition>
+		      <less-than>
+			<property alias="../../../../../../../params/valLarr"/>
+			<value>10</value>
+		      </less-than>
+		    </condition>
+		    <type>number-value</type>
+		    <property alias="../../../../../params/valLarr"/>
+		    <format>%3.1f</format>
+	    </chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-50</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>-80</offset> </transformation> 
+	</transformations>
+   </layer>
+   
+  <layer>
+	<name>gauge name</name>
+	<emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>18</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>
+			<text alias="../../../../../params/name"/>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-60</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>67</offset> </transformation> 
+	</transformations>
+ </layer>   
+
+  <layer>
+	<name>unit left gauge</name>
+	<emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>18</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>
+			<text alias="../../../../../params/unitL1"/>
+			<format>%s</format>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-58</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>40</offset> </transformation> 
+	</transformations>
+ </layer>   
+ 
+  <layer>
+	<name>unit left gauge</name>
+	<emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>18</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>
+			<text alias="../../../../../params/unitL2"/>
+			<format>%s</format>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-58</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>20</offset> </transformation> 
+	</transformations>
+ </layer>   
+
+  <layer>
+	<name>unit left gauge</name>
+	<emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>18</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>
+			<text alias="../../../../../params/unitL3"/>
+			<format>%s</format>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-58</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
+	</transformations>
+ </layer>   
+
+
+  <layer>
+	<name>unit right gauge</name>
+	<emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>18</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>
+			<text alias="../../../../../params/unitR1"/>
+			<format>%s</format>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>44</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>40</offset> </transformation> 
+	</transformations>
+ </layer>   
+ 
+  <layer>
+	<name>unit right gauge</name>
+	<emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>18</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>
+			<text alias="../../../../../params/unitR2"/>
+			<format>%s</format>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>44</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>20</offset> </transformation> 
+	</transformations>
+ </layer>   
+
+  <layer>
+	<name>unit right gauge</name>
+	<emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>18</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>
+			<text alias="../../../../../params/unitR3"/>
+			<format>%s</format>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>44</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
+	</transformations>
+ </layer>   
+  
+</layers>
+</PropertyList>

@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+
+<!-- A gauge with 4 hands for a MFD
+
+     The gauge has one hand and three index markers which individually display the 
+     values 1,2,3 and 4.
+     The value 1 is also displayed as a digital number below the gauge.
+     The gauge can be customized to any range by setting parameters
+     for the minimum, mid. and maximum value.
+     
+     Parameters
+     
+     <value1> the property to display with the needle, must be a property tree path
+     <value2> the property to display with the 'center' index incator, must be a property tree path
+     <value3>
+     <value4>
+     <fmt>   format for the numeric value display as a C format 
+             string e.g. %5.0f (must be be 5 characters long to fit)
+     <scale> scaling value for the value1 numeric display
+     <min>   minimum value 
+     <mid>   mid value, needle is vertical
+     <max>   max value      
+ -->
+
+<PropertyList>
+ <name>MFD gauge</name>
+ <w-base>256</w-base>
+ <h-base>256</h-base>
+  
+ <!--default parameters-->
+ <params>
+  <value1>/rotors/main/rpm-pct</value1>
+  <value2>/rotors/main/rpm-pct</value2>
+  <value3>/engines/engine[0]/n2-pct</value3>
+  <value4>/engines/engine[1]/n2-pct</value4>
+  <name></name>
+  <fmt>%03.0f</fmt>
+  <min>70</min>
+  <mid>100</mid>  
+  <max>130</max>
+  <scale>1.0</scale>  
+ </params>
+
+<layers>
+  <layer>
+   <name>gauge rotating disc backgr fill</name>
+   <emissive>true</emissive>
+    <condition>
+      <greater-than>
+	<property alias="../../../../../params/value1"/>
+	<value alias="../../../../../params/mid"/>
+      </greater-than>
+    </condition>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge.rgb</path>
+	<x1>	0.75	</x1>
+	<y1>	0.0	</y1>
+	<x2>	1.00	</x2>
+	<y2>	0.5	</y2>
+    </texture>
+   <w>128</w>
+   <h>256</h>
+   <transformations>
+    <transformation> <type>x-shift</type> <offset>-64</offset> </transformation> 
+  </transformations>
+    </layer> 
+
+  <layer>
+   <name>gauge val 1 rotating disc</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge.rgb</path>
+	<x1>	0.0	</x1>
+	<y1>	0.0	</y1>
+	<x2>	0.5	</x2>
+	<y2>	0.5	</y2>
+    </texture>
+   <w>256</w>
+   <h>256</h>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <property alias="../../../../../params/value1"/>
+     <offset>0</offset>
+      <interpolation>
+	<entry><ind alias="../../../../../../../params/min"/><dep>-45</dep></entry>
+	<entry><ind alias="../../../../../../../params/mid"/><dep>90</dep> </entry>
+	<entry><ind alias="../../../../../../../params/max"/><dep>180</dep></entry>
+    </interpolation>     
+    </transformation>
+   </transformations>
+  </layer> 
+
+  <layer>
+   <name>gauge face</name>
+   <emissive>true</emissive>
+   <texture>   
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge.rgb</path>
+      <x1>	0.5	</x1>
+      <y1>	0.5	</y1>
+      <x2>	1.0	</x2>
+      <y2>	1.0	</y2>
+  </texture>
+   <w>256</w>
+   <h>256</h>
+  </layer>   
+
+ <layer>
+    <name>numeric display val 1</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>24</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>number-value</type>
+			<property alias="../../../../../params/value1"/>
+			<format alias="../../../../../params/fmt"/>
+			<scale alias="../../../../../params/scale"/>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-24</offset> </transformation> 
+	</transformations>
+  </layer>
+   
+  <layer>
+   <name>gauge val 2 index marker</name>
+   <condition>
+         <property alias="../../../../params/value2"/>
+   </condition>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge.rgb</path>
+	<x1>	0.5	</x1>
+	<y1>	0.4	</y1>
+	<x2>	0.55	</x2>
+	<y2>	0.5	</y2>
+    </texture>
+   <w>35</w>
+   <h>55</h>
+   <transformations>
+    <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
+     <transformation>
+     <type>rotation</type>
+      <property alias="../../../../../params/value2"/>
+      <interpolation>
+	<entry><ind alias="../../../../../../../params/min"/><dep>0</dep></entry>
+	<entry><ind alias="../../../../../../../params/mid"/><dep>90</dep> </entry>
+	<entry><ind alias="../../../../../../../params/max"/><dep>180</dep></entry>
+      </interpolation>     
+    </transformation>
+    <transformation> <type>x-shift</type> <offset>-100</offset> </transformation> 
+    <transformation> <type>rotation</type> <offset>-90</offset> </transformation> 
+   </transformations>
+  </layer> 
+
+  <layer>
+   <name>gauge val 3 index marker</name>
+   <condition>
+         <property alias="../../../../params/value3"/>
+   </condition>   
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge.rgb</path>
+	<x1>	0.5625	</x1>
+	<y1>	0.4	</y1>
+	<x2>	0.6125	</x2>
+	<y2>	0.5	</y2>
+    </texture>
+   <w>35</w>
+   <h>55</h>
+   <transformations>
+    <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
+     <transformation>
+     <type>rotation</type>
+      <property alias="../../../../../params/value3"/>
+      <interpolation>
+	<entry><ind alias="../../../../../../../params/min"/><dep>0</dep></entry>
+	<entry><ind alias="../../../../../../../params/mid"/><dep>90</dep> </entry>
+	<entry><ind alias="../../../../../../../params/max"/><dep>180</dep></entry>
+      </interpolation>     
+    </transformation>
+    <transformation> <type>x-shift</type> <offset>-100</offset> </transformation> 
+    <transformation> <type>rotation</type> <offset>-90</offset> </transformation> 
+   </transformations>
+  </layer> 
+
+
+  <layer>
+   <name>gauge val 4 index marker</name>
+   <condition>
+         <property alias="../../../../params/value4"/>
+   </condition>   
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge.rgb</path>
+	<x1>	0.625	</x1>
+	<y1>	0.4	</y1>
+	<x2>	0.675	</x2>
+	<y2>	0.5	</y2>
+    </texture>
+   <w>35</w>
+   <h>55</h>
+   <transformations>
+    <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
+     <transformation>
+     <type>rotation</type>
+      <property alias="../../../../../params/value4"/>
+      <interpolation>
+	<entry><ind alias="../../../../../../../params/min"/><dep>0</dep></entry>
+	<entry><ind alias="../../../../../../../params/mid"/><dep>90</dep> </entry>
+	<entry><ind alias="../../../../../../../params/max"/><dep>180</dep></entry>
+      </interpolation>     
+    </transformation>
+    <transformation> <type>x-shift</type> <offset>-100</offset> </transformation> 
+    <transformation> <type>rotation</type> <offset>-90</offset> </transformation> 
+   </transformations>
+  </layer> 
+  
+</layers>
+</PropertyList>

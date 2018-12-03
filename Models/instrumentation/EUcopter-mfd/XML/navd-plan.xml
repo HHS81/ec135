@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+
+<!-- 
+EC NAVD flightplan
+
+Author: litzi
+
+This instrument is part of a 2D-panel simulating a NAVD found in EC series
+helicopters. This instrument is called from the central EUcopter-navd-panel.xml file with a xml include statement.
+
+This instruments shows the navigation display in plan mode without the compass rose. It is able to display 
+up to 10 navaid symbols of which are up to 4 waypoints of the current flightplan. The symbols data are
+driven by the navdisplay() function in the file mfd.nas .
+ 
+Some components of this instrument are based on code and bitmaps of Syd Adams' Primus-1000 instrument.
+
+-->
+
+<PropertyList>
+  <name>Helionix Helicopter Flightplan</name>
+  <background>Aircraft/ec145/Models/instruments/EUcopter-mfd/XML/transparent.rgb</background>
+
+  <w-base>500</w-base>
+  <h-base>500</h-base>
+  <layers>
+    
+  <layer include="navd-plan-symb.xml">
+      <params>
+        <bear>/instrumentation/efis/navd/sym[0]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[0]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[0]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[0]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <params>
+        <bear>/instrumentation/efis/navd/sym[0]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[0]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[0]/id</id>
+      </params>
+  </layer>
+
+  <layer include="navd-plan-symb.xml">
+      <params>
+        <bear>/instrumentation/efis/navd/sym[1]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[1]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[1]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[1]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <params>
+        <bear>/instrumentation/efis/navd/sym[1]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[1]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[1]/id</id>
+      </params>
+  </layer>
+
+  <layer include="navd-plan-symb.xml">
+      <params>
+        <bear>/instrumentation/efis/navd/sym[2]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[2]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[2]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[2]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <params>
+        <bear>/instrumentation/efis/navd/sym[2]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[2]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[2]/id</id>
+      </params>
+  </layer>
+  
+  <layer include="navd-plan-symb.xml">
+      <name>WPT symbol</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[3]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[3]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[3]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[3]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <name>WPT ID</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[3]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[3]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[3]/id</id>
+      </params>
+  </layer>
+
+  <layer include="navd-plan-symb.xml">
+      <name>WPT symbol</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[4]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[4]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[4]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[4]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <name>WPT ID</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[4]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[4]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[4]/id</id>
+      </params>
+  </layer>
+  
+  <layer include="navd-plan-symb.xml">
+      <name>WPT symbol</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[5]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[5]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[5]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[5]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <name>WPT ID</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[5]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[5]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[5]/id</id>
+      </params>
+  </layer>
+  
+  <layer include="navd-plan-symb.xml">
+      <name>WPT symbol</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[6]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[6]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[6]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[6]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <name>WPT ID</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[6]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[6]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[6]/id</id>
+      </params>
+  </layer>
+
+  <layer include="navd-plan-symb.xml">
+      <name>WPT symbol</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[7]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[7]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[7]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[7]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <name>WPT ID</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[7]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[7]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[7]/id</id>
+      </params>
+  </layer>
+  
+  <layer include="navd-plan-symb.xml">
+      <name>WPT symbol</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[8]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[8]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[8]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[8]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <name>WPT ID</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[8]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[8]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[8]/id</id>
+      </params>
+  </layer>
+
+  <layer include="navd-plan-symb.xml">
+      <name>WPT symbol</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[9]/rel-bearing</bear>
+        <rel-course>/instrumentation/efis/navd/sym[9]/rel-course</rel-course>
+        <dst>/instrumentation/efis/navd/sym[9]/distance-norm</dst>
+        <sym>/instrumentation/efis/navd/sym[9]/sym</sym>
+      </params>
+  </layer>
+  <layer include="navd-plan-id.xml">
+      <name>WPT ID</name>
+      <params>
+        <bear>/instrumentation/efis/navd/sym[9]/rel-bearing</bear>
+        <dst>/instrumentation/efis/navd/sym[9]/distance-norm</dst>
+        <id>/instrumentation/efis/navd/sym[9]/id</id>
+      </params>
+  </layer>
+
+  <layer>
+    <name>Range</name>
+    <point-size>18</point-size>    
+    <type>text</type>
+    <font>arial_black</font>
+    <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+    </color>
+    <chunks>
+      <chunk>
+          <format>%2.0f</format>
+          <type>number-value</type>
+          <property>/instrumentation/efis/navd/range</property>
+        </chunk>
+    </chunks>
+    <emissive>true</emissive>
+    <transformations>
+        <transformation>
+          <type>y-shift</type> 
+          <offset>110</offset> 
+        </transformation>
+        <transformation>
+          <type>x-shift</type> 
+          <offset>85</offset>
+        </transformation>  
+    </transformations>
+   </layer>
+</layers>
+
+</PropertyList>

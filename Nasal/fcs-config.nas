@@ -4,7 +4,13 @@
 # You don't have to write all the parameters but write just what you want to change.
 
 var fcs_params = {
-  'gains' : {
+ 'gains' : {
+  'sas' : {
+	'authority-limit' : 0.15,
+        'pitch' : -0.015, 
+          'roll' : 0.00075, 
+        'yaw' : 0.0075, 
+},
     'cas' : {
       'input' : {
         'roll' : 30, 
@@ -41,13 +47,13 @@ var fcs_params = {
   },
   'switches' : { # initial status of FCS
     'auto-hover' : 0, 
-    'cas' : 0, 
+    'cas' : 1, 
     'sas' : 1, 
-    'attitude-control' : 1,
-    'auto-stabilator' : 1, 
-    'sideslip-adjuster' : 1, 
-    'tail-rotor-adjuster' : 1,
-    'heading-adjuster' : 1,
+    'attitude-control' : 0,
+    'auto-stabilator' : 0, 
+    'sideslip-adjuster' : 0, 
+    'tail-rotor-adjuster' : 0,
+    'heading-adjuster' : 0,
     'debug' : 1  # Add this only when you are adjusting FCS parameters
   }
 };

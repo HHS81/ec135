@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+
+<!-- numeral for percentage values in Helionix Style
+
+     The value is displayed as digital number with 1 decimal digit in smaller font
+     
+     <value>   the property to display, must be a property tree path     
+	 
+ -->
+
+<PropertyList>
+ <name>Helionix style percentage numeral</name>
+ <w-base>120</w-base>
+ <h-base>30</h-base>
+ 
+ <params>
+   <value>/engines/engine/torque-pct</value>
+   <low>/instrumentation/efis/vmd/n2-low</low>
+   <hi>/instrumentation/efis/vmd/n2-hi</hi>
+   <unit>%%</unit>
+ </params>
+
+ <layers>
+  
+    <!-- High-Low amber critical indicator behind numeral -->  
+    <layer>
+      <name>numeral critical</name>
+      <condition>
+        <or>
+        <greater-than>
+          <property alias="../../../../../../params/value"/>
+          <property alias="../../../../../../params/hi"/> 
+        </greater-than>
+        <less-than>
+          <property alias="../../../../../../params/value"/>
+          <property alias="../../../../../../params/low"/>        
+        </less-than>
+      </or>
+      </condition>
+    <emissive>true</emissive>
+    <texture>
+      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/amber.rgb</path>
+      </texture>
+      <w>75</w>
+      <h>25</h>
+    <transformations>
+      <transformation><type>x-shift</type><offset>-12</offset></transformation> 
+      <transformation><type>y-shift</type><offset>-1</offset></transformation>
+    </transformations>
+    </layer> 
+  
+   <layer>
+        <name>numeric value decimal</name>
+        <emissive>true</emissive>
+
+        <type>text</type>
+        <font>arial_black</font>
+        <point-size>18</point-size>
+        <color>
+                <red>1</red>
+                <green>1</green>
+                <blue>1</blue>
+        </color>
+        <chunks>
+                <chunk>
+                        <type>number-value</type>
+                        <property alias="../../../../../params/value"/>
+                        <format>%04.0f</format>
+                        <scale>10</scale>
+                        <truncate>true</truncate>
+                </chunk>
+           </chunks>
+        <transformations>
+    <transformation> <type>x-shift</type> <offset>-32</offset> </transformation> 
+    <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+        </transformations>
+   </layer>
+
+ <layer>
+   <type>switch</type>
+     <layer>
+      <name>mask1</name>
+        <emissive>true</emissive>
+            <condition>
+            <or>
+            <greater-than>
+              <property alias="../../../../../../../params/value"/>
+              <property alias="../../../../../../../params/hi"/> 
+            </greater-than>
+            <less-than>
+              <property alias="../../../../../../../params/value"/>
+              <property alias="../../../../../../../params/low"/>        
+            </less-than>
+          </or>
+          </condition>
+      <texture>   
+        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/amber.rgb</path>
+      </texture>
+      <w>40</w>
+      <h>25</h>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>-11</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-1</offset> </transformation> 
+      </transformations>  
+    </layer> 
+  
+    <layer>
+      <name>mask</name>
+      <emissive>true</emissive>
+      <texture>   
+        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/black.rgb</path>
+      </texture>
+      <w>40</w>
+      <h>25</h>
+      <transformations>
+          <transformation> <type>x-shift</type> <offset>-11</offset> </transformation> 
+          <transformation> <type>y-shift</type> <offset>-1</offset> </transformation> 
+      </transformations>  
+    </layer>   
+  </layer> 
+
+    
+ <layer>
+	<name>numeric value</name>
+	<condition>
+		 <greater-than-equals><property alias="../../../../../params/value"/><value>99.999996</value></greater-than-equals>
+	</condition>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>22</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>number-value</type>
+			<property alias="../../../../../params/value"/>
+			<format>%3.0f.</format>
+                        <truncate>true</truncate>
+		</chunk>
+	   </chunks>
+	<transformations>
+    <transformation> <type>x-shift</type> <offset>-50</offset> </transformation> 
+    <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+	</transformations>
+   </layer>
+  
+  <layer>
+	<name>numeric value</name>
+	<condition>
+              <greater-than-equals><property alias="../../../../../params/value"/><value>9.999996</value></greater-than-equals>
+              <less-than><property alias="../../../../../params/value"/><value>99.999996</value></less-than>		 
+	</condition>
+        <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>22</point-size>
+	<color>
+                <red>1</red>
+                <green>1</green>
+                <blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>number-value</type>
+			<property alias="../../../../../params/value"/>
+			<format>%2.0f.</format>
+                        <truncate>true</truncate>
+		</chunk>
+	   </chunks>
+	<transformations>
+    <transformation> <type>x-shift</type> <offset>-32</offset> </transformation> 
+    <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+	</transformations>
+   </layer>
+  
+   <layer>
+	<name>numeric value </name>
+	<condition>
+		 <greater-than-equals><property alias="../../../../../params/value"/><value>0</value></greater-than-equals>
+		 <less-than><property alias="../../../../../params/value"/><value>9.999996</value></less-than>		 
+	</condition>
+    
+        <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>22</point-size>
+	<color>
+		<red>1</red>
+		<green>1</green>
+		<blue>1</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>number-value</type>
+			<property alias="../../../../../params/value"/>
+			<format>%1.0f.</format>
+                        <truncate>true</truncate>
+                        <min>0</min>
+		</chunk>
+	   </chunks>
+	<transformations>
+    <transformation> <type>x-shift</type> <offset>-14</offset> </transformation> 
+    <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+	</transformations>
+   </layer>
+  
+<!--   <layer>
+        <name>numeric value </name>
+        <condition>
+                 <not><property alias="../../../../../params/value"/></not>
+        </condition>    
+        <emissive>true</emissive>
+        <type>text</type>
+        <font>arial_black</font>
+        <point-size>22</point-size>
+        <color>
+                <red>1</red>
+                <green>0</green>
+                <blue>0</blue>
+        </color>
+        <chunks>
+                <chunk>
+                        <type>number-value</type>
+                        <property alias="../../../../../params/value"/>
+                        <format>000.</format>
+                        <truncate>true</truncate>
+                </chunk>
+           </chunks>
+        <transformations>
+    <transformation> <type>x-shift</type> <offset>-48</offset> </transformation> 
+    <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+        </transformations>
+   </layer>-->
+
+   <layer>
+        <name>percent sign</name>
+        <emissive>true</emissive>
+        <type>text</type>
+        <font>arial_black</font>
+        <point-size>22</point-size>
+        <color>
+                <red>1</red>
+                <green>1</green>
+                <blue>1</blue>
+        </color>
+        <chunks>
+                <chunk>
+                        <type>number-value</type>
+                        <format alias="../../../../../params/unit"/>
+                </chunk>
+           </chunks>
+        <transformations>
+    <transformation> <type>x-shift</type> <offset>30</offset> </transformation> 
+    <transformation> <type>y-shift</type> <offset>-10</offset> </transformation> 
+        </transformations>
+   </layer>
+ 
+
+ 
+ 
+  </layers>
+</PropertyList>
+

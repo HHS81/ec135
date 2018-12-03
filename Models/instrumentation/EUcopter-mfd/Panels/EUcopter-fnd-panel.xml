@@ -1,0 +1,645 @@
+<?xml version="1.0"?>
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<!--
+FND Helicopter Glass Cockpit Panel.
+_______________________________________________________________________
+
+Author: litzi
+
+This 2D panel simulates a FND flight navigation display found in EC type helicopters. 
+This panel can be used either in a 'stand alone' window with fgpanel or can be included 
+as a panel from the central 3D model file with the 'panel' statement.
+
+Some components of this panel are based on code and bitmaps of Syd Adams' Primus-1000 instrument.
+
+Dependencies:
+
+This panel includes other instruments residing in Aircraft/ec135/Models/instrumentation/EUcopter-mfd/XML
+
+The panel code expects a number of parameters to be present in the property tree
+
+/engines/engine/engine[0..1]/n2-pct
+/rotors/main/rpm-pct
+/instrumentation/VEMD/FLI/FLI-filter
+/velocities/airspeed-delta-kt-sec
+/instrumentation/efis/fnd/navsource
+/instrumentation/efis/fnd/bearingsource
+/instrumentation/efis/fnd/bearingsource[1]
+/instrumentation/efis/fnd/masterlist[0..6]
+
+The autopilot filter file filter.xml must be loaded in the /sim/systems/autopilot section of you aircraft, as well as mfd.nas and masterlist.nas to provide these parameters.
+
+The panel is in portrait orientation with 600x800 resolution
+-->
+
+<PropertyList>
+
+ <name>Helicopter Glass Cockpit FND Panel</name>
+ 
+ <w>600</w> 
+ <h>800</h>
+  
+ <instruments> 
+
+ <instrument> 
+  <name>Background in Black as an instrument background is not working</name>
+  <x>300</x>
+  <y>400</y>
+  <w>600</w>
+  <h>800</h>
+    
+  <layers>
+    <layer>
+    <name>blackbitmap</name>
+    <emissive>true</emissive>
+    <texture>   
+      <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/black.rgb</path>
+	  <x1>0.25</x1>
+	  <y1>0</y1>
+	  <x2>0.75</x2>
+	  <y2>1</y2>
+      </texture>
+    </layer>    
+  </layers>
+ </instrument>
+
+   
+<!-- =============================
+     PFD
+     ============================= -->
+
+ <instrument include = "../XML/helionix-btn-hor.xml">
+   <name>button labels</name>
+    <params>
+        <btn1> FND</btn1>
+        <btn2>NAVD</btn2>
+        <btn3> VMS</btn3>
+        <btn4>DMAP</btn4>
+        <type>0</type>
+    </params>
+   <x>220</x>
+   <y>785</y>
+   <w>400</w> 
+   <h>20</h> 
+ </instrument>
+
+ <instrument include = "../XML/helionix-btn-hor.xml">
+   <name>button labels</name>
+    <params>
+        <btn1> CPL</btn1>
+        <btn2> </btn2>
+        <btn3> </btn3>
+        <btn4> </btn4>
+        <type>300</type>
+    </params>
+   <x>200</x>
+   <y>15</y>
+   <w>380</w> 
+   <h>20</h> 
+ </instrument>
+ 
+ <instrument include = "../XML/helionix-pfd.xml">
+   <name>ai and tapes</name>
+    <params>
+      <fli>/instrumentation/VEMD/FLI/flitape</fli>
+    </params>
+   <x>280</x>
+   <y>560</y>
+   <w>560</w> 
+   <h>310</h> 
+ </instrument>
+ 
+ <instrument include = "../XML/helionix-gauge.xml">
+    <name>tachymeter</name>
+    <params>
+      <value1>/rotors/main/rpm-pct</value1>
+      <value2>/engines/engine[0]/n2-pct</value2>
+      <value3>/engines/engine[1]/n2-pct</value3>
+      <value4>/engines/engine[1]/n2-pct</value4>
+      <name></name>
+      <fmt>%3.0f</fmt>
+      <min>80</min>
+      <mid>100</mid>  
+      <max>120</max>
+      <scale>1.0</scale>     
+    </params>
+    <x>90</x>
+    <y>740</y>
+    <w>180</w>
+    <h>90</h>
+</instrument>
+
+<!-- 
+     Compass rose with CDI and 2 bearing needles.
+     CDI needle input depends on /instrumentation/efis/fnd/navsource
+     bearing needle input depends on /instrumentation/efis/fnd/bearingsource[i]
+     property values.
+     Value "" (or false) is used for NAV1 (bearing) for backward compatibility
+-->
+
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with NAV1 active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value></value>
+        </equals>
+        <not><property>/instrumentation/efis/fnd/bearingsource</property></not>
+        <not><property>/instrumentation/efis/fnd/bearingsource[1]</property></not>
+      </condition>    
+      <params>
+        <nav3-err>/autopilot/internal/nav1-course-error</nav3-err>
+        <nav3-in-range>/instrumentation/nav[0]/in-range</nav3-in-range>
+        
+        <cdi-act>/instrumentation/nav[0]/in-range</cdi-act>  
+        <cdi-defl>/instrumentation/nav[0]/heading-needle-deflection</cdi-defl>
+        <cdi-err>/autopilot/internal/nav1-course-error</cdi-err>
+        <cdi-to>/instrumentation/nav[0]/to-flag</cdi-to>
+        <cdi-from>/instrumentation/nav[0]/from-flag</cdi-from>
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>
+      <h>245</h>
+  </instrument>
+
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with NAV2 active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>NAV2</value>
+        </equals>
+        <not><property>/instrumentation/efis/fnd/bearingsource</property></not>
+        <not><property>/instrumentation/efis/fnd/bearingsource[1]</property></not> 
+      </condition>
+      <params>
+	<nav3-err>/autopilot/internal/nav2-course-error</nav3-err>  
+	<nav3-in-range>/instrumentation/nav[1]/in-range</nav3-in-range>
+    <cdi-act>/instrumentation/nav[1]/in-range</cdi-act>  
+	<cdi-defl>/instrumentation/nav[1]/heading-needle-deflection</cdi-defl>
+	<cdi-err>/autopilot/internal/nav2-course-error</cdi-err>   
+	<cdi-to>/instrumentation/nav[1]/to-flag</cdi-to>
+	<cdi-from>/instrumentation/nav[1]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>    
+      <h>245</h>  
+  </instrument> 	   
+
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with FMS active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>FMS</value>
+        </equals>
+        <not><property>/instrumentation/efis/fnd/bearingsource</property></not>
+        <not><property>/instrumentation/efis/fnd/bearingsource[1]</property></not> 
+      </condition>    
+      <params>  
+        <nav3-in-range>/instrumentation/gps/wp/wp[1]/valid</nav3-in-range>
+	<nav3-err>/autopilot/internal/fms-course-error</nav3-err>
+	<cdi-act>/instrumentation/gps/wp/wp[1]/valid</cdi-act>  
+	<cdi-defl>instrumentation/gps/wp/wp[1]/heading-needle-deflection</cdi-defl>
+	<cdi-err>/autopilot/internal/fms-course-error</cdi-err>   
+	<cdi-to>/instrumentation/gps/wp/wp[1]/to-flag</cdi-to>
+	<cdi-from>/instrumentation/gps/wp/wp[1]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>    
+      <h>245</h>  
+  </instrument> 	   
+  
+  <!-- bearing needle 1 set to FMS waypoint (default is NAV1) -->
+  
+    <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with NAV1 active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value></value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource</property>
+        <not><property>/instrumentation/efis/fnd/bearingsource[1]</property></not>  
+      </condition>    
+      <params>
+        <nav1-in-range>/instrumentation/gps/wp/wp[1]/valid</nav1-in-range>
+        <nav1-err>/instrumentation/gps/wp/wp[1]/relative-bearing-deg</nav1-err>
+        
+        <nav3-err>/autopilot/internal/nav1-course-error</nav3-err>  
+        <nav3-in-range>/instrumentation/nav[0]/in-range</nav3-in-range>
+        <cdi-act>/instrumentation/nav[0]/in-range</cdi-act>  
+        <cdi-defl>/instrumentation/nav[0]/heading-needle-deflection</cdi-defl>
+        <cdi-err>/autopilot/internal/nav1-course-error</cdi-err>   
+        <cdi-to>/instrumentation/nav[0]/to-flag</cdi-to>
+        <cdi-from>/instrumentation/nav[0]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>
+      <h>245</h>
+  </instrument>
+
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with NAV2 active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>NAV2</value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource</property>
+        <not><property>/instrumentation/efis/fnd/bearingsource[1]</property></not> 
+      </condition>
+      <params>
+      
+        <nav1-in-range>/instrumentation/gps/wp/wp[1]/valid</nav1-in-range>
+	<nav1-err>/instrumentation/gps/wp/wp[1]/relative-bearing-deg</nav1-err>
+	
+	<nav3-err>/autopilot/internal/nav2-course-error</nav3-err>  
+	<nav3-in-range>/instrumentation/nav[1]/in-range</nav3-in-range>
+        <cdi-act>/instrumentation/nav[1]/in-range</cdi-act>  
+	<cdi-defl>/instrumentation/nav[1]/heading-needle-deflection</cdi-defl>
+	<cdi-err>/autopilot/internal/nav2-course-error</cdi-err>   
+	<cdi-to>/instrumentation/nav[1]/to-flag</cdi-to>
+	<cdi-from>/instrumentation/nav[1]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>    
+      <h>245</h>  
+  </instrument>
+  
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with FMS active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>FMS</value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource</property>
+        <not><property>/instrumentation/efis/fnd/bearingsource[1]</property></not> 
+      </condition>    
+      <params>
+        <nav1-in-range>/instrumentation/gps/wp/wp[1]/valid</nav1-in-range>
+	<nav1-err>/instrumentation/gps/wp/wp[1]/relative-bearing-deg</nav1-err>   
+	
+        <nav3-in-range>/instrumentation/gps/wp/wp[1]/valid</nav3-in-range>
+	<nav3-err>/autopilot/internal/fms-course-error</nav3-err>
+	<cdi-act>/instrumentation/gps/wp/wp[1]/valid</cdi-act>  
+	<cdi-defl>instrumentation/gps/wp/wp[1]/heading-needle-deflection</cdi-defl>
+	<cdi-err>/autopilot/internal/fms-course-error</cdi-err>   
+	<cdi-to>/instrumentation/gps/wp/wp[1]/to-flag</cdi-to>
+	<cdi-from>/instrumentation/gps/wp/wp[1]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>    
+      <h>245</h>  
+  </instrument> 
+  
+  
+    <!-- bearing needle 2 set to NAV2 (default is ADF) -->
+  
+    <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with NAV1 active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value></value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+        <not><property>/instrumentation/efis/fnd/bearingsource</property></not>  
+      </condition>    
+      <params>
+
+        <nav2-err>/instrumentation/nav[1]/rel-bearing-deg</nav2-err>  
+	<nav2-in-range>/instrumentation/nav[1]/in-range</nav2-in-range>
+	    
+        <nav3-err>/autopilot/internal/nav1-course-error</nav3-err>  
+        <nav3-in-range>/instrumentation/nav[0]/in-range</nav3-in-range>
+        <cdi-act>/instrumentation/nav[0]/in-range</cdi-act>  
+        <cdi-defl>/instrumentation/nav[0]/heading-needle-deflection</cdi-defl>
+        <cdi-err>/autopilot/internal/nav1-course-error</cdi-err>   
+        <cdi-to>/instrumentation/nav[0]/to-flag</cdi-to>
+        <cdi-from>/instrumentation/nav[0]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>
+      <h>245</h>
+  </instrument>
+
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with NAV2 active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>NAV2</value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+        <not><property>/instrumentation/efis/fnd/bearingsource</property></not> 
+      </condition>
+      <params>
+      
+        <nav2-err>/instrumentation/nav[1]/rel-bearing-deg</nav2-err>  
+        <nav2-in-range>/instrumentation/nav[1]/in-range</nav2-in-range>
+	
+	<nav3-err>/autopilot/internal/nav2-course-error</nav3-err>  
+	<nav3-in-range>/instrumentation/nav[1]/in-range</nav3-in-range>
+    <cdi-act>/instrumentation/nav[1]/in-range</cdi-act>  
+	<cdi-defl>/instrumentation/nav[1]/heading-needle-deflection</cdi-defl>
+	<cdi-err>/autopilot/internal/nav2-course-error</cdi-err>   
+	<cdi-to>/instrumentation/nav[1]/to-flag</cdi-to>
+	<cdi-from>/instrumentation/nav[1]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>    
+      <h>245</h>  
+  </instrument>
+  
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with FMS active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>FMS</value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+        <not><property>/instrumentation/efis/fnd/bearingsource</property></not> 
+      </condition>    
+      <params>
+
+        <nav2-err>/instrumentation/nav[1]/rel-bearing-deg</nav2-err>  
+	<nav2-in-range>/instrumentation/nav[1]/in-range</nav2-in-range>
+	
+    <nav3-in-range>/instrumentation/gps/wp/wp[1]/valid</nav3-in-range>
+	<nav3-err>/autopilot/internal/fms-course-error</nav3-err>
+	<cdi-act>/instrumentation/gps/wp/wp[1]/valid</cdi-act>  
+	<cdi-defl>instrumentation/gps/wp/wp[1]/heading-needle-deflection</cdi-defl>
+	<cdi-err>/autopilot/internal/fms-course-error</cdi-err>   
+	<cdi-to>/instrumentation/gps/wp/wp[1]/to-flag</cdi-to>
+	<cdi-from>/instrumentation/gps/wp/wp[1]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>    
+      <h>245</h>  
+  </instrument>
+  
+  <!-- both bearing needles not to default  -->
+  
+    <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with NAV1 active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value></value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+        <property>/instrumentation/efis/fnd/bearingsource</property>
+      </condition>    
+      <params>
+      
+        <nav1-in-range>/instrumentation/gps/wp/wp[1]/valid</nav1-in-range>
+	    <nav1-err>/instrumentation/gps/wp/wp[1]/relative-bearing-deg</nav1-err>   
+
+        <nav2-err>/instrumentation/nav[1]/rel-bearing-deg</nav2-err>  
+	    <nav2-in-range>/instrumentation/nav[1]/in-range</nav2-in-range>
+	    
+        <nav3-err>/autopilot/internal/nav1-course-error</nav3-err>  
+        <nav3-in-range>/instrumentation/nav[0]/in-range</nav3-in-range>
+        <cdi-act>/instrumentation/nav[0]/in-range</cdi-act>  
+        <cdi-defl>/instrumentation/nav[0]/heading-needle-deflection</cdi-defl>
+        <cdi-err>/autopilot/internal/nav1-course-error</cdi-err>   
+        <cdi-to>/instrumentation/nav[0]/to-flag</cdi-to>
+        <cdi-from>/instrumentation/nav[0]/from-flag</cdi-from>  
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>
+      <h>245</h>
+  </instrument>
+
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with NAV2 active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>NAV2</value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+        <property>/instrumentation/efis/fnd/bearingsource</property>
+      </condition>
+      <params>
+      
+    <nav1-in-range>/instrumentation/gps/wp/wp[1]/valid</nav1-in-range>
+	<nav1-err>/instrumentation/gps/wp/wp[1]/relative-bearing-deg</nav1-err>
+
+        <nav2-err>/instrumentation/nav[1]/rel-bearing-deg</nav2-err>  
+	 <nav2-in-range>/instrumentation/nav[1]/in-range</nav2-in-range>
+	
+	<nav3-err>/autopilot/internal/nav2-course-error</nav3-err>
+	<nav3-in-range>/instrumentation/nav[1]/in-range</nav3-in-range>
+    <cdi-act>/instrumentation/nav[1]/in-range</cdi-act>
+	<cdi-defl>/instrumentation/nav[1]/heading-needle-deflection</cdi-defl>
+	<cdi-err>/autopilot/internal/nav2-course-error</cdi-err>
+	<cdi-to>/instrumentation/nav[1]/to-flag</cdi-to>
+	<cdi-from>/instrumentation/nav[1]/from-flag</cdi-from>
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>    
+      <h>245</h>  
+  </instrument>
+  
+  <instrument include="../XML/helionix-rose.xml">
+      <name>Helionix type compass rose with FMS active</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>FMS</value>
+        </equals>
+        <property>/instrumentation/efis/fnd/bearingsource[1]</property>
+        <property>/instrumentation/efis/fnd/bearingsource</property>
+      </condition>    
+      <params>
+      
+        <nav1-in-range>/instrumentation/gps/wp/wp[1]/valid</nav1-in-range>
+	<nav1-err>/instrumentation/gps/wp/wp[1]/relative-bearing-deg</nav1-err>   
+
+        <nav2-err>/instrumentation/nav[1]/rel-bearing-deg</nav2-err>  
+	<nav2-in-range>/instrumentation/nav[1]/in-range</nav2-in-range>
+	
+    <nav3-in-range>/instrumentation/gps/wp/wp[1]/valid</nav3-in-range>
+	<nav3-err>/autopilot/internal/fms-course-error</nav3-err>   
+	<cdi-act>/instrumentation/gps/wp/wp[1]/valid</cdi-act>  
+	<cdi-defl>instrumentation/gps/wp/wp[1]/heading-needle-deflection</cdi-defl>
+	<cdi-err>/autopilot/internal/fms-course-error</cdi-err>   
+	<cdi-to>/instrumentation/gps/wp/wp[1]/to-flag</cdi-to>
+	<cdi-from>/instrumentation/gps/wp/wp[1]/from-flag</cdi-from>
+
+      </params>
+      <x>280</x>
+      <y>280</y>
+      <w>395</w>    
+      <h>245</h>  
+  </instrument>
+  
+  
+  <instrument include="../XML/helionix-vs-indicator.xml">
+      <name>vertical speed indicator</name>
+      <x>420</x>
+      <y>560</y>
+      <w>40</w>    
+      <h>260</h>  
+  </instrument> 	   
+ 
+ <!-- air speed trend vectors
+      note: 5 kt/s acceleration for 10 sec equal full scale = 50 kt 
+ -->
+	  
+ <instrument include="../XML/bar-gauge.xml">
+      <name>bar for airspeed trend vector+</name>
+      <condition>
+	<greater-than>
+	  <property>/velocities/airspeed-delta-kt-sec</property>
+	  <value>1</value>
+	</greater-than>
+      </condition>
+      <x>162</x>
+      <y>632</y>
+      <w>12</w>    
+      <h>140</h>  
+      <params>
+	<value>/velocities/airspeed-delta-kt-sec</value>
+	<min>-50</min>
+	<max>50</max>
+	<type>48</type>
+      </params>	   
+  </instrument> 	   
+ 
+ <instrument include="../XML/bar-gauge.xml">
+      <name>bar for airspeed trend vector-</name>
+	  <condition>
+	    <less-than>
+	      <property>/velocities/airspeed-delta-kt-sec</property>
+	      <value>-1</value>
+	    </less-than>
+	  </condition> 
+      <x>162</x>
+      <y>492</y>
+      <w>12</w>    
+      <h>140</h>  
+      <params>
+	<value>/velocities/airspeed-delta-kt-sec</value>
+	<min>-50</min>
+	<max>50</max>
+	<type>48</type>
+      </params>	   
+ </instrument> 	
+
+ <instrument include="../XML/helionix-fnd-gs-defl.xml">
+      <name>NAV1 GS deflection</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value></value>
+        </equals>
+        <property>/instrumentation/nav[0]/gs-in-range</property>
+      </condition>
+      <x>70</x>
+      <y>280</y>
+      <w>35</w>    
+      <h>180</h>  
+      <params>
+	<defl>/instrumentation/nav[0]/gs-needle-deflection-norm</defl>
+      </params>	   
+ </instrument> 	
+
+ <instrument include="../XML/helionix-fnd-gs-defl.xml">
+      <name>NAV2 GS deflection</name>
+      <condition>
+        <equals>
+          <property>/instrumentation/efis/fnd/navsource</property>
+          <value>NAV2</value>
+        </equals>
+        <property>/instrumentation/nav[1]/gs-in-range</property>
+      </condition>
+      <x>70</x>
+      <y>280</y>
+      <w>35</w>    
+      <h>180</h>  
+      <params>
+        <defl>/instrumentation/nav[1]/gs-needle-deflection-norm</defl>
+      </params>    
+ </instrument>  
+
+ <instrument include="../XML/helionix-mask.xml">
+      <name>text mask for lower part of the display</name>
+      <x>300</x>
+      <y>210</y>
+      <w>580</w>    
+      <h>410</h>  
+ </instrument>
+
+ <instrument include="../XML/helionix-ap-annunciators.xml">
+      <name>autopilot annunciators in upper part of display</name>
+      <x>300</x>
+      <y>735</y>
+      <w>500</w>    
+      <h>110</h>  
+ </instrument>
+
+ <instrument include="../XML/masterlist.xml">
+      <name>master list below compass rose</name>
+     
+      <x>218</x>
+      <y>115</y>
+      <w>450</w>    
+      <h>150</h>  
+ </instrument>
+ 
+
+ <instrument include="../XML/pfd-wind-symbol.xml">
+   <name>wind symbols</name>
+      <x>200</x>
+      <y>415</y>
+      <w>55</w>    
+      <h>55</h>  
+ </instrument>
+
+ <!-- 
+ <instrument> 
+  <x>300</x>
+  <y>400</y>
+  <w>600</w>
+  <h>800</h>
+ 
+  <w-base>600</w-base>
+  <h-base>800</h-base>
+  
+  <layers>
+    <layer>
+    <w>600</w>
+    <h>800</h>
+    <name>test overlay mask for element proportions</name>
+    <emissive>false</emissive>
+    <texture>   
+      <path>Aircraft/Instruments/glass/helionix-test-overl.rgb</path>
+      <x1>	0.00000000	</x1>
+      <y1>	0.09375000	</y1>
+      <x2>	0.66796800	</x2>
+      <y2>	1.00000000	</y2>
+     </texture>
+    </layer>    
+  </layers>
+ </instrument>
+ -->
+ </instruments> 
+ 
+</PropertyList>

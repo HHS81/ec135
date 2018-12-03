@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+
+<!-- A generic gauge for a MFD
+
+     The value is displayed as digital number in the centre of the gauge.
+     The gauge can be customized to any range by setting parameters
+     for the minimum, critical (start of red zone) and maximum value.
+     
+     Parameters
+     
+     <value> the property to display, must be a property tree path
+     <name>  the name of the gauge displayed at the centre of the gauge, 
+             must be  a literal string
+     <fmt>   format for the numeric value display as a C format 
+             string e.g. %5.0f (must be be 5 characters long to fit)
+	 <digitscale> scaling for the numeric value displayed (e.g.for g-meter)
+     <min>   minimum value located on the lower index position
+     <crit>  critical value before the red zone
+     <max>   max value located on the top index position
+     
+ -->
+
+<PropertyList>
+ <name>Generic MFD gauge</name>
+ <w-base>100</w-base>
+ <h-base>100</h-base>
+ 
+ <params>
+  <value>surface-positions/flap-pos-norm</value>
+  <name>FLAPS</name>
+  <fmt>%3.0f</fmt>
+  <digitscale>100</digitscale>
+  <min>0</min>
+  <crit>0.8</crit>  
+  <max>1.0</max>  
+  <max-label></max-label> 
+  <min-label></min-label> 
+  <crit-label></crit-label> 
+ </params>
+
+<layers>
+  <layer>
+   <name>needle marker</name>
+   <emissive>true</emissive>
+   <texture>
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/eicas.rgb</path>
+	<x1>	0.48828125	</x1>
+	<y1>	0.21875000	</y1>
+	<x2>	0.68359375	</x2>
+	<y2>	0.41406250	</y2>
+   </texture>
+   <w>100</w>
+   <h>100</h>
+   <transformations>
+	
+	<transformation>
+     <type>rotation</type>
+     <property alias="../../../../../params/value"/>
+     <max>180</max>
+	 <min>0</min>
+	  <offset>-45</offset>
+	  <interpolation>
+		 <entry><ind alias="../../../../../../../params/min"/><dep>0</dep></entry>
+		 <entry><ind alias="../../../../../../../params/crit"/><dep>148</dep></entry>
+		 <entry><ind alias="../../../../../../../params/max"/><dep>180</dep></entry>
+	 </interpolation>	 
+    </transformation>
+
+   </transformations>
+  </layer> 
+ 
+  <layer>
+   <name>gauge face</name>
+   <emissive>true</emissive>
+   <texture>   
+    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/eicas.rgb</path>
+	<x1>	0.48828125	</x1>
+	<y1>	0.41406250	</y1>
+	<x2>	0.68359375	</x2>
+	<y2>	0.60937500	</y2>
+  </texture>
+   <w>102</w>
+   <h>102</h>
+  </layer>   
+  
+   <layer>
+	<name>gauge name</name>
+	<emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>10</point-size>
+	<color>
+		<red>0.7</red>
+		<green>0.7</green>
+		<blue>0.7</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>
+			<text alias="../../../../../params/name"/>
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-22</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>30</offset> </transformation> 
+	</transformations>
+ </layer>
+ 
+  <layer>
+	<name>numeric value</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>10</point-size>
+	<color>
+		<red>0.2</red>
+		<green>0.8</green>
+		<blue>0.3</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>number-value</type>
+			<property alias="../../../../../params/value"/>
+			<format alias="../../../../../params/fmt"/>
+			<scale alias="../../../../../params/digitscale"/> 
+		</chunk>
+	   </chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>2</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>8</offset> </transformation> 
+	</transformations>
+   </layer>
+  
+   <layer>
+	<name>max value indicator</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>9</point-size>
+	<color>
+		<red>1.0</red>
+		<green>1.0</green>
+		<blue>1.0</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>			
+			<text alias="../../../../../params/max-label"/> 
+		</chunk>
+	</chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-30</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>18</offset> </transformation> 
+	</transformations>
+   </layer>
+  
+   <layer>
+	<name>min value indicator</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>9</point-size>
+	<color>
+		<red>1.0</red>
+		<green>1.0</green>
+		<blue>1.0</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>			
+			<text alias="../../../../../params/min-label"/> 
+		</chunk>
+	</chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>10</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>-28</offset> </transformation> 
+	</transformations>
+   </layer>
+   
+     <layer>
+	<name>crit value indicator</name>
+    <emissive>true</emissive>
+	<type>text</type>
+	<font>arial_black</font>
+	<point-size>9</point-size>
+	<color>
+		<red>1.0</red>
+		<green>1.0</green>
+		<blue>1.0</blue>
+	</color>
+	<chunks>
+		<chunk>
+			<type>literal</type>			
+			<text alias="../../../../../params/crit-label"/> 
+		</chunk>
+	</chunks>
+	<transformations>
+	   <transformation> <type>x-shift</type> <offset>-40</offset> </transformation> 
+	   <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
+	</transformations>
+   </layer>
+  
+  </layers>
+</PropertyList>
+

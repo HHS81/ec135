@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<!-- Clock Instrument for EUcopter VMD display   
+ -->
+
+<PropertyList>
+ <name>clock</name>
+ <w-base>300</w-base>
+ <h-base>50</h-base>
+
+ <layers>
+   <layer>
+    <name>clock</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>36</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks include = "clock-string.xml"/>
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-150</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-20</offset> </transformation> 
+    </transformations>
+  </layer>
+   
+   <layer>
+    <name>clock dots</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>36</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+          <chunk>
+              <type>literal</type>
+              <text>.</text>
+          </chunk>
+    </chunks>
+ 
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-91</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-2</offset> </transformation> 
+    </transformations>
+  </layer>
+   
+   <layer>
+    <name>clock dots</name>
+    <emissive>true</emissive>
+    <type>text</type>
+    <font>arial_black</font>
+    <point-size>36</point-size>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+          <chunk>
+              <type>literal</type>
+              <text>.</text>
+          </chunk>
+    </chunks>
+ 
+    <transformations>
+        <transformation> <type>x-shift</type> <offset>-17</offset> </transformation> 
+        <transformation> <type>y-shift</type> <offset>-2</offset> </transformation> 
+    </transformations>
+  </layer>
+ </layers>
+     
+</PropertyList>

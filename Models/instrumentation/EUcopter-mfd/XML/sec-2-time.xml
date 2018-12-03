@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+
+<!-- This is a <CHUNKS> element to be included from a TEXT layer.
+     It displays a property representing a seconds time span in
+     0H00MIN format. It works between 55 sec and 5 hours.
+-->
+
+<PropertyList>
+   <name>time display</name>
+   <params>
+       <sec>/instrumentation/nav/TTG-sec</sec>
+   </params>
+
+           <chunk>
+              <condition>
+                <greater-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>55</value>
+                </greater-than>               
+                <less-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>3599</value>
+                </less-than>
+              </condition>
+              <type>number-value</type>
+              <format>%2.0fMIN</format>
+              <scale>0.016666</scale>
+              <property alias="../../params/sec"/>
+          </chunk>
+          
+          <chunk>
+              <condition>
+                <greater-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>3600</value>
+                </greater-than>
+                <less-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>7199</value>
+                </less-than>               
+              </condition>
+              <type>number-value</type>
+              <format>1H%02.0fMIN</format>
+              <scale>0.016666</scale>
+              <offset>-60</offset>
+              <property alias="../../params/sec"/>
+          </chunk>
+          
+           <chunk>
+              <condition>
+                <greater-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>7200</value>
+                </greater-than>
+                <less-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>10739</value>
+                </less-than>
+              </condition>
+              <type>number-value</type>
+              <format>2H%02.0fMIN</format>
+              <scale>0.016666</scale>
+              <offset>-120</offset>
+              <property alias="../../params/sec"/>
+          </chunk>
+          
+          <chunk>
+              <condition>
+                <greater-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>10740</value>
+                </greater-than>               
+                <less-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>14399</value>
+                </less-than>               
+              </condition>
+              <type>number-value</type>
+              <format>3H%02.0fMIN</format>
+              <scale>0.016666</scale>
+              <offset>-180</offset>
+              <property alias="../../params/sec"/>
+          </chunk>
+          
+          <chunk>
+              <condition>
+                <greater-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>14400</value>
+                </greater-than>               
+                <less-than>
+                  <property alias="../../../../params/sec"/>
+                  <value>18000</value>
+                </less-than>               
+              </condition>
+              <type>number-value</type>
+              <format>4H%02.0fMIN</format>
+              <scale>0.016666</scale>
+              <offset>-240</offset>
+              <property alias="../../params/sec"/>
+          </chunk>
+          
+          <!-- out of range -->
+          <chunk>
+              <condition>
+              <or>
+                <greater-than>
+                  <property alias="../../../../../params/sec"/>
+                  <value>17999</value>
+                </greater-than>               
+                <less-than>
+                  <property alias="../../../../../params/sec"/>
+                  <value>55</value>
+                </less-than>
+               </or> 
+              </condition>
+              <type>literal</type>
+              <text>*H**MIN</text>
+          </chunk>
+</PropertyList>

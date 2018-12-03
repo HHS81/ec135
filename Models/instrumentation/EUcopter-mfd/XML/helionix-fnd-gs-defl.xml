@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <name>helionix-gs-deflection</name>
+  <w-base>22</w-base>
+  <h-base>100</h-base>
+
+  <params>  
+    <defl>/instrumentation/nav[0]/gs-needle-deflection-norm</defl>
+  </params>
+
+
+   <layers>
+     <layer>
+	<name>FND GS Deflection Scale</name>
+<!--	<condition>
+ 		 <equals>
+ 		   <property>/autopilot/internal/nav-id</property>
+		   <property alias="../../../../params/nav-id"/>
+ 		 </equals> 
+	    <property alias="../../params/in-range"/>
+	</condition>
+-->
+	<w>22</w>
+	<h>95</h>
+	<texture>
+	      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+	      <x1>	0.95703100	</x1>
+	      <y1>	0.00000000	</y1>
+	      <x2>	1.00000000	</x2>
+	      <y2>	0.18554600	</y2>
+	</texture>
+	<emissive>true</emissive>
+     </layer>
+     
+     <layer>
+	<name>FND GS Deflection Needle</name>
+<!--	<condition>
+ 		 <equals>
+ 		   <property>/autopilot/internal/nav-id</property>
+		   <property alias="../../../../params/nav-id"/>
+ 		 </equals> 
+
+	    <property alias="../../params/in-range"/>
+	</condition>
+-->
+	<w>18</w>
+	<h>15</h>
+	<texture>
+	      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+	      <x1>	0.95703100	</x1>
+	      <y1>	0.19726500	</y1>
+	      <x2>	0.99414000	</x2>
+	      <y2>	0.22851500	</y2>
+	</texture>
+	<emissive>true</emissive>
+	<transformations>
+		<transformation> <type>x-shift</type> <offset>0</offset> </transformation>  
+		<transformation> <type>y-shift</type> <offset>-3</offset> </transformation>
+		<transformation>
+		   <type>y-shift</type>
+		   <property alias="../../../../../params/defl"/>
+		   <interpolation>
+				<entry><ind>-0.7</ind><dep>-41.0</dep></entry>
+				<entry><ind>0</ind><dep>0.0</dep></entry>
+				<entry><ind>0.7</ind><dep>41.0</dep></entry>
+		   </interpolation>
+		</transformation>
+		<transformation> <type>rotation</type> <offset>-90</offset> </transformation>
+	</transformations>
+      </layer>
+    </layers>
+    
+</PropertyList>

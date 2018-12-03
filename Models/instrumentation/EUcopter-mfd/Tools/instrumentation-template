@@ -1,0 +1,26 @@
+                <!-- For the Helionix panels add this to the instrumentation section of the aircraft set file. -->
+                <mfdsupply type="float">24</mfdsupply>
+                
+<!--            Note: You need to provide these parameters for all 4 Helionix MFDs even if your
+                aircraft does not all use them .-->
+            
+                <mfd n="0">
+                  <mode-list type="string">FND,NAVD,VMD,DMAP</mode-list>
+                  <pwr-sw-pos type="bool">1</pwr-sw-pos> <!--initial position of the screens power switch-->
+                  <supply>instrumentation/mfdsupply</supply>
+                </mfd>  
+                <mfd n="1">
+                  <mode-list type="string">VMD,NAVD,DMAP</mode-list>
+                  <pwr-sw-pos type="bool">1</pwr-sw-pos> <!--initial position of the screens power switch-->
+                  <supply>instrumentation/mfdsupply</supply>
+                </mfd>  
+                <mfd n="2">
+                  <mode-list type="string">FND,NAVD,VMD</mode-list>
+                  <pwr-sw-pos type="bool">1</pwr-sw-pos> <!--initial position of the screens power switch-->
+                  <supply>instrumentation/mfdsupply</supply>
+                </mfd>  
+                <mfd n="3">
+                  <mode-list type="string">FND</mode-list>
+                  <pwr-sw-pos type="bool">1</pwr-sw-pos> <!--initial position of the screens power switch-->
+                  <supply>systems/electrical/outputs/instr-ignition-switch</supply>
+                </mfd>  

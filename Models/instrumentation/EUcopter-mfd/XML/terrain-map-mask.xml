@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!-- 
+A arc-mask
+
+Author: litzi
+
+This instrument is for integration in 2D panel simulating a terrain map found in modern MFDs
+This is the mask overlay with sector and aircraft symbol
+-->
+
+<PropertyList>
+<name>Terrain Map</name>
+<background>Aircraft/Instruments/EUcopter-mfd/Textures/transparent.rgb</background>
+<w-base>320</w-base>
+<h-base>320</h-base>
+<layers>
+
+<layer>
+    <name>active waypoint bearing line</name>
+    <w>8</w>
+    <h>256</h>
+    <condition>
+        <property>/instrumentation/gps/wp/wp[1]/valid</property>
+    </condition>
+    <texture>
+        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/mapdisplay.rgb</path>
+        <x1>  0.4921875 </x1>
+        <y1>  0 </y1>
+        <x2>  0.5078125 </x2>
+        <y2>  0.5 </y2>  
+    </texture>
+    <emissive>true</emissive>
+    <transformations>
+      <transformation>
+          <type>rotation</type>
+          <property>/instrumentation/gps/wp/wp[1]/relative-bearing-deg</property>
+          <scale>1</scale>
+      </transformation>
+      <transformation> <type>y-shift</type> <offset>128</offset> </transformation>
+    </transformations>
+</layer>
+
+<layer>
+    <name>aircraft and arc symbol mask</name>
+    <w>250</w>
+    <h>250</h>
+    <texture>
+        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/mapdisplay.rgb</path>
+        <x1>  0     </x1>
+        <y1>  0.5   </y1>
+        <x2>  0.5   </x2>
+        <y2>  1     </y2>  
+    </texture>
+    <emissive>true</emissive>
+</layer>
+
+</layers>
+</PropertyList>

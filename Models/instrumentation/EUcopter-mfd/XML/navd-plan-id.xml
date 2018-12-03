@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <name>Waypoint ID</name>
+    <params>
+      <bear>/instrumentation/nav[0]/rel-bearing-deg</bear>
+      <dst>/instrumentation/nav[0]/nav-distance</dst>
+      <id>/instrumentation/nav[1]/nav-id</id>
+    </params>
+
+    <name>ID</name>
+    <point-size>18</point-size>    
+    <type>text</type>
+    <color>
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+    </color>
+    <chunks>
+      <chunk>
+          <format>%1.6s</format>
+          <type>text-value</type>
+          <property alias="../../../params/id"/>
+        </chunk>
+    </chunks>
+    <emissive>true</emissive>
+    <transformations>
+        <transformation> 
+          <type>rotation</type> 
+          <property alias="../../../params/bear"/>
+        </transformation> 
+        <transformation>
+          <type>y-shift</type> 
+          <property alias="../../../params/dst"/> 
+          <scale>160</scale> 
+        </transformation>
+        <transformation> 
+          <type>rotation</type> 
+          <property alias="../../../params/bear"/>
+          <scale>-1</scale>
+        </transformation> 
+        <transformation>
+          <type>x-shift</type> 
+          <offset>10</offset>
+        </transformation>
+    </transformations>
+</PropertyList>

@@ -1,0 +1,81 @@
+EC MFD
+
+Author: litzi
+
+This instrument simulates a MFD found in Eu**copter series helicopters. 
+Technically the 3D instruments are realized as 2D FND (flight navigation display) 
+and VMD (vehicle management display) panels 
+embedded in the 3D model of the display beezel.
+
+Some components of these panels are based on code and bitmaps 
+of Syd Adams' Primus-1000 instrument. Code for FLI and engine 
+oil pressure and temp. taken from EC130 Nasal code, original author Melchior Franz.
+
+Things to consider:
+
+-FLI (first limit indicator) tape on the left hand side of the PFD
+ is showing FLI using the code found in the EC130.nas
+
+-Engine's torque on the VMD is a best guess model at the moment where 
+ total gearbox torque from the Yasim FDM is distributed between the engines 
+ according to the engines power settings and n2 rpm's.
+
+Dependencies:
+
+This instrument includes 2d panel code EUcopter-pfd-panel.xml residing in Aircraft/Instruments/glass
+
+To incorporate the 3d instrument into your aircraft ,
+you need to add the following to your files:
+
+Place the FND and VMD instruments in the cockpit, 
+add this to the aircrafts animation file, similar as:
+
+    <model>
+      <name>FND</name>
+      <path>Aircraft/Instruments-3d/EUcopter-mfd/EUcopter-fnd.xml</path>
+      <offsets>
+	  <x-m> -2.75</x-m>
+	  <y-m> 0.25</y-m>
+	  <z-m> 0.34</z-m>
+	  <pitch-deg>-14</pitch-deg>
+      </offsets>
+  </model>
+    
+  <model>
+    <name>VMD</name>
+    <path>Aircraft/Instruments-3d/EUcopter-mfd/EUcopter-vmd.xml</path>
+    <offsets>
+	    <x-m>-2.75</x-m>
+	    <y-m>0.035</y-m>
+	    <z-m>0.34</z-m>
+	    <pitch-deg>-14</pitch-deg>
+    </offsets>
+  </model>	
+
+Copy the filter.xml file to your aircraft Systems folder 
+and modify the filters that drive the panel according to 
+your helicopter parameters.
+
+to load the filter.xml file in your aircraft -set.xml file, similar as in:
+
+  <sim>
+      <autopilot>
+    <systems>
+      <!-- many other elements live here -->
+	<path>Aircraft/YourAircraft/Systems/filter.xml</path>
+      </autopilot>
+    </systems>
+  </sim>
+
+Copy the mfd.nas file to your aircraft Nasal folder 
+and modify the parameters that drive the gauges 
+according to your helicopter parameters.
+
+to load the mfd.nas file in your aircraft -set.xml file, similar as in:
+
+  <nasal>
+	  <bk117>
+		  <!-- many other elements live may here ... --> 
+		  <file>Aircraft/YourAircraft/Nasal/mfd.nas</file>
+	  </bk117>
+  </nasal>
