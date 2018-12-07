@@ -167,6 +167,7 @@ airfoil-incidence-no-lift="-0.1"
 	cyclic-factor="1.1"
 	rotor-correction-factor="0.9"
 	downwashfactor="1.0">-->
+	
 	<!--lst values: 1.35;0.1;-0.3;3.80;0.0074;0.04; to-do: play with lift-coeff and translift-factor-->
 <control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"/>
 	<control-input axis="/controls/flight/aileron-cmd" control="CYCLICAIL"

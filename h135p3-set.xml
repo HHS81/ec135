@@ -508,7 +508,7 @@ Thanks for all the help!
 			<line>Dumps SAS -> CTR-d-Key</line>
 			<line>Reengage Pitch/ Roll SAS -> Shift -p -Key</line>
 			<line>Reengage Yaw SAS -> CTR -e -Key</line>
-			<line>CAT A Button (increase rotor speed up to + 3%- use only below 55ktn IAS!) -> a-Key</line>
+			<line>CAT A Button (increase rotor speed up to + 3%- use only below 55ktn IAS!) -> C-Key (shift-c)</line>
 			<line></line>
 			
 
@@ -604,7 +604,7 @@ Thanks for all the help!
 </environment>		
 	
 <limits>
-<vne>140</vne>
+<vne>150</vne>
 <MTOW>6570</MTOW>
 <MCP>69</MCP>
 <MTOP>78</MTOP>
@@ -774,9 +774,11 @@ Thanks for all the help!
                           torque factor 1/(max. power in Watts) *100 % :
                            1/550 000W * 100 for power in % = 0.000181818 
 						   
-						   Edit HHS: Max allowed Torque is 128%, maybe better drive the Torque display in the mfd from the ec135.nas
-                      -->
-                      <eng-trq-factor type="float">0.00020983606</eng-trq-factor>
+						   Edit HHS: Assume in dual engine mode every engine can pull up to 82% torque (max allowed is 78%), so:
+						   1/(610000) *82%= 0.00013442622. Since both engine add their torque we have to multiply them with 2 = 0.00026885245
+						   Litzi don`t multiply, which in my eyes is not correct, as an proove: with my calculation you get in OEI still the correct numbers-->		   
+                     
+					   <eng-trq-factor type="float">0.00026885245</eng-trq-factor>
 					<eng-max-fuelflow-pph> type="float">330</eng-max-fuelflow-pph>
                       <rotor-rpmN type="float">395</rotor-rpmN>                   
                       <nums type="bool">1</nums> <!-- display of VMD numerals on/off -->
@@ -791,7 +793,7 @@ Thanks for all the help!
                       <n2-low type="float">95</n2-low>
                       <n2-hi type="float">105.5</n2-hi>
                       <trq-low type="float">0</trq-low>
-                      <trq-hi type="float">78</trq-hi>
+                      <trq-hi type="float">69</trq-hi>
                       <n1-low type="float">0</n1-low>
                       <n1-hi type="float">104.3</n1-hi>
                   </vmd>
@@ -860,8 +862,8 @@ Thanks for all the help!
 	</binding>
   </key>
   
-<key n="97">
-    <name>a</name>
+<key n="67">
+    <name>C</name>
     <desc>CAT-A Rotor speed increase</desc>
 	<binding>
 		<command>property-toggle</command>
@@ -1064,7 +1066,6 @@ Thanks for all the help!
                 <file>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Nasal/masterlist.nas</file>
                 <file>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Nasal/helionix-terrain-map.nas</file>
                 <file>Aircraft/ec135//Nasal/masterlist_h135.nas</file>
-			<file>Aircraft/ec135/Nasal/mfd.nas</file>
         </mfd>
 	
 		<ec135>
