@@ -711,9 +711,9 @@ var update_torque = func(dt) {
 	torque_val = torque.getValue() * f + torque_val * (1 - f);
 	torque_pct.setDoubleValue(torque_val / 6551 * trq_ratio * 2);
 	torque2_pct.setDoubleValue(torque_val / 6551 * (1 - trq_ratio) * 2);
-	torque_val3 = (torque.getValue() * 0.000274855);
+	torque_val3 = (torque.getValue() * 0.000274855); #OEI
 	torque3_pct.setDoubleValue(torque_val3);
-	torque_val4 = (torque.getValue() * 0.000137427) * 1.035; #mean value * 0.000137621 as factor as engines are flat rated, but yasim doesn't simulate engines yet
+	torque_val4 = (torque.getValue() * 0.000137427) * 1.035; #(AEO), mean value * 0.000137621 as factor as engines are flat rated, but yasim doesn't simulate engines yet
 	torque4_pct.setDoubleValue(torque_val4);
 }
 
