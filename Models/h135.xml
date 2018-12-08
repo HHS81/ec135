@@ -64,6 +64,8 @@
      <object-name>navlight_right</object-name>
      <object-name>navlight_left</object-name>
      <object-name>rotor_disc_T</object-name>
+	<object-name>IBFGrille</object-name>
+	<object-name>IBFFrame</object-name>
 </effect>
 
 
