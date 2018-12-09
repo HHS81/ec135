@@ -66,6 +66,7 @@ var nav_lights = props.globals.getNode("sim/model/ec135/lighting/nav-lights", 1)
 
 
 
+
 # doors =============================================================
 var Doors = {
 	new: func {
@@ -690,7 +691,7 @@ var procedure = {
 };
 
 
-
+#for the H135 using the solution delivered by the Helionix, use the below for the Ec135 
 # torquemeter
 var torque_val = 0;
 torque.setDoubleValue(0);

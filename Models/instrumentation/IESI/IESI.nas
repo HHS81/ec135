@@ -1,8 +1,8 @@
-# A3XX IESI
-# Joshua Davidson (it0uchpods)
+# H135 IESI taken from IDGX A320 by Joshua Davidson (it0uchpods)
 
 ##############################################
 # Copyright (c) Joshua Davidson (it0uchpods) #
+# modified by HHS #
 ##############################################
 
 var IESI = nil;
@@ -31,7 +31,7 @@ var pitch = props.globals.getNode("/orientation/pitch-deg");
 var roll =  props.globals.getNode("/orientation/roll-deg");
 var skid = props.globals.getNode("/instrumentation/slip-skid-ball/indicated-slip-skid");
 var altitude = props.globals.getNode("/instrumentation/altimeter/indicated-altitude-ft");
-var altitude_ind = props.globals.getNode("/instrumentation/altimeter/indicated-altitude-ft-pfd");
+var altitude_ind = props.globals.getNode("/instrumentation/altimeter/indicated-altitude-ft-stdby");
 
 var altimeter_mode = props.globals.getNode("/modes/altimeter/std");
 var qnh_hpa = props.globals.getNode("/instrumentation/altimeter/setting-hpa");
@@ -127,15 +127,15 @@ var canvas_IESI = {
 		}
 		
 		# Airspeed
-		# Subtract 30, since the scale starts at 30, but don"t allow less than 0, or more than 420 situations
+		# Subtract 0, since the scale starts at 0, but don"t allow less than 0, or more than 180 situations
 		airspeed_act = airspeed.getValue();
 		mach_act = mach.getValue();
-		if (airspeed_act <= 30) {
+		if (airspeed_act <= 0) {
 			ASI = 0;
-		} else if (airspeed_act >= 420) {
-			ASI = 390;
+		} else if (airspeed_act >= 180) {
+			ASI = 180;
 		} else {
-			ASI = airspeed_act - 30;
+			ASI = airspeed_act - 0;
 		}
 		me["ASI_scale"].setTranslation(0, ASI * 8.295);
 		
@@ -178,7 +178,7 @@ var canvas_IESI = {
 		me["ALT_two"].setText(sprintf("%03d", abs(me.middleAltText-5)));
 		me["ALT_one"].setText(sprintf("%03d", abs(me.middleAltText-10)));
 		
-		me["ALT_digits"].setText(sprintf("%03d", altitude.getValue()));
+		me["ALT_digits"].setText(sprintf("%s", altitude_ind.getValue()));
 		me["ALT_meters"].setText(sprintf("%5.0f", me.altitude * 0.3048));
 		altTens = num(right(sprintf("%02d", altitude.getValue()), 2));
 		me["ALT_tens"].setTranslation(0, altTens * 3.16);

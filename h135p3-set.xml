@@ -12,7 +12,8 @@ Thanks for all the help!
 <PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
 	<sim>
 		<description>Airbus H135 P3</description>
-		<author>Heiko Schulz + Maik Justus (FDM), Melchior Franz + Heiko Schulz(Nasal), Oliver Thurau (Particles), sanni (Pilot Animation), f-sig(instrument enhancements), Sebastian Dietrich (GTX330 improvements), Martin Litzenberger ( Airbus Helionix Screens )</author>
+		<author>Heiko Schulz (3d, Textures, animation, config, some liveries); Heiko Schulz + Maik Justus (FDM); Melchior Franz + Heiko Schulz(Nasal); Oliver Thurau (Particles); sanni (Pilot Animation); f-sig(instrument enhancements);
+		Sebastian Dietrich (GTX330 improvements); Martin Litzenberger ( Airbus Helionix Screens ); Joshua Davidson (IESI)</author>
 		<status>early production</status>
 		<rating>
                     <FDM type="int">4</FDM>
@@ -849,12 +850,12 @@ Thanks for all the help!
 	<binding>
 		<command>property-assign</command>
 		<property>controls/flight/fcs/gains/sas/pitch</property>
-		<value type="double">-0.020</value>
+		<value type="double">-0.0015</value>
 	</binding>
 	<binding>
 		<command>property-assign</command>
 		<property>controls/flight/fcs/gains/sas/roll</property>
-		<value type="double">0.010</value>
+		<value type="double">0.00075</value>
 	</binding>
 </key>
 
@@ -864,7 +865,7 @@ Thanks for all the help!
 	<binding>
 		<command>property-assign</command>
 		<property>controls/flight/fcs/gains/sas/yaw</property>
-		<value type="double">0.02</value>
+		<value type="double">0.0075</value>
 	</binding>
   </key>
   
@@ -884,6 +885,20 @@ Thanks for all the help!
 	<binding>
 		<command>property-toggle</command>
 		<property>/controls/flight/force_trim_release</property>
+	</binding>
+  </key>
+  
+  <!--afcs-->
+<key n="1">
+    <name>ctr-a</name>
+    <desc>afcs</desc>
+	<binding>
+		<command>property-toggle</command>
+		<property>/autopilot/afcs/pitch</property>
+	</binding>
+	<binding>
+		<command>property-toggle</command>
+		<property>/autopilot/afcs/roll</property>
 	</binding>
   </key>
   

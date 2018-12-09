@@ -88,6 +88,23 @@
        <max-rate-of-change>0.01</max-rate-of-change>
   </filter>
 
-  
+<!-- from A320 IDG -->
+<filter>
+		<name>Altitude STDBY</name>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<update-interval-secs type="double">0.05</update-interval-secs>
+		<input>
+			<expression>
+				<floor>
+					<div>
+						<property>/instrumentation/altimeter/indicated-altitude-ft</property> 
+						<value>100</value>
+					</div>
+				</floor>
+			</expression>
+		</input>
+		<output>/instrumentation/altimeter/indicated-altitude-ft-stdby</output>
+</filter>
 
 </PropertyList>
