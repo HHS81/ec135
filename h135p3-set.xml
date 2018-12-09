@@ -33,7 +33,7 @@ Thanks for all the help!
 		    <preview>
 			<type>panel</type>
 			<splash type="bool">true</splash>
-			<path>Pics/ec135-interior.jpg</path>
+			<path>Pics/h135-interior.jpg</path>
 		    </preview>
 		    <preview>
 			<type>exterior</type>
@@ -704,6 +704,12 @@ Thanks for all the help!
 <prime-pump2>0</prime-pump2>
 </outputs>
 </electrical>
+<acconfig>
+<autoconfig-running type="double">1</autoconfig-running>
+	<options>
+		<iesi-rate type="double">1</iesi-rate>
+	</options>
+</acconfig>
 	</systems>
 
 
@@ -1092,6 +1098,10 @@ Thanks for all the help!
               KCS55.new();
             ]]></script>
 		</ec135>
+		<canvas_iesi>
+			<file>Aircraft/ec135/Models/instrumentation/IESI/IESI.nas</file>
+		</canvas_iesi>	
+		
 <GTX330>
 			<file>Aircraft/ec135/Models/instrumentation/GTX330/GTX330.nas</file>
 </GTX330>

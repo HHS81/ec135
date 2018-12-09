@@ -71,7 +71,7 @@
 
 
 <model>
-<!--select animation waiting!-->
+
 	<name>h135flightdeck</name>
 		<path>Aircraft/ec135/Models/h135flightdeck.xml</path>
 </model>
@@ -821,13 +821,6 @@
 	</condition>
 </animation>
 
-<animation>
-	<type>select</type>
-	<object-name>nonIBF</object-name>
-	<condition>
-	<property>sim/model/ec135/nonIBF</property>
-	</condition>
-</animation>
 
 <animation>
 	<type>select</type>

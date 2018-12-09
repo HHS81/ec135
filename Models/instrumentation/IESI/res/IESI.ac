@@ -1,0 +1,26 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+MATERIAL "buttonlights" rgb 1 1 1 amb 1 1 1 emis 1 1 1 spec 0 0 0 shi 0 trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "iesi.screen"
+data 4
+Mesh
+texture "screen.png"
+texrep 1 1
+crease 30.000000
+numvert 4
+0 0.026593 -0.026475
+0 -0.024175 -0.026475
+0 -0.024175 0.026475
+0 0.026593 0.026475
+numsurf 1
+SURF 0x00
+mat 1
+refs 4
+0 1.00066995621 0.999406993389
+3 4.45842997578e-05 0.999406993389
+2 4.45842997578e-05 0.000756443012506
+1 1.00066995621 0.000756443012506
+kids 0

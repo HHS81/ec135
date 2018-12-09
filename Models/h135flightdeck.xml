@@ -5,7 +5,7 @@
 <PropertyList>
 
 
-	<path>flightdeck.ac</path>
+	<path>h135flightdeck.ac</path>
 	<offsets>
 		<z-m>0</z-m>
 		<y-m>0.0</y-m>
@@ -19,12 +19,12 @@
 	<inherits-from>Effects/lightmap</inherits-from>
 	<parameters>
 		<texture n="1">
-			<image>Aircraft/ec135/Models/OverheadPanel_LM.png</image>
+			<image>Aircraft/ec135/Models/H135OverheadPanel_LM.png</image>
 		</texture>
 		<condition><use>controls/lighting/instrument-lights</use></condition>
 		<factor><use>systems/electrical/outputs/instrument-lights-norm</use></factor>
 	</parameters>
- 	<object-name>OverheadPanel</object-name> 
+ 	<object-name>H135OverheadPanel</object-name> 
 </effect>	
 	
 	<model>
@@ -273,91 +273,7 @@
 <!--switches, switches everywhere-->
 
 <!-- first row-->
-    <animation>
-        <type>pick</type>
-        <object-name>vent2.sw</object-name>
-        <action>
-            <binding>
-                <command>property-adjust</command>
-                <property>controls/engines/engine[1]/starter</property>
-                <min>0</min>
-                <max>2</max>
-            </binding>
-        </action>
-        <release>
-            <binding>
-                <command>property-adjust</command>
-                <property>controls/engines/engine[1]/starter</property>
-                <step>0</step>
-                <min>0</min>
-                <max>1</max>
-            </binding>
-        </release>
-            <binding>
-                <command>property-toggle</command>
-                <property>sim/sound/click</property>
-            </binding>
-    </animation>
-    
-    <animation>
-        <type>rotate</type>
-        <object-name>vent2.sw</object-name>
-                <property>controls/engines/engine[1]/starter</property>
-        <factor>40.0</factor>
-        <center>
-            <x-m>1.186</x-m>
-            <y-m>0</y-m>
-            <z-m>0.804</z-m>
-        </center>
-        <axis>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-        </axis>
-    </animation>
-    
-    <animation>
-        <type>pick</type>
-        <object-name>vent1.sw</object-name>
-        <action>
-            <binding>
-                <command>property-adjust</command>
-                <property>controls/engines/engine[0]/starter</property>
-                <min>0</min>
-                <max>2</max>
-            </binding>
-        </action>
-        <release>
-            <binding>
-                <command>property-adjust</command>
-                <property>controls/engines/engine[0]/starter</property>
-                <step>0</step>
-                <min>0</min>
-                <max>1</max>
-            </binding>
-        </release>
-            <binding>
-                <command>property-toggle</command>
-                <property>sim/sound/click</property>
-            </binding>
-    </animation>
-    
-    <animation>
-        <type>rotate</type>
-        <object-name>vent1.sw</object-name>
-                <property>controls/engines/engine[0]/starter</property>
-        <factor>40.0</factor>
-        <center>
-            <x-m>1.186</x-m>
-            <y-m>0</y-m>
-            <z-m>0.804</z-m>
-        </center>
-        <axis>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-        </axis>
-    </animation>
+ 
     
 
  
@@ -934,6 +850,48 @@
         <center>
             <x-m>1.314</x-m>
             <y-m>0.000</y-m>
+            <z-m>0.825</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+  <type>pick</type>
+  <visible>true</visible>
+       <object-name>BATMSTR</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property>/controls/electric/battery-switch</property>
+    <value type="bool">true</value>
+   </binding>  
+ <binding>
+    <command>property-toggle</command>
+    <property>controls/electric/engine[0]/generator</property>
+    <value type="bool">true</value>
+   </binding>
+<binding>
+    <command>property-toggle</command>
+    <property>controls/electric/engine[1]/generator</property>
+    <value type="bool">true</value>
+   </binding>         
+  </action>
+ </animation>
+ 
+      <animation>
+        <type>rotate</type>
+        <object-name>BATMSTR</object-name>
+    <property>/controls/electric/battery-switch</property>
+        <factor>30.0</factor>
+        <center>
+            <x-m>1.314</x-m>
+            <y-m>-0.108</y-m>
             <z-m>0.825</z-m>
         </center>
         <axis>

@@ -17,7 +17,7 @@
 	
 	<!--Instrumentation-->
 	
-<effect>
+<!--<effect>
 	<inherits-from>Effects/lightmap</inherits-from>
 	<parameters>
 		<texture n="1">
@@ -28,7 +28,7 @@
 	</parameters>
  	<object-name>analogpanel</object-name> 
  	<object-name>Plane.066</object-name> 
-</effect>	
+</effect>	-->
 	
 	
 <!-- Helionix -->
@@ -64,6 +64,19 @@
 	  <pitch-deg>-21</pitch-deg>
     </offsets>
   </model>	
+  
+  
+  	<!-- Standby Indicator -->
+	<model>
+		<name>IESI</name>
+		<path>Aircraft/ec135/Models/instrumentation/IESI/IESI.xml</path>
+    <offsets>
+	  <x-m> 0.550</x-m>
+	  <y-m> -0.106</y-m>
+	  <z-m> 0.236</z-m>
+	  <pitch-deg>-21</pitch-deg>
+    </offsets>
+	</model>
  
  
 <!--EngineControlPanel-->
@@ -118,9 +131,9 @@
     <property>controls/engines/engine[0]/fadec/engine-state</property>
         <factor>-20.0</factor>
         <center>
-            <x-m>0.012</x-m>
-            <y-m>-0.035</y-m>
-            <z-m>0.100</z-m>
+            <x-m>0.626</x-m>
+            <y-m>-0.038</y-m>
+            <z-m>0.048</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -180,9 +193,9 @@
     <property>controls/engines/engine[1]/fadec/engine-state</property>
         <factor>-20.0</factor>
         <center>
-            <x-m>0.012</x-m>
-            <y-m>-0.035</y-m>
-            <z-m>0.100</z-m>
+            <x-m>0.626</x-m>
+            <y-m>0.123</y-m>
+            <z-m>0.048</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -192,7 +205,7 @@
     </animation>
  
  
-<animation>
+<!--<animation>
   <type>pick</type>
   <visible>true</visible>
         <object-name>gen1.switch</object-name>
@@ -399,7 +412,7 @@
             <y>1</y>
             <z>0</z>
         </axis>
-    </animation>
+    </animation>-->
  
 
 
