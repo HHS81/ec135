@@ -300,76 +300,76 @@ airfoil-incidence-no-lift="-0.1"
 
 
 <!-- tail bumper -->
-<gear x="-8.952" y="+0.00" z="0.088" skid="1" compression="0.1" spring="1"  damp="1.0" sfric="0.6" dfric="0.8" sticiton="1" />
-<gear x="-9.004" y="+0.00" z="0.097" skid="1" compression="0.1" spring="1" damp="1.0" sfric="0.6" dfric="0.8" sticiton="1" />
+<gear x="-8.952" y="+0.00" z="0.088" skid="1" compression="0.1" spring="1"  damp="1.0" sfric="0.6" dfric="0.8" stiction="1" />
+<gear x="-9.004" y="+0.00" z="0.097" skid="1" compression="0.1" spring="1" damp="1.0" sfric="0.6" dfric="0.8" stiction="1" />
 
 <!-- left lowskid -->
-<gear x="-1.09" y="+1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" />
-<gear x="-3.792" y="+1.00" z="-1.201" skid="1" compression="0.1" spring="1.5" damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" />
+<gear x="-1.09" y="+1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1" />
+<gear x="-3.792" y="+1.00" z="-1.201" skid="1" compression="0.1" spring="1.5" damp="1.70" sfric="0.6" dfric="0.8" stiction="1" />
 
 <!-- right lowskid -->
-<gear x="-1.09" y="-1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"    damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" />
-<gear x="-3.792" y="-1.00" z="-1.201" skid="1" compression="0.1" spring="1.5"   damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" />
+<gear x="-1.09" y="-1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"    damp="1.70" sfric="0.6" dfric="0.8" stiction="1" />
+<gear x="-3.792" y="-1.00" z="-1.201" skid="1" compression="0.1" spring="1.5"   damp="1.70" sfric="0.6" dfric="0.8" sstiction="1" />
 
 
 <!-- left lowskid with floats-->
-<gear x="-1.09" y="+1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"    damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
-<gear x="-3.792" y="+1.00" z="-1.201" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
-<gear x="-5.186" y="+1.00" z="-0.862" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-1.09" y="+1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"    damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
+<gear x="-3.792" y="+1.00" z="-1.201" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
+<gear x="-5.186" y="+1.00" z="-0.862" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/longskid_floats" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[2]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.1"/>
 
 
 <!-- right lowskid with floast-->
-<gear x="-1.09" y="-1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"   damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
-<gear x="-3.792" y="-1.00" z="-1.201" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
-<gear x="-5.186" y="-1.00" z="-0.862" skid="1" compression="0.1" spring="1.5"   damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-1.09" y="-1.00" z="-1.348" skid="1" compression="0.1" spring="1.5"   damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
+<gear x="-3.792" y="-1.00" z="-1.201" skid="1" compression="0.1" spring="1.5"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
+<gear x="-5.186" y="-1.00" z="-0.862" skid="1" compression="0.1" spring="1.5"   damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/longskid_floats" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[3]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.1"/>
 
 
 <!-- left midskid -->
-<gear x="-1.09" y="+1.00" z="-1.448" skid="1" compression="0.1" spring="2.5"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-1.09" y="+1.00" z="-1.448" skid="1" compression="0.1" spring="2.5"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/midskid" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[4]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.1"/>
 
-<gear x="-3.792" y="+1.00" z="-1.301" skid="1" compression="0.1" spring="2.5"   damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-3.792" y="+1.00" z="-1.301" skid="1" compression="0.1" spring="2.5"   damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/midskid" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[5]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.1"/>
 
 <!-- right midskid -->
-<gear x="-1.09" y="-1.00" z="-1.448" skid="1" compression="0.1" spring="2.5"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-1.09" y="-1.00" z="-1.448" skid="1" compression="0.1" spring="2.5"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/midskid" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[6]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.1"/>
 
-<gear x="-3.792" y="-1.00" z="-1.301" skid="1" compression="0.1" spring="2.5"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-3.792" y="-1.00" z="-1.301" skid="1" compression="0.1" spring="2.5"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/midskid" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[7]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.1"/>
 
 <!-- left highskid -->
-<gear x="-1.09" y="+1.00" z="-1.648" skid="1" compression="0.1" spring="3.7"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-1.09" y="+1.00" z="-1.648" skid="1" compression="0.1" spring="3.7"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/highskid" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[8]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.3"/>
 
-<gear x="-3.792" y="+1.00" z="-1.501" skid="1" compression="0.1" spring="3.7"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-3.792" y="+1.00" z="-1.501" skid="1" compression="0.1" spring="3.7"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/highskid" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[9]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.3"/>
 
 <!-- right highskid -->
-<gear x="-1.09" y="-1.00" z="-1.648" skid="1" compression="0.1" spring="3.7"  damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-1.09" y="-1.00" z="-1.648" skid="1" compression="0.1" spring="3.7"  damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/highskid" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[10]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.3"/>
 
-<gear x="-3.792" y="-1.00" z="-1.501" skid="1" compression="0.1" spring="3.7" damp="1.70" sfric="0.6" dfric="0.8" sticiton="1" stiction_abs="0"/>
+<gear x="-3.792" y="-1.00" z="-1.501" skid="1" compression="0.1" spring="3.7" damp="1.70" sfric="0.6" dfric="0.8" stiction="1"/>
 <control-input axis="/sim/model/ec135/highskid" control="EXTEND"/>
 <control-output control="EXTEND" prop="/gear/gear[110]/position-norm"/>
 <control-speed control="EXTEND" transition-time="0.3"/>

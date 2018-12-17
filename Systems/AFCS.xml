@@ -105,14 +105,18 @@
     <gain>1</gain>
       <enable>
   <condition>
+       <greater-than>
+      <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+      <value>25</value>
+   </greater-than>
   <or>
-     <not-equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </not-equals>
-     <not-equals>
+       <not-equals>
       <property>controls/flight/force_trim_release</property>
       <value>false</value>
+   </not-equals>
+      <not-equals>
+      <property>/autopilot/afcs/locks/heading</property>
+      <value>hover</value>
    </not-equals>
    </or>
   </condition>
@@ -242,10 +246,16 @@
     <gain>1</gain>
       <enable>
   <condition>
+  <or>
         <not-equals>
       <property>controls/flight/force_trim_release</property>
       <value>false</value>
    </not-equals>
+        <equals>
+      <property>/autopilot/afcs/locks/speed</property>
+      <value>ias-hold</value>
+   </equals>
+   </or>
   </condition>
     </enable>
  </filter>
@@ -259,10 +269,16 @@
     <gain>1</gain>
       <enable>
   <condition>
+  <or>
         <not-equals>
       <property>controls/flight/force_trim_release</property>
       <value>false</value>
    </not-equals>
+        <equals>
+      <property>/autopilot/afcs/locks/speed</property>
+      <value>ias-hold</value>
+   </equals>
+   </or>
   </condition>
     </enable>
  </filter>
@@ -272,17 +288,17 @@
     <pid-controller>
     <name>Auto Hover pitch</name>
     <debug>false</debug>
- <enable>
+<enable>
   <condition>
-<not>
+     <and>
      <equals>
       <property>/controls/flight/force_trim_release</property>
+      <value>false</value>
+   </equals>
+       <equals>
+      <property>/autopilot/afcs/engaged</property>
       <value>true</value>
    </equals>
-   </not>
-     <and>
-      <property>/autopilot/afcs/engaged</property>
-      <value>false</value>
       <equals>
       <property>/autopilot/afcs/locks/heading</property>
       <value>hover</value>
@@ -311,15 +327,15 @@
     <debug>false</debug>
  <enable>
   <condition>
-<not>
+     <and>
      <equals>
       <property>/controls/flight/force_trim_release</property>
+      <value>false</value>
+   </equals>
+       <equals>
+      <property>/autopilot/afcs/engaged</property>
       <value>true</value>
    </equals>
-   </not>
-     <and>
-      <property>/autopilot/afcs/engaged</property>
-      <value>false</value>
       <equals>
       <property>/autopilot/afcs/locks/heading</property>
       <value>hover</value>
@@ -492,6 +508,7 @@
 
 <!-- to do: add max roll command for approaches: 0.22 * IAS with max. 30DEG according EC145 C2 AFCS- lets use this as reference until data for H135 helionix 2+ is there-->
  
+  
 <pid-controller>
   <name>side slip</name>
   <debug>false</debug>
@@ -506,7 +523,7 @@
       <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
       <value>25</value>
    </greater-than>
-   </and>
+     </and>
 	  </condition>
       </enable>
   <input>
@@ -517,13 +534,16 @@
    <prop>controls/flight/rudder-trim</prop>
   </output>
   <config>
-   <Kp>-0.5</Kp>
+   <Kp>-0.25</Kp>
    <Ti>10.0</Ti>
    <Td>0.0</Td>
    <u_min>-1.0</u_min>
    <u_max>1.0</u_max>
   </config>
  </pid-controller>
+ 
+ 
+ 
  
 <pid-controller>
   <name>hover heading hold</name>
@@ -554,13 +574,93 @@
    <prop>controls/flight/rudder-trim</prop>
   </output>
   <config>
-   <Kp>0.05</Kp>
+   <Kp>0.25</Kp>
    <Ti>10.0</Ti>
    <Td>0.0</Td>
    <u_min>-1.0</u_min>
    <u_max>1.0</u_max>
   </config>
  </pid-controller>
+ 
+ <!--
+ 
+   <pi-simple-controller>
+    <name>hover heading hold 1</name>
+    <debug>false</debug>
+       <enable>
+  <condition>
+  <and>
+     <equals>
+      <property>/autopilot/afcs/engaged</property>
+      <value>true</value>
+   </equals>
+     <less-than>
+      <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+      <value>25</value>
+   </less-than>
+   </and>
+     <not-equals>
+      <property>controls/flight/force_trim_release</property>
+      <value>true</value>
+   </not-equals>
+	  </condition>
+      </enable>
+    <input>
+      <prop>/orientation/heading-deg</prop>
+    </input>
+    <reference>
+      <prop>/controls/flight/yaw-deg</prop>
+    </reference>
+    <output>
+      <prop>/autopilot/afcs/internal/yaw-degps</prop>
+    </output>
+    <config>
+      <Kp>0.125</Kp>  
+      <Ki>0.0</Ki>         
+      <u_min>-10</u_min> 
+      <u_max>10</u_max>   
+    </config>
+  </pi-simple-controller>
+  
+ 
+<pid-controller>
+  <name>hover heading hold 2</name>
+  <debug>false</debug>
+       <enable>
+  <condition>
+  <and>
+     <equals>
+      <property>/autopilot/afcs/engaged</property>
+      <value>true</value>
+   </equals>
+     <less-than>
+      <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+      <value>25</value>
+   </less-than>
+   </and>
+     <not-equals>
+      <property>controls/flight/force_trim_release</property>
+      <value>true</value>
+   </not-equals>
+	  </condition>
+      </enable>
+  <input>
+   <prop>/orientation/yaw-degps</prop>
+  </input>
+  <reference>/autopilot/afcs/internal/yaw-degps</reference>
+  <output>
+   <prop>controls/flight/rudder-trim</prop>
+  </output>
+  <config>
+   <Kp>0.25</Kp>
+   <Ti>100.0</Ti>
+   <Td>0.0</Td>
+   <u_min>-1.0</u_min>
+   <u_max>1.0</u_max>
+  </config>
+ </pid-controller>
+ 
+ -->
  
  
 
@@ -740,7 +840,7 @@
      <property>/controls/flight/collective</property>
     </output>
     <config>
-            <Kp>-0.025</Kp>
+      <Kp>-0.025</Kp>
       <Ti>10.0</Ti>       
       <Td>0.0</Td>    
       <u_min>0.0</u_min> 
@@ -753,24 +853,6 @@
   <max-rate-of-change>0.1</max-rate-of-change>
   <input>/controls/flight/collective</input>
   <output>/controls/flight/collective-filter</output>
- <enable>
-  <condition>
-  <and>
-       <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
-     <not-equals>
-      <property>controls/flight/force_trim_release</property>
-      <value>true</value>
-   </not-equals>
-         <equals>
-      <property>/autopilot/afcs/locks/altitude</property>
-      <value>crht-hold</value>
-   </equals>
-    </and>
-  </condition>
-      </enable>
 </filter>
 
  <filter>

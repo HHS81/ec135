@@ -959,7 +959,7 @@ Thanks for all the help!
         <command>property-adjust</command>
         <property>/autopilot/afcs/internal/uBody-fps</property>
         <step>0.2</step>
-        <max>42</max>
+        <max>236</max>
         <wrap>1</wrap>
       </binding>
 <binding>
