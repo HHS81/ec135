@@ -111,10 +111,3 @@ settimer(mgbp_bar, 0.1);
 mgbp_bar();
 
 
-
-
-
-
-
-
-

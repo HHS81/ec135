@@ -1024,7 +1024,73 @@ dynamic_view.register(func {
 });
 
 
+#Force Trim Release =============================================================================
+# Singleton class that supports quick trimming and compensates for the lack
+# of resistance/force feedback in most joysticks. Normally the pilot trims such
+# that no real or artificially generated (by means of servo motors and spring
+# preloading) forces act on the stick/yoke and it is in a comfortable position.
+# This doesn't work well on computer joysticks.
+#
+# SYNOPSIS:
+#	autotrim.start();  # on key/button press
+#	autotrim.stop();   # on key/button release (mod-up)
+#
+# USAGE:
+#	(1) move the stick such that the aircraft is in an orientation that
+#	    you want to trim for (forward flight, hover, ...)
+#	(2) press autotrim button and keep it pressed
+#	(3) move stick/yoke to neutral position (center)
+#	(4) release autotrim button
 
+var autotrim = {
+	init: func {
+		me.elevator = me.Trim.new("elevator");
+		me.aileron = me.Trim.new("aileron");
+		
+		me.loopid = 0;
+		me.active = 0;
+	},
+	start: func {
+		me.active and return;
+		me.active = 1;
+		me.elevator.start();
+		me.aileron.start();
+
+		me._loop_(me.loopid += 1);
+	},
+	stop: func {
+		me.active or return;
+		me.active = 0;
+		me.loopid += 1;
+		me.update();
+	},
+	_loop_: func(id) {
+		id == me.loopid or return;
+		me.update();
+		settimer(func me._loop_(id), 0);
+	},
+	update: func {
+		me.elevator.update();
+		me.aileron.update();
+
+	},
+	Trim: {
+		new: func(name) {
+			var m = { parents: [autotrim.Trim] };
+			m.trimN = props.globals.getNode("/controls/flight/" ~ name ~ "-trim", 1);
+			m.ctrlN = props.globals.getNode("/controls/flight/" ~ name, 1);
+			return m;
+		},
+		start: func {
+			me.last = me.ctrlN.getValue();
+		},
+		update: func {
+			var v = me.ctrlN.getValue();
+			me.trimN.setDoubleValue(me.trimN.getValue() + me.last - v);
+			me.last = v;
+		},
+	},
+};
 
 
 # main() ============================================================
@@ -1071,7 +1137,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	fuel.init();
 	engines.init();
 	mouse.init();
-
+	autotrim.init();
 	
 	
 

@@ -8,7 +8,7 @@ var fcs_params = {
   'sas' : {
 	'authority-limit' : 0.15,
         'pitch' : -0.0015, 
-          'roll' : 0.00075, 
+          'roll' : 0.0075, 
         'yaw' : 0.0075, 
 },
     'cas' : {

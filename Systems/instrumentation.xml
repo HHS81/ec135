@@ -117,6 +117,12 @@
 	<number>0</number>
 </KT-70>
 
+  <radar-altimeter>
+    <name>radar-altimeter</name>
+    <number>0</number>
+    <update-interval-sec>0.1</update-interval-sec>
+  </radar-altimeter>
+
 
 <gps>
 	<name>gps</name>
