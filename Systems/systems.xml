@@ -33,7 +33,7 @@
         <number>0</number>
         <tau>0.1</tau>
         <type>2</type>
-        <error-factor>0.2</error-factor>
+        <error-factor>0</error-factor>
     </static>
   
     <static>
@@ -41,7 +41,7 @@
         <number>1</number>
         <tau>0.1</tau>
         <type>2</type>
-        <error-factor>0.2</error-factor>
+        <error-factor>0</error-factor>
     </static>
 
   <vacuum>
