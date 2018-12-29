@@ -60,7 +60,7 @@
         <or>
           <not-equals>
             <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
+            <value>1</value>
           </not-equals>
           <not-equals>
             <property>controls/flight/force_trim_release</property>
@@ -83,7 +83,7 @@
         <or>
           <not-equals>
             <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
+            <value>1</value>
           </not-equals>
           <not-equals>
             <property>controls/flight/force_trim_release</property>
@@ -128,7 +128,7 @@
   <condition>
      <equals>
       <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
+      <value>1</value>
    </equals>
          </condition>
       </enable>
@@ -170,7 +170,7 @@
       <condition>
         <equals>
           <property>/autopilot/afcs/engaged</property>
-          <value>true</value>
+          <value>1</value>
         </equals>
       </condition>
     </enable>
@@ -284,7 +284,7 @@
           </equals>
           <equals>
             <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
+            <value>1</value>
           </equals>
           <equals>
             <property>/autopilot/afcs/locks/heading</property>
@@ -321,12 +321,18 @@
           </equals>
           <equals>
             <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
+            <value>1</value>
+          </equals>
+          <or>
+          <equals>
+            <property>/autopilot/afcs/locks/speed</property>
+            <value>ias-hold</value>
           </equals>
           <equals>
             <property>/autopilot/afcs/locks/heading</property>
-            <value>ias-hold</value>
+            <value>hover</value>
           </equals>
+          </or>
           <less-than>
             <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
             <value>30</value>
@@ -357,15 +363,21 @@
     <name>heading sample hold</name>
     <debug>false</debug>
     <type>gain</type>
-    <input>orientation/heading-magnetic-deg</input>
-    <output>/autopilot/settings/heading-bug-deg</output>
+    <input>/autopilot/afcs/internal/heading-magnetic-deg-predicted</input>
+    <output>/autopilot/afcs/settings/heading-bug-deg</output>
     <gain>1</gain>
     <enable>
       <condition>
+      <or>
         <equals>
           <property>/controls/flight/force_trim_release</property>
           <value>true</value>
         </equals>
+          <not-equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>heading-hold</value>
+          </not-equals>
+        </or>
       </condition>
     </enable>
   </filter>
@@ -375,10 +387,10 @@
     <debug>false</debug>
     <type>gain</type>
     <input>
-      <property>/autopilot/settings/heading-bug-deg</property>
+      <property>/autopilot/afcs/settings/heading-bug-deg</property>
     </input>
     <reference>orientation/heading-magnetic-deg</reference>
-    <output>/autopilot/internal/heading-bug-error-deg</output>
+    <output>/autopilot/afcs/internal/heading-bug-error-deg</output>
     <period>
       <min>-180</min>
       <max>180</max>
@@ -444,10 +456,6 @@
       <condition>
         <and>
           <equals>
-            <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
-          </equals>
-          <equals>
             <property>/controls/flight/force_trim_release</property>
             <value>false</value>
           </equals>
@@ -469,7 +477,7 @@
       </condition>
     </enable>
    <input>
-      <prop>/autopilot/internal/heading-bug-error-deg-predicted</prop>
+      <prop>/autopilot/afcs/internal/heading-bug-error-deg</prop>
     </input>
     <reference>0</reference>
     <output>
@@ -477,7 +485,7 @@
     </output>
     <config>
       <Kp>-1</Kp>  
-      <Ki>-0.25</Ki>         
+      <Ki>-0.025</Ki>         
       <u_min>-3</u_min> 
       <u_max>3</u_max>   
     </config>
@@ -530,10 +538,6 @@
       <condition>
         <and>
           <equals>
-            <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
-          </equals>
-          <equals>
             <property>/controls/flight/force_trim_release</property>
             <value>false</value>
           </equals>
@@ -565,7 +569,7 @@
     </output>
     <config>
       <Kp>1</Kp>
-      <Ki>0.5</Ki>
+      <Ki>0.05</Ki>
       <u_min>-80</u_min>
       <u_max>80</u_max>
     </config>
@@ -628,10 +632,6 @@
       <condition>
         <and>
           <equals>
-            <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
-          </equals>
-          <equals>
             <property>/controls/flight/force_trim_release</property>
             <value>false</value>
           </equals>
@@ -675,10 +675,6 @@
     <debug>false</debug>
     <enable>
       <condition>
-        <equals>
-          <property>/autopilot/afcs/engaged</property>
-          <value>true</value>
-        </equals>
         <greater-than>
           <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
           <value>30</value>
@@ -708,9 +704,9 @@
      <enable>
       <condition>
         <and>
-          <equals>
-            <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
+                  <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>heading-hold</value>
           </equals>
           <equals>
             <property>/controls/flight/force_trim_release</property>
@@ -724,7 +720,7 @@
       </condition>
     </enable>
    <input>
-      <prop>/autopilot/internal/heading-bug-error-deg</prop>
+      <prop>/autopilot/afcs/internal/heading-bug-error-deg</prop>
     </input>
     <reference>0</reference>
     <output>
@@ -744,9 +740,9 @@
     <enable>
       <condition>
         <and>
-          <equals>
-            <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
+                  <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>heading-hold</value>
           </equals>
           <equals>
             <property>/controls/flight/force_trim_release</property>
@@ -824,9 +820,9 @@
     <enable>
       <condition>
         <and>
-          <equals>
-            <property>/autopilot/afcs/engaged</property>
-            <value>true</value>
+                  <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>heading-hold</value>
           </equals>
           <equals>
             <property>/controls/flight/force_trim_release</property>
@@ -887,12 +883,11 @@
     <name>ias to fps</name>
     <debug>false</debug>
     <type>gain</type>
-    <input>/instrumentation/airspeed-indicator/indicated-speed-kt</input>
+    <input>velocities/uBody-fps</input>
     <output>/autopilot/afcs/internal/uBody-fps</output>
-    <gain>0.118497</gain>
       <enable>
   <condition>
-  <and>
+  <or>
         <not-equals>
       <property>/autopilot/afcs/locks/speed</property>
       <value>ias-hold</value>
@@ -901,7 +896,7 @@
       <property>controls/flight/force_trim_release</property>
       <value>true</value>
    </equals>
-   </and>
+   </or>
   </condition>
     </enable>
  </filter>
@@ -911,12 +906,7 @@
     <debug>false</debug>
  <enable>
   <condition>
-<not>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>false</value>
-   </equals>
-   </not>
+  <and>
       <equals>
       <property>/autopilot/afcs/locks/speed</property>
       <value>ias-hold</value>
@@ -925,13 +915,14 @@
       <property>controls/flight/force_trim_release</property>
       <value>true</value>
    </not-equals>
+   </and>
   </condition>
       </enable>
     <input>
       <prop>/autopilot/afcs/internal/lookahead-1-sec-uBody-fps</prop>
     </input>
     <reference>
-      <prop>/autopilot/afcs/internal/uBody-fps-filtered</prop>
+      <prop>/autopilot/afcs/internal/uBody-fps</prop>
     </reference>
     <output>
       <prop>/controls/flight/pitch-deg</prop>
@@ -948,16 +939,36 @@
   
   
   <!--Vertical Speed Hold-->
+  
+<filter>
+    <name>vs sample hold</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/autopilot/internal/vert-speed-fpm</input>
+    <output>/autopilot/afcs/settings/fpm</output>
+    <gain>1</gain>
+<enable>
+  <condition>
+  <or>
+      <not-equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>vs-hold</value>
+   </not-equals>
+     <not-equals>
+      <property>controls/flight/force_trim_release</property>
+      <value>false</value>
+   </not-equals>
+  </or>
+  </condition>
+    </enable>
+ </filter>
+  
 <pid-controller>
     <name>Vertical Speed Hold Mode</name>
     <debug>false</debug>
 <enable>
   <condition>
   <and>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
       <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>vs-hold</value>
@@ -994,10 +1005,6 @@
  <enable>
   <condition>
   <and>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
       <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>vs-hold</value>
@@ -1015,7 +1022,7 @@
      <property>/controls/flight/collective</property>
     </output>
     <config>
-      <Kp>-0.025</Kp>
+      <Kp>-0.25</Kp>
       <Ti>10.0</Ti>       
       <Td>0.0</Td>    
       <u_min>0</u_min> 
@@ -1030,10 +1037,6 @@
 <enable>
   <condition>
   <and>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
       <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>fpa-hold</value>
@@ -1069,10 +1072,6 @@
  <enable>
   <condition>
   <and>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
       <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>fpa-hold</value>
@@ -1101,6 +1100,30 @@
   
    
  <!--CR.HT (AGL) Hold-->
+ 
+ <filter>
+    <name>crht sample hold</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/instrumentation/radar-altimeter/radar-altitude-ft</input>
+    <output>/autopilot/afcs/settings/crht-ft</output>
+    <gain>1</gain>
+      <enable>
+  <condition>
+  <or>
+        <not-equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>crht-hold</value>
+   </not-equals>
+     <equals>
+      <property>controls/flight/force_trim_release</property>
+      <value>true</value>
+   </equals>
+   </or>
+  </condition>
+    </enable>
+ </filter>
+ 
   <pi-simple-controller>
     <name>CR.HT Stage 1</name>
     <debug>false</debug>
@@ -1111,10 +1134,6 @@
       <property>controls/flight/force_trim_release</property>
       <value>true</value>
    </not-equals>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
          <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>crht-hold</value>
@@ -1155,10 +1174,6 @@
       <property>controls/flight/force_trim_release</property>
       <value>true</value>
    </not-equals>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
          <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>crht-hold</value>
@@ -1191,10 +1206,6 @@
       <property>controls/flight/force_trim_release</property>
       <value>true</value>
    </not-equals>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
          <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>crht-hold</value>
@@ -1224,11 +1235,7 @@
  <enable>
   <condition>
   <and>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
-     <not-equals>
+            <not-equals>
       <property>controls/flight/force_trim_release</property>
       <value>true</value>
    </not-equals>
@@ -1262,22 +1269,9 @@
   <max-rate-of-change>0.1</max-rate-of-change>
   <input>/controls/flight/collective</input>
   <output>/controls/flight/collective-filter</output>
-</filter>
-
- <filter>
-    <name></name>
-    <debug>false</debug>
-    <type>gain</type>
-    <input>/controls/flight/collective-filter</input>
-    <output>/controls/engines/engine/throttle</output>
-    <gain>1</gain>
- <enable>
+  <enable>
   <condition>
   <and>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
      <not-equals>
       <property>controls/flight/force_trim_release</property>
       <value>true</value>
@@ -1295,11 +1289,75 @@
       <property>/autopilot/afcs/locks/altitude</property>
       <value>fpa-hold</value>
    </equals>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>vs-hold</value>
+   </equals>
+   </or>
+    </and>
+  </condition>
+      </enable>
+</filter>
+
+ <filter>
+    <name></name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/collective</input>
+    <output>/controls/engines/engine/throttle</output>
+    <gain>1</gain>
+ <enable>
+  <condition>
+  <and>
+     <not-equals>
+      <property>controls/flight/force_trim_release</property>
+      <value>true</value>
+   </not-equals>
+   <or>
+         <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>crht-hold</value>
+   </equals>
+           <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>altitude-hold</value>
+   </equals>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>fpa-hold</value>
+   </equals>
+      <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>vs-hold</value>
+   </equals>
    </or>
     </and>
   </condition>
       </enable>
      </filter>
+     
+     <filter>
+    <name>alt hold sample hold</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/instrumentation/altimeter/indicated-altitude-ft</input>
+    <output>autopilot/afcs/internal/actual-target-altitude-ft</output>
+    <gain>1</gain>
+     <enable>
+  <condition>
+  <or>
+      <not-equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>altitude-hold</value>
+      </not-equals>
+       <not-equals>
+      <property>controls/flight/force_trim_release</property>
+      <value>false</value>
+   </not-equals>
+   </or>
+  </condition>
+      </enable>
+       </filter>
 
   
  <!-- Altitude-hold-->
@@ -1308,16 +1366,10 @@
     <debug>false</debug>
  <enable>
   <condition>
-  <and>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
       <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>altitude-hold</value>
    </equals>
-  </and>
   </condition>
       </enable>
     <input>
@@ -1344,10 +1396,12 @@
     <debug>false</debug>
 <enable>
   <condition>
+  <and>
       <equals>
       <property>/autopilot/afcs/internal/altitude-armed</property>
       <value>1</value>
   </equals>
+  </and>
   </condition>
     </enable>
     <input>
@@ -1376,10 +1430,6 @@
  <enable>
   <condition>
   <and>
-     <equals>
-      <property>/autopilot/afcs/engaged</property>
-      <value>true</value>
-   </equals>
       <equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>altitude-hold</value>
@@ -1455,6 +1505,13 @@
      <filter-gain>0.0</filter-gain>
   </predict-simple>
   
+<predict-simple>
+     <input>/velocities/uBody-fps</input>
+     <output>/autopilot/afcs/internal/lookahead-2-sec-uBody-fps</output>
+     <seconds>2</seconds>
+     <filter-gain>0.0</filter-gain>
+  </predict-simple>
+  
   
   <predict-simple>
      <input>/velocities/vBody-fps</input>
@@ -1470,7 +1527,7 @@
     <input>/autopilot/afcs/settings/target-speed-kt</input>
     <output>/autopilot/afcs/settings/target-speed-kt-filtered</output>
     <type>noise-spike</type>
-    <max-rate-of-change>1</max-rate-of-change>
+    <max-rate-of-change>8</max-rate-of-change>
   </filter>
   
   <filter>
@@ -1486,13 +1543,13 @@
   <predict-simple>
     <input>orientation/heading-magnetic-deg</input>
     <output>/autopilot/afcs/internal/heading-magnetic-deg-predicted</output>
-    <seconds>5</seconds>
+    <seconds>2</seconds>
     <filter-gain>0.0</filter-gain>
   </predict-simple>
   
 <predict-simple>
-    <input>/autopilot/internal/heading-bug-error-deg</input>
-    <output>/autopilot/internal/heading-bug-error-deg-predicted</output>
+    <input>/autopilot/afcs/internal/heading-bug-error-deg</input>
+    <output>/autopilot/afcs/internal/heading-bug-error-deg-predicted</output>
     <seconds>2</seconds>
     <filter-gain>0.0</filter-gain>
   </predict-simple>

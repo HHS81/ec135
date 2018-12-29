@@ -19,8 +19,11 @@ var max = func(a, b) a > b ? a : b;
 var min = func(a, b) a < b ? a : b;
 
 # liveries =========================================================
-aircraft.livery.init("Aircraft/ec135/Models/liveries");
+if (getprop ("sim/model/variant") == 1){
 aircraft.livery.init("Aircraft/ec135/Models/liveries_h135p3");
+}else{
+aircraft.livery.init("Aircraft/ec135/Models/liveries");
+}
 
 # holder for the headsets ================
 headsetHolder = aircraft.door.new( "/sim/model/ec135/door-positions/headsetHolder", 0.5, 0);

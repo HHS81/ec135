@@ -1,0 +1,902 @@
+<?xml version="1.0"?>
+<!--
+
+	This file is part of FlightGear, the free flight simulator
+	http://www.flightgear.org/
+
+	Copyright (C) 2018 Heiko Schulz, Heiko.H.Schulz@gmx.net
+
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License as
+	published by the Free Software Foundation; either version 2 of the
+	License, or (at your option) any later version.
+
+	This program is distributed in the hope that it will be useful, but
+	WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	General Public License for more details.
+	
+
+-->
+<PropertyList>
+<!--texture made by Heiko H. Schulz-->
+	<name>afcspanel</name>
+	<path>afcspanel.ac</path>
+	
+	
+<!-- animation-->
+<!--CRHT Hold-->
+<animation>
+    <type>pick</type>
+    <object-name>crht.down.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>autopilot/afcs/settings/crht-ft</property>
+        <step>-1</step>
+        <min>3</min>
+        <max>300</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>crht</tooltip-id>
+                <label>crht:%5.2f</label>
+        <property>autopilot/afcs/settings/crht-ft</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>crht.up.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+    <binding>
+        <command>property-adjust</command>
+        <property>autopilot/afcs/settings/crht-ft</property>
+        <step>1</step>
+        <min>3</min>
+        <max>300</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>crht</tooltip-id>
+                <label>crht:%5.2f</label>
+        <property>autopilot/afcs/settings/crht-ft</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+        <type>pick</type>
+        <object-name>CRHTknob</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-cycle</command>
+                <property>/autopilot/afcs/control/alt-mode</property>
+				<value>1</value>
+				<value>0</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>CRHT Hold</tooltip-id>
+                <label>CRHT Hold: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/control/crht</property>
+            </binding>
+        </hovered>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>CRHTknob</object-name>
+        <property>autopilot/afcs/settings/crht-ft</property>
+        <factor>1</factor>
+		<center>
+			<x-m>0.983</x-m>
+			<y-m>-0.097</y-m>
+			<z-m>-0.108</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+    </animation>
+	
+	<!--IAS HOLD-->
+<animation>
+    <type>pick</type>
+    <object-name>ias.down.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/target-speed-kt</property>
+        <step>-1</step>
+        <min>0</min>
+        <wrap>1</wrap>
+      </binding>
+<binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/internal/uBody-fps</property>
+        <step>-0.2</step>
+        <min>0</min>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>IAS-Hold</tooltip-id>
+                <label>IAS:%5.2f</label>
+        <property>/autopilot/afcs/settings/target-speed-kt</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>ias.up.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+    <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/target-speed-kt</property>
+        <step>1</step>
+        <max>150</max>
+        <wrap>1</wrap>
+      </binding>
+<binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/internal/uBody-fps</property>
+        <step>0.2</step>
+        <max>236</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>IAS-Hold</tooltip-id>
+                <label>IAS:%5.2f</label>
+        <property>/autopilot/afcs/settings/target-speed-kt</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+        <type>pick</type>
+        <object-name>IASknob</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-cycle</command>
+                <property>/autopilot/afcs/control/speed-mode</property>
+				<value>1</value>
+				<value>0</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>IAS Hold</tooltip-id>
+                <label>IAS Hold: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/locks/speed</property>
+            </binding>
+        </hovered>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>IASknob</object-name>
+        <property>/autopilot/afcs/settings/target-speed-kt</property>
+        <factor>2</factor>
+		<center>
+			<x-m>0.983</x-m>
+			<y-m>-0.067</y-m>
+			<z-m>-0.108</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+    </animation>
+	
+	
+	<!--ALT HOLD-->
+<animation>
+    <type>pick</type>
+    <object-name>alt.down.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
+        <step>-100</step>
+        <min>0</min>
+        <max>20000</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ALT Aquire</tooltip-id>
+                <label>ALT:%5.2f</label>
+        <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>alt.up.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+    <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
+        <step>100</step>
+        <min>0</min>
+        <max>20000</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ALT Aquire</tooltip-id>
+                <label>ALT:%5.2f</label>
+        <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+        <type>pick</type>
+        <object-name>ALTAknob</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-cycle</command>
+                <property>/autopilot/afcs/control/alt-mode</property>
+				<value>2</value>
+				<value>0</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ALT Aquire</tooltip-id>
+                <label>ALT Aquire: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/internal/altitude-armed</property>
+            </binding>
+        </hovered>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>ALTAknob</object-name>
+        <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
+        <factor>2</factor>
+		<center>
+			<x-m>0.983</x-m>
+			<y-m>-0.067</y-m>
+			<z-m>-0.108</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+    </animation>
+	
+<!--ALT HOLD-->
+<animation>
+        <type>pick</type>
+        <object-name>ALTbtn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-cycle</command>
+                <property>/autopilot/afcs/control/alt-mode</property>
+				<value>3</value>
+				<value>0</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>ALT Hold</tooltip-id>
+                <label>ALT HOLD: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/locks/altitude</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>ALTon</object-name>
+	<condition>
+	<and>
+	<equals>
+	<property>/autopilot/afcs/locks/altitude</property>
+	<value>altitude-hold</value>
+	</equals>
+	<not>
+	<property>/autopilot/afcs/internal/altitude-armed</property>	
+	</not>
+	</and>
+	</condition>
+</animation>
+
+<!--A. TRIM Button-->
+<animation>
+        <type>pick</type>
+        <object-name>ATRIMbtn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/afcs/internal/atrim</property>
+	            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>Auto TRIM</tooltip-id>
+                <label>Auto TRIM: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/internal/atrim</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>ATRIMoff</object-name>
+	<condition>
+	<not>
+	<property>/autopilot/afcs/internal/atrim</property>	
+	</not>
+	</condition>
+</animation>
+
+<!--BK UP Button-->
+<animation>
+        <type>pick</type>
+        <object-name>BKUPbtn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/afcs/internal/bkup</property>
+	            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>BKUP</tooltip-id>
+                <label>BKUP: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/internal/bkup</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>BKUPoff</object-name>
+	<condition>
+	<not>
+	<property>/autopilot/afcs/internal/bkup</property>	
+	</not>
+	</condition>
+</animation>
+
+<!--AP 1 Button-->
+<animation>
+        <type>pick</type>
+        <object-name>AP1btn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/afcs/control/ap1</property>
+	            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>AP1</tooltip-id>
+                <label>AP1: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/internal/ap1</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>AP1off</object-name>
+	<condition>
+	<not>
+	<property>/autopilot/afcs/internal/ap1</property>	
+	</not>
+	</condition>
+</animation>
+
+<!--AP 2 Button-->
+<animation>
+        <type>pick</type>
+        <object-name>AP2btn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/afcs/control/ap2</property>
+	            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>AP2</tooltip-id>
+                <label>AP2: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/internal/ap2</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>AP2off</object-name>
+	<condition>
+	<not>
+	<property>/autopilot/afcs/internal/ap2</property>	
+	</not>
+	</condition>
+</animation>
+
+<!-- FPA/ VS + HDG / TRK selector-->
+
+  <animation>
+        <type>knob</type>
+        <object-name>swt</object-name>
+        <property>/autopilot/afcs/internal/swt</property>
+        <visible>true</visible>
+        <factor>90</factor>
+        <offset-deg>0</offset-deg>
+        <center>
+            <x-m>1.009</x-m>
+            <y-m>-0.082</y-m>
+            <z-m>-0.123</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+        <action>
+            <binding>
+                <command>property-toggle</command>
+        <property>/autopilot/afcs/internal/swt</property>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>SWT</tooltip-id>
+                <label>SWT: %s</label>
+        <property>/autopilot/afcs/internal/swt</property>
+	</binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>fpa.down.cs</object-name>
+	<object-name>fpa.up.cs</object-name>
+	<object-name>trk.down.cs</object-name>
+	<object-name>trk.up.cs</object-name>
+	<condition>
+	<equals>
+	<property>/autopilot/afcs/internal/swt</property>	
+	<value>0</value>
+	</equals>
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>vs.down.cs</object-name>
+	<object-name>vs.up.cs</object-name>
+	<object-name>hdg.down.cs</object-name>
+	<object-name>hdg.up.cs</object-name>
+	<condition>
+	<equals>
+	<property>/autopilot/afcs/internal/swt</property>	
+	<value>1</value>
+	</equals>
+	</condition>
+</animation>
+	
+	<!--FPA Hold-->
+<animation>
+    <type>pick</type>
+    <object-name>fpa.down.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/fpa</property>
+        <step>-1</step>
+        <min>-10</min>
+        <max>10</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>FPA</tooltip-id>
+                <label>FPA:%5.2f</label>
+        <property>/autopilot/afcs/settings/fpa</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>fpa.up.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+    <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/fpa</property>
+        <step>1</step>
+        <min>-10</min>
+        <max>10</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>FPA</tooltip-id>
+                <label>FPA:%5.2f</label>
+        <property>/autopilot/afcs/settings/fpa</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+        <type>pick</type>
+        <object-name>FPAVSknob</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-cycle</command>
+                <property>/autopilot/afcs/control/alt-mode</property>
+				<value>4</value>
+				<value>0</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>FPA Hold</tooltip-id>
+                <label>FPA Hold: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/locks/altitude</property>
+            </binding>
+        </hovered>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>FPAVSknob</object-name>
+        <property>/autopilot/afcs/settings/fpa</property>
+        <factor>18</factor>
+		<center>
+			<x-m>1.009</x-m>
+			<y-m>-0.112</y-m>
+			<z-m>-0.118</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+    </animation>
+	
+	<!--VS Hold-->
+<animation>
+    <type>pick</type>
+    <object-name>vs.down.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/fpm</property>
+        <step>-100</step>
+        <min>-2200</min>
+        <max>2200</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>FPA</tooltip-id>
+                <label>FPA:%5.2f</label>
+        <property>/autopilot/afcs/settings/fpa</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>vs.up.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+    <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/fpm</property>
+        <step>100</step>
+        <min>-2200</min>
+        <max>2200</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>FPA</tooltip-id>
+                <label>FPA:%5.2f</label>
+        <property>/autopilot/afcs/settings/fpa</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>FPAVSknob</object-name>
+        <property>/autopilot/afcs/settings/fpm</property>
+        <factor>1</factor>
+		<center>
+			<x-m>1.009</x-m>
+			<y-m>-0.112</y-m>
+			<z-m>-0.118</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+    </animation>
+	
+	<!--TRK Hold-->
+<animation>
+    <type>pick</type>
+    <object-name>trk.down.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/trk</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>TRK</tooltip-id>
+                <label>TRK:%5.2f</label>
+        <property>/autopilot/afcs/settings/trk</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>trk.up.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+    <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/trk</property>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>TRK</tooltip-id>
+                <label>TRK:%5.2f</label>
+        <property>/autopilot/afcs/settings/trk</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+        <type>pick</type>
+        <object-name>HEADTRKknob</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-cycle</command>
+                <property>/autopilot/afcs/control/heading-mode</property>
+				<value>1</value>
+				<value>0</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>TRKHold</tooltip-id>
+                <label>TRK Hold: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/locks/heading</property>
+            </binding>
+        </hovered>
+    </animation>
+
+<animation>
+        <type>rotate</type>
+        <object-name>HEADTRKknob</object-name>
+        <property>/autopilot/afcs/settings/trk</property>
+        <factor>1</factor>
+		<center>
+			<x-m>1.009</x-m>
+			<y-m>-0.052</y-m>
+			<z-m>-0.108</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+    </animation>
+	
+	<!--Heading Hold-->
+<animation>
+    <type>pick</type>
+    <object-name>hdg.down.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/heading-bug-deg</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>HDG</tooltip-id>
+                <label>HDG:%5.2f</label>
+        <property>/autopilot/afcs/settings/heading-bug-deg</property>
+            </binding>
+        </hovered>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>hdg.up.cs</object-name>
+        <visible>false</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+    <binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/heading-bug-deg</property>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+            <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>HDG</tooltip-id>
+                <label>HDG:%5.2f</label>
+        <property>/autopilot/afcs/settings/heading-bug-deg</property>
+            </binding>
+        </hovered>
+</animation>
+
+
+<animation>
+        <type>rotate</type>
+        <object-name>HEADTRKknob</object-name>
+        <property>/autopilot/afcs/locks/heading</property>
+        <factor>1</factor>
+		<center>
+			<x-m>1.009</x-m>
+			<y-m>-0.052</y-m>
+			<z-m>-0.108</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+    </animation>
+	
+	
+
+
+
+</PropertyList>

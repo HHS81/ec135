@@ -12,7 +12,7 @@ Thanks for all the help!
 <PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
 	<sim>
 		<description>Airbus H135 P3</description>
-		<author>Heiko Schulz (3d, Textures, animation, config, some liveries); Heiko Schulz + Maik Justus (FDM); Melchior Franz + Heiko Schulz(Nasal); Oliver Thurau (Particles); sanni (Pilot Animation); f-sig(instrument enhancements);
+		<author>Main Author:  (Heiko Schulz) ; 3d: (Heiko Schulz);  Textures, animation, config, some liveries: (Heiko Schulz) + Maik Justus (FDM); Melchior Franz + Heiko Schulz(Nasal); Oliver Thurau (Particles); sanni (Pilot Animation); f-sig(instrument enhancements);
 		Sebastian Dietrich (GTX330 improvements); Martin Litzenberger ( Airbus Helionix Screens ); Joshua Davidson (IESI)</author>
 		<status>early production</status>
 		<rating>

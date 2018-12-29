@@ -1,6 +1,24 @@
 <?xml version="1.0"?>
 
-<!-- Airbus H135 Helicopter by Heiko Schulz, animation set -->
+<!--
+
+	This file is part of FlightGear, the free flight simulator
+	http://www.flightgear.org/
+
+	Copyright (C) 2018 Heiko Schulz, Heiko.H.Schulz@gmx.net
+
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License as
+	published by the Free Software Foundation; either version 2 of the
+	License, or (at your option) any later version.
+
+	This program is distributed in the hope that it will be useful, but
+	WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	General Public License for more details.
+	
+
+-->
 
 <PropertyList>
 
@@ -62,18 +80,6 @@
 	</model>
 	
 		
-	<model>
-		<name>Helimap</name>
-		<path>Aircraft/ec135/Models/instrumentation/helimap/helimap.xml</path>
-		<offsets>
-			<x-m>0.704</x-m>
-			<y-m>-0.089</y-m>
-			<z-m>-0.074</z-m>
-			<heading-deg>90</heading-deg>
-			<roll-deg>25</roll-deg>
-
-		</offsets>
-	</model>
 	
 	<model>
 		<name>GNS430</name>
@@ -94,9 +100,9 @@
 		<path>Aircraft/ec135/Models/instrumentation/GNS430/GNS430.xml</path>
 		<!--Aircraft/Instruments-3d/GNS430/GNS430.xml-->
 		<offsets>
-			<x-m>0.724</x-m>
-			<y-m>0.08</y-m>
-			<z-m>-0.085</z-m>
+			<x-m>0.661</x-m>
+			<y-m>-0.08</y-m>
+			<z-m>-0.052</z-m>
 			<heading-deg>90</heading-deg>
 			<roll-deg>25</roll-deg>
 
@@ -108,11 +114,24 @@
 		<path>Aircraft/ec135/Models/instrumentation/GTX330/GTX330.xml</path>
 		<!--Aircraft/Instruments-3d/GTX330/GTX330.xml-->
 		<offsets>
-			<x-m>0.780</x-m>
+			<x-m>0.712</x-m>
 			<y-m>0.08</y-m>
-			<z-m>-0.108</z-m>
+			<z-m>-0.076</z-m>
 			<heading-deg>90</heading-deg>
 			<roll-deg>25</roll-deg>
+
+		</offsets>
+	</model>
+    
+	<model>
+		<name>AFCSPanel</name>
+		<path>Aircraft/ec135/Models/instrumentation/afcspanel/afcspanel.xml</path>
+		<offsets><!--already absolut positioned for ALS shadows-->
+			<x-m>0.0</x-m>
+			<y-m>0.00</y-m>
+			<z-m>0</z-m>
+			<heading-deg>0</heading-deg>
+			<roll-deg>0</roll-deg>
 
 		</offsets>
 	</model>

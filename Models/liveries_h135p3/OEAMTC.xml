@@ -9,6 +9,7 @@
 					 <index type="int">1</index>
 					  <texture>liveries_h135p3/OEAMTC.png</texture>
 			</livery>
+			<variant type="int">1</variant>
 		<!--<rotorblade>
 				<name type="string">ANWB</name>
 					 <index type="int">1</index>
