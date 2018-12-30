@@ -30,9 +30,6 @@ setprop("/autopilot/afcs/engaged", 0);
 setprop("/autopilot/afcs/control/ap1", 0);
 setprop("/autopilot/afcs/control/ap2", 0);
 
-
-
-	
 }
 setlistener("sim/signals/fdm-initialized", listenerAFCSInitFunc);
 ###
@@ -55,11 +52,11 @@ var atrim = getprop("/autopilot/afcs/control/atrim") or 0;
 ##
 
 
-if (atrim >0){
-setprop("/autopilot/afcs/internal/atrim", 1);
-}else{
-setprop("/autopilot/afcs/internal/atrim", 0);
-}
+#if (atrim >0){
+#setprop("/autopilot/afcs/internal/atrim", 1);
+#}else{
+#setprop("/autopilot/afcs/internal/atrim", 0);
+#}
 
 if ((ap1 > 0) and (afcs > 0)){
 setprop("/autopilot/afcs/internal/ap1", 1);
@@ -130,7 +127,7 @@ setprop("/autopilot/afcs/locks/heading", "");
 }
 
 
-}elsif  ((ap1 < 1) or (ap2 < 1)){
+} elsif ((ap1 < 1) or (ap2 < 1)){
 setprop("/autopilot/afcs/internal/altitude-armed", 0);
 setprop("/autopilot/afcs/control/alt-mode", 0);
 setprop("/autopilot/afcs/control/speed-mode", 0);
@@ -144,16 +141,16 @@ setprop("/autopilot/afcs/internal/bkup", 0);
 
 
 ##
-if ((ap1 == 1) or (ap2 == 1))  {
-var my_vs = getprop("/autopilot/internal/vert-speed-fpm") or 0;
-my_vs =  int(my_vs * 0.01);
-my_vs *= 100;
-if(my_vs>2200)my_vs=2200;
-if(my_vs<-2200)my_vs=-2200;
-setprop("autopilot/afcs/settings/fpm",my_vs);
-}
+#if  ((ap1 > 0) or (ap2 > 0))  {
+#var my_vs = getprop("/autopilot/internal/vert-speed-fpm") or 0;
+#my_vs =  int(my_vs * 0.01);
+#my_vs *= 100;
+#if(my_vs>2200)my_vs=2200;
+#if(my_vs<-2200)my_vs=-2200;
+#setprop("autopilot/afcs/settings/fpm",my_vs);
+#}
 
-if ((ap1 == 1") or (ap2 == 1))   {
+if  ((ap1 > 0) or (ap2 > 0))  {
 var vsw = getprop("autopilot/afcs/settings/fpm") or 0;
 vsw = int(vsw * 0.01);
 vsw *= 100;
@@ -162,14 +159,14 @@ setprop("autopilot/afcs/settings/fpm",vsw);
 
 ##
 
-if ((ap1 == "true") or (ap2 == "true"))   {
+if  ((ap1 > 0) or (ap2 > 0)) {
 var my_vfps = getprop("/autopilot/afcs/internal/vBody-fps") or 0;
 my_vfps =  int(my_vfps * 10);
 my_vfps *= 0.1;
 setprop("/autopilot/afcs/internal/vBody-fps",my_vfps);
-
 }
-if ((ap1 == "true") or (ap2 == "true"))  {
+
+if  ((ap1 > 0) or (ap2 > 0))  {
 var svps = getprop("/autopilot/afcs/internal/vBody-fps") or 0;
 svps = int(svps * 10);
 svps *= 0.1;
@@ -178,14 +175,14 @@ setprop("/autopilot/afcs/internal/vBody-fps",svps);
 
 ##
 
-if ((ap1 == "true") or (ap2 == "true"))  {
+if  ((ap1 > 0) or (ap2 > 0))  {
 var my_ufps = getprop("/autopilot/afcs/internal/uBody-fps") or 0;
 my_ufps =  int(my_ufps * 10);
 my_ufps *= 0.1;
 setprop("/autopilot/afcs/internal/uBody-fps",my_ufps);
 }
 
-if ((ap1 == "true") or (ap2 == "true"))  {
+if  ((ap1 > 0) or (ap2 > 0))  {
 var sups = getprop("/autopilot/afcs/internal/uBody-fps") or 0;
 sups= int(sups * 10);
 sups *= 0.1;
@@ -193,10 +190,71 @@ setprop("/autopilot/afcs/internal/uBody-fps",sups);
 }
 
 ##
+#AFCS Fly through when any Upper mode is engaged#
+##
+var rollinput = getprop("/controls/flight/aileron") or 0;
+var pitchinput = getprop("/controls/flight/elevator") or 0;
+var FTR = getprop("/controls/flight/force_trim_release") or 0;
+
+#kprrc = kp roll rate comparator
+
+var kpRRC = 1;
+var kpHHHold = 1;
+var kpIASH = -1;
+var kpCL = -0.0125;
+var kpVSTRC = 1; 
+var kpFPATRC = 12; 
+var kpCRHTTCR = 1; 
+var kpALTHTCR = 1; 
+var kpALTATCR = 0.25; 
+
+if   ((rollinput < -0.05) or (rollinput > 0.05) or (FTR > 0) or (pitchinput < -0.05) or (pitchinput > 0.05) ) {
+setprop("/autopilot/afcs/internal/flythrough", 1 );
+}else{
+setprop("/autopilot/afcs/internal/flythrough", 0 );
+}
+
+#if   ((rollinput < -0.05) or (rollinput > 0.05) or (FTR > 0) ) {
+#setprop("/autopilot/afcs/internal/kpRRC", 0 );
+#setprop("/autopilot/afcs/internal/kpHHHold", 0 );
+
+if   ((rollinput > -0.05) or (rollinput < 0.05) or  (FTR < 1) )  {
+
+interpolate("/autopilot/afcs/internal/kpRRC", kpRRC, 4 );
+interpolate("/autopilot/afcs/internal/kpHHHold", kpHHHold, 4 );
+}
+
+#if   ((pitchinput < -0.05) or (pitchinput > 0.05) or (FTR > 0) ) {
+
+#setprop("/autopilot/afcs/internal/kpIASH", 0 );
+#setprop("/autopilot/afcs/internal/kpCL", 0 );
+
+#setprop("/autopilot/afcs/internal/kpVSTRC", 0 );
+#setprop("/autopilot/afcs/internal/kpFPATRC", 0 );
+#setprop("/autopilot/afcs/internal/kpCRHTTCR", 0 );
+#setprop("/autopilot/afcs/internal/kpALTHTCR", 0 );
+#setprop("/autopilot/afcs/internal/kpALTATCR", 0 );
+
+if   ((pitchinput > -0.05) or (pitchinput < 0.05) or  (FTR < 1) )  {
+
+interpolate("/autopilot/afcs/internal/kpIASH", kpIASH, 4 );
+interpolate("/autopilot/afcs/internal/kpCL", kpCL, 4 );
+
+interpolate("/autopilot/afcs/internal/kpVSTRC", kpVSTRC, 4 );
+interpolate("/autopilot/afcs/internal/kpFPATRC", kpFPATRC, 4 );
+interpolate("/autopilot/afcs/internal/kpCRHTTCR", kpCRHTTCR, 4 );
+interpolate("/autopilot/afcs/internal/kpALTHTCR", kpALTHTCR, 4 );
+interpolate("/autopilot/afcs/internal/kpALTATCR", kpALTATCR,  4 );
+}
+
+
+
+
+##
 
 if (ias < 30){
 			var kpHHHold = 1;
-			interpolate("/autopilot/afcs/internal/kpHHHold", kpHHHold, 5 );
+			interpolate("/autopilot/afcs/internal/kpHHHold", kpHHHold, 4 );
 			}else{
 			interpolate("/autopilot/afcs/internal/kpHHHold", 0, 1 );
 			}
@@ -204,7 +262,7 @@ if (ias < 30){
 
 if (ias > 30){
 			var kpSS = -0.5;
-			interpolate("/autopilot/afcs/internal/kpSS", kpSS, 1 );
+			interpolate("/autopilot/afcs/internal/kpSS", kpSS, 4 );
 			}else{
 			interpolate("/autopilot/afcs/internal/kpSS", 0, 1 );
 			}
@@ -212,7 +270,7 @@ if (ias > 30){
 
 if (ias < 30){
 			var kpHHHold2 = -0.125;
-			interpolate("/autopilot/afcs/internal/kpHHHold2", kpHHHold2, 1 );
+			interpolate("/autopilot/afcs/internal/kpHHHold2", kpHHHold2, 4);
 			}else{
 			interpolate("/autopilot/afcs/internal/kpHHHold2", 0, 1 );
 			}
@@ -225,9 +283,9 @@ if (ias < 30){
         var TASft = TAS * NM2M / 3600; 
     	var VSft= (VS * FT2M);  
 
-if ((ap1 == "true") or (ap2 == "true")) {
+if  ((ap1 > 0) or (ap2 > 0)) {
 	   var FPangle = math.atan2(VSft, TASft) * R2D;
-            setprop("autopilot/afcs/internal/fpa", (FPangle * -1));
+		setprop("autopilot/afcs/internal/fpa", (FPangle *-1));
 	}
 
 settimer(afcs_action, 0.01);

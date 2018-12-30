@@ -1,4 +1,4 @@
-####  electrical system taken from the S76C, modified for Ec130 after POH  #### 
+####  electrical system taken from the S76C, modified for Ec135 after POH  #### 
 ####    Syd Adams    ####
 
 var epu = func{
@@ -275,8 +275,7 @@ init_switches = func() {
     append(switch_list,"controls/electric/servo");
     append(output_list,"servo");
     append(watt_list,0.5);
-     
-     
+       
     append(switch_list,"controls/electric/attitude");
     append(output_list,"attitude");
     append(watt_list,0.5);
@@ -340,6 +339,10 @@ init_switches = func() {
     append(switch_list,"controls/electric/avionics-switch1");
     append(output_list,"nav[1]");
     append(watt_list,10);
+    
+    append(switch_list,"controls/electric/avionics-switch1");
+    append(output_list,"afcs");
+    append(watt_list,0.2);
     
     append(switch_list,"controls/electric/direct-battery");
     append(output_list,"transponder");
@@ -501,6 +504,21 @@ electrical_bus = func(bv) {
     
     setprop(outPut~"stdby-instrument-lights",DIMMER2);
     setprop(outPut~"stdby-instrument-lights-norm",DIMMER2 * 0.0344);
+    
+    if (getprop("/systems/electrical/outputs/afcs") >22.0){
+    setprop("/autopilot/afcs/engaged", 1)
+    }else{
+    setprop("/autopilot/afcs/engaged", 0)};
+    
+#replace casdisable.nas-> disable cas when engines running- otherwise we are overflooded with error messages in the console
+
+var rpm = getprop("/rotors/main/rpm") or 0;
+
+if ((bus_volts > 0.0) and (rpm > 50)) {
+setprop("/controls/flight/fcs/switches/cas", 0);
+}else {
+setprop("/controls/flight/fcs/switches/cas", 1.0);
+}
     
 
     return load;

@@ -38,7 +38,6 @@
         <property>autopilot/afcs/settings/crht-ft</property>
         <step>-1</step>
         <min>3</min>
-        <max>300</max>
         <wrap>1</wrap>
       </binding>
     </action>
@@ -63,7 +62,6 @@
         <command>property-adjust</command>
         <property>autopilot/afcs/settings/crht-ft</property>
         <step>1</step>
-        <min>3</min>
         <max>300</max>
         <wrap>1</wrap>
       </binding>
@@ -241,7 +239,6 @@
         <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
         <step>-100</step>
         <min>0</min>
-        <max>20000</max>
         <wrap>1</wrap>
       </binding>
     </action>
@@ -266,7 +263,6 @@
         <command>property-adjust</command>
         <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
         <step>100</step>
-        <min>0</min>
         <max>20000</max>
         <wrap>1</wrap>
       </binding>
@@ -577,7 +573,6 @@
         <property>/autopilot/afcs/settings/fpa</property>
         <step>-1</step>
         <min>-10</min>
-        <max>10</max>
         <wrap>1</wrap>
       </binding>
     </action>
@@ -602,7 +597,6 @@
         <command>property-adjust</command>
         <property>/autopilot/afcs/settings/fpa</property>
         <step>1</step>
-        <min>-10</min>
         <max>10</max>
         <wrap>1</wrap>
       </binding>
@@ -672,7 +666,6 @@
         <property>/autopilot/afcs/settings/fpm</property>
         <step>-100</step>
         <min>-2200</min>
-        <max>2200</max>
         <wrap>1</wrap>
       </binding>
     </action>
@@ -697,7 +690,6 @@
         <command>property-adjust</command>
         <property>/autopilot/afcs/settings/fpm</property>
         <step>100</step>
-        <min>-2200</min>
         <max>2200</max>
         <wrap>1</wrap>
       </binding>
