@@ -29,6 +29,8 @@ setprop("/autopilot/afcs/control/heading-mode", 0);
 setprop("/autopilot/afcs/engaged", 0);
 setprop("/autopilot/afcs/control/ap1", 0);
 setprop("/autopilot/afcs/control/ap2", 0);
+setprop("/autopilot/afcs/control/nav1-coupled", 0);
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
 
 }
 setlistener("sim/signals/fdm-initialized", listenerAFCSInitFunc);
@@ -47,7 +49,9 @@ var swt = getprop("/autopilot/afcs/internal/swt") or 0;
 var altmode = getprop("/autopilot/afcs/control/alt-mode") or 0;
 var speedmode = getprop("/autopilot/afcs/control/speed-mode") or 0;
 var headmode = getprop("/autopilot/afcs/control/heading-mode") or 0;
+var nav1coupled = getprop("/autopilot/afcs/control/nav1-coupled") or 0;
 var atrim = getprop("/autopilot/afcs/control/atrim") or 0;
+var nav1armed = getprop("/autopilot/afcs/internal/nav1-armed") or 0;
 
 ##
 
@@ -126,6 +130,17 @@ if (headmode == 0){
 setprop("/autopilot/afcs/locks/heading", "");
 }
 
+if ( ((headmode == 1) and (swt > 0)) and (nav1coupled > 0)){
+setprop("/autopilot/afcs/locks/heading", "heading-hold");
+setprop("/autopilot/afcs/internal/nav1-armed", 1);
+}elsif (nav1coupled < 1){
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
+}
+
+if (headmode == 2){
+setprop("/autopilot/afcs/locks/heading", "nav1-hold");
+}
+
 
 } elsif ((ap1 < 1) or (ap2 < 1)){
 setprop("/autopilot/afcs/internal/altitude-armed", 0);
@@ -138,17 +153,18 @@ setprop("/autopilot/afcs/locks/speed", "");
 setprop("/autopilot/afcs/internal/bkup", 0);
 }
 
-
-
 ##
-#if  ((ap1 > 0) or (ap2 > 0))  {
-#var my_vs = getprop("/autopilot/internal/vert-speed-fpm") or 0;
-#my_vs =  int(my_vs * 0.01);
-#my_vs *= 100;
-#if(my_vs>2200)my_vs=2200;
-#if(my_vs<-2200)my_vs=-2200;
-#setprop("autopilot/afcs/settings/fpm",my_vs);
-#}
+##NAV1/ LOC Mode 
+##
+
+if (nav1armed < 0){
+if ((getprop("/autopilot/afcs/internal/intercept-heading-deg") > 45) and ((getprop("/autopilot/internal/nav1-course-error") < 4.52 )) ){
+setprop("/autopilot/afcs/control/heading-mode", 2);
+}elsif ((getprop("/autopilot/afcs/internal/intercept-heading-deg") < 45) and ((getprop("/autopilot/internal/nav1-course-error") < 1.33 )) ){
+setprop("/autopilot/afcs/control/heading-mode", 2);
+}
+}
+##
 
 if  ((ap1 > 0) or (ap2 > 0))  {
 var vsw = getprop("autopilot/afcs/settings/fpm") or 0;
@@ -214,26 +230,11 @@ setprop("/autopilot/afcs/internal/flythrough", 1 );
 setprop("/autopilot/afcs/internal/flythrough", 0 );
 }
 
-#if   ((rollinput < -0.05) or (rollinput > 0.05) or (FTR > 0) ) {
-#setprop("/autopilot/afcs/internal/kpRRC", 0 );
-#setprop("/autopilot/afcs/internal/kpHHHold", 0 );
-
 if   ((rollinput > -0.05) or (rollinput < 0.05) or  (FTR < 1) )  {
 
 interpolate("/autopilot/afcs/internal/kpRRC", kpRRC, 4 );
 interpolate("/autopilot/afcs/internal/kpHHHold", kpHHHold, 4 );
 }
-
-#if   ((pitchinput < -0.05) or (pitchinput > 0.05) or (FTR > 0) ) {
-
-#setprop("/autopilot/afcs/internal/kpIASH", 0 );
-#setprop("/autopilot/afcs/internal/kpCL", 0 );
-
-#setprop("/autopilot/afcs/internal/kpVSTRC", 0 );
-#setprop("/autopilot/afcs/internal/kpFPATRC", 0 );
-#setprop("/autopilot/afcs/internal/kpCRHTTCR", 0 );
-#setprop("/autopilot/afcs/internal/kpALTHTCR", 0 );
-#setprop("/autopilot/afcs/internal/kpALTATCR", 0 );
 
 if   ((pitchinput > -0.05) or (pitchinput < 0.05) or  (FTR < 1) )  {
 

@@ -203,7 +203,7 @@
           </or>
          </condition>
       </enable>
-  </filter>
+  </filter>-->
   
 
   <pid-controller>
@@ -408,7 +408,7 @@
     </enable>
   </filter>
   
-  <filter>
+  <!--<filter>
     <name>heading bug error computer/normalizer</name>
     <debug>false</debug>
     <type>gain</type>
@@ -422,7 +422,44 @@
       <max>180</max>
     </period>
     <gain>1.0</gain>
-  </filter>
+  </filter>-->
+  
+<filter>
+  <name>Heading Offset Computer</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <gain>1.0</gain>
+  <input>
+   <condition>
+    <equals>
+     <property>/autopilot/afcs/locks/heading</property>
+     <value>nav1-hold</value>
+    </equals>
+   </condition>
+   <property>/autopilot/afcs/internal/intercept-heading-deg</property>
+  </input>
+  <input>/autopilot/afcs/settings/heading-bug-deg</input>
+  <reference>/orientation/heading-magnetic-deg</reference>
+  <output>/autopilot/afcs/internal/heading-bug-error-deg</output>
+  <period>
+   <min>-180</min>
+   <max>180</max>
+  </period>
+ </filter>
+ 
+ <filter>
+  <name>Intercept Heading Computer</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <gain>1.0</gain>
+  <input>/autopilot/internal/selected-course</input>
+  <reference>/autopilot/internal/course-error-deg</reference>
+  <output>/autopilot/afcs/internal/intercept-heading-deg</output>
+  <period>
+   <min>0</min>
+   <max>360</max>
+  </period>
+ </filter>
   
   <filter>
     <name>HDG bankangle plus</name>
@@ -439,8 +476,22 @@
     <max>21</max>
   </filter>
   
-      <!-- to do: add max roll command for non-approaches: 0.15 * IAS with max. 21DEG according EC145 C2 AFCS- lets use this as reference until data for H135 helionix 2+ is there-->
+ <filter>
+    <name>VOR LOC bankangle plus</name>
+    <debug>false</debug>
+    <enable>
+      <property>/autopilot/afcs/locks/heading</property>
+      <value>VOR</value>
+    </enable>
+    <type>gain</type>
+    <input>/instrumentation/airspeed-indicator/indicated-speed-kt</input>
+    <output>/autopilot/afcs/internal/roll-command-limit-p</output>
+    <gain>0.22</gain>
+    <min>-30</min>
+    <max>30</max>
+  </filter>
   
+    
   <filter>
     <name>HDG bankangle minus</name>
     <debug>false</debug>
@@ -453,26 +504,44 @@
     <output>/autopilot/afcs/internal/roll-command-limit-m</output>
     <gain>-0.15</gain>
     <min>-21</min>
-    <!-- to do: add max roll command for non-approaches: 0.15 * IAS with max. 21DEG according EC145 C2 AFCS- lets use this as reference until data for H135 helionix 2+ is there-->
-    <max>21</max>
+        <max>21</max>
   </filter>
   
-  <!-- to do: add max roll command for non-approaches: 0.15 * IAS with max. 21DEG according EC145 C2 AFCS- lets use this as reference until data for H135 helionix 2+ is there-->
-  
-  <!--<filter>
-    <name>HDG target roll computer</name>
+ <filter>
+    <name>VOR LOC bankangle minus</name>
     <debug>false</debug>
     <enable>
       <property>/autopilot/afcs/locks/heading</property>
-      <value>heading-hold</value>
+      <value>VOR</value>
     </enable>
     <type>gain</type>
-    <input>/autopilot/afcs/internal/heading-bug-error-deg</input>
-    <output>/autopilot/afcs/internal/target-roll-deg</output>
-    <gain>1.0</gain>
-    <min>/autopilot/afcs/internal/roll-command-limit-m</min>
-        <max>/autopilot/afcs/internal/roll-command-limit-p</max>
-  </filter>-->
+    <input>/instrumentation/airspeed-indicator/indicated-speed-kt</input>
+    <output>/autopilot/afcs/internal/roll-command-limit-m</output>
+    <gain>-0.22</gain>
+    <min>-30</min>
+    <max>30</max>
+  </filter>
+  
+ 
+  
+ <filter>
+  <name>VOR LOC Target Roll Computer</name>
+  <debug>false</debug>
+        <enable>
+            <condition>
+                    <equals>
+                        <property>autopilot/afcs/locks/heading</property>
+                        <value>VOR</value>
+                    </equals>
+            </condition>
+        </enable>
+  <type>gain</type>
+  <input>/autopilot/internal/nav1-heading-error-deg</input>
+  <output>/autopilot/afcs/internal/target-roll-deg</output>
+  <gain>1.0</gain>
+  <min>30</min>
+  <max>30</max>
+ </filter>
   
   
 <pid-controller>
@@ -485,17 +554,11 @@
             <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
             <value>30</value>
           </greater-than>
-        <or>
           <equals>
             <property>autopilot/afcs/locks/heading</property>
             <value>heading-hold</value>
           </equals>
-          <equals>
-            <property>autopilot/afcs/locks/heading</property>
-            <value>VOR</value>
-          </equals>
-        </or>
-        </and>
+          </and>
       </condition>
     </enable>
    <input>
@@ -556,46 +619,7 @@
 
   
   
- <!--<pi-simple-controller>
-    <name>Target Roll rate calculator high speed</name>
-    <debug>false</debug>
-    <enable>
-      <condition>
-        <and>
-          <greater-than>
-            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
-            <value>30</value>
-          </greater-than>
-        <or>
-          <equals>
-            <property>autopilot/afcs/locks/heading</property>
-            <value>heading-hold</value>
-          </equals>
-          <equals>
-            <property>autopilot/afcs/locks/heading</property>
-            <value>VOR</value>
-          </equals>
-        </or>
-        </and>
-      </condition>
-    </enable>
-    <input>
-      <prop>/orientation/yaw-rate-degps</prop>
-    </input>
-    <reference>
-      <prop>/autopilot/afcs/internal/target-yaw-rate-fps</prop>
-    </reference>
-    <output>
-      <prop>/autopilot/afcs/internal/target-roll-rate</prop>
-    </output>
-    <config>
-      <Kp>1</Kp>
-      <Ki>0.05</Ki>
-      <u_min>-80</u_min>
-      <u_max>80</u_max>
-    </config>
- </pi-simple-controller>-->
- 
+
 
   <pid-controller>
     <name>Roll rate comparator</name>
@@ -631,8 +655,8 @@
     </output>
     <config>
             <Kp>/autopilot/afcs/internal/kpRRC</Kp><!-- 1 -->
-            <Ti>5.0</Ti>
-            <Td>0.1</Td>
+            <Ti>1.0</Ti>
+            <Td>0.0</Td>
       <u_min>/autopilot/afcs/internal/roll-command-limit-m</u_min> 
       <u_max>/autopilot/afcs/internal/roll-command-limit-p</u_max>  
     </config>
@@ -782,16 +806,10 @@
     <gain>1</gain>
       <enable>
   <condition>
-  <or>
         <not-equals>
       <property>/autopilot/afcs/locks/speed</property>
       <value>ias-hold</value>
    </not-equals>
-     <equals>
-      <property>controls/flight/force_trim_release</property>
-      <value>true</value>
-   </equals>
-   </or>
   </condition>
     </enable>
  </filter>
@@ -804,16 +822,10 @@
     <output>/autopilot/afcs/internal/uBody-fps</output>
       <enable>
   <condition>
-  <or>
         <not-equals>
       <property>/autopilot/afcs/locks/speed</property>
       <value>ias-hold</value>
    </not-equals>
-     <equals>
-      <property>controls/flight/force_trim_release</property>
-      <value>true</value>
-   </equals>
-   </or>
   </condition>
     </enable>
  </filter>
@@ -1303,6 +1315,37 @@
   </condition>
       </enable>
 <input>
+      <property>/velocities/vertical-speed-fps</property>
+    </input>
+    <reference>
+      <property>/autopilot/afcs/internal/target-climb-rate-fps</property>
+    </reference>
+     <output>
+     <property>/controls/flight/collective</property>
+    </output>
+    <config>
+      <Kp>/autopilot/afcs/internal/kpCL</Kp><!-- -0.0125-->
+      <Ti>10.0</Ti>       
+      <Td>0.0</Td>    
+      <u_min>0</u_min> 
+      <u_max>1</u_max>  
+    </config>
+  </pid-controller>
+  
+  <!-- GS-Hold Mode-->
+  
+  <pid-controller>
+    <name>GS Hold Mode</name>
+    <debug>false</debug>
+    <enable>
+  <condition>
+  <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>gs1-hold</value>
+</equals>
+  </condition>
+    </enable>
+    <input>
       <property>/velocities/vertical-speed-fps</property>
     </input>
     <reference>
