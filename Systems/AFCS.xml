@@ -188,7 +188,7 @@
     <input>/controls/flight/aileron-trim-filtered</input>
     <output>/controls/flight/aileron-trim</output>
     <type>noise-spike</type>
-    <max-rate-of-change>0.125</max-rate-of-change>
+    <max-rate-of-change>0.5</max-rate-of-change>
             <enable>
   <condition>
         <or>
@@ -246,7 +246,7 @@
     <input>/controls/flight/elevator-trim-filtered</input>
     <output>/controls/flight/elevator-trim</output>
     <type>noise-spike</type>
-    <max-rate-of-change>0.125</max-rate-of-change>
+    <max-rate-of-change>0.5</max-rate-of-change>
                 <enable>
   <condition>
         <or>
@@ -276,12 +276,10 @@
     <gain>1</gain>
     <enable>
       <condition>
-        <or>
           <not-equals>
-            <property>controls/flight/force_trim_release</property>
-            <value>false</value>
+            <property>/autopilot/afcs/locks/speed</property>
+            <value>ias-hold</value>
           </not-equals>
-        </or>
       </condition>
     </enable>
   </filter>
@@ -295,12 +293,10 @@
     <gain>1</gain>
     <enable>
       <condition>
-        <or>
           <not-equals>
-            <property>controls/flight/force_trim_release</property>
-            <value>false</value>
+            <property>/autopilot/afcs/locks/speed</property>
+            <value>ias-hold</value>
           </not-equals>
-        </or>
       </condition>
     </enable>
   </filter>
@@ -786,7 +782,7 @@
       </condition>
     </enable>
    <input>
-      <prop>/autopilot/afcs/internal/heading-bug-error-deg</prop>
+      <prop>/autopilot/afcs/internal/heading-bug-error-deg-predicted</prop>
     </input>
     <reference>0</reference>
     <output>
@@ -950,16 +946,10 @@
     <gain>1</gain>
 <enable>
   <condition>
-  <or>
       <not-equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>vs-hold</value>
    </not-equals>
-     <not-equals>
-      <property>controls/flight/force_trim_release</property>
-      <value>false</value>
-   </not-equals>
-  </or>
   </condition>
     </enable>
  </filter>
@@ -1099,16 +1089,10 @@
     <gain>1</gain>
       <enable>
   <condition>
-  <or>
         <not-equals>
       <property>/autopilot/afcs/locks/altitude</property>
       <value>crht-hold</value>
    </not-equals>
-     <equals>
-      <property>controls/flight/force_trim_release</property>
-      <value>true</value>
-   </equals>
-   </or>
   </condition>
     </enable>
  </filter>
