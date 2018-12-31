@@ -130,11 +130,8 @@ if (headmode == 0){
 setprop("/autopilot/afcs/locks/heading", "");
 }
 
-if ( ((headmode == 1) and (swt > 0)) and (nav1coupled > 0)){
-setprop("/autopilot/afcs/locks/heading", "heading-hold");
+if (nav1coupled > 0){
 setprop("/autopilot/afcs/internal/nav1-armed", 1);
-}elsif (nav1coupled < 1){
-setprop("/autopilot/afcs/internal/nav1-armed", 0);
 }
 
 if (headmode == 2){
@@ -157,13 +154,28 @@ setprop("/autopilot/afcs/internal/bkup", 0);
 ##NAV1/ LOC Mode 
 ##
 
-if (nav1armed < 0){
-if ((getprop("/autopilot/afcs/internal/intercept-heading-deg") > 45) and ((getprop("/autopilot/internal/nav1-course-error") < 4.52 )) ){
+var interceptionangle = getprop("/autopilot/afcs/internal/intercept-heading-deg") or 0;
+var dfl = getprop("instrumentation/nav/heading-needle-deflection") or 0;
+
+if (interceptionangle >45){
+pdfl = 4.52;
+mdfl = -4.52;
+}else{
+pdfl = 1.33;
+mdfl = -1.33;
+}
+
+if (nav1armed > 0)   {
+if ((dfl < pdfl) and (dfl >mdfl)){
 setprop("/autopilot/afcs/control/heading-mode", 2);
-}elsif ((getprop("/autopilot/afcs/internal/intercept-heading-deg") < 45) and ((getprop("/autopilot/internal/nav1-course-error") < 1.33 )) ){
-setprop("/autopilot/afcs/control/heading-mode", 2);
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
 }
 }
+
+#if ((nav1armed > 0) and  ((getprop("/instrumentation/nav/heading-needle-deflection") < 4.52 ) and (getprop("/instrumentation/nav/heading-needle-deflection") > -4.52 ) ) ){
+#setprop("/autopilot/afcs/control/heading-mode", 2);
+#setprop("/autopilot/afcs/internal/nav1-armed", 0);
+#}
 ##
 
 if  ((ap1 > 0) or (ap2 > 0))  {
@@ -255,7 +267,7 @@ interpolate("/autopilot/afcs/internal/kpALTATCR", kpALTATCR,  4 );
 
 if (ias < 30){
 			var kpHHHold = 1;
-			interpolate("/autopilot/afcs/internal/kpHHHold", kpHHHold, 4 );
+			interpolate("/autopilot/afcs/internal/kpHHHold", kpHHHold, 1 );
 			}else{
 			interpolate("/autopilot/afcs/internal/kpHHHold", 0, 1 );
 			}
@@ -263,7 +275,7 @@ if (ias < 30){
 
 if (ias > 30){
 			var kpSS = -0.5;
-			interpolate("/autopilot/afcs/internal/kpSS", kpSS, 4 );
+			interpolate("/autopilot/afcs/internal/kpSS", kpSS, 1 );
 			}else{
 			interpolate("/autopilot/afcs/internal/kpSS", 0, 1 );
 			}
@@ -271,7 +283,7 @@ if (ias > 30){
 
 if (ias < 30){
 			var kpHHHold2 = -0.125;
-			interpolate("/autopilot/afcs/internal/kpHHHold2", kpHHHold2, 4);
+			interpolate("/autopilot/afcs/internal/kpHHHold2", kpHHHold2, 1);
 			}else{
 			interpolate("/autopilot/afcs/internal/kpHHHold2", 0, 1 );
 			}

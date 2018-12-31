@@ -21,7 +21,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>RAlt.needle</object-name>
-		<property>/position/altitude-agl-ft</property>
+		<property>/instrumentation/radar-altimeter/radar-altitude-ft</property>
 		<interpolation>
 			<entry>
 				<ind>-10</ind>

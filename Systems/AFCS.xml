@@ -203,7 +203,7 @@
           </or>
          </condition>
       </enable>
-  </filter>-->
+  </filter>
   
 
   <pid-controller>
@@ -247,6 +247,20 @@
     <output>/controls/flight/elevator-trim</output>
     <type>noise-spike</type>
     <max-rate-of-change>0.125</max-rate-of-change>
+                <enable>
+  <condition>
+        <or>
+          <equals>
+            <property>/autopilot/afcs/internal/ap1</property>
+            <value>1</value>
+          </equals>
+          <equals>
+            <property>/autopilot/afcs/internal/ap2</property>
+            <value>1</value>
+          </equals>
+          </or>
+         </condition>
+      </enable>
   </filter>
   
   
@@ -448,6 +462,25 @@
  </filter>
  
  <filter>
+        <name>nav1 heading error computer/normalizer</name>
+        <debug>false</debug>
+        <type>gain</type>
+        <input>
+            <property>instrumentation/nav[0]/radials/target-auto-hdg-deg</property>
+            <offset>
+                <property>orientation/heading-deg</property>
+                <scale>-1.0</scale>
+            </offset>
+        </input>
+        <output>autopilot/afcs/internal/nav1-heading-error-deg</output>
+        <period>
+            <min>-180</min>
+            <max>180</max>
+        </period>
+        <gain>1.0</gain>
+    </filter>
+ 
+ <filter>
   <name>Intercept Heading Computer</name>
   <debug>false</debug>
   <type>gain</type>
@@ -477,11 +510,11 @@
   </filter>
   
  <filter>
-    <name>VOR LOC bankangle plus</name>
+    <name>nav1-hold LOC bankangle plus</name>
     <debug>false</debug>
     <enable>
       <property>/autopilot/afcs/locks/heading</property>
-      <value>VOR</value>
+      <value>nav1-hold</value>
     </enable>
     <type>gain</type>
     <input>/instrumentation/airspeed-indicator/indicated-speed-kt</input>
@@ -508,11 +541,11 @@
   </filter>
   
  <filter>
-    <name>VOR LOC bankangle minus</name>
+    <name>nav1-hold LOC bankangle minus</name>
     <debug>false</debug>
     <enable>
       <property>/autopilot/afcs/locks/heading</property>
-      <value>VOR</value>
+      <value>nav1-hold</value>
     </enable>
     <type>gain</type>
     <input>/instrumentation/airspeed-indicator/indicated-speed-kt</input>
@@ -524,24 +557,57 @@
   
  
   
- <filter>
-  <name>VOR LOC Target Roll Computer</name>
+ <!--<filter>
+  <name>nav1-hold LOC Target Roll Computer</name>
   <debug>false</debug>
         <enable>
             <condition>
                     <equals>
                         <property>autopilot/afcs/locks/heading</property>
-                        <value>VOR</value>
+                        <value>nav1-hold</value>
                     </equals>
             </condition>
         </enable>
   <type>gain</type>
-  <input>/autopilot/internal/nav1-heading-error-deg</input>
+  <input>/autopilot/afcs/internal/nav1-heading-error-deg</input>
   <output>/autopilot/afcs/internal/target-roll-deg</output>
-  <gain>1.0</gain>
+  <gain>-1.0</gain>
   <min>30</min>
   <max>30</max>
- </filter>
+ </filter>-->
+ 
+ <pid-controller>
+    <name>nav1-hold</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <and>
+          <greater-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>30</value>
+          </greater-than>
+          <equals>
+            <property>autopilot/afcs/locks/heading</property>
+                        <value>nav1-hold</value>
+          </equals>
+          </and>
+      </condition>
+    </enable>
+   <input>
+      <prop>/autopilot/afcs/internal/nav1-heading-error-deg-predicted</prop>
+    </input>
+    <reference>0</reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-roll-deg</prop>
+    </output>
+    <config>
+      <Kp>-1</Kp>  
+            <Ti>10.0</Ti>
+            <Td>0.0</Td>  
+      <u_min>/autopilot/afcs/internal/roll-command-limit-m</u_min> 
+      <u_max>/autopilot/afcs/internal/roll-command-limit-p</u_max>   
+    </config>
+</pid-controller>
   
   
 <pid-controller>
@@ -594,7 +660,7 @@
           </equals>
           <equals>
             <property>autopilot/afcs/locks/heading</property>
-            <value>VOR</value>
+            <value>nav1-hold</value>
           </equals>
         </or>
         </and>
@@ -638,7 +704,7 @@
           </equals>
           <equals>
             <property>autopilot/afcs/locks/heading</property>
-            <value>VOR</value>
+            <value>nav1-hold</value>
           </equals>
         </or>
         </and>
@@ -667,10 +733,22 @@
     <debug>false</debug>
     <enable>
       <condition>
+      <and>
+             <or>
+          <equals>
+            <property>/autopilot/afcs/internal/ap1</property>
+            <value>1</value>
+          </equals>
+          <equals>
+            <property>/autopilot/afcs/internal/ap2</property>
+            <value>1</value>
+          </equals>
+          </or>
         <greater-than>
           <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
           <value>30</value>
         </greater-than>
+        </and>
       </condition>
     </enable>
     <input>
@@ -1461,6 +1539,14 @@
     <seconds>2</seconds>
     <filter-gain>0.0</filter-gain>
   </predict-simple>
+  
+<predict-simple>
+    <input>/autopilot/afcs/internal/nav1-heading-error-deg</input>
+    <output>/autopilot/afcs/internal/nav1-heading-error-deg-predicted</output>
+    <seconds>2</seconds>
+    <filter-gain>0.0</filter-gain>
+  </predict-simple>
+
   
   <predict-simple>
     <input>controls/flight/aileron</input>
