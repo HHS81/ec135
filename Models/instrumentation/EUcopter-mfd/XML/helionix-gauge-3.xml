@@ -55,7 +55,7 @@
       </greater-than>
     </condition>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
 	<x1>	0.75	</x1>
 	<y1>	0.0	</y1>
 	<x2>	1.00	</x2>
@@ -79,7 +79,7 @@
       </greater-than>
     </condition>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
 	<x1>	0.75	</x1>
 	<y1>	0.0	</y1>
 	<x2>	1.00	</x2>
@@ -96,7 +96,7 @@
    <name>gauge val 1 rotating disc</name>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
 	<x1>	0.0	</x1>
 	<y1>	0.0	</y1>
 	<x2>	0.5	</x2>
@@ -123,7 +123,7 @@
    <name>gauge face</name>
    <emissive>true</emissive>
    <texture>   
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
       <x1>	0.5	</x1>
       <y1>	0.5	</y1>
       <x2>	1.0	</x2>
@@ -165,7 +165,7 @@
    </condition>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
 	<x1>	0.5	</x1>
 	<y1>	0.4	</y1>
 	<x2>	0.55	</x2>
@@ -196,7 +196,7 @@
    </condition>   
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
 	<x1>	0.5625	</x1>
 	<y1>	0.4	</y1>
 	<x2>	0.6125	</x2>
@@ -228,7 +228,7 @@
    </condition>   
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-gauge-3.rgb</path>
 	<x1>	0.625	</x1>
 	<y1>	0.4	</y1>
 	<x2>	0.675	</x2>

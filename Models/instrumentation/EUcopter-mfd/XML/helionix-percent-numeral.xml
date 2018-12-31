@@ -39,7 +39,7 @@
       </condition>
     <emissive>true</emissive>
     <texture>
-      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/amber.rgb</path>
+      <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/amber.rgb</path>
       </texture>
       <w>75</w>
       <h>25</h>
@@ -94,7 +94,7 @@
           </or>
           </condition>
       <texture>   
-        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/amber.rgb</path>
+        <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/amber.rgb</path>
       </texture>
       <w>40</w>
       <h>25</h>
@@ -108,7 +108,7 @@
       <name>mask</name>
       <emissive>true</emissive>
       <texture>   
-        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/black.rgb</path>
+        <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/black.rgb</path>
       </texture>
       <w>40</w>
       <h>25</h>

@@ -14,7 +14,7 @@
         <w>70</w>
         <h>100</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
 	    <x1>0.9</x1>
             <y1>0.75</y1>
             <x2>1.0</x2>
@@ -46,7 +46,7 @@
     <w>580</w>
     <h>410</h>
     <texture>   
-      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
+      <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-bkgr.rgb</path>
 	  <x1>	0	</x1>
 	  <y1>	0.100	</y1>
 	  <x2>	0.625	</x2>

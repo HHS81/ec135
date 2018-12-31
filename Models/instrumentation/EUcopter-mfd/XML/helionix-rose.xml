@@ -36,11 +36,11 @@ This instrument includes interpolation tables for the compass rose and needles a
   <cdi-err>/autopilot/internal/nav1-course-error</cdi-err>   
   <cdi-to>/instrumentation/nav[0]/to-flag</cdi-to>
   <cdi-from>/instrumentation/nav[0]/from-flag</cdi-from>  
-  <hdg-err>/autopilot/internal/heading-bug-error-deg</hdg-err>
+  <hdg-err>/autopilot/afcs/internal/heading-bug-error-deg</hdg-err>
 </params>
 
 <name>Helionix Helicopter Compass Rose</name>
-<background>Aircraft/ec145/Models/instruments/EUcopter-mfd/XML/transparent.rgb</background>
+<background>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/XML/transparent.rgb</background>
 
 <w-base>512</w-base>
 <h-base>350</h-base>
@@ -56,7 +56,7 @@ This instrument includes interpolation tables for the compass rose and needles a
 	      <property alias="../../../../params/nav1-in-range"/> 
     </condition>
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.90136700	</x1>
 	<x2>	0.93457000	</x2>
 	<y1>	0.94384700	</y1>
@@ -94,7 +94,7 @@ This instrument includes interpolation tables for the compass rose and needles a
 	      <property alias="../../../../params/nav1-in-range"/> 
     </condition>
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.90136700	</x1>
 	<x2>	0.93457000	</x2>
 	<y1>	0.91894500	</y1>
@@ -134,7 +134,7 @@ This instrument includes interpolation tables for the compass rose and needles a
     </condition>
 
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.95898400	</x1>
 	<y1>	0.94384700	</y1>
 	<x2>	1.00000000	</x2>
@@ -172,7 +172,7 @@ This instrument includes interpolation tables for the compass rose and needles a
 	      <property alias="../../../../params/nav2-in-range"/> 
     </condition>
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.95898400	</x1>
 	<y1>	0.91894500	</y1>
 	<x2>	1.00000000	</x2>
@@ -210,7 +210,7 @@ This instrument includes interpolation tables for the compass rose and needles a
 	      <property alias="../../../../params/nav3-in-range"/> 
     </condition>
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x2>	0.90136700	</x2>
 	<x1>	0.850	</x1>
 	<y1>	0.94384700	</y1>
@@ -248,7 +248,7 @@ This instrument includes interpolation tables for the compass rose and needles a
 	      <property alias="../../../../params/nav3-in-range"/> 
     </condition>    
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.90136700	</x1>
         <x2>    0.85      </x2>
 	<y1>	0.91894500	</y1>
@@ -283,7 +283,7 @@ This instrument includes interpolation tables for the compass rose and needles a
       <w>228</w>
       <h>135</h>
       <texture>
-	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	  <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	  <x1>	0.47558500	</x1>
 	  <y1>	0.18359300	</y1>
 	  <x2>	0.69824200	</x2>
@@ -300,7 +300,7 @@ This instrument includes interpolation tables for the compass rose and needles a
 	      <property alias="../../../../params/cdi-act"/> 
     </condition>
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<y2>	0.94384700	</y2>
 	<y1>	0.91894500	</y1>
 	<x1>	0.93261700	</x1>
@@ -329,7 +329,7 @@ This instrument includes interpolation tables for the compass rose and needles a
       <w>400</w>
       <h>2500</h>
       <texture>
-	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	  <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	  <x1>	0.00000000	</x1>
 	  <y1>	0.38964800	</y1>
 	  <x2>	0.39062500	</x2>
@@ -353,7 +353,7 @@ This instrument includes interpolation tables for the compass rose and needles a
       <w>400</w>
       <h>2500</h>
       <texture>
-	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	  <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	  <x1>	0.39160100	</x1>
 	  <y1>	0.38964800	</y1>
 	  <x2>	0.78125000	</x2>
@@ -381,7 +381,7 @@ This instrument includes interpolation tables for the compass rose and needles a
          <property alias="../../../../params/cdi-act"/> 
       </condition>
       <texture>
-	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	    <x1>	0.95898400	</x1>
 	    <y2>	0.98000000	</y2>
 	    <x2>	1.00000000	</x2>
@@ -419,7 +419,7 @@ This instrument includes interpolation tables for the compass rose and needles a
          <property alias="../../../../params/cdi-act"/> 
       </condition>
       <texture>
-	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	    <x1>	0.95898400	</x1>
 	    <y2>	0.98000000	</y2>
 	    <x2>	1.00000000	</x2>
@@ -454,7 +454,7 @@ This instrument includes interpolation tables for the compass rose and needles a
       <w>230</w>
       <h>45</h>
       <texture>
-	      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	      <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	    <x1>	0.89062500	</x1>
 	    <y1>	0.90795800	</y1>
 	    <x2>	1.00000000	</x2>
@@ -477,7 +477,7 @@ This instrument includes interpolation tables for the compass rose and needles a
       <w>800</w>
       <h>578</h>
       <texture>
-	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	  <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.19531250	</x1>
 	<y1>	0.24804688	</y1>
 	<x2>	0.97656250	</x2>
@@ -491,7 +491,7 @@ This instrument includes interpolation tables for the compass rose and needles a
     <w>50</w>
     <h>50</h>
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.95898400	</x1>
 	<y1>	0.98000000	</y1>
 	<x2>	1.00000000	</x2>
@@ -514,7 +514,7 @@ This instrument includes interpolation tables for the compass rose and needles a
       <not><property>/instrumentation/efis/fnd/ap-target-blink</property></not>
     </condition> 
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.95898400	</x1>
 	<y1>	0.98974600	</y1>
 	<x2>	1.00000000	</x2>

@@ -17,7 +17,7 @@
   <name>vert. button label</name>
   <w-base>30</w-base>
   <h-base>100</h-base>
-  <background>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/grey.rgb</background>
+  <background>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/grey.rgb</background>
   
   <params>
     <chr1>N</chr1>
@@ -37,7 +37,7 @@
       <w>20</w>
       <h>100</h>
       <texture>
-        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/grey.rgb</path>
+        <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/grey.rgb</path>
       </texture>
     </layer>
     

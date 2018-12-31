@@ -43,7 +43,7 @@
    <name>needle marker</name>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/eicas.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/eicas.rgb</path>
 	<x1>	0.48828125	</x1>
 	<y1>	0.21875000	</y1>
 	<x2>	0.68359375	</x2>
@@ -73,7 +73,7 @@
    <name>gauge face</name>
    <emissive>true</emissive>
    <texture>   
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/eicas.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/eicas.rgb</path>
 	<x1>	0.48828125	</x1>
 	<y1>	0.41406250	</y1>
 	<x2>	0.68359375	</x2>

@@ -38,7 +38,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
 </params>
 
 <name>Helionix Helicopter Compass Rose</name>
-<background>Aircraft/ec145/Models/instruments/EUcopter-mfd/XML/transparent.rgb</background>
+<background>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/XML/transparent.rgb</background>
 
 <w-base>500</w-base>
 <h-base>500</h-base>
@@ -50,7 +50,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
       <w>400</w>
       <h>400</h>
       <texture>
-          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/navdisplay.rgb</path>
           <x1>  0.5     </x1>
           <y1>  0.5     </y1>
           <x2>  1       </x2>
@@ -76,7 +76,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
     </condition>
     
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.90136700	</x1>
 	<x2>	0.93457000	</x2>
         <y1>    0.94    </y1>
@@ -145,7 +145,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
     </condition>
     
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x1>	0.95898400	</x1>
         <x2>    1.00000000      </x2>
 	<y1>	0.945	</y1>
@@ -212,7 +212,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
 	      <property alias="../../../../params/nav3-in-range"/> 
     </condition> 
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<x2>	0.90136700	</x2>
 	<x1>	0.850	</x1>
 	<y1>	0.94384700	</y1>
@@ -239,7 +239,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
 	      <property alias="../../../../params/nav3-in-range"/> 
     </condition>    
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
         <y2>    0.94384700      </y2>
         <y1>    0.91894500      </y1>
         <x1>    0.93261700      </x1>
@@ -266,7 +266,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
 	      <property alias="../../../../params/cdi-act"/> 
     </condition>
     <texture>
-	<path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	<path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	<y2>	0.94384700	</y2>
 	<y1>	0.91894500	</y1>
 	<x1>	0.93261700	</x1>
@@ -298,7 +298,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
          <property alias="../../../../params/cdi-act"/> 
       </condition>
       <texture>
-	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	    <x1>	0.95898400	</x1>
 	    <y2>	0.98000000	</y2>
 	    <x2>	1.00000000	</x2>
@@ -330,7 +330,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
          <property alias="../../../../params/cdi-act"/> 
       </condition>
       <texture>
-	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+	    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
 	    <x1>	0.95898400	</x1>
 	    <y2>	0.98000000	</y2>
 	    <x2>	1.00000000	</x2>
@@ -380,7 +380,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
       <w>500</w>
       <h>500</h>
       <texture>
-          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/navdisplay.rgb</path>
           <x1>0.0</x1>
           <y1>0.0</y1>
           <x2>0.5</x2>
@@ -400,7 +400,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
       <w>400</w>
       <h>400</h>
       <texture>
-          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/navdisplay.rgb</path>
+          <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/navdisplay.rgb</path>
           <x1>  0     </x1>
           <y1>  0.5   </y1>
           <x2>  0.5   </x2>
@@ -523,7 +523,7 @@ Some components of this instrument are based on code and bitmaps of Syd Adams' P
       <not><property>/instrumentation/efis/fnd/ap-target-blink</property></not>
     </condition> 
     <texture>
-        <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rose.rgb</path>
+        <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rose.rgb</path>
         <x1>    0.95898400      </x1>
         <y1>    0.98974600      </y1>
         <x2>    1.00000000      </x2>

@@ -2,7 +2,7 @@
 <PropertyList>
 
 <name>Helionix Helicopter PFD Instrument</name>
-<background>Aircraft/ec145/Models/instruments/EUcopter-mfd/XML/transparent.rgb</background>
+<background>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/XML/transparent.rgb</background>
 
 <w-base>418</w-base>
 <h-base>234</h-base>
@@ -19,7 +19,7 @@
 
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/horizon.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/horizon.rgb</path>
 
     <x1>0.0</x1>
     <y1>0.01</y1>
@@ -33,14 +33,14 @@
     <transformation> <type>y-shift</type> <offset>-1</offset> </transformation>   
     <transformation>
      <type>rotation</type>
-     <property>/orientation/roll-deg</property>
+     <property>/instrumentation/attitude-indicator/indicated-roll-deg</property>
      <min>-360.0</min>
      <max>360.0</max>
      <scale>-1</scale>
     </transformation>
     <transformation>
      <type>y-shift</type>
-     <property>/orientation/pitch-deg</property>
+     <property>/instrumentation/attitude-indicator/indicated-pitch-deg</property>
      <min>-80.0</min>
      <max>80.0</max>
      <scale>-2.78235</scale> <!--  -4.122 @ 889-->  <!-- -3.7098 @ 800--> 
@@ -56,7 +56,7 @@
 
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask-ring.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask-ring.rgb</path>
       <x1>	0	</x1>
       <y1>	0	</y1>
       <x2>	1	</x2>
@@ -68,7 +68,7 @@
     <transformation> <type>y-shift</type> <offset>-2</offset> </transformation>   
     <transformation>
      <type>rotation</type>
-     <property>/orientation/roll-deg</property>
+     <property>/instrumentation/attitude-indicator/indicated-roll-deg</property>
      <min>-80.0</min>
      <max>80.0</max>
      <scale>-1</scale>
@@ -84,7 +84,7 @@
     <h>12</h>
     <emissive>true</emissive>
     <texture>
-          <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+          <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
           <x1>      0.95703100      </x1>
           <y2>      0.25000000      </y2>
           <x2>      0.99414000      </x2>
@@ -116,7 +116,7 @@
         <h>40</h>
         <emissive>true</emissive>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/pfd-bezel.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/pfd-bezel.rgb</path>
             <x1>0.750</x1>
             <y1>0.918</y1>
             <x2>1.0</x2>
@@ -133,7 +133,7 @@
             </transformation>
            <transformation>
                 <type>rotation</type>
-                <property>/orientation/roll-deg</property>
+                <property>/instrumentation/attitude-indicator/indicated-roll-deg</property>
                 <scale>-1</scale>
             </transformation>
             <transformation>
@@ -144,7 +144,7 @@
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <property>/orientation/pitch-deg</property>
+                <property>/instrumentation/attitude-indicator/indicated-pitch-deg</property>
                 <scale>-3.7098</scale><!--4.122-->
             </transformation>
         </transformations>
@@ -159,7 +159,7 @@
 	       <w>60</w>        
 	       <h>1024</h> <!--<h>2220</h> -->	
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-speedtape.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-speedtape.rgb</path>
             <x1>0.5</x1>
             <y1>0</y1>
             <x2>1.00</x2>
@@ -170,7 +170,7 @@
 	  <transformation> <type>y-shift</type> <offset>387</offset> </transformation> 
 		   <transformation>
                 <type>y-shift</type>
-                <property>velocities/airspeed-kt</property>
+                <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
                 <scale>-2.6</scale>
             </transformation>
         </transformations>
@@ -182,7 +182,7 @@
         <w>60</w>        
         <h>1024</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
             <x1>0.5</x1>
             <y1>0</y1>
             <x2>0.90</x2>
@@ -207,7 +207,7 @@
         <w>30</w>
         <h>22</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
               <x1>      0      </x1>
               <y1>      0      </y1>
               <x2>      0.5     </x2>
@@ -232,7 +232,7 @@
         <w>30</w>
         <h>22</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
               <x1>      0      </x1>
               <y1>      0.040  </y1>
               <x2>      0.50   </x2>
@@ -257,7 +257,7 @@
         <w>40</w>
         <h>22</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
               <x1>      0.0      </x1>
               <y1>      0.072    </y1>
               <x2>      0.5      </x2>
@@ -282,7 +282,7 @@
         <w>40</w>
         <h>12</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-fli-tape.rgb</path>
               <x1>      0.0      </x1>
               <y1>      0.106    </y1>
               <x2>      0.5      </x2>
@@ -313,7 +313,7 @@
         <w>58</w>
         <h>512</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
 	    <x1>0.8339</x1>
             <y1>0.0</y1>
             <x2>0.9179</x2>
@@ -330,7 +330,7 @@
             </transformation>
 	    <transformation>
                 <type>y-shift</type>
-                <property>/position/altitude-agl-ft</property>
+                <property>/instrumentation/radar-altimeter/radar-altitude-ft</property>
                 <scale>-0.35</scale>
 		<max>310</max>
 		<min>-310</min>
@@ -344,7 +344,7 @@
         <w>58</w>
         <h>4096</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-alttape.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-alttape.rgb</path>
             <x1>0.5</x1>
             <y1>0.0</y1>
             <x2>1.0</x2>
@@ -373,7 +373,7 @@
         <w>58</w>
         <h>4096</h>
         <texture>
-            <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-alttape.rgb</path>
+            <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-alttape.rgb</path>
             <x1>0.0</x1>
             <y1>0.0</y1>
             <x2>0.5</x2>
@@ -402,7 +402,7 @@
    <name>radar alt tape</name>
    <emissive>true</emissive>
    <texture>
-	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-radar-alttape.rgb</path>
+	  <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-radar-alttape.rgb</path>
 	  <x1>	0.67	</x1>
 	  <y1>	0.0	</y1>
 	  <x2>	0.96	</x2>
@@ -415,7 +415,7 @@
       <transformation> <type>y-shift</type> <offset>550</offset> </transformation> 
       <transformation>
             <type>y-shift</type>
-            <property>/position/altitude-agl-ft</property>
+            <property>/instrumentation/radar-altimeter/radar-altitude-ft</property>
             <interpolation>		
                 <entry><ind>	0	</ind><dep>		0	</dep></entry>
                 <entry><ind>	100	</ind><dep>		-90	</dep></entry>
@@ -436,7 +436,7 @@ AP bugs on top of tapes
         <name>altimeter tape bug</name>
         <condition>
           <equals>
-              <property>/autopilot/locks/altitude</property>
+              <property>/autopilot/afcs/locks/altitude</property>
               <value>altitude-hold</value>
           </equals>
           <not><property>/instrumentation/efis/fnd/ap-target-blink</property></not>
@@ -444,7 +444,7 @@ AP bugs on top of tapes
         <w>18</w>
         <h>15</h>
         <texture>
-              <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+              <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
               <x1>      0.95703100      </x1>
               <y1>      0.19726500      </y1>
               <x2>      0.99414000      </x2>
@@ -455,7 +455,7 @@ AP bugs on top of tapes
           <transformation> <type>y-shift</type> <offset>0</offset> </transformation> 
             <transformation>
                 <type>y-shift</type>
-                <property>/autopilot/settings/target-altitude-ft</property>
+                <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
                 <scale>0.35</scale>
             </transformation>
             <transformation>
@@ -472,15 +472,15 @@ AP bugs on top of tapes
         <name>AGL tape bug</name>
         <condition>
           <equals>
-              <property>/autopilot/locks/altitude</property>
-              <value>agl-hold</value>
+              <property>/autopilot/afcs/locks/altitude</property>
+              <value>crht-hold</value>
           </equals>
           <not><property>/instrumentation/efis/fnd/ap-target-blink</property></not>
         </condition> 
         <w>18</w>
         <h>15</h>
         <texture>
-              <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+              <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
               <x1>      0.95703100      </x1>
               <y1>      0.19726500      </y1>
               <x2>      0.99414000      </x2>
@@ -491,7 +491,7 @@ AP bugs on top of tapes
           <transformation> <type>y-shift</type> <offset>-1</offset> </transformation> 
             <transformation>
                   <type>y-shift</type>
-                  <property>/position/altitude-agl-ft</property>
+                  <property>/instrumentation/radar-altimeter/radar-altitude-ft</property>
                   <interpolation>             
                       <entry><ind>    0       </ind><dep>             0       </dep></entry>
                       <entry><ind>    100     </ind><dep>             -90     </dep></entry>
@@ -502,7 +502,7 @@ AP bugs on top of tapes
             </transformation>
             <transformation>
                   <type>y-shift</type>
-                  <property>/autopilot/settings/target-agl-ft</property>
+                  <property>/autopilot/afcs/settings/crht-ft</property>
                   <scale>-1</scale>
                   <interpolation>             
                       <entry><ind>    0       </ind><dep>             0       </dep></entry>
@@ -523,8 +523,8 @@ AP bugs on top of tapes
         <condition>
           <or>
             <equals>
-                <property>/autopilot/locks/speed</property>
-                <value>speed-with-pitch-trim</value>
+                <property>/autopilot/afcs/locks/speed</property>
+                <value>ias-hold</value>
             </equals>
             <equals>
                 <property>/autopilot/locks/speed</property>
@@ -536,7 +536,7 @@ AP bugs on top of tapes
         <w>18</w>
         <h>15</h>
         <texture>
-              <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+              <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
               <x1>      0.95703100      </x1>
               <y1>      0.19726500      </y1>
               <x2>      0.99414000      </x2>
@@ -547,12 +547,12 @@ AP bugs on top of tapes
           <transformation> <type>y-shift</type> <offset>-1</offset> </transformation> 
             <transformation>
                 <type>y-shift</type>
-                <property>/autopilot/settings/target-speed-kt</property>
+                <property>/autopilot/afcs/settings/target-speed-kt</property>
                 <scale>2.6</scale>
             </transformation>
             <transformation>
                 <type>y-shift</type>
-                <property>/velocities/airspeed-kt</property>
+                <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
                 <scale>-2.6</scale>
             </transformation>
           <transformation><type>rotation</type><offset>-90</offset></transformation>
@@ -575,7 +575,7 @@ CONTENT OF ORIGINAL file pfd-text.xml
 	layer kept peeking out on sides
 	-->
         <texture>
-	    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+	    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
             <x1>0.007</x1>
             <x2>0.815</x2>   
 	    <y1>	0.46484300	</y1>
@@ -593,7 +593,7 @@ CONTENT OF ORIGINAL file pfd-text.xml
 	<name>Radar alt. numeral</name>
       <condition>
   		<less-than>
-			<property>/position/altitude-agl-ft</property><value>1000</value>
+			<property>/instrumentation/radar-altimeter/radar-altitude-ft</property><value>1000</value>
 		</less-than>
 	  </condition>		 
 	<type>text</type>
@@ -607,7 +607,7 @@ CONTENT OF ORIGINAL file pfd-text.xml
 	<chunks>
 	    <chunk>
 		<type>number-value</type>
-		<property>/position/altitude-agl-ft</property>
+		<property>/instrumentation/radar-altimeter/radar-altitude-ft</property>
 		<format>%03.0f</format>
 	    </chunk>
 	</chunks>

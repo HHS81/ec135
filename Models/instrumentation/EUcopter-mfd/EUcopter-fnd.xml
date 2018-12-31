@@ -17,7 +17,7 @@ Author : litzi
 
   <panel>
         <name>panel-area</name>
-	<path>Aircraft/ec145/Models/instruments/glass/EUcopter-fnd-panel.xml</path>
+	<path>Aircraft/ec135/Models/instrumentation/glass/EUcopter-fnd-panel.xml</path>
         <bottom-left>
             <x-m>0.01</x-m> 
             <y-m>-0.076</y-m>

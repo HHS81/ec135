@@ -30,7 +30,7 @@
    <name>mask backgrd</name>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-btn-hor.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-btn-hor.rgb</path>
 	<x1>	0	</x1>
 	<y1>	0	</y1>
 	<x2>	1	</x2>
@@ -136,7 +136,7 @@
    <name>cover mask</name>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/black.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/black.rgb</path>
 	<x1>	0	</x1>
 	<y1>	0	</y1>
 	<x2>	1	</x2>

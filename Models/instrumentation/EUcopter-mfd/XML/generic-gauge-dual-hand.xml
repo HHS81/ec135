@@ -50,7 +50,7 @@
    <name>gauge face</name>
    <emissive>true</emissive>
    <texture>   
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
       <x1>	0.00000000	</x1>
       <y1>	0.54687500	</y1>
       <x2>	0.45312500	</x2>
@@ -64,7 +64,7 @@
    <name>critical marker</name>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
 	<x1>	0.58593750	</x1>
 	<y1>	0.77343750	</y1>
 	<x2>	0.63476563	</x2>
@@ -92,7 +92,7 @@
    </condition>       
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
 	<x1>	0.63476563	</x1>
 	<y1>	0.77343750	</y1>
 	<x2>	0.68359375	</x2>
@@ -123,7 +123,7 @@
    <name>needle marker 2</name>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
 	<x1>	0.53710938	</x1>
 	<y1>	0.77343750	</y1>
 	<x2>	0.58593750	</x2>
@@ -153,7 +153,7 @@
    <name>needle marker 1</name>
    <emissive>true</emissive>
    <texture>
-    <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
+    <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/dial-dual-hand.rgb</path>
 	<x1>	0.48828125	</x1>
 	<y1>	0.77343750	</y1>
 	<x2>	0.53710938	</x2>

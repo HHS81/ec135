@@ -24,7 +24,7 @@
 	<w>22</w>
 	<h>95</h>
 	<texture>
-	      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+	      <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
 	      <x1>	0.95703100	</x1>
 	      <y1>	0.00000000	</y1>
 	      <x2>	1.00000000	</x2>
@@ -47,7 +47,7 @@
 	<w>18</w>
 	<h>15</h>
 	<texture>
-	      <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+	      <path>Aircraft/ec135/Models/instrumentation/Ucopter-mfd/Textures/helionix-rosemask.rgb</path>
 	      <x1>	0.95703100	</x1>
 	      <y1>	0.19726500	</y1>
 	      <x2>	0.99414000	</x2>

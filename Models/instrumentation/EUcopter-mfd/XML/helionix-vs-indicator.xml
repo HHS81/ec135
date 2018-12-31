@@ -2,7 +2,7 @@
 <PropertyList>
 
 <name>Helionix Helicopter PDF VS indicator</name>
-<background>Aircraft/ec145/Models/instruments/EUcopter-mfd/XML/transparent.rgb</background>
+<background>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/XML/transparent.rgb</background>
 
 <w-base>45</w-base>
 <h-base>256</h-base>
@@ -13,7 +13,7 @@
       <w>24</w>
       <h>256</h>
       <texture>
-	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vs-indicator.rgb</path>
+	  <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-vs-indicator.rgb</path>
 	  <x1>	0.68750000	</x1>
 	  <y1>	0.00000000	</y1>
 	  <x2>	0.87500000	</x2>
@@ -46,7 +46,7 @@
 	</or>
       </condition>
       <texture>
-	  <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-vs-indicator.rgb</path>
+	  <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-vs-indicator.rgb</path>
 	  <x1>	0.00000000	</x1>
 	  <y1>	0.00000000	</y1>
 	  <x2>	0.15625000	</x2>
@@ -152,23 +152,23 @@
         <condition>
          <or>
           <equals>
-              <property>/autopilot/locks/altitude</property>
+              <property>/autopilot/afcs/locks/altitude</property>
               <value>altitude-hold</value>
           </equals>
           <equals>
-              <property>/autopilot/locks/altitude</property>
-              <value>vertical-speed-hold</value>
+              <property>/autopilot/afcs/locks/altitude</property>
+              <value>vs-hold</value>
           </equals>
           <equals>
-              <property>/autopilot/locks/altitude</property>
+              <property>/autopilot/afcs/locks/altitude</property>
               <value>fpa-hold</value>
           </equals>
           <equals>
-              <property>/autopilot/locks/altitude</property>
+              <property>/autopilot/afcs/locks/altitude</property>
               <value>gs1-hold</value>
           </equals>          
           <equals>
-              <property>/autopilot/locks/altitude</property>
+              <property>/autopilot/afcs/locks/altitude</property>
               <value>go-around</value>
           </equals>          
          </or>
@@ -176,7 +176,7 @@
         <w>26</w>
         <h>18</h>
         <texture>
-              <path>Aircraft/ec145/Models/instruments/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
+              <path>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Textures/helionix-rosemask.rgb</path>
               <x1>      0.95703100      </x1>
               <y1>      0.19726500      </y1>
               <x2>      0.99414000      </x2>
@@ -188,12 +188,12 @@
             <transformation>
                 <condition>
                     <not-equals>
-                        <property>/autopilot/locks/altitude</property>
-                        <value>vertical-speed-hold</value>
+                        <property>/autopilot/afcs/locks/altitude</property>
+                        <value>vs-hold</value>
                     </not-equals>
                 </condition>
                 <type>y-shift</type>
-                <property>/autopilot/internal/target-climb-rate-fps</property>
+                <property>/autopilot/afcs/internal/target-climb-rate-fps</property>
                   <interpolation>             
                       <entry><ind>    -33.33  </ind><dep>             -80       </dep></entry>
                       <entry><ind>    -25     </ind><dep>             -55     </dep></entry>
@@ -210,12 +210,12 @@
                 <transformation>
                 <condition>
                     <equals>
-                        <property>/autopilot/locks/altitude</property>
-                        <value>vertical-speed-hold</value>
+                        <property>/autopilot/afcs/locks/altitude</property>
+                        <value>vs-hold</value>
                     </equals>
                 </condition>
                 <type>y-shift</type>
-                <property>/autopilot/settings/vertical-speed-fpm</property>
+                <property>/autopilot/afcs/settings/fpm</property>
                   <interpolation>             
                       <entry><ind>    -2000  </ind><dep>             -80       </dep></entry>
                       <entry><ind>    -1500    </ind><dep>             -55     </dep></entry>

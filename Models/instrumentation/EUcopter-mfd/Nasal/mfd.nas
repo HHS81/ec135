@@ -183,7 +183,7 @@ var EUcoptermfd = {
                #if (mymode=="DMAP") cycleprop(databpage, [0,1,2]);
                }
           if (n==19) {
-               if (mymode=="NAVD" or mymode=="DMAP") cycleprop("autopilot/locks/heading", ["nav1-hold", ""]);
+               if (mymode=="NAVD" or mymode=="DMAP") cycleprop("autopilot/afcs/control/nav1-coupled", [1", ""]);
                }
           if (n==20) {
               if (mymode=="FND") cycleprop(navsrprop, ["", "NAV2", "FMS"]);

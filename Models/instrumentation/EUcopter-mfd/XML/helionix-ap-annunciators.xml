@@ -21,7 +21,7 @@
       <chunks>
 	  <chunk>
 	      <condition>
-		<not><property>/controls/flight/fcs/sas-enabled</property></not>
+		<not><property>/controls/flight/fcs/switches/sas</property></not>
 	      </condition>    
 	      <type>number-value</type>
 	      <format>SAS DISENGAGED</format>
@@ -47,8 +47,8 @@
           <chunk>
               <condition>
                   <equals>
-                    <property>/autopilot/locks/altitude</property>
-                    <value>agl-hold</value>
+                    <property>/autopilot/afcs/locks/altitude</property>
+                    <value>crht-hold</value>
                   </equals>
               </condition>    
               <type>number-value</type>
@@ -57,7 +57,7 @@
           <chunk>
               <condition>
                 <equals>
-                  <property>/autopilot/locks/altitude</property>
+                  <property>/autopilot/afcs/locks/altitude</property>
                   <value>altitude-hold</value>
                 </equals>
               </condition>    
@@ -66,10 +66,16 @@
           </chunk>
           <chunk>
               <condition>
+			  <and>
                   <equals>
-                    <property>/autopilot/locks/altitude-arm</property>
-                    <value>altitude-hold</value>
+                    <property>/autopilot/afcs/internal/altitude-armed</property>
+                    <value>1</value>
                   </equals>
+                  <equals>
+                  <property>/autopilot/afcs/locks/altitude</property>
+                  <value>altitude-hold</value>
+                </equals>
+				</and>
               </condition>    
               <type>number-value</type>
               <format>ALT.A</format>
@@ -94,31 +100,25 @@
       <chunks>
           <chunk>
               <condition>
-                <or>
                   <equals>
                     <property>/autopilot/locks/altitude</property>
                     <value>altitude-hold</value>
-                  </equals>
-                  <equals>
-                    <property>/autopilot/locks/altitude-arm</property>
-                    <value>altitude-hold</value>
-                  </equals>
-                </or>                  
+                  </equals>         
               </condition>    
               <type>number-value</type>
               <format>%5.0f</format>
-              <property>/autopilot/settings/target-altitude-ft</property>
+              <property>/autopilot/afcs/settings/sel-target-altitude-ft</property>
           </chunk>
           <chunk>
               <condition>
                   <equals>
-                    <property>/autopilot/locks/altitude</property>
-                    <value>agl-hold</value>
+                    <property>/autopilot/afcs/locks/altitude</property>
+                    <value>crht-hold</value>
                   </equals>
               </condition>    
               <type>number-value</type>
               <format>%5.0f</format>
-              <property>/autopilot/settings/target-agl-ft</property>
+              <property>/autopilot/afcs/settings/crht-ft</property>
           </chunk>          
       </chunks>
       <transformations>
@@ -142,13 +142,13 @@
           <chunk>
             <condition>
                   <equals>
-                    <property>/autopilot/locks/altitude</property>
+                    <property>/autopilot/afcs/locks/altitude</property>
                     <value>fpa-hold</value>
                   </equals>
             </condition> 
             <type>number-value</type>
             <format>%2.0f%%</format>
-            <property>/autopilot/settings/fpa-pct</property>
+            <property>/autopilot/afcs/settings/fpa</property>
           </chunk>
         </chunks>
       <transformations>
@@ -181,8 +181,8 @@
 	  <chunk>
 	      <condition>
 		<equals>
-		   <property>/autopilot/locks/heading</property>
-		   <value>dg-heading-hold</value>
+		   <property>/autopilot/afcs/locks/heading</property>
+		   <value>heading-hold</value>
 		</equals>
 	      </condition>    
 	      <type>number-value</type>
@@ -191,12 +191,12 @@
 	  <chunk>
 	      <condition>
                   <equals>
-                    <property>/autopilot/locks/heading</property>
+                    <property>/autopilot/afcs/locks/heading</property>
                     <value>nav1-hold</value>
                   </equals>
                   <equals>
                     <property>/autopilot/settings/nav-source</property>
-                    <value>NAV2</value>
+                    <value>NAV1</value>
                   </equals>
 		  <property>/instrumentation/nav[1]/nav-loc</property>
 	      </condition>    
@@ -206,7 +206,7 @@
 	  <chunk>
 	      <condition>
                 <equals>
-                  <property>/autopilot/locks/heading</property>
+                  <property>/autopilot/afcs/locks/heading</property>
                   <value>nav1-hold</value>
                 </equals>
                 <equals>
@@ -221,7 +221,7 @@
           <chunk>
               <condition>
                   <equals>
-                    <property>/autopilot/locks/heading</property>
+                    <property>/autopilot/afcs/locks/heading</property>
                     <value>nav1-hold</value>
                   </equals>
                   <equals>
@@ -236,7 +236,7 @@
           <chunk>
               <condition>
                 <equals>
-                  <property>/autopilot/locks/heading</property>
+                  <property>/autopilot/afcs/locks/heading</property>
                   <value>nav1-hold</value>
                 </equals>
                 <equals>
@@ -251,7 +251,7 @@
           <chunk>
               <condition>
                 <equals>
-                  <property>/autopilot/locks/heading</property>
+                  <property>/autopilot/afcs/locks/heading</property>
                   <value>nav1-hold</value>
                 </equals>
                 <equals>
@@ -284,8 +284,8 @@
           <chunk>
               <condition>
                   <equals>
-                    <property>/autopilot/locks/heading-arm</property>
-                    <value>nav1-hold</value>
+                    <property>/autopilot/afcs/internal</property>
+                    <value>nav1-armed</value>
                   </equals>
                   <equals>
                     <property>/autopilot/settings/nav-source</property>
@@ -299,8 +299,8 @@
           <chunk>
               <condition>
                 <equals>
-                  <property>/autopilot/locks/heading-arm</property>
-                  <value>nav1-hold</value>
+                  <property>/autopilot/afcs/internal</property>
+                  <value>nav1-armed</value>
                 </equals>
                 <equals>
                   <property>/autopilot/settings/nav-source</property>
@@ -313,10 +313,10 @@
           </chunk>
           <chunk>
               <condition>
-                  <equals>
-                    <property>/autopilot/locks/heading-arm</property>
-                    <value>nav1-hold</value>
-                  </equals>
+                <equals>
+                  <property>/autopilot/afcs/internal</property>
+                  <value>nav1-armed</value>
+                </equals>
                   <equals>
                     <property>/autopilot/settings/nav-source</property>
                     <value></value>
@@ -329,8 +329,8 @@
           <chunk>
               <condition>
                 <equals>
-                  <property>/autopilot/locks/heading-arm</property>
-                  <value>nav1-hold</value>
+                  <property>/autopilot/afcs/internal</property>
+                  <value>nav1-armed</value>
                 </equals>
                 <equals>
                   <property>/autopilot/settings/nav-source</property>
@@ -344,8 +344,8 @@
           <chunk>
               <condition>
                 <equals>
-                  <property>/autopilot/locks/heading-arm</property>
-                  <value>nav1-hold</value>
+                  <property>/autopilot/afcs/internal</property>
+                  <value>nav1-armed</value>
                 </equals>
                 <equals>
                     <property>/autopilot/settings/nav-source</property>
@@ -365,6 +365,15 @@
   
   <!-- in real H145 the ALT modes depend on the airspeed. At low airspeed ALT modes controls COLLECTIVE, -->
   <!-- At high ALT modes controls Pitch -->
+  <!-- by HHS: not sure if that above is correct, as some images from real sims and real H145 shows that ALT and IAS can be used together - collective must be used at higher airspeeds then as well. 
+  But propably depends on the Helionix  Step 2 maybe provides this. See as reference: https://assets.verticalmag.com/wp-content/uploads/2018/03/H145-SIM-%40-AHA-Foto-Christoph-Papsch-2.jpg-->
+  
+  <!-- 		<and>
+		  <equals>
+...
+		  </equals>
+		  <property>/autopilot/internal/use-collective-for-alt</property>
+		</and>-->
   
   <layer>		
       <name>collective mode axis</name>
@@ -380,7 +389,7 @@
 	  <chunk>
 	      <condition>
 		  <equals>
-		    <property>/autopilot/locks/altitude</property>
+		    <property>/autopilot/afcs/locks/altitude</property>
 		    <value>go-around</value>
 		  </equals>
 	      </condition>    
@@ -390,13 +399,10 @@
 	
 	  <chunk>
 	      <condition>
-		<and>
 		  <equals>
-		    <property>/autopilot/locks/altitude</property>
-		    <value>agl-hold</value>
+		    <property>/autopilot/afcs/locks/altitude</property>
+		    <value>crht-hold</value>
 		  </equals>
-		  <property>/autopilot/internal/use-collective-for-alt</property>
-		</and>
 	      </condition>    
 	      <type>number-value</type>
 	      <format>CR.HT</format>
@@ -404,13 +410,10 @@
 
 	  <chunk>
 	      <condition>
-		<and>
 		  <equals>
-		    <property>/autopilot/locks/altitude</property>
+		    <property>/autopilot/afcs/locks/altitude</property>
 		    <value>altitude-hold</value>
 		  </equals>
-		  <property>/autopilot/internal/use-collective-for-alt</property>
-		</and>
 	      </condition>    
 	      <type>number-value</type>
 	      <format>ALT</format>
@@ -418,13 +421,10 @@
 	  
 	  <chunk>
 	      <condition>
-		<and>
 		  <equals>
-		    <property>/autopilot/locks/altitude</property>
-		    <value>vertical-speed-hold</value>
+		    <property>/autopilot/afcs/locks/altitude</property>
+		    <value>vs-hold</value>
 		  </equals>
-		  <property>/autopilot/internal/use-collective-for-alt</property>
-		</and>
 	      </condition>    
 	      <type>number-value</type>
 	      <format>VS</format>
@@ -432,13 +432,10 @@
 
 	  <chunk>
 	      <condition>
-		<and>
 		  <equals>
-		    <property>/autopilot/locks/altitude</property>
+		    <property>/autopilot/afcs/locks/altitude</property>
 		    <value>gs1-hold</value>
 		  </equals>
-		  <property>/autopilot/internal/use-collective-for-alt</property>
-		</and>
 	      </condition>    
 	      <type>number-value</type>
 	      <format>GS</format>
@@ -446,13 +443,10 @@
 
 	  <chunk>
 	      <condition>
-		<and>
 		  <equals>
-		    <property>/autopilot/locks/altitude</property>
+		    <property>/autopilot/afcs/locks/altitude</property>
 		    <value>fpa-hold</value>
 		  </equals>
-		  <property>/autopilot/internal/use-collective-for-alt</property>
-		</and>
 	      </condition>    
 	      <type>number-value</type>
 	      <format>FPA</format>
@@ -483,10 +477,13 @@
               <condition>
                 <and>
                   <equals>
-                    <property>/autopilot/locks/altitude-arm</property>
+                    <property>/autopilot/afcs/internal/altitude-armed</property>
+                    <value>1</value>
+                  </equals>
+                  <equals>
+                    <property>/autopilot/afcs/locks/altitude</property>
                     <value>altitude-hold</value>
                   </equals>
-                  <property>/autopilot/internal/use-collective-for-alt</property>
                 </and>
               </condition>    
               <type>number-value</type>
@@ -495,13 +492,10 @@
 
           <chunk>
               <condition>
-                <and>
                   <equals>
                     <property>/autopilot/locks/altitude-arm</property>
                     <value>gs1-hold</value>
                   </equals>
-                  <property>/autopilot/internal/use-collective-for-alt</property>
-                </and>
               </condition>    
               <type>number-value</type>
               <format>GS</format>
@@ -580,7 +574,7 @@
 	      <condition>
 		<and>
 		  <equals>
-		    <property>/autopilot/locks/altitude</property>
+		    <property>/autopilot/afcs/locks/altitude</property>
 		    <value>gs1-hold</value>
 		  </equals>
 		  <not><property>/autopilot/internal/use-collective-for-alt</property></not>
@@ -607,8 +601,8 @@
           <chunk>
 	      <condition>
 		  <equals>
-		    <property>/autopilot/locks/speed</property>
-		    <value>speed-with-pitch-trim</value>
+		    <property>/autopilot/afcs/locks/speed</property>
+		    <value>ias-hold</value>
 		  </equals>
 	      </condition>    
 	      <type>number-value</type>
