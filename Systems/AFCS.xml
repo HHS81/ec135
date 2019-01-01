@@ -280,12 +280,12 @@
 
   <!-- Auto Hover GTC / GTC.H Mode Sampler-->
   
-  <filter>
-    <name>ubodyfps sample hold</name>
+  <!--<filter>
+    <name>drift-u-kt sample hold</name>
     <debug>false</debug>
     <type>gain</type>
-    <input>/velocities/uBody-fps</input>
-    <output>/autopilot/afcs/internal/uBody-fps</output>
+    <input>/instrumentation/gsdi/drift-u-kt</input>
+    <output>/autopilot/afcs/internal/drift-u-kt</output>
     <gain>1</gain>
     <enable>
       <condition>
@@ -295,14 +295,14 @@
           </not-equals>
       </condition>
     </enable>
-  </filter>
+  </filter>-->
   
-  <filter>
-    <name>vbodyfps sample hold</name>
+  <!--<filter>
+    <name>drift-v-kt  sample hold</name>
     <debug>false</debug>
     <type>gain</type>
-    <input>/velocities/vBody-fps</input>
-    <output>/autopilot/afcs/internal/vBody-fps</output>
+    <input>/instrumentation/gsdi/drift-v-kt</input>
+    <output>/autopilot/afcs/internal/drift-v-kt</output>
     <gain>1</gain>
     <enable>
       <condition>
@@ -312,7 +312,7 @@
           </not-equals>
       </condition>
     </enable>
-  </filter>
+  </filter>-->
   
 <!-- Auto Hover GTC / GTC.H Mode - obviously at speeds lower than 30ktn and per command it switches to this mode  -->
   <pid-controller>
@@ -333,15 +333,15 @@
       </condition>
     </enable>
     <input>
-      <prop>/autopilot/afcs/internal/lookahead-1-sec-uBody-fps</prop>
+      <prop>/autopilot/afcs/internal/drift-u-kt-predicted</prop>
     </input>
-    <reference>/autopilot/afcs/internal/uBody-fps</reference>
+    <reference>/autopilot/afcs/internal/drift-u-kt</reference>
     <output>
       <prop>/controls/flight/pitch-deg</prop>
     </output>
     <config>
-      <Kp>-0.95</Kp>
-      <Ti>1.0</Ti>
+      <Kp>-1</Kp>
+      <Ti>10.0</Ti>
       <Td>0.0</Td>
       <u_min>-15.0</u_min>
       <u_max>15.0</u_max>
@@ -354,7 +354,7 @@
     <enable>
       <condition>
         <and>
-          <equals>
+           <equals>
             <property>/autopilot/afcs/locks/speed</property>
             <value>GTC</value>
           </equals>
@@ -362,17 +362,13 @@
       <property>/autopilot/afcs/locks/speed</property>
       <value>ias-hold</value>
    </not-equals>
-          <less-than>
-            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
-            <value>30</value>
-          </less-than>
         </and>
       </condition>
     </enable>
     <input>
-      <prop>/autopilot/afcs/internal/lookahead-1-sec-vBody-fps</prop>
+      <prop>/autopilot/afcs/internal/drift-v-kt-predicted</prop>
     </input>
-    <reference>/autopilot/afcs/internal/vBody-fps</reference>
+    <reference>/autopilot/afcs/internal/drift-v-kt</reference>
     <output>
       <prop>/controls/flight/roll-deg</prop>
     </output>
@@ -390,9 +386,11 @@
   <!-- =============================================================== -->
   <filter>
     <name>heading sample hold</name>
-    <debug>false</debug>
+      <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
     <type>gain</type>
-    <input>/autopilot/afcs/internal/heading-magnetic-deg-predicted</input>
+    <input>/orientation/heading-magnetic-deg</input>
     <output>/autopilot/afcs/settings/heading-bug-deg</output>
     <gain>1</gain>
     <enable>
@@ -405,22 +403,7 @@
     </enable>
   </filter>
   
-  <!--<filter>
-    <name>heading bug error computer/normalizer</name>
-    <debug>false</debug>
-    <type>gain</type>
-    <input>
-      <property>/autopilot/afcs/settings/heading-bug-deg</property>
-    </input>
-    <reference>orientation/heading-magnetic-deg</reference>
-    <output>/autopilot/afcs/internal/heading-bug-error-deg</output>
-    <period>
-      <min>-180</min>
-      <max>180</max>
-    </period>
-    <gain>1.0</gain>
-  </filter>-->
-  
+    
 <filter>
   <name>Heading Offset Computer</name>
   <debug>false</debug>
@@ -560,27 +543,7 @@
     <max>30</max>
   </filter>
   
- 
   
- <!--<filter>
-  <name>nav1-hold LOC Target Roll Computer</name>
-  <debug>false</debug>
-        <enable>
-            <condition>
-                    <equals>
-                        <property>autopilot/afcs/locks/heading</property>
-                        <value>nav1-hold</value>
-                    </equals>
-            </condition>
-        </enable>
-  <type>gain</type>
-  <input>/autopilot/afcs/internal/nav1-heading-error-deg</input>
-  <output>/autopilot/afcs/internal/target-roll-deg</output>
-  <gain>-1.0</gain>
-  <min>30</min>
-  <max>30</max>
- </filter>-->
- 
  <pid-controller>
     <name>nav1-hold</name>
     <debug>false</debug>
@@ -619,6 +582,40 @@
       <u_max>/autopilot/afcs/internal/roll-command-limit-p</u_max>   
     </config>
 </pid-controller>
+
+
+<pid-controller>
+    <name>true-heading-hold-highspeed</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <and>
+          <greater-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>30</value>
+          </greater-than>
+          <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>true-heading-hold</value>
+          </equals>
+          </and>
+      </condition>
+    </enable>
+   <input>
+      <prop>/autopilot/internal/true-heading-error-deg</prop>
+    </input>
+    <reference>0</reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-roll-deg</prop>
+    </output>
+    <config>
+      <Kp>-1</Kp>  
+            <Ti>10.0</Ti>
+            <Td>0.0</Td>  
+      <u_min>/autopilot/afcs/internal/roll-command-limit-m</u_min> 
+      <u_max>/autopilot/afcs/internal/roll-command-limit-p</u_max>   
+    </config>
+</pid-controller>
   
   
 <pid-controller>
@@ -639,7 +636,7 @@
       </condition>
     </enable>
    <input>
-      <prop>/autopilot/afcs/internal/heading-bug-error-deg-predicted</prop>
+      <prop>/autopilot/afcs/internal/heading-bug-error-deg</prop>
     </input>
     <reference>0</reference>
     <output>
@@ -677,6 +674,10 @@
      <property>/autopilot/afcs/locks/heading</property>
      <value>nav2-hold</value>
     </equals>
+          <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>true-heading-hold</value>
+          </equals>
         </or>
         </and>
       </condition>
@@ -725,6 +726,10 @@
      <property>/autopilot/afcs/locks/heading</property>
      <value>nav2-hold</value>
     </equals>
+          <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>true-heading-hold</value>
+          </equals>
         </or>
         </and>
       </condition>
@@ -739,7 +744,7 @@
       <prop>/controls/flight/roll-deg</prop>
     </output>
     <config>
-            <Kp>/autopilot/afcs/internal/kpRRC</Kp><!-- 1 -->
+            <Kp>1</Kp><!-- 1 -->
             <Ti>1.0</Ti>
             <Td>0.0</Td>
       <u_min>/autopilot/afcs/internal/roll-command-limit-m</u_min> 
@@ -787,6 +792,39 @@
   </pid-controller>
   
   <!-- to do: add max roll command for approaches: 0.22 * IAS with max. 30DEG according EC145 C2 AFCS- lets use this as reference until data for H135 helionix 2+ is there-->
+  
+   <pi-simple-controller>
+    <name>true-heading-hold-lowspeed</name>
+    <debug>false</debug>
+     <enable>
+      <condition>
+        <and>
+                  <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>true-heading-hold</value>
+          </equals>
+          <less-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>30</value>
+          </less-than>
+        </and>
+      </condition>
+    </enable>
+   <input>
+      <prop>/autopilot/internal/true-heading-error-deg</prop>
+    </input>
+    <reference>0</reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-yaw-rate-fps</prop>
+    </output>
+    <config>
+      <Kp>-1</Kp>  
+      <Ki>-0.0</Ki>         
+      <u_min>-3</u_min> 
+      <u_max>3</u_max>   
+    </config>
+  </pi-simple-controller>  
+  
    <pi-simple-controller>
     <name>heading-hold-lowspeed</name>
     <debug>false</debug>
@@ -862,7 +900,7 @@
   
   
   
-<pid-controller>
+<!--<pid-controller>
     <name>hover heading hold</name>
     <debug>false</debug>
     <enable>
@@ -880,20 +918,20 @@
       </condition>
     </enable>
     <input>
-      <prop>/autopilot/afcs/internal/lookahead-1-sec-vBody-fps</prop>
+      <prop>/autopilot/afcs/internal/drift-v-kt-predicted</prop>
     </input>
     <reference>0</reference>
     <output>
       <prop>/controls/flight/roll-deg</prop>
     </output>
     <config>
-      <Kp>/autopilot/afcs/internal/kpHHHold</Kp><!-- 1-->
+      <Kp>1</Kp>
       <Ti>10.0</Ti>
       <Td>0.0</Td>
       <u_min>-15.0</u_min>
       <u_max>15.0</u_max>
     </config>
-  </pid-controller>
+  </pid-controller>-->
   
 
 <!-- outer loop-->
@@ -909,9 +947,13 @@
     <gain>1</gain>
       <enable>
   <condition>
-        <not-equals>
+         <not-equals>
       <property>/autopilot/afcs/locks/speed</property>
       <value>ias-hold</value>
+   </not-equals>
+           <not-equals>
+      <property>/autopilot/afcs/locks/speed</property>
+      <value>GTC</value>
    </not-equals>
   </condition>
     </enable>
@@ -954,10 +996,10 @@
       <prop>autopilot/afcs/internal/target-ias-rate-fps</prop>
     </output>
     <config>
-      <Kp>1</Kp> 
-      <Ki>1.0</Ki>    
+      <Kp>0.25</Kp> 
+      <Ki>0.0</Ki>    
       <u_min>-7.5</u_min>
-      <u_max>5</u_max> 
+      <u_max>7.5</u_max> 
     </config>
   </pi-simple-controller>
   
@@ -986,7 +1028,7 @@
       <prop>/controls/flight/pitch-deg</prop>
     </output>
     <config>
-      <Kp>-1</Kp>
+      <Kp>-0.5</Kp>
       <Ti>10.0</Ti>
       <Td>0.0</Td>
       <u_min>-15.0</u_min>
@@ -1208,10 +1250,10 @@
       <prop>/autopilot/afcs/internal/target-climb-rate-fps</prop>
     </output>
     <config>
-      <Kp>0.125</Kp>  <!-- 1-->
+      <Kp>0.25</Kp>  <!-- 1-->
       <Ki>0.0</Ki>         
-      <u_min>-33</u_min> 
-      <u_max>15</u_max>   
+      <u_min>-8.33</u_min> 
+      <u_max>8.33</u_max>   
     </config>
   </pi-simple-controller>
 
@@ -1254,7 +1296,7 @@
 
 
   
-  <!-- GS-Hold Mode-->
+  <!-- GS-Hold Mode
   
   <pid-controller>
     <name>GS Hold Mode</name>
@@ -1277,13 +1319,13 @@
      <property>/controls/flight/collective</property>
     </output>
     <config>
-      <Kp>/autopilot/afcs/internal/kpCL</Kp><!-- -0.0125-->
+      <Kp>-0.0125</Kp>
       <Ti>10.0</Ti>       
       <Td>0.0</Td>    
       <u_min>0</u_min> 
       <u_max>1</u_max>  
     </config>
-  </pid-controller>
+  </pid-controller>-->
   
   <!-- -->
   
@@ -1302,7 +1344,7 @@
     </output>
     <config>
       <Kp>1</Kp>  
-      <Ki>5.0</Ki>             
+      <Ki>10.0</Ki>             
       <u_min>0.1</u_min> 
       <u_max>79</u_max>   
     </config>
@@ -1330,6 +1372,10 @@
       <property>/autopilot/afcs/locks/altitude</property>
       <value>vs-hold</value>
    </equals>
+  <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>gs1-hold</value>
+</equals>
    </or>
   </condition>
       </enable>
@@ -1341,7 +1387,7 @@
       <prop>/controls/flight/collective</prop>
     </output>
     <config>
-      <Kp>-0.0033</Kp>  
+      <Kp>-0.0025</Kp>  
      <Ti>10.0</Ti>       
       <Td>0.0</Td>           
       <u_min>0</u_min> 
@@ -1376,6 +1422,10 @@
       <property>/autopilot/afcs/locks/altitude</property>
       <value>vs-hold</value>
    </equals>
+  <equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>gs1-hold</value>
+</equals>
    </or>
   </condition>
  </enable>
@@ -1396,8 +1446,15 @@
   </predict-simple>
   
   <predict-simple>
-     <input>/velocities/uBody-fps</input>
-     <output>/autopilot/afcs/internal/lookahead-1-sec-uBody-fps</output>
+     <input>/instrumentation/gsdi/drift-u-kt</input>
+     <output>/autopilot/afcs/internal/drift-u-kt-predicted</output>
+     <seconds>0.2</seconds>
+     <filter-gain>0.0</filter-gain>
+  </predict-simple>
+  
+<predict-simple>
+     <input>/instrumentation/gsdi/drift-v-kt</input>
+     <output>/autopilot/afcs/internal/drift-v-kt-predicted</output>
      <seconds>0.2</seconds>
      <filter-gain>0.0</filter-gain>
   </predict-simple>
@@ -1409,14 +1466,7 @@
      <filter-gain>0.0</filter-gain>
   </predict-simple>
   
-  
-  <predict-simple>
-     <input>/velocities/vBody-fps</input>
-     <output>/autopilot/afcs/internal/lookahead-1-sec-vBody-fps</output>
-     <seconds>0.2</seconds>
-     <filter-gain>0.0</filter-gain>
-  </predict-simple>
-  
+    
   <filter>
     <name>speed filter</name>
     <debug>false</debug>

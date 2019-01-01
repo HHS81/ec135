@@ -927,15 +927,15 @@ Thanks for all the help!
       </binding>
 <binding>
         <command>property-adjust</command>
-        <property>/autopilot/afcs/internal/uBody-fps</property>
-        <step>1.68780986</step>
-        <max>236.293</max>
+        <property>/autopilot/afcs/internal/drift-u-kt</property>
+        <step>0.5</step>
+        <max>140</max>
         <wrap>1</wrap>
       </binding>
 <binding>
         <command>property-adjust</command>
         <property>/autopilot/afcs/settings/target-speed-kt</property>
-        <step>1</step>
+        <step>0.5</step>
         <max>140</max>
         <wrap>1</wrap>
       </binding>
@@ -953,15 +953,15 @@ Thanks for all the help!
       </binding>
 <binding>
         <command>property-adjust</command>
-        <property>/autopilot/afcs/internal/uBody-fps</property>
-        <step>-1.68780986</step>
+        <property>/autopilot/afcs/internal/drift-u-kt</property>
+        <step>-0.5</step>
         <min>0</min>
         <wrap>1</wrap>
       </binding>
 <binding>
         <command>property-adjust</command>
         <property>/autopilot/afcs/settings/target-speed-kt</property>
-        <step>-1</step>
+        <step>-0.5</step>
         <min>0</min>
         <wrap>1</wrap>
       </binding>
@@ -979,9 +979,9 @@ Thanks for all the help!
       </binding>
 <binding>
         <command>property-adjust</command>
-        <property>/autopilot/afcs/internal/vBody-fps</property>
-        <step>0.2</step>
-        <max>42</max>
+        <property>/autopilot/afcs/internal/drift-v-kt</property>
+        <step>0.5</step>
+        <max>30</max>
         <wrap>1</wrap>
       </binding>
   </key>
@@ -998,9 +998,9 @@ Thanks for all the help!
       </binding>
 <binding>
         <command>property-adjust</command>
-        <property>/autopilot/afcs/internal/vBody-fps</property>
-        <step>-0.20</step>
-        <min>-42</min>
+        <property>/autopilot/afcs/internal/drift-v-kt</property>
+        <step>-0.5</step>
+        <min>-30</min>
         <wrap>1</wrap>
       </binding>
   </key>

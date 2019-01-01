@@ -252,7 +252,7 @@ airfoil-incidence-no-lift="-0.1"
 	rotorgear-friction="5.2"
 	engine-prop-factor="0.015"
 	engine-accel-limit="100"
-	yasimdragfactor="45"
+	yasimdragfactor="37"
 	yasimliftfactor="25"
 	>
 	<control-input axis="/controls/engines/engine[0]/magnetos" control="ROTORGEARENGINEON"/>
@@ -271,10 +271,10 @@ airfoil-incidence-no-lift="-0.1"
 <cockpit x="-1.88" y=".33" z="0.6"/>
 
 <fuselage ax="0.201" ay="0" az="-.162" bx="-5.3" by="0" bz="0.17" cx="3.0"  cz="0.2"
-          width="1.92" taper="0.95" midpoint="0.5" idrag="0.09"/>
+          width="1.92" taper="0.95" midpoint="0.5" idrag="0.04"/>
 
 <fuselage ax="-5.262" ay="0" az="0.698" bx="-9.78" by="0" bz=".757" cz="0.25" cx="2.5" 
-          width="0.47" taper="0.9" midpoint="0.05" idrag="0.09"/>
+          width="0.47" taper="0.9" midpoint="0.05" idrag="0.04"/>
 	
 
 

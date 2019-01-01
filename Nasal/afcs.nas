@@ -35,6 +35,7 @@ setprop("/autopilot/afcs/internal/nav1-armed", 0);
 setprop("/autopilot/afcs/internal/target-climb-rate-fps", 0);
 setprop("/autopilot/afcs/settings/sel-target-altitude-ft", 0);
 setprop("/controls/flight/collective", 0);
+setprop("/autopilot/afcs/internal/gs-armed", 0);
 
 }
 setlistener("sim/signals/fdm-initialized", listenerAFCSInitFunc);
@@ -116,6 +117,10 @@ if ((altmode == 4) and (swt > 0)){
 setprop("/autopilot/afcs/locks/altitude", "vs-hold");
 }
 
+if (altmode == 5) {
+setprop("/autopilot/afcs/locks/altitude", "gs1-hold");
+}
+
 
 if (speedmode == 1) {
 setprop("/autopilot/afcs/locks/speed", "ias-hold");
@@ -142,16 +147,6 @@ setprop("/autopilot/afcs/locks/heading", "");
 }
 
 
-if ((navsourcecoupled > 0) and (navsource == 0)){
-setprop("/autopilot/afcs/internal/nav1-armed", 1);
-setprop("/autopilot/afcs/internal/nav2-armed", 0);
-}elsif ((navsourcecoupled > 0) and (navsource == "NAV2")){
-setprop("/autopilot/afcs/internal/nav1-armed", 0);
-setprop("/autopilot/afcs/internal/nav2-armed", 1);
-}else{
-setprop("/autopilot/afcs/internal/nav1-armed", 0);
-setprop("/autopilot/afcs/internal/nav2-armed", 0);
-}
 
 if ((navsourcecoupled > 0) and (navsource == "FMS")){
 setprop("/autopilot/afcs/control/heading-mode", 4);
@@ -179,6 +174,7 @@ setprop("/autopilot/afcs/locks/altitude", "");
 setprop("/autopilot/afcs/locks/heading", "");
 setprop("/autopilot/afcs/locks/speed", "");
 setprop("/autopilot/afcs/internal/bkup", 0);
+setprop("/autopilot/afcs/control/navsource-couple", 0);
 }
 
 ##
@@ -194,17 +190,37 @@ setprop("/autopilot/afcs/control/speed-mode", 2);
 setprop("/autopilot/afcs/control/speed-mode", 1);
 }
 
+##
+##True Heading Hold/ FMS
+##
 
+if ((navsourcecoupled > 0) and (navsource == "FMS")){
+setprop("/autopilot/afcs/control/heading-mode", 4);
+}
 
 
 ##
 ##NAV1/ LOC Mode 
 ##
 
+if ((navsourcecoupled > 0) and (navsource == 0)){
+setprop("/autopilot/afcs/internal/nav1-armed", 1);
+setprop("/autopilot/afcs/internal/nav2-armed", 0);
+}elsif ((navsourcecoupled > 0) and (navsource == "NAV2")){
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
+setprop("/autopilot/afcs/internal/nav2-armed", 1);
+}else{
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
+setprop("/autopilot/afcs/internal/nav2-armed", 0);
+}
+
 var interceptionangle = getprop("/autopilot/afcs/internal/intercept-heading-deg") or 0;
 var dfl = getprop("instrumentation/nav/heading-needle-deflection") or 0;
+var navloc = getprop("instrumentation/nav/nav-loc") or 0;
+var navir = getprop("instrumentation/nav/nav-in-range") or 0;
 
-if (interceptionangle >45){
+
+if ((interceptionangle >45) and (navloc < 1)){
 pdfl = 4.52;
 mdfl = -4.52;
 }else{
@@ -212,25 +228,71 @@ pdfl = 1.33;
 mdfl = -1.33;
 }
 
-if (nav1armed > 0)   {
+if ((interceptionangle >25) and (navloc > 0)){
+pdfl = 9.9;
+mdfl = -9.9;
+}else{
+pdfl = 5;
+mdfl = -5;
+}
+
+if ((headmode == 1) and (nav1armed > 0) )  {
 if ((dfl < pdfl) and (dfl >mdfl)){
 setprop("/autopilot/afcs/control/heading-mode", 2);
 setprop("/autopilot/afcs/internal/nav1-armed", 0);
+}else{
+setprop("/autopilot/afcs/control/heading-mode", 1);
 }
+}elsif ((headmode == 2) and (navsourcecoupled < 1)) {
+setprop("/autopilot/afcs/control/heading-mode", 1);
 }
 
-if (nav2armed > 0)   {
+
+if ((headmode == 1) and (nav2armed > 0) )  {
 if ((dfl < pdfl) and (dfl >mdfl)){
 setprop("/autopilot/afcs/control/heading-mode", 3);
 setprop("/autopilot/afcs/internal/nav1-armed", 0);
+}else{
+setprop("/autopilot/afcs/control/heading-mode", 1);
 }
+}elsif ((headmode == 3) and (navsourcecoupled < 1)) {
+setprop("/autopilot/afcs/control/heading-mode", 1);
 }
 
 ##
 ##GS1 hold
 ##
 
-#if (getprop(""))
+var loc1locked = getprop("/autopilot/afcs/locks") or 0;
+var loc2locked = getprop("/autopilot/afcs/locks") or 0;
+var gsroc = getprop("instrumentation/nav/gs-rate-of-climb") or 0;
+var gs = getprop("instrumentation/nav/gs-in-range") or 0;
+var gsn = getprop("instrumentation/nav/gs-needle-deflection") or 0;
+var gsarmed = getprop("/autopilot/afcs/internal/gs-armed") or 0;
+var ra = getprop("/instrumentation/radar-altimeter/radar-altitude-ft") or 0;
+
+if ((headmode == 2) or (headmode == 3)) {
+if ( (gs > 0) and ((gsn < 2.2) and (gsn >-2.2)) ){
+setprop("/autopilot/afcs/internal/gs-armed", 1);
+}else{
+setprop("/autopilot/afcs/internal/gs-armed", 0);
+}
+
+
+if ( (gsarmed >0) and ((gsn < 0.5) and (gsn >-0.2)) )  {
+setprop("/autopilot/afcs/control/alt-mode", 5);
+setprop("/autopilot/afcs/internal/target-climb-rate-fps",gsroc);
+}
+
+#replace "65" later with MDA/ DH property value
+if ((altmode == 5) and (ra <65)){
+setprop("/autopilot/afcs/control/alt-mode", 1);
+setprop("/autopilot/afcs/control/heading-mode", 1);
+setprop("/autopilot/afcs/control/navsource-couple", 0);
+}
+}
+
+
 
 ##
 
@@ -244,16 +306,11 @@ var alth = getprop ("/autopilot/afcs/locks/altitude") or 0;
 var altd = selectedalt - actualalt;
 var altarmed = getprop("/autopilot/afcs/internal/altitude-armed") or 0;
 
-#if ((getprop("/autopilot/SP150/controls/alt-sel")) and ((altdev < 800) and (altdev > -800 )) ){
-#setprop("/autopilot/SP150/internal/altitude-armed", 1);
+
 
 if ( ((altmode == 2) and (altarmed > 0)) and ((altd <25) and (altd >-25)) ){
 setprop("/autopilot/afcs/control/alt-mode", 3)
 }
-#elsif ( ((altmode == 3) and (altarmed < 1)) and ((altd >25) or (altd <-25)) ){
-#setprop("/autopilot/afcs/control/alt-mode", 2)
-#}
-
 
 ##
 
@@ -266,33 +323,33 @@ setprop("autopilot/afcs/settings/fpm",vsw);
 
 
 if  ((ap1 > 0) or (ap2 > 0)) {
-var my_vfps = getprop("/autopilot/afcs/internal/vBody-fps") or 0;
+var my_vfps = getprop("/autopilot/afcs/internal/drift-v-kt") or 0;
 my_vfps =  int(my_vfps * 10);
 my_vfps *= 0.1;
-setprop("/autopilot/afcs/internal/vBody-fps",my_vfps);
+setprop("/autopilot/afcs/internal/drift-v-kt",my_vfps);
 }
 
 if  ((ap1 > 0) or (ap2 > 0))  {
-var svps = getprop("/autopilot/afcs/internal/vBody-fps") or 0;
+var svps = getprop("/autopilot/afcs/internal/drift-v-kt") or 0;
 svps = int(svps * 10);
 svps *= 0.1;
-setprop("/autopilot/afcs/internal/vBody-fps",svps);
+setprop("/autopilot/afcs/internal/drift-v-kt",svps);
 }
 
 ##
 
 if  ((ap1 > 0) or (ap2 > 0))  {
-var my_ufps = getprop("/autopilot/afcs/internal/uBody-fps") or 0;
+var my_ufps = getprop("/autopilot/afcs/internal/drift-u-kt") or 0;
 my_ufps =  int(my_ufps * 10);
 my_ufps *= 0.1;
-setprop("/autopilot/afcs/internal/uBody-fps",my_ufps);
+setprop("/autopilot/afcs/internal/drift-u-kt",my_ufps);
 }
 
 if  ((ap1 > 0) or (ap2 > 0))  {
-var sups = getprop("/autopilot/afcs/internal/uBody-fps") or 0;
+var sups = getprop("/autopilot/afcs/internal/drift-u-kt") or 0;
 sups= int(sups * 10);
 sups *= 0.1;
-setprop("/autopilot/afcs/internal/uBody-fps",sups);
+setprop("/autopilot/afcs/internal/drift-u-kt",sups);
 }
 
 ##
