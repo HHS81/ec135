@@ -29,8 +29,12 @@ setprop("/autopilot/afcs/control/heading-mode", 0);
 setprop("/autopilot/afcs/engaged", 0);
 setprop("/autopilot/afcs/control/ap1", 0);
 setprop("/autopilot/afcs/control/ap2", 0);
-setprop("/autopilot/afcs/control/nav1-coupled", 0);
+setprop("/autopilot/afcs/control/gtc", 0);
+setprop("/autopilot/afcs/control/navsource-couple", 0);
 setprop("/autopilot/afcs/internal/nav1-armed", 0);
+setprop("/autopilot/afcs/internal/target-climb-rate-fps", 0);
+setprop("/autopilot/afcs/settings/sel-target-altitude-ft", 0);
+setprop("/controls/flight/collective", 0);
 
 }
 setlistener("sim/signals/fdm-initialized", listenerAFCSInitFunc);
@@ -45,14 +49,17 @@ var ap2 = getprop("/autopilot/afcs/control/ap2") or 0;
 var ias = getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") or 0;
 var afcs = getprop("/autopilot/afcs/engaged") or 0;
 var swt = getprop("/autopilot/afcs/internal/swt") or 0;
+var gtcc = getprop("/autopilot/afcs/control/gtc") or 0;
 
 var altmode = getprop("/autopilot/afcs/control/alt-mode") or 0;
 var speedmode = getprop("/autopilot/afcs/control/speed-mode") or 0;
 var headmode = getprop("/autopilot/afcs/control/heading-mode") or 0;
-var nav1coupled = getprop("/autopilot/afcs/control/nav1-coupled") or 0;
+var navsourcecoupled = getprop("/autopilot/afcs/control/navsource-couple") or 0;
 var atrim = getprop("/autopilot/afcs/control/atrim") or 0;
 var nav1armed = getprop("/autopilot/afcs/internal/nav1-armed") or 0;
-
+var nav2armed = getprop("/autopilot/afcs/internal/nav2-armed") or 0;
+var navsource = getprop("/instrumentation/efis/fnd/navsource") or 0;
+var nav1locked = getprop("/autopilot/afcs/locks/heading/nav-1hold") or 0;
 ##
 
 
@@ -114,6 +121,10 @@ if (speedmode == 1) {
 setprop("/autopilot/afcs/locks/speed", "ias-hold");
 }
 
+if (speedmode == 2) {
+setprop("/autopilot/afcs/locks/speed", "GTC");
+}
+
 if (speedmode == 0) {
 setprop("/autopilot/afcs/locks/speed", "");
 }
@@ -130,12 +141,32 @@ if (headmode == 0){
 setprop("/autopilot/afcs/locks/heading", "");
 }
 
-if (nav1coupled > 0){
+
+if ((navsourcecoupled > 0) and (navsource == 0)){
 setprop("/autopilot/afcs/internal/nav1-armed", 1);
+setprop("/autopilot/afcs/internal/nav2-armed", 0);
+}elsif ((navsourcecoupled > 0) and (navsource == "NAV2")){
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
+setprop("/autopilot/afcs/internal/nav2-armed", 1);
+}else{
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
+setprop("/autopilot/afcs/internal/nav2-armed", 0);
+}
+
+if ((navsourcecoupled > 0) and (navsource == "FMS")){
+setprop("/autopilot/afcs/control/heading-mode", 4);
 }
 
 if (headmode == 2){
 setprop("/autopilot/afcs/locks/heading", "nav1-hold");
+}
+
+if (headmode == 3){
+setprop("/autopilot/afcs/locks/heading", "nav2-hold");
+}
+
+if (headmode == 4){
+setprop("/autopilot/afcs/locks/heading", "true-heading-hold");
 }
 
 
@@ -149,6 +180,22 @@ setprop("/autopilot/afcs/locks/heading", "");
 setprop("/autopilot/afcs/locks/speed", "");
 setprop("/autopilot/afcs/internal/bkup", 0);
 }
+
+##
+#GTC/ GTC.H Mode switch at speed below 30ktn
+##
+if (gtcc > 0){
+setprop("/autopilot/afcs/control/speed-mode", 2); 
+}
+
+if ( (speedmode == 1)  and (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 30) ){
+setprop("/autopilot/afcs/control/speed-mode", 2);
+}elsif ( (speedmode == 2)  and (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") > 30) ){
+setprop("/autopilot/afcs/control/speed-mode", 1);
+}
+
+
+
 
 ##
 ##NAV1/ LOC Mode 
@@ -172,10 +219,42 @@ setprop("/autopilot/afcs/internal/nav1-armed", 0);
 }
 }
 
-#if ((nav1armed > 0) and  ((getprop("/instrumentation/nav/heading-needle-deflection") < 4.52 ) and (getprop("/instrumentation/nav/heading-needle-deflection") > -4.52 ) ) ){
-#setprop("/autopilot/afcs/control/heading-mode", 2);
-#setprop("/autopilot/afcs/internal/nav1-armed", 0);
+if (nav2armed > 0)   {
+if ((dfl < pdfl) and (dfl >mdfl)){
+setprop("/autopilot/afcs/control/heading-mode", 3);
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
+}
+}
+
+##
+##GS1 hold
+##
+
+#if (getprop(""))
+
+##
+
+##
+## ALT.A to ALT switch
+##
+
+var actualalt = getprop ("/instrumentation/altimeter/indicated-altitude-ft") or 0;
+var selectedalt = getprop ("autopilot/afcs/settings/sel-target-altitude-ft") or 0;
+var alth = getprop ("/autopilot/afcs/locks/altitude") or 0;
+var altd = selectedalt - actualalt;
+var altarmed = getprop("/autopilot/afcs/internal/altitude-armed") or 0;
+
+#if ((getprop("/autopilot/SP150/controls/alt-sel")) and ((altdev < 800) and (altdev > -800 )) ){
+#setprop("/autopilot/SP150/internal/altitude-armed", 1);
+
+if ( ((altmode == 2) and (altarmed > 0)) and ((altd <25) and (altd >-25)) ){
+setprop("/autopilot/afcs/control/alt-mode", 3)
+}
+#elsif ( ((altmode == 3) and (altarmed < 1)) and ((altd >25) or (altd <-25)) ){
+#setprop("/autopilot/afcs/control/alt-mode", 2)
 #}
+
+
 ##
 
 if  ((ap1 > 0) or (ap2 > 0))  {
@@ -185,7 +264,6 @@ vsw *= 100;
 setprop("autopilot/afcs/settings/fpm",vsw);
 }
 
-##
 
 if  ((ap1 > 0) or (ap2 > 0)) {
 var my_vfps = getprop("/autopilot/afcs/internal/vBody-fps") or 0;
@@ -216,6 +294,25 @@ sups= int(sups * 10);
 sups *= 0.1;
 setprop("/autopilot/afcs/internal/uBody-fps",sups);
 }
+
+##
+
+if  ((ap1 > 0) or (ap2 > 0))  {
+var my_alt = getprop("/autopilot/afcs/settings/sel-target-altitude-ft") or 0;
+my_alt =  int(my_alt * 0.01);
+my_alt *= 100;
+setprop("/autopilot/afcs/settings/sel-target-altitude-ft", my_alt);
+}
+
+if  ((ap1 > 0) or (ap2 > 0))  {
+var alt = getprop("/autopilot/afcs/settings/sel-target-altitude-ft") or 0;
+alt= int(alt * 0.01);
+alt *= 100;
+setprop("/autopilot/afcs/settings/sel-target-altitude-ft", alt);
+}
+
+##
+
 
 ##
 #AFCS Fly through when any Upper mode is engaged#

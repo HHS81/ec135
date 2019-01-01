@@ -136,7 +136,7 @@
 <binding>
         <command>property-adjust</command>
         <property>/autopilot/afcs/internal/uBody-fps</property>
-        <step>-0.2</step>
+        <step>-1.68780986</step>
         <min>0</min>
         <wrap>1</wrap>
       </binding>
@@ -168,7 +168,7 @@
 <binding>
         <command>property-adjust</command>
         <property>/autopilot/afcs/internal/uBody-fps</property>
-        <step>0.2</step>
+        <step>1.68780986</step>
         <max>236</max>
         <wrap>1</wrap>
       </binding>

@@ -180,11 +180,11 @@ var EUcoptermfd = {
               if (mymode=="DMAP") cycleprop(databpage, [0,1,2]);
               }              
           if (n==16) {
-               #if (mymode=="DMAP") cycleprop(databpage, [0,1,2]);
+               if (mymode=="DMAP") cycleprop(databpage, [0,1,2]);
                }
           if (n==19) {
-               if (mymode=="NAVD" or mymode=="DMAP") cycleprop("autopilot/afcs/control/nav1-coupled", [1,0]);
-                if (mymode=="FND") cycleprop("autopilot/afcs/control/nav1-coupled", [1,0]);
+               if (mymode=="NAVD" or mymode=="DMAP")  cycleprop("autopilot/afcs/control/navsource-couple", [1,0]);
+                if (mymode=="FND")  cycleprop("autopilot/afcs/control/navsource-couple", [1,0]);
                }
           if (n==20) {
               if (mymode=="FND") cycleprop(navsrprop, ["", "NAV2", "FMS"]);
