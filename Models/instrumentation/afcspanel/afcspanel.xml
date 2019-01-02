@@ -371,7 +371,7 @@
             <repeatable>false</repeatable>
             <binding>
                 <command>property-toggle</command>
-                <property>/autopilot/afcs/internal/atrim</property>
+                <property>/autopilot/afcs/control/atrim</property>
 	            </binding>
         </action>
         <hovered>
@@ -380,7 +380,7 @@
                 <tooltip-id>Auto TRIM</tooltip-id>
                 <label>Auto TRIM: %s</label>
                 <mapping>on-off</mapping>
-                <property>/autopilot/afcs/internal/atrim</property>
+                <property>/autopilot/afcs/control/atrim</property>
             </binding>
         </hovered>
     </animation>
@@ -390,7 +390,7 @@
 	<object-name>ATRIMoff</object-name>
 	<condition>
 	<not>
-	<property>/autopilot/afcs/internal/atrim</property>	
+	<property>/autopilot/afcs/control/atrim</property>	
 	</not>
 	</condition>
 </animation>

@@ -59,16 +59,6 @@
     <enable>
       <condition>
         <or>
-        <and>
-          <not-equals>
-            <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
-          </not-equals>
-          <not-equals>
-            <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
-          </not-equals>
-          </and>
           <not-equals>
             <property>controls/flight/force_trim_release</property>
             <value>false</value>
@@ -92,17 +82,7 @@
     <enable>
       <condition>
         <or>
-        <and>
-          <not-equals>
-            <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
-          </not-equals>
-          <not-equals>
-            <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
-          </not-equals>
-          </and>
-          <not-equals>
+           <not-equals>
             <property>controls/flight/force_trim_release</property>
             <value>false</value>
           </not-equals>
@@ -158,10 +138,6 @@
             <property>/autopilot/afcs/internal/ap2</property>
             <value>1</value>
           </equals>
-            <!--<equals>
-            <property>/autopilot/afcs/locks/speed</property>
-            <value>GTC</value>
-          </equals>-->
           </or>
         </condition>
     </enable>
@@ -173,8 +149,8 @@
    <prop>/controls/flight/aileron-trim-filtered</prop>
   </output>
   <config>
-   <Kp>0.025</Kp>
-   <Ti>10.0</Ti>
+   <Kp>/autopilot/afcs/internal/kpATTroll</Kp><!--0.025-->
+   <Ti>/autopilot/afcs/internal/kpATTrollTi</Ti>
    <Td>0.0</Td>
    <u_min>-1.0</u_min>
    <u_max>1.0</u_max>
@@ -224,10 +200,6 @@
             <property>/autopilot/afcs/internal/ap2</property>
             <value>1</value>
           </equals>
-           <!-- <equals>
-            <property>/autopilot/afcs/locks/speed</property>
-            <value>GTC</value>
-          </equals>-->
           </or>
         </condition>
     </enable>
@@ -239,8 +211,8 @@
       <prop>/controls/flight/elevator-trim-filtered</prop>
     </output>
     <config>
-      <Kp>-0.025</Kp>
-      <Ti>10.0</Ti>
+      <Kp>/autopilot/afcs/internal/kpATTpitch</Kp><!--0.025-->
+      <Ti>/autopilot/afcs/internal/kpATTpitchTi</Ti>
       <Td>0.0</Td>
       <u_min>-1.0</u_min>
       <u_max>1.0</u_max>
@@ -278,24 +250,28 @@
   
   
 
-  <!-- Auto Hover GTC / GTC.H Mode Sampler-->
+  <!-- Auto Hover IAS GTC / GTC.H Mode Sync-->
   
-  <!--<filter>
+  <filter>
     <name>drift-u-kt sample hold</name>
     <debug>false</debug>
     <type>gain</type>
-    <input>/instrumentation/gsdi/drift-u-kt</input>
+    <input>/autopilot/afcs/settings/target-speed-kt</input>
     <output>/autopilot/afcs/internal/drift-u-kt</output>
     <gain>1</gain>
     <enable>
       <condition>
           <not-equals>
             <property>/autopilot/afcs/locks/speed</property>
+            <value>ias-hold</value>
+          </not-equals>
+          <not-equals>
+            <property>/autopilot/afcs/locks/speed</property>
             <value>GTC</value>
           </not-equals>
       </condition>
     </enable>
-  </filter>-->
+  </filter>
   
   <!--<filter>
     <name>drift-v-kt  sample hold</name>
@@ -403,6 +379,40 @@
     </enable>
   </filter>
   
+    <filter>
+    <name>Track Deg sample hold</name>
+      <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+    <type>gain</type>
+    <input>/orientation/track-magnetic-deg</input>
+    <output>/autopilot/afcs/settings/track-bug-deg</output>
+    <gain>1</gain>
+    <enable>
+      <condition>
+          <not-equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>track-hold</value>
+          </not-equals>
+      </condition>
+    </enable>
+  </filter>
+  
+  
+  <filter>
+  <name>Track Deg Offset Computer</name>
+  <debug>false</debug>
+  <type>gain</type>
+  <gain>1.0</gain>
+  <input>/autopilot/afcs/settings/track-bug-deg</input>
+  <reference>/orientation/track-magnetic-deg</reference>
+  <output>/autopilot/afcs/internal/track-error-deg</output>
+  <period>
+   <min>-180</min>
+   <max>180</max>
+  </period>
+ </filter>
+  
     
 <filter>
   <name>Heading Offset Computer</name>
@@ -482,7 +492,7 @@
   </filter>
   
  <filter>
-    <name>nav1-hold LOC bankangle plus</name>
+    <name>nav-loc-hold bankangle plus</name>
     <debug>false</debug>
     <enable>
     <or>
@@ -521,7 +531,7 @@
   </filter>
   
  <filter>
-    <name>nav1-hold LOC bankangle minus</name>
+    <name>nav-loc-hold  bankangle minus</name>
     <debug>false</debug>
    <enable>
     <or>
@@ -545,7 +555,7 @@
   
   
  <pid-controller>
-    <name>nav1-hold</name>
+    <name>nav-loc-hold</name>
     <debug>false</debug>
     <enable>
       <condition>
@@ -650,6 +660,39 @@
       <u_max>/autopilot/afcs/internal/roll-command-limit-p</u_max>   
     </config>
 </pid-controller>
+
+<pid-controller>
+    <name>track-hold-highspeed</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <and>
+          <greater-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>30</value>
+          </greater-than>
+          <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>track-hold</value>
+          </equals>
+          </and>
+      </condition>
+    </enable>
+   <input>
+      <prop>/autopilot/afcs/internal/track-error-deg</prop>
+    </input>
+    <reference>0</reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-roll-deg</prop>
+    </output>
+    <config>
+      <Kp>-1</Kp>  
+            <Ti>10.0</Ti>
+            <Td>0.0</Td>  
+      <u_min>/autopilot/afcs/internal/roll-command-limit-m</u_min> 
+      <u_max>/autopilot/afcs/internal/roll-command-limit-p</u_max>   
+    </config>
+</pid-controller>
   
   <pi-simple-controller>
     <name>Roll rate calculator high speed</name>
@@ -677,6 +720,10 @@
           <equals>
             <property>autopilot/afcs/locks/heading</property>
             <value>true-heading-hold</value>
+          </equals>
+          <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>track-hold</value>
           </equals>
         </or>
         </and>
@@ -729,6 +776,10 @@
           <equals>
             <property>autopilot/afcs/locks/heading</property>
             <value>true-heading-hold</value>
+          </equals>
+          <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>track-hold</value>
           </equals>
         </or>
         </and>
@@ -792,6 +843,44 @@
   </pid-controller>
   
   <!-- to do: add max roll command for approaches: 0.22 * IAS with max. 30DEG according EC145 C2 AFCS- lets use this as reference until data for H135 helionix 2+ is there-->
+  
+  <pi-simple-controller>
+    <name>nav-loc-hold-lowspeed</name>
+    <debug>false</debug>
+     <enable>
+      <condition>
+        <and>
+        <or>
+          <equals>
+     <property>/autopilot/afcs/locks/heading</property>
+     <value>nav1-hold</value>
+    </equals>
+          <equals>
+     <property>/autopilot/afcs/locks/heading</property>
+     <value>nav2-hold</value>
+    </equals>
+    </or>
+          <less-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>30</value>
+          </less-than>
+        </and>
+      </condition>
+    </enable>
+   <input>
+      <prop>/autopilot/afcs/internal/nav1-heading-error-deg-predicted</prop>
+    </input>
+    <reference>0</reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-yaw-rate-fps</prop>
+    </output>
+    <config>
+      <Kp>-1</Kp>  
+      <Ki>-0.0</Ki>         
+      <u_min>-3</u_min> 
+      <u_max>3</u_max>   
+    </config>
+  </pi-simple-controller>  
   
    <pi-simple-controller>
     <name>true-heading-hold-lowspeed</name>
@@ -857,26 +946,78 @@
     </config>
   </pi-simple-controller>
   
-  <pid-controller>
-    <name>heading-hold-lowspeed</name>
+ <pi-simple-controller>
+    <name>track-hold-lowspeed</name>
     <debug>false</debug>
-    <enable>
+     <enable>
       <condition>
         <and>
                   <equals>
             <property>autopilot/afcs/locks/heading</property>
-            <value>heading-hold</value>
+            <value>track-hold</value>
           </equals>
           <less-than>
             <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
             <value>30</value>
           </less-than>
+          <greater-than>
+            <property>/autopilot/afcs/internal/drift-u-kt</property>
+            <value>1</value>
+          </greater-than>
+        </and>
+      </condition>
+    </enable>
+   <input>
+      <prop>/autopilot/afcs/internal/track-error-deg</prop>
+    </input>
+    <reference>0</reference>
+    <output>
+      <prop>/autopilot/afcs/internal/target-yaw-rate-fps</prop>
+    </output>
+    <config>
+      <Kp>-0.125</Kp>  
+      <Ki>-0.0</Ki>         
+      <u_min>-3</u_min> 
+      <u_max>3</u_max>   
+    </config>
+  </pi-simple-controller>
+  
+  <pid-controller>
+    <name>heading-hold-lowspeed-comperator</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <and>
         <or>
+                  <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>heading-hold</value>
+          </equals>
+                  <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>track-hold</value>
+          </equals>
+          <equals>
+     <property>/autopilot/afcs/locks/heading</property>
+     <value>nav1-hold</value>
+    </equals>
+          <equals>
+     <property>/autopilot/afcs/locks/heading</property>
+     <value>nav2-hold</value>
+    </equals>
+              <equals>
+            <property>autopilot/afcs/locks/heading</property>
+            <value>true-heading-hold</value>
+          </equals>
+          </or>
+          <less-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>30</value>
+          </less-than>
           <not-equals>
             <property>controls/flight/force_trim_release</property>
             <value>true</value>
           </not-equals>
-          </or>
         </and>
       </condition>
     </enable>
@@ -897,42 +1038,7 @@
       <u_max>1.0</u_max>  
     </config>
   </pid-controller>
-  
-  
-  
-<!--<pid-controller>
-    <name>hover heading hold</name>
-    <debug>false</debug>
-    <enable>
-      <condition>
-        <and>
-                  <equals>
-            <property>autopilot/afcs/locks/heading</property>
-            <value>heading-hold</value>
-          </equals>
-          <less-than>
-            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
-            <value>30</value>
-          </less-than>
-        </and>
-      </condition>
-    </enable>
-    <input>
-      <prop>/autopilot/afcs/internal/drift-v-kt-predicted</prop>
-    </input>
-    <reference>0</reference>
-    <output>
-      <prop>/controls/flight/roll-deg</prop>
-    </output>
-    <config>
-      <Kp>1</Kp>
-      <Ti>10.0</Ti>
-      <Td>0.0</Td>
-      <u_min>-15.0</u_min>
-      <u_max>15.0</u_max>
-    </config>
-  </pid-controller>-->
-  
+
 
 <!-- outer loop-->
 
@@ -1090,6 +1196,24 @@
  
   
   <!-- fpa-hold-->
+  
+ <filter>
+    <name>fpa sample hold</name>
+      <debug>false</debug>
+    <type>gain</type>
+    <input>/autopilot/afcs/internal/fpa</input>
+    <output>/autopilot/afcs/settings/fpa</output>
+    <gain>1</gain>
+<enable>
+  <condition>
+      <not-equals>
+      <property>/autopilot/afcs/locks/altitude</property>
+      <value>fpa-hold</value>
+   </not-equals>
+  </condition>
+    </enable>
+ </filter> 
+  
   <pid-controller>
     <name>fpa Hold Mode</name>
     <debug>false</debug>
@@ -1111,9 +1235,9 @@
       <prop>/autopilot/afcs/internal/target-climb-rate-fps</prop>
     </output>
     <config>
-        <Kp>-240</Kp><!-- 12-->
-      <Ti>10.0</Ti>       
-      <Td>0.1</Td>    
+            <Kp>0.125</Kp>
+      <Ti>1.0</Ti>       
+      <Td>0.0</Td>   
       <u_min>-36.0</u_min> 
       <u_max>36.0</u_max>  
     </config>
@@ -1173,7 +1297,7 @@
   
       
      
-    <!-- <filter>
+  <filter>
     <name>alt hold sample hold</name>
     <debug>false</debug>
     <type>gain</type>
@@ -1194,7 +1318,7 @@
   </and>
   </condition>
       </enable>
-       </filter>-->
+       </filter>
       
       
       

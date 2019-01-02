@@ -56,7 +56,6 @@ var altmode = getprop("/autopilot/afcs/control/alt-mode") or 0;
 var speedmode = getprop("/autopilot/afcs/control/speed-mode") or 0;
 var headmode = getprop("/autopilot/afcs/control/heading-mode") or 0;
 var navsourcecoupled = getprop("/autopilot/afcs/control/navsource-couple") or 0;
-var atrim = getprop("/autopilot/afcs/control/atrim") or 0;
 var nav1armed = getprop("/autopilot/afcs/internal/nav1-armed") or 0;
 var nav2armed = getprop("/autopilot/afcs/internal/nav2-armed") or 0;
 var navsource = getprop("/instrumentation/efis/fnd/navsource") or 0;
@@ -64,11 +63,6 @@ var nav1locked = getprop("/autopilot/afcs/locks/heading/nav-1hold") or 0;
 ##
 
 
-#if (atrim >0){
-#setprop("/autopilot/afcs/internal/atrim", 1);
-#}else{
-#setprop("/autopilot/afcs/internal/atrim", 0);
-#}
 
 if ((ap1 > 0) and (afcs > 0)){
 setprop("/autopilot/afcs/internal/ap1", 1);
@@ -135,7 +129,7 @@ setprop("/autopilot/afcs/locks/speed", "");
 }
 
 if ((headmode == 1) and (swt < 1)){
-setprop("/autopilot/afcs/locks/heading", "trk-hold");
+setprop("/autopilot/afcs/locks/heading", "track-hold");
 }
 
 if ((headmode == 1) and (swt > 0)){
@@ -372,11 +366,21 @@ setprop("/autopilot/afcs/settings/sel-target-altitude-ft", alt);
 
 
 ##
-#AFCS Fly through when any Upper mode is engaged#
+#AFCS Fly through when any Upper mode is engaged. With Autotrim enabled at low speed, without only at high speed aka >40ktn#
 ##
 var rollinput = getprop("/controls/flight/aileron") or 0;
 var pitchinput = getprop("/controls/flight/elevator") or 0;
 var FTR = getprop("/controls/flight/force_trim_release") or 0;
+var atrimc = getprop("/autopilot/afcs/control/atrim") or 0;
+var speed = getprop ("/instrumentation/airspeed-indicator/indicated-speed-kt") or 0; 
+var atrim = getprop("/autopilot/afcs/internal/atrim") or 0;
+
+if (atrimc > 0)  {
+setprop("/autopilot/afcs/internal/atrim", 1);
+}else{
+setprop("/autopilot/afcs/internal/atrim", 0);
+}
+
 
 #kprrc = kp roll rate comparator
 
@@ -390,34 +394,66 @@ var kpCRHTTCR = 1;
 var kpALTHTCR = 1; 
 var kpALTATCR = 0.25; 
 
-if   ((rollinput < -0.05) or (rollinput > 0.05) or (FTR > 0) or (pitchinput < -0.05) or (pitchinput > 0.05) ) {
+
+if   ( ((atrim >0) and (speed < 40)) and ((rollinput < -0.05) or (rollinput > 0.05) or (FTR > 0) or (pitchinput < -0.05) or (pitchinput > 0.05) ) ){
+setprop("/autopilot/afcs/internal/flythrough", 1 );
+}elsif   ((speed > 40) and  ((rollinput < -0.05) or (rollinput > 0.05) or (FTR > 0) or (pitchinput < -0.05) or (pitchinput > 0.05) ) ){
+setprop("/autopilot/afcs/internal/flythrough", 1 );
+}elsif   ( ((atrim < 1) and (speed < 40)) and (FTR > 0)  ) {
 setprop("/autopilot/afcs/internal/flythrough", 1 );
 }else{
 setprop("/autopilot/afcs/internal/flythrough", 0 );
 }
 
-if   ((rollinput > -0.05) or (rollinput < 0.05) or  (FTR < 1) )  {
 
-interpolate("/autopilot/afcs/internal/kpRRC", kpRRC, 4 );
-interpolate("/autopilot/afcs/internal/kpHHHold", kpHHHold, 4 );
-}
+#var centerFlightControls = func {
+   # setprop("/controls/flight/elevator", 0);
+   # setprop("/controls/flight/aileron", 0);
+#}
 
-if   ((pitchinput > -0.05) or (pitchinput < 0.05) or  (FTR < 1) )  {
 
-interpolate("/autopilot/afcs/internal/kpIASH", kpIASH, 4 );
-interpolate("/autopilot/afcs/internal/kpCL", kpCL, 4 );
+#if   ((rollinput > -0.05) or (rollinput < 0.05) or  (FTR < 1) )  {
 
-interpolate("/autopilot/afcs/internal/kpVSTRC", kpVSTRC, 4 );
-interpolate("/autopilot/afcs/internal/kpFPATRC", kpFPATRC, 4 );
-interpolate("/autopilot/afcs/internal/kpCRHTTCR", kpCRHTTCR, 4 );
-interpolate("/autopilot/afcs/internal/kpALTHTCR", kpALTHTCR, 4 );
-interpolate("/autopilot/afcs/internal/kpALTATCR", kpALTATCR,  4 );
-}
+#interpolate("/autopilot/afcs/internal/kpRRC", kpRRC, 4 );
+#interpolate("/autopilot/afcs/internal/kpHHHold", kpHHHold, 4 );
+#}
+
+#if   ((pitchinput > -0.05) or (pitchinput < 0.05) or  (FTR < 1) )  {
+
+#interpolate("/autopilot/afcs/internal/kpIASH", kpIASH, 4 );
+#interpolate("/autopilot/afcs/internal/kpCL", kpCL, 4 );
+
+#interpolate("/autopilot/afcs/internal/kpVSTRC", kpVSTRC, 4 );
+#interpolate("/autopilot/afcs/internal/kpFPATRC", kpFPATRC, 4 );
+#interpolate("/autopilot/afcs/internal/kpCRHTTCR", kpCRHTTCR, 4 );
+#interpolate("/autopilot/afcs/internal/kpALTHTCR", kpALTHTCR, 4 );
+#interpolate("/autopilot/afcs/internal/kpALTATCR", kpALTATCR,  4 );
+#}
 
 
 
 
 ##
+
+if (headmode == 0){
+var kpATTroll = 0.05 ;
+var kpATTrollTi = 1 ;
+setprop("/autopilot/afcs/internal/kpATTroll", kpATTroll );
+setprop("/autopilot/afcs/internal/kpATTrollTi", kpATTrollTi );
+}else{
+setprop("/autopilot/afcs/internal/kpATTroll", 0.025 );
+setprop("/autopilot/afcs/internal/kpATTrollTi", 10 );
+}
+
+if (speedmode == 0){
+var kpATTpitch = -0.05; 
+var kpATTpitchTi = 1; 
+setprop("/autopilot/afcs/internal/kpATTpitch", kpATTpitch );
+setprop("/autopilot/afcs/internal/kpATTpitchTi", kpATTpitchTi );
+}else{
+setprop("/autopilot/afcs/internal/kpATTpitch", -0.025 );
+setprop("/autopilot/afcs/internal/kpATTpitchTi", 10 );
+}
 
 if (ias < 30){
 			var kpHHHold = 1;
@@ -452,7 +488,7 @@ if (ias < 30){
 
 if  ((ap1 > 0) or (ap2 > 0)) {
 	   var FPangle = math.atan2(VSft, TASft) * R2D;
-		setprop("autopilot/afcs/internal/fpa", (FPangle *-1));
+		setprop("autopilot/afcs/internal/fpa", (FPangle));
 	}
 
 settimer(afcs_action, 0.01);

@@ -173,11 +173,15 @@ airfoil-incidence-no-lift="-0.1"
 	
 	
 	<!--lst values: 1.35;0.1;-0.3;3.80;0.0074;0.04; to-do: play with lift-coeff and translift-factor-->
-<control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"/>
+<control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL"					
+					src0="-1.0" src1="1.0"
+					dst0="-1.0" dst1="1.0"/>
 	<control-input axis="/controls/flight/aileron-cmd" control="CYCLICAIL"
 					src0="-1.0" src1="1.0"
 					dst0="-1.0" dst1="1.0"/>
-	<control-input axis="/controls/flight/elevator-trim" control="CYCLICELE"/>
+	<control-input axis="/controls/flight/elevator-trim" control="CYCLICELE"					
+					src0="-1.0" src1="1.0"
+					dst0="-1.0" dst1="1.0"/>
 	<control-input axis="/controls/flight/elevator-cmd" control="CYCLICELE"
 					src0="-1.0" src1="1.0"
 					dst0="-1.0" dst1="1.0"/>
@@ -229,7 +233,9 @@ airfoil-incidence-no-lift="-0.1"
 	rotor-correction-factor="0.8"
 	downwashfactor="1.0"
 	>
-<control-input axis="/controls/flight/rudder-trim" control="COLLECTIVE" invert="true"/>
+<control-input axis="/controls/flight/rudder-trim" control="COLLECTIVE" invert="true"					
+					src0="-1.0" src1="1.0"
+					dst0="-1.0" dst1="1.0"/>
 	<control-input axis="/controls/flight/rudder-cmd" control="COLLECTIVE" invert="true"
 					src0="-1.0" src1="1.0"
 					dst0="-1.0" dst1="1.0"/>
