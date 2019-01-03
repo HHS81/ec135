@@ -1106,7 +1106,7 @@ var gross_weight_kg = props.globals.initNode("/sim/model/gross-weight-kg");
 
 
 var main_loop = func {
-	props.globals.removeChild("autopilot");
+	#props.globals.removeChild("autopilot");
 	if (replay)
 		setprop("/position/gear-agl-m", getprop("/position/altitude-agl-ft") * 0.3 - 1.2);
 	vert_speed_fpm.setDoubleValue(vertspeed.getValue() * 60);
@@ -1134,7 +1134,7 @@ var doors = Doors.new();
 
 
 setlistener("/sim/signals/fdm-initialized", func {
-	gui.menuEnable("autopilot", 0);
+	#gui.menuEnable("autopilot", 0);
 	init_rotoranim();
 	vibration.init();
 	fuel.init();

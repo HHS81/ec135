@@ -5,7 +5,7 @@
 	#This file is part of FlightGear, the free flight simulator
 	#http://www.flightgear.org/
 
-	#Copyright (C) 2018 Heiko Schulz, Heiko.H.Schulz@gmx.net
+	#Copyright (C) 2018/2019 Heiko Schulz, Heiko.H.Schulz@gmx.net
 
 	#This program is free software; you can redistribute it and/or
 	#modify it under the terms of the GNU General Public License as
@@ -25,6 +25,7 @@ var listenerAFCSInitFunc = func {
 
 setprop("/autopilot/afcs/control/alt-mode", 0);
 setprop("/autopilot/afcs/control/speed-mode", 0);
+setprop("/autopilot/afcs/control/speed-mode-TEST", 0);
 setprop("/autopilot/afcs/control/heading-mode", 0);
 setprop("/autopilot/afcs/engaged", 0);
 setprop("/autopilot/afcs/control/ap1", 0);
@@ -36,6 +37,9 @@ setprop("/autopilot/afcs/internal/target-climb-rate-fps", 0);
 setprop("/autopilot/afcs/settings/sel-target-altitude-ft", 0);
 setprop("/controls/flight/collective", 0);
 setprop("/autopilot/afcs/internal/gs-armed", 0);
+setprop("/autopilot/afcs/internal/att-mode", 0);
+setprop("/autopilot/internal/use-collective-for-alt", 1);         ## Helionix uses it through all speed ranges. So use this property for collective axis failure by setting it false
+setprop("/autopilot/afcs/control/ga", 0);
 
 }
 setlistener("sim/signals/fdm-initialized", listenerAFCSInitFunc);
@@ -48,11 +52,15 @@ var afcs_action = func{
 var ap1 = getprop("/autopilot/afcs/control/ap1") or 0;
 var ap2 = getprop("/autopilot/afcs/control/ap2") or 0;
 var ias = getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") or 0;
-var afcs = getprop("/autopilot/afcs/engaged") or 0;
+var afcs = getprop("/autopilot/afcs/engaged") or 0; #powered on
 var swt = getprop("/autopilot/afcs/internal/swt") or 0;
 var gtcc = getprop("/autopilot/afcs/control/gtc") or 0;
+var ga = getprop("/autopilot/afcs/control/ga") or 0;
+var ucfa = getprop("/autopilot/internal/use-collective-for-alt") or 0;
 
 var altmode = getprop("/autopilot/afcs/control/alt-mode") or 0;
+var ap1engaged = getprop("/autopilot/afcs/internal/ap1") or 0;
+var ap2engaged = getprop("/autopilot/afcs/internal/ap2") or 0;
 var speedmode = getprop("/autopilot/afcs/control/speed-mode") or 0;
 var headmode = getprop("/autopilot/afcs/control/heading-mode") or 0;
 var navsourcecoupled = getprop("/autopilot/afcs/control/navsource-couple") or 0;
@@ -66,7 +74,7 @@ var nav1locked = getprop("/autopilot/afcs/locks/heading/nav-1hold") or 0;
 
 if ((ap1 > 0) and (afcs > 0)){
 setprop("/autopilot/afcs/internal/ap1", 1);
-setprop("/autopilot/afcs/internal/bkup", 1);
+setprop("/autopilot/afcs/internal/bkup", 1);# should make backup-sas work- there is no yet simulated
 }else{
 setprop("/autopilot/afcs/internal/ap1", 0);
 setprop("/autopilot/afcs/control/ap1", 0);
@@ -80,11 +88,27 @@ setprop("/autopilot/afcs/internal/ap2", 0);
 setprop("/autopilot/afcs/control/ap2", 0);
 }
 
+if ( (ap1engaged >0) or (ap2engaged >0)){
+setprop("/controls/flight/fcs/switches/sas", 1);
+}else{
+setprop("/controls/flight/fcs/switches/sas", 0);
+}
+
 
 ##
 if  ((ap1 > 0) or (ap2 > 0)){
 
-if (altmode == 0) {
+## if ap on and no uppermode is selected switch to att-mode
+
+if ((altmode == 0) and (speedmode == 0) and (headmode == 0)) {
+setprop("/autopilot/afcs/internal/att-mode",1);
+}else{
+setprop("/autopilot/afcs/internal/att-mode",0);
+}
+
+##uppermodes
+
+if (altmode < 1) {
 setprop("/autopilot/afcs/locks/altitude","");
 }
 
@@ -94,7 +118,7 @@ setprop("/autopilot/afcs/locks/altitude", "crht-hold");
 
 # aka altitude-aquire
 if (altmode == 2) { 
-setprop("/autopilot/afcs/locks/altitude", "altitude-hold");
+setprop("/autopilot/afcs/locks/altitude", "altitude-aquire");
 setprop("/autopilot/afcs/internal/altitude-armed", 1);
 }
 
@@ -115,18 +139,31 @@ if (altmode == 5) {
 setprop("/autopilot/afcs/locks/altitude", "gs1-hold");
 }
 
+if (altmode == 6) {
+setprop("/autopilot/afcs/locks/altitude", "ias-hold");
+setprop("/autopilot/afcs/locks/speed", "");
+}
 
-if (speedmode == 1) {
+if (altmode == 7) {
+setprop("/autopilot/afcs/locks/altitude", "GA");
+}
+
+if (speedmode < 1)  {
+setprop("/autopilot/afcs/locks/speed", "");
+}
+
+if ((speedmode == 1) and (ucfa >0)){
 setprop("/autopilot/afcs/locks/speed", "ias-hold");
 }
 
-if (speedmode == 2) {
+if ((speedmode < 1) and (altmode < 1))  {
+setprop("/autopilot/afcs/locks/altitude", "");
+}
+
+if ((speedmode == 2) or (speedmode == 3)) {
 setprop("/autopilot/afcs/locks/speed", "GTC");
 }
 
-if (speedmode == 0) {
-setprop("/autopilot/afcs/locks/speed", "");
-}
 
 if ((headmode == 1) and (swt < 1)){
 setprop("/autopilot/afcs/locks/heading", "track-hold");
@@ -169,20 +206,61 @@ setprop("/autopilot/afcs/locks/heading", "");
 setprop("/autopilot/afcs/locks/speed", "");
 setprop("/autopilot/afcs/internal/bkup", 0);
 setprop("/autopilot/afcs/control/navsource-couple", 0);
+setprop("/autopilot/afcs/control/ga", 0);
+#setprop("/autopilot/afcs/timer/rescue-double-click-timer-sec", 0);
+setprop("/autopilot/afcs/control/rescue-double-click", 0);
+#setprop("/autopilot/afcs/timer/double-click-btn", 0);
+#setprop("/autopilot/afcs/timer/rescue-double-click-last-settime", 0);
+}
+
+
+##
+#GTC.H Mode: some sources says that it will also put the heli into a zero-speed hover from any speed - let`s simulate this. 
+##
+
+if (speedmode == 3){ 
+setprop("/autopilot/afcs/settings/target-speed-kt", 0);
+setprop("/autopilot/afcs/internal/drift-u-kt", 0);
 }
 
 ##
-#GTC/ GTC.H Mode switch at speed below 30ktn
+#GTC= low speed IAS Hold Mode?? -  switch to it at speed below 30ktn
 ##
-if (gtcc > 0){
-setprop("/autopilot/afcs/control/speed-mode", 2); 
-}
 
 if ( (speedmode == 1)  and (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 30) ){
 setprop("/autopilot/afcs/control/speed-mode", 2);
 }elsif ( (speedmode == 2)  and (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") > 30) ){
 setprop("/autopilot/afcs/control/speed-mode", 1);
 }
+
+if ( (speedmode == 3)  and (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 30) ){
+setprop("/autopilot/afcs/control/speed-mode", 2);
+}elsif ( (speedmode == 3)  and (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") > 30) ){
+setprop("/autopilot/afcs/control/speed-mode", 1);
+}
+
+## 
+
+##
+##Rescue/ Maria Help Button - AFCS Hat switch double-click - 
+## According some sources it engages AP, and put on present heading, speed and probably altitude. Some other sources say, that it will need GTC/GTC.H to keep altitude, some says that it will also put the heli into a zero-speed hover. 
+##
+
+var rescuebtn = getprop("/autopilot/afcs/timer/rescue-btn-double-clicked") or 0;
+var timer = getprop("/autopilot/afcs/timer/rescue-double-click-timer-sec") or 0;
+
+
+if (rescuebtn >0) {
+setprop("/autopilot/afcs/control/ap1", 1);
+setprop("/autopilot/afcs/control/ap2", 1);
+setprop("/autopilot/afcs/control/alt-mode", 3);
+setprop("/autopilot/afcs/control/speed-mode", 1);
+setprop("/autopilot/afcs/control/heading-mode", 1);
+}
+if (timer >1){
+setprop("/autopilot/afcs/control/rescue-double-click", 0); #reset
+}
+
 
 ##
 ##True Heading Hold/ FMS
@@ -308,6 +386,28 @@ setprop("/autopilot/afcs/control/alt-mode", 3)
 
 ##
 
+##VS-protection at low height
+
+if ((altmode == 4) and (ra <65)){
+setprop("/autopilot/afcs/control/alt-mode", 1);
+}
+
+##
+
+##Go-Around Mode
+##
+
+if (altmode == 7){
+setprop("/autopilot/afcs/internal/target-climb-rate-fps", 16.667);
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
+setprop("/autopilot/afcs/internal/nav2-armed", 0);
+setprop("/autopilot/afcs/control/navsource-couple", 0);
+}
+
+
+
+##
+
 if  ((ap1 > 0) or (ap2 > 0))  {
 var vsw = getprop("autopilot/afcs/settings/fpm") or 0;
 vsw = int(vsw * 0.01);
@@ -366,7 +466,7 @@ setprop("/autopilot/afcs/settings/sel-target-altitude-ft", alt);
 
 
 ##
-#AFCS Fly through when any Upper mode is engaged. With Autotrim enabled at low speed, without only at high speed aka >40ktn#
+#AFCS Fly through when any Upper mode is engaged. With Autotrim enabled at low speed, without only at high speed  >40ktn#
 ##
 var rollinput = getprop("/controls/flight/aileron") or 0;
 var pitchinput = getprop("/controls/flight/elevator") or 0;
@@ -395,14 +495,24 @@ var kpALTHTCR = 1;
 var kpALTATCR = 0.25; 
 
 
-if   ( ((atrim >0) and (speed < 40)) and ((rollinput < -0.05) or (rollinput > 0.05) or (FTR > 0) or (pitchinput < -0.05) or (pitchinput > 0.05) ) ){
-setprop("/autopilot/afcs/internal/flythrough", 1 );
-}elsif   ((speed > 40) and  ((rollinput < -0.05) or (rollinput > 0.05) or (FTR > 0) or (pitchinput < -0.05) or (pitchinput > 0.05) ) ){
-setprop("/autopilot/afcs/internal/flythrough", 1 );
-}elsif   ( ((atrim < 1) and (speed < 40)) and (FTR > 0)  ) {
-setprop("/autopilot/afcs/internal/flythrough", 1 );
+if (  ( ((atrim >0) and (speed < 40)) and ((rollinput < -0.02) or (rollinput > 0.02))) or (FTR > 0))  {
+setprop("/autopilot/afcs/internal/flythrough-roll", 1 );
+}elsif  ( ((speed > 40) and  ((rollinput < -0.02) or (rollinput > 0.02))) or (FTR > 0)){
+setprop("/autopilot/afcs/internal/flythrough-roll", 1 );
+}elsif    (FTR > 0)   {
+setprop("/autopilot/afcs/internal/flythrough-roll", 1 );
 }else{
-setprop("/autopilot/afcs/internal/flythrough", 0 );
+setprop("/autopilot/afcs/internal/flythrough-roll", 0 );
+}
+
+if (  ( ((atrim >0) and (speed < 40)) and  (pitchinput < -0.02) or (pitchinput > 0.02)) or (FTR > 0)){
+setprop("/autopilot/afcs/internal/flythrough-pitch", 1 );
+}elsif  ( ((speed > 40) and  ((pitchinput < -0.02) or (pitchinput > 0.02))) or (FTR > 0)){
+setprop("/autopilot/afcs/internal/flythrough-pitch", 1 );
+}elsif   (FTR > 0)   {
+setprop("/autopilot/afcs/internal/flythrough-pitch", 1 );
+}else{
+setprop("/autopilot/afcs/internal/flythrough-pitch", 0 );
 }
 
 
@@ -437,7 +547,7 @@ setprop("/autopilot/afcs/internal/flythrough", 0 );
 
 if (headmode == 0){
 var kpATTroll = 0.05 ;
-var kpATTrollTi = 1 ;
+var kpATTrollTi = 50 ;
 setprop("/autopilot/afcs/internal/kpATTroll", kpATTroll );
 setprop("/autopilot/afcs/internal/kpATTrollTi", kpATTrollTi );
 }else{
@@ -447,7 +557,7 @@ setprop("/autopilot/afcs/internal/kpATTrollTi", 10 );
 
 if (speedmode == 0){
 var kpATTpitch = -0.05; 
-var kpATTpitchTi = 1; 
+var kpATTpitchTi = 50; 
 setprop("/autopilot/afcs/internal/kpATTpitch", kpATTpitch );
 setprop("/autopilot/afcs/internal/kpATTpitchTi", kpATTpitchTi );
 }else{

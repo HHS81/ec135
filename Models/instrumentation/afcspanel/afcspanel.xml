@@ -25,6 +25,144 @@
 	
 	
 <!-- animation-->
+
+<!--A. TRIM Button-->
+<animation>
+        <type>pick</type>
+        <object-name>ATRIMbtn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/afcs/control/atrim</property>
+	            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>Auto TRIM</tooltip-id>
+                <label>Auto TRIM: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/control/atrim</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>ATRIMoff</object-name>
+	<condition>
+	<not>
+	<property>/autopilot/afcs/control/atrim</property>	
+	</not>
+	</condition>
+</animation>
+
+<!--BK UP Button-->
+<animation>
+        <type>pick</type>
+        <object-name>BKUPbtn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/afcs/internal/bkup</property>
+	            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>BKUP</tooltip-id>
+                <label>BKUP: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/internal/bkup</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>BKUPoff</object-name>
+	<condition>
+	<not>
+	<property>/autopilot/afcs/internal/bkup</property>	
+	</not>
+	</condition>
+</animation>
+
+<!--AP 1 Button-->
+<animation>
+        <type>pick</type>
+        <object-name>AP1btn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/afcs/control/ap1</property>
+	            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>AP1</tooltip-id>
+                <label>AP1: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/internal/ap1</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>AP1off</object-name>
+	<condition>
+	<not>
+	<property>/autopilot/afcs/internal/ap1</property>	
+	</not>
+	</condition>
+</animation>
+
+<!--AP 2 Button-->
+<animation>
+        <type>pick</type>
+        <object-name>AP2btn</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/afcs/control/ap2</property>
+	            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>AP2</tooltip-id>
+                <label>AP2: %s</label>
+                <mapping>on-off</mapping>
+                <property>/autopilot/afcs/internal/ap2</property>
+            </binding>
+        </hovered>
+    </animation>
+	
+<animation>
+	<type>select</type>
+	<object-name>AP2off</object-name>
+	<condition>
+	<not>
+	<property>/autopilot/afcs/internal/ap2</property>	
+	</not>
+	</condition>
+</animation>
+
+
 <!--CRHT Hold-->
 <animation>
     <type>pick</type>
@@ -191,19 +329,37 @@
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
+                <condition>
+                        <equals>
+                            <property>/autopilot/internal/use-collective-for-alt</property>
+                            <value>1</value>
+                        </equals>
+                </condition>
                 <command>property-cycle</command>
                 <property>/autopilot/afcs/control/speed-mode</property>
 				<value>1</value>
 				<value>0</value>
             </binding>
-        </action>
+            <binding>
+                <condition>
+                        <equals>
+                            <property>/autopilot/internal/use-collective-for-alt</property>
+                            <value>0</value>
+                        </equals>
+                </condition>
+                <command>property-cycle</command>
+                <property>/autopilot/afcs/control/alt-mode</property>
+				<value>6</value>
+				<value>0</value>
+            </binding>
+         </action>
         <hovered>
             <binding>
                 <command>set-tooltip</command>
                 <tooltip-id>IAS Hold</tooltip-id>
                 <label>IAS Hold: %s</label>
                 <mapping>on-off</mapping>
-                <property>/autopilot/afcs/locks/speed</property>
+                <property>/autopilot/afcs/locks/speed-mode</property>
             </binding>
         </hovered>
     </animation>
@@ -361,141 +517,6 @@
 	</condition>
 </animation>
 
-<!--A. TRIM Button-->
-<animation>
-        <type>pick</type>
-        <object-name>ATRIMbtn</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-toggle</command>
-                <property>/autopilot/afcs/control/atrim</property>
-	            </binding>
-        </action>
-        <hovered>
-            <binding>
-                <command>set-tooltip</command>
-                <tooltip-id>Auto TRIM</tooltip-id>
-                <label>Auto TRIM: %s</label>
-                <mapping>on-off</mapping>
-                <property>/autopilot/afcs/control/atrim</property>
-            </binding>
-        </hovered>
-    </animation>
-	
-<animation>
-	<type>select</type>
-	<object-name>ATRIMoff</object-name>
-	<condition>
-	<not>
-	<property>/autopilot/afcs/control/atrim</property>	
-	</not>
-	</condition>
-</animation>
-
-<!--BK UP Button-->
-<animation>
-        <type>pick</type>
-        <object-name>BKUPbtn</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-toggle</command>
-                <property>/autopilot/afcs/internal/bkup</property>
-	            </binding>
-        </action>
-        <hovered>
-            <binding>
-                <command>set-tooltip</command>
-                <tooltip-id>BKUP</tooltip-id>
-                <label>BKUP: %s</label>
-                <mapping>on-off</mapping>
-                <property>/autopilot/afcs/internal/bkup</property>
-            </binding>
-        </hovered>
-    </animation>
-	
-<animation>
-	<type>select</type>
-	<object-name>BKUPoff</object-name>
-	<condition>
-	<not>
-	<property>/autopilot/afcs/internal/bkup</property>	
-	</not>
-	</condition>
-</animation>
-
-<!--AP 1 Button-->
-<animation>
-        <type>pick</type>
-        <object-name>AP1btn</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-toggle</command>
-                <property>/autopilot/afcs/control/ap1</property>
-	            </binding>
-        </action>
-        <hovered>
-            <binding>
-                <command>set-tooltip</command>
-                <tooltip-id>AP1</tooltip-id>
-                <label>AP1: %s</label>
-                <mapping>on-off</mapping>
-                <property>/autopilot/afcs/internal/ap1</property>
-            </binding>
-        </hovered>
-    </animation>
-	
-<animation>
-	<type>select</type>
-	<object-name>AP1off</object-name>
-	<condition>
-	<not>
-	<property>/autopilot/afcs/internal/ap1</property>	
-	</not>
-	</condition>
-</animation>
-
-<!--AP 2 Button-->
-<animation>
-        <type>pick</type>
-        <object-name>AP2btn</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-toggle</command>
-                <property>/autopilot/afcs/control/ap2</property>
-	            </binding>
-        </action>
-        <hovered>
-            <binding>
-                <command>set-tooltip</command>
-                <tooltip-id>AP2</tooltip-id>
-                <label>AP2: %s</label>
-                <mapping>on-off</mapping>
-                <property>/autopilot/afcs/internal/ap2</property>
-            </binding>
-        </hovered>
-    </animation>
-	
-<animation>
-	<type>select</type>
-	<object-name>AP2off</object-name>
-	<condition>
-	<not>
-	<property>/autopilot/afcs/internal/ap2</property>	
-	</not>
-	</condition>
-</animation>
 
 <!-- FPA/ VS + HDG / TRK selector-->
 
@@ -731,7 +752,7 @@
         <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>/autopilot/afcs/settings/trk</property>
+        <property>/autopilot/afcs/settings/track-bug-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -743,7 +764,7 @@
                 <command>set-tooltip</command>
                 <tooltip-id>TRK</tooltip-id>
                 <label>TRK:%5.2f</label>
-        <property>/autopilot/afcs/settings/trk</property>
+        <property>/autopilot/afcs/settings/track-bug-deg</property>
             </binding>
         </hovered>
 </animation>
@@ -757,7 +778,7 @@
         <repeatable>true</repeatable>
     <binding>
         <command>property-adjust</command>
-        <property>/autopilot/afcs/settings/trk</property>
+        <property>/autopilot/afcs/settings/track-bug-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -769,7 +790,7 @@
                 <command>set-tooltip</command>
                 <tooltip-id>TRK</tooltip-id>
                 <label>TRK:%5.2f</label>
-        <property>/autopilot/afcs/settings/trk</property>
+        <property>/autopilot/afcs/settings/track-bug-deg</property>
             </binding>
         </hovered>
 </animation>
@@ -802,7 +823,7 @@
 <animation>
         <type>rotate</type>
         <object-name>HEADTRKknob</object-name>
-        <property>/autopilot/afcs/settings/trk</property>
+        <property>/autopilot/afcs/settings/track-bug-deg</property>
         <factor>1</factor>
 		<center>
 			<x-m>1.009</x-m>

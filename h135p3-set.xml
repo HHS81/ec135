@@ -12,8 +12,8 @@ Thanks for all the help!
 <PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
 	<sim>
 		<description>Airbus H135 P3</description>
-		<author>Main Author:  (Heiko Schulz) ; 3d: (Heiko Schulz);  Textures, animation, config, some liveries: (Heiko Schulz) + Maik Justus (FDM); Melchior Franz + Heiko Schulz(Nasal); Oliver Thurau (Particles); sanni (Pilot Animation); f-sig(instrument enhancements);
-		Sebastian Dietrich (GTX330 improvements); Martin Litzenberger ( Airbus Helionix Screens ); Joshua Davidson (IESI)</author>
+		<author>(Main Author):  Heiko Schulz ; (3d meshes and objects): Heiko Schulz;  (Textures, animation, config, some liveries): Heiko Schulz ; (FDM): Heiko Schulz;  Maik Justus; (Nasal) Melchior Franz; Heiko Schulz; (Particles): Oliver Thurau;  (Pilot Animation): sanni; (EC 135 P2 instrument enhancements) f-sig;
+		(GTX330 improvements): Sebastian Dietrich ; ( Airbus Helionix Screens ) Martin Litzenberger ; (IESI) Joshua Davidson </author>
 		<status>early production</status>
 		<rating>
                     <FDM type="int">4</FDM>
@@ -881,19 +881,22 @@ Thanks for all the help!
 	<binding>
 		<command>property-assign</command>
 		<property>/autopilot/afcs/control/ap1</property>
-		<value type="double">1</value>
+		<value>1</value>
 	</binding>
 	<binding>
 		<command>property-assign</command>
 		<property>/autopilot/afcs/control/ap2</property>
-		<value type="double">1</value>
+		<value>1</value>
 	</binding>
-	<binding>
-		<command>property-assign</command>
-		<property>/controls/flight/fcs/switches/sas</property>
-		<value type="double">1</value>
-	</binding>
+<binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/control/rescue-double-click</property>
+        <step>1</step>
+        <max>3</max>
+        <wrap>1</wrap>
+      </binding>
   </key>
+  
   
 <key n="4">
     <name>Ctrl-d</name>
@@ -901,12 +904,12 @@ Thanks for all the help!
 	<binding>
 		<command>property-assign</command>
 		<property>/autopilot/afcs/control/ap1</property>
-		<value type="double">0</value>
+		<value>0</value>
 	</binding>
 	<binding>
 		<command>property-assign</command>
 		<property>/autopilot/afcs/control/ap2</property>
-		<value type="double">0</value>
+		<value>0</value>
 	</binding>
 	<binding>
 		<command>property-assign</command>
@@ -915,9 +918,57 @@ Thanks for all the help!
 	</binding>
   </key>
   
+  <key n="7">
+    <name>ctr-g</name>
+    <desc>Go Around Mode </desc>
+	<binding>
+		<command>property-assign</command>
+		<property>/autopilot/afcs/control/alt-mode</property>
+		<value type="double">7</value>
+	</binding>
+  </key>
+  
+ 
+<key n="6">
+	<name>Ctrl-f</name>
+    <desc>GTC.H Mode</desc>
+		<binding>
+			<command>property-assign</command>
+			<property>/autopilot/afcs/control/speed-mode</property>
+		<value type="double">3</value>
+		</binding>
+  </key>
+  
+   
 <key n="49">
     <name>1</name>
     <desc>beep trim up</desc>
+<binding>
+        <command>property-adjust</command>
+        <property>/controls/flight/pitch-deg</property>
+        <step>-0.125</step>
+        <min>-15</min>
+        <wrap>1</wrap>
+      </binding>
+<binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/internal/drift-u-kt</property>
+        <step>-0.5</step>
+        <min>0</min>
+        <wrap>1</wrap>
+      </binding>
+<binding>
+        <command>property-adjust</command>
+        <property>/autopilot/afcs/settings/target-speed-kt</property>
+        <step>-0.5</step>
+        <min>0</min>
+        <wrap>1</wrap>
+      </binding>
+  </key>
+  
+<key n="55">
+    <name>7</name>
+    <desc>beep trim down</desc>
 <binding>
         <command>property-adjust</command>
         <property>/controls/flight/pitch-deg</property>
@@ -941,35 +992,10 @@ Thanks for all the help!
       </binding>
   </key>
   
-<key n="55">
-    <name>7</name>
-    <desc>beep trim down</desc>
-<binding>
-        <command>property-adjust</command>
-        <property>/controls/flight/pitch-deg</property>
-        <step>-0.125</step>
-        <min>0</min>
-        <wrap>1</wrap>
-      </binding>
-<binding>
-        <command>property-adjust</command>
-        <property>/autopilot/afcs/internal/drift-u-kt</property>
-        <step>-0.5</step>
-        <min>0</min>
-        <wrap>1</wrap>
-      </binding>
-<binding>
-        <command>property-adjust</command>
-        <property>/autopilot/afcs/settings/target-speed-kt</property>
-        <step>-0.5</step>
-        <min>0</min>
-        <wrap>1</wrap>
-      </binding>
-  </key>
-  
 <key n="60">
     <name></name>
     <desc>beep trim left</desc>
+	        <repeatable>true</repeatable>
 <binding>
         <command>property-adjust</command>
         <property>/controls/flight/roll-deg</property>
@@ -989,6 +1015,7 @@ Thanks for all the help!
 <key n="62">
     <name></name>
     <desc>beep trim right</desc>
+	        <repeatable>true</repeatable>
 <binding>
         <command>property-adjust</command>
         <property>/controls/flight/roll-deg</property>
