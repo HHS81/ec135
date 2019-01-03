@@ -1,10 +1,26 @@
 <?xml version="1.0"?>
 <!--
 ************************************************************************
-EC 135 P2 simulation config.
+H135 T3 P3 Helionix simulation config.
 
 This model of the EC 135 is dedicated to heliflyer aka Georg Vollnhals.
 Thanks for all the help!
+
+	This file is part of FlightGear, the free flight simulator
+	http://www.flightgear.org/
+
+	Copyright (C) 2011/2012 Heiko Schulz, Heiko.H.Schulz@gmx.net
+	modified 2018/2019 by Heiko Schulz, Heiko.H.Schulz@gmx.net
+
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License as
+	published by the Free Software Foundation; either version 2 of the
+	License, or (at your option) any later version.
+
+	This program is distributed in the hope that it will be useful, but
+	WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	General Public License for more details.
 
 ************************************************************************
 -->
@@ -509,11 +525,11 @@ Thanks for all the help!
 			<line>Cut AFCS/SAS -> CTR-d-Key</line>
 			<line>Engage AFCS/SAS -> CTR-a-key</line>
 			<line></line>
-			
-
-
 		</help>
+		
+        <menubar include="gui/dialogs/h135-menu.xml"/>
 
+ 
 		<hitches>
 			<!-- make sure some properties do exist, when the list for multiplayer transfere is defined-->
 			<!-- they need to be in the same value, as they are initilized in the FDM, to get the same values after reset
@@ -540,7 +556,7 @@ Thanks for all the help!
 			</aerotow>
 		</hitches>
 
-		<menubar>
+		<!--<menubar>
 			<default>
 				 <menu n="10">
       <label>H135 P3 T3</label>
@@ -589,7 +605,7 @@ Thanks for all the help!
 	</item>
 				</menu>
 			</default>
-		</menubar>
+		</menubar>-->
 		
 
 	</sim>
@@ -1219,6 +1235,7 @@ Thanks for all the help!
 	
 		<ec135>
 			<file>Aircraft/ec135/Nasal/afcs.nas</file>
+			<file>Aircraft/ec135/Nasal/ground-equipement.nas</file>
 			<file>Aircraft/ec135/Nasal/rotor_wash.nas</file>
 			<file>Aircraft/ec135/Nasal/externalweights.nas</file>
 			<file>Aircraft/ec135/Nasal/fadec.nas</file>

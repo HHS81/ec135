@@ -227,6 +227,8 @@ setprop("/autopilot/afcs/internal/drift-u-kt", 0);
 #GTC= low speed IAS Hold Mode?? -  switch to it at speed below 30ktn
 ##
 
+##To-Do: Bug fixing:  let disengage the mode below 30ktn like the switch fpa/vs
+
 if ( (speedmode == 1)  and (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") < 30) ){
 setprop("/autopilot/afcs/control/speed-mode", 2);
 }elsif ( (speedmode == 2)  and (getprop("instrumentation/airspeed-indicator/indicated-speed-kt") > 30) ){
@@ -257,6 +259,7 @@ setprop("/autopilot/afcs/control/alt-mode", 3);
 setprop("/autopilot/afcs/control/speed-mode", 1);
 setprop("/autopilot/afcs/control/heading-mode", 1);
 }
+
 if (timer >1){
 setprop("/autopilot/afcs/control/rescue-double-click", 0); #reset
 }

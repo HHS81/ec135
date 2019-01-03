@@ -1640,7 +1640,7 @@
   <and>
      <less-than>
        <property>/autopilot/afcs/timer/rescue-double-click-timer-sec</property>
-       <value>1</value>
+       <value>0.9</value>
      </less-than>
       <greater-than>
        <property>/autopilot/afcs/control/rescue-double-click</property>
@@ -1651,21 +1651,7 @@
    <output>/autopilot/afcs/timer/rescue-btn-double-clicked</output>
  </logic>
  
- <logic>
-   <input>
-  <and>
-     <less-than>
-       <property>/autopilot/afcs/timer/rescue-double-click-timer-sec</property>
-       <value>1</value>
-     </less-than>
-      <greater-than>
-       <property>/autopilot/afcs/control/rescue-double-click</property>
-       <value>1</value>
-     </greater-than>   
-  </and>     
-   </input>
-   <output>/autopilot/afcs/control/rescue-double-click</output>
- </logic>
+
   
  
  <!-- helper-->
