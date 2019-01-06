@@ -1263,6 +1263,7 @@ Thanks for all the help!
 			<file>Aircraft/ec135/Nasal/systems.nas</file>
 			<file>Aircraft/ec135/Nasal/Electrical.nas</file>
 			<!--<file>Aircraft/ec135/Nasal/helicopter-fcs.nas</file>-->
+			<file>Aircraft/Generic/helicopter-fcs.nas</file>
 			<file>Aircraft/ec135/Nasal/fcs-config.nas</file>
 			<file>Aircraft/ec135/Systems/kcs55.nas</file>
 			<file>Aircraft/ec135/Nasal/residualthrust.nas</file>
