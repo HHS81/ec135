@@ -32,7 +32,7 @@ var FCSFilter = {
   # 
   new : func(input_path, output_path) {
     var obj = { parents : [FCSFilter], 
-                input_path : "/controls/flight/input/",
+                input_path : input_path,
                 output_path : output_path };
     obj.axis_conv = {'roll' : 'aileron', 'pitch' : 'elevator', 'yaw' : 'rudder' };
     obj.body_conv = {'roll' : 'v', 'pitch' : 'u' };

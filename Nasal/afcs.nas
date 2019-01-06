@@ -41,6 +41,8 @@ setprop("/autopilot/afcs/internal/att-mode", 0);
 setprop("/autopilot/internal/use-collective-for-alt", 1);         ## Helionix uses it through all speed ranges. So use this property for collective axis failure by setting it false
 setprop("/autopilot/afcs/control/ga", 0);
 
+
+
 }
 setlistener("sim/signals/fdm-initialized", listenerAFCSInitFunc);
 ###

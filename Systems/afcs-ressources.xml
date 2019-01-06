@@ -34,13 +34,13 @@
   The S-Tec 55 by Joshua Davidson shows a flythrough behavior, as the servos can be overriden there. 
   On the Eurocopters EC 145 and likely on their derivates inputs by the pilot are detected by detent switches in the paralell actuators, at around 2% it decouples the autopilot
     
-  Only SAS:                                            cyclick stick input=====================> SEMA (smart electro-mechanical actuators) provides SAS->hydraulic boost => rotor(linkage)
-  AFCS with ATT-Mode or Upper Modes:    cyclick stick input<=trim Box with parallel actuators<===AFCS computers==============================================
+  Only SAS:                                            Pilot==>cyclick stick =====================> SEMA (smart electro-mechanical actuators) provides SAS->hydraulic boost => rotor(linkage)
+  AFCS with ATT-Mode or Upper Modes:    Pilot==>cyclick stick <=trim Box with parallel actuators<===AFCS computers==============================================
   
   Aka:
-  Only with/ without SAS:  (as an example roll)             User(controls/aileron) ===>controls/aileron-cyclic-stick====> ((via ec135/nasal/helicopter-fcs.nas -> controls/fcs/roll ) = SEMA) ==(hydraulic boost)=>aileron-cmd h135.xml 
-                                                                    I
-  AFCS (incl. SAS) with ATT-Mode or Upper Modes:    User(controls/aileron) <==>controls/aileron-cyclic-stick (parallel actuator: can be overriden by controls/aileron; used for the virtual cyclic stick drive)<===AFCS computers (all the pid-, pi-simple-controllers and filters)
+  Only with/ without SAS:  (as an example roll)         Pilot(controls/aileron) ===>controls/aileron-cyclic-stick====> ((via ec135/nasal/helicopter-fcs.nas -> controls/fcs/roll ) = SEMA) ==(hydraulic boost)=>aileron-cmd h135.xml 
+                                                                                                                            I
+  AFCS (incl. SAS) with ATT-Mode or Upper Modes:    Pilot(controls/aileron) <==>controls/aileron-cyclic-stick (parallel actuator: can be overriden by controls/aileron; used for the virtual cyclic stick drive)<===AFCS computers (all the pid-, pi-simple-controllers and filters)
 
 
  ========================================================================== -->

@@ -81,7 +81,7 @@ Thanks for all the help!
             <path>Aircraft/ec135/filter.xml</path>
 </autopilot>
 	<autopilot n="4">
-                <path>Aircraft/ec135/Systems/AFCS.xml</path>
+                <path>Aircraft/ec135/Systems/AFCS.test.xml</path>
 	</autopilot>
 <autopilot n="5">
          <name>Helionix instrumentation drivers</name>
@@ -656,7 +656,7 @@ Thanks for all the help!
 	
 
 		<rotor>
-	                    <brake type ="double">1</brake>
+			<brake type ="double">1</brake>
 			<reltarget type="double">0</reltarget>
 			<maxreltorque type="double">0</maxreltorque>
 			<cata type="bool">0</cata>
@@ -664,6 +664,11 @@ Thanks for all the help!
 		
 	<flight>
 	<force_trim_release type="bool">false</force_trim_release>
+		<input>
+			<aileron>0</aileron>
+			<elevator>0</elevator>
+			<rudder>0</rudder>
+		</input>
 	</flight>
 		
 
@@ -1262,8 +1267,8 @@ Thanks for all the help!
 			<file>Aircraft/ec135/Nasal/mk-wiper.nas</file>
 			<file>Aircraft/ec135/Nasal/systems.nas</file>
 			<file>Aircraft/ec135/Nasal/Electrical.nas</file>
-			<!--<file>Aircraft/ec135/Nasal/helicopter-fcs.nas</file>-->
-			<file>Aircraft/Generic/helicopter-fcs.nas</file>
+			<file>Aircraft/ec135/Nasal/helicopter-fcs.nas</file>
+			<!--<file>Aircraft/Generic/helicopter-fcs.nas</file>-->
 			<file>Aircraft/ec135/Nasal/fcs-config.nas</file>
 			<file>Aircraft/ec135/Systems/kcs55.nas</file>
 			<file>Aircraft/ec135/Nasal/residualthrust.nas</file>

@@ -140,7 +140,7 @@
 <animation>
 		<type>rotate</type>
 		<object-name>stickgrip</object-name>
-		<property>/controls/flight/elevator</property>
+		<property>/controls/flight/elevator-cyclic-stick</property>
 		<factor>9.81</factor>
 		<offset-deg>0</offset-deg>
 		<center>
@@ -158,7 +158,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>stickgrip</object-name>
-		<property>/controls/flight/aileron</property>
+		<property>/controls/flight/aileron-cyclic-stick</property>
 		<factor>7.5</factor>
 		<offset>0</offset>
 		<center>
@@ -206,7 +206,7 @@
 		<type>rotate</type>
 		<object-name>rrpedal</object-name>
 
-		<property>/controls/flight/rudder</property>
+		<property>/controls/flight/rudder-yaw-pedals</property>
 		<factor>16.8</factor>
 		<offset>0</offset>
 		<center>
@@ -225,7 +225,7 @@
 		<type>rotate</type>
 		<object-name>rlpedal</object-name>
 
-		<property>/controls/flight/rudder</property>
+		<property>/controls/flight/rudder-yaw-pedals</property>
 		<factor>16.8</factor>
 		<offset>0</offset>
 		<center>

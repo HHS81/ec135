@@ -21,6 +21,15 @@
 <PropertyList>
   <!-- hydraulic actuator -->
   <!-- User input -> helicopter fcs -> ../fcs/roll/ pitch -> ../flight/aileron-cmd -->
+    <filter>
+    <name>test</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/aileron-trim</input>
+    <output>/controls/flight/input/aileron</output>
+    <gain>1</gain>
+  </filter>
+  
   <filter>
     <name>roll hydr. actuator</name>
     <debug>false</debug>

@@ -168,77 +168,105 @@
 
 <!-- end part,  based on pa28-fcs.xml on Copyright (c) 2019 Joshua Davidson (it0uchpods)-->
 
+
+<!-- To-do: add noise spike to SEMA and parallel actuators-->
+
 <filter>
-    <name>aileron-filter Roll SEMA</name>
+    <name>Pilot Aileron input to aileron-cyclic</name>
+        <type>gain</type>
     <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
-    <initialize-to>output</initialize-to>
-    <input>/controls/flight/aileron-cyclic</input><!--input AFCS and user-->
-    <output>/controls/flight/aileron</output><!--output to sema-->
-    <gain>1</gain><!-- can be used for SEMA failures-->
-        <enable>
+    <input>/controls/flight/aileron</input>
+    <output>/controls/flight/aileron-cyclic-stick</output>
+    <gain>1</gain>
+   <enable>
       <condition>
         <or>
           <equals>
             <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
+            <value>0</value>
           </equals>
           <equals>
             <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
+            <value>0</value>
           </equals>
           </or>
         </condition>
     </enable>
-  </filter>
+        </filter>
+        
+<filter>
+    <name>Pilot Elevator input to elevator-cyclic</name>
+        <type>gain</type>
+    <debug>false</debug>
+    <input>/controls/flight/elevator</input>
+    <output>/controls/flight/elevator-cyclic-stick</output>
+    <gain>1</gain>
+   <enable>
+      <condition>
+        <or>
+          <equals>
+            <property>/autopilot/afcs/internal/ap1</property>
+            <value>0</value>
+          </equals>
+          <equals>
+            <property>/autopilot/afcs/internal/ap2</property>
+            <value>0</value>
+          </equals>
+          </or>
+        </condition>
+    </enable>
+        </filter>
+        
+        <filter>
+    <name>Pilot Rudder input to  yaw-pedals</name>
+        <type>gain</type>
+    <debug>false</debug>
+    <input>/controls/flight/rudder</input>
+    <output>/controls/flight/rudder-yaw-pedals</output>
+    <gain>1</gain>
+   <enable>
+      <condition>
+        <or>
+          <equals>
+            <property>/autopilot/afcs/internal/ap1</property>
+            <value>0</value>
+          </equals>
+          <equals>
+            <property>/autopilot/afcs/internal/ap2</property>
+            <value>0</value>
+          </equals>
+          </or>
+        </condition>
+    </enable>
+        </filter>
+
+
+<filter>
+    <name>To Roll-SEMA</name>
+        <type>gain</type>
+    <debug>false</debug>
+    <input>/controls/flight/aileron-cyclic-stick</input><!--input AFCS and user-->
+    <output>/controls/flight/input/aileron</output><!--input for SEMA-->
+    <gain>1</gain><!-- can be used for SEMA failures-->
+         </filter>
   
   <filter>
-    <name>elevator-filter pitch-SEMA</name>
+    <name>To pitch-SEMA</name>
+        <type>gain</type>
     <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
-    <initialize-to>output</initialize-to>
-    <input>/controls/flight/elevator-cyclic</input><!--input AFCS and user-->
-    <output>/controls/flight/elevator</output><!--output to sema-->
+    <input>/controls/flight/elevator-cyclic-stick</input><!--input AFCS and user-->
+    <output>/controls/flight/input/elevator</output><!--output to sema-->
     <gain>1</gain> <!-- can be used for SEMA failures-->
-          <enable>
-      <condition>
-        <or>
-          <equals>
-            <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
-          </equals>
-          <equals>
-            <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
-          </equals>
-          </or>
-        </condition>
-    </enable>
-  </filter>
+   </filter>
   
     <filter>
-    <name>rudder-filter yaw-SEMA</name>
+    <name>To yaw-SEMA</name>
+        <type>gain</type>
     <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
-    <initialize-to>output</initialize-to>
     <input>/controls/flight/rudder-yaw-pedals</input><!--input AFCS and user-->
-    <output>/controls/flight/rudder</output><!--output to sema-->
+    <output>/controls/flight/input/rudder</output><!--output to sema-->
     <gain>1</gain> <!-- can be used for SEMA failures-->
-        <enable>
-      <condition>
-        <or>
-          <equals>
-            <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
-          </equals>
-          <equals>
-            <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
-          </equals>
-          </or>
-        </condition>
-    </enable>
-  </filter>
+   </filter>
 
 <!-- SEMA = [home= fgdata]/Aircraft/generic/helicopter-fcs.nas-->
    
@@ -328,7 +356,7 @@
   <!-- ATT -->
   
 <pid-controller>
-  <name>auto roll attitude hold</name>
+  <name>AFCS input to aileron-cyclic-stick</name>
   <debug>false</debug>
     <enable>
       <condition>
@@ -355,10 +383,10 @@
   </input>
   <reference>/controls/flight/roll-deg</reference>
   <output>
-   <prop>/controls/flight/aileron-cyclic</prop>
+   <prop>/controls/flight/aileron-cyclic-stick</prop>
   </output>
   <config>
-   <Kp>0.033</Kp><!--0.033-->
+   <Kp>0.0125</Kp><!--0.033-->
    <Ti>10</Ti><!-- 10-->
    <Td>0.0</Td>
    <u_min>-1.0</u_min>
@@ -399,10 +427,10 @@
     </input>
     <reference>/controls/flight/pitch-deg</reference>
     <output>
-      <prop>/controls/flight/elevator-cyclic</prop>
+      <prop>/controls/flight/elevator-cyclic-stick</prop>
     </output>
     <config>
-      <Kp>-0.033</Kp><!-- -0.033-->
+      <Kp>-0.0125</Kp><!-- -0.033-->
       <Ti>10</Ti><!-- 30-->
       <Td>0.0</Td>
       <u_min>-1.0</u_min>
@@ -516,7 +544,7 @@
       <prop>/controls/flight/roll-deg</prop>
     </output>
     <config>
-      <Kp>1</Kp>
+      <Kp>0.033</Kp>
       <Ti>10.0</Ti>
       <Td>0.0</Td>
       <u_min>-15.0</u_min>
@@ -906,7 +934,7 @@
       <prop>/autopilot/afcs/internal/target-roll-rate</prop>
     </output>
     <config>
-      <Kp>1.0</Kp>          <!-- proportional gain -->
+      <Kp>1</Kp>          <!-- proportional gain -->
       <Ki>0.0</Ki>          <!-- integral gain -->
        <u_min>-8</u_min> <!-- minimum output clamp -->
       <u_max>8</u_max>   <!-- maximum output clamp -->
@@ -998,10 +1026,10 @@
     </input>
     <reference>0</reference>
     <output>
-      <prop>controls/flight/yaw-afcs</prop>
+      <prop>/controls/flight/rudder-yaw-pedals</prop>
     </output>
     <config>
-      <Kp>/autopilot/afcs/internal/kpSS</Kp><!-- -1-->
+      <Kp>-0.33</Kp><!-- -1-->
       <Ti>10.0</Ti>
       <Td>0.0</Td>
       <u_min>-1.0</u_min>
@@ -1198,7 +1226,7 @@
       <property>/controls/flight/rudder-yaw-pedals</property>
     </output>
     <config>
-            <Kp>/autopilot/afcs/internal/kpHHHold</Kp>
+            <Kp>0.33</Kp>
             <Ti>10.0</Ti>
             <Td>0.0000</Td>
       <u_min>-1.0</u_min> 
@@ -1657,8 +1685,8 @@
       <prop>/controls/flight/collective</prop>
     </output>
     <config>
-      <Kp>-0.0025</Kp>  
-     <Ti>50.0</Ti>       
+      <Kp>-0.0033</Kp>  
+     <Ti>10.0</Ti>     
       <Td>0.0</Td>           
       <u_min>0</u_min> 
       <u_max>1</u_max>   
@@ -1808,6 +1836,22 @@
     <gain>-1</gain>
   </filter>
 
+ <logic>
+   <input>
+  <and>
+     <less-than>
+       <property>/autopilot/afcs/timer/rescue-double-click-timer-sec</property>
+       <value>0.9</value>
+     </less-than>
+      <greater-than>
+       <property>/autopilot/afcs/control/rescue-double-click</property>
+       <value>1</value>
+     </greater-than>   
+  </and>     
+   </input>
+   <output>/autopilot/afcs/timer/rescue-btn-double-clicked</output>
+ </logic>
+
  
 
   
@@ -1866,7 +1910,7 @@
   <predict-simple>
     <input>orientation/heading-magnetic-deg</input>
     <output>/autopilot/afcs/internal/heading-magnetic-deg-predicted</output>
-    <seconds>2</seconds>
+    <seconds>02</seconds>
     <filter-gain>0.0</filter-gain>
   </predict-simple>
   
