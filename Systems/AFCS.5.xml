@@ -21,6 +21,8 @@
 <PropertyList>
   <!-- hydraulic actuator -->
   <!-- User input -> helicopter fcs -> ../fcs/roll/ pitch -> ../flight/aileron-cmd -->
+  <!--afcs -.../flight/pitch-deg / roll-deg->aileron/ elevator-trim-filtered -> aileron/ elevator-trim-->
+  <!-- Real one: afcs moves the cyclic, but allows flythrough. Would need a force-feedback joystick or a real forcetrim cyclic stick-->
   <filter>
     <name>roll hydr. actuator</name>
     <debug>false</debug>
@@ -58,16 +60,10 @@
     <gain>1</gain>
     <enable>
       <condition>
-        <or>
            <not-equals>
             <property>controls/flight/force_trim_release</property>
             <value>false</value>
           </not-equals>
-          <not-equals>
-            <property>/autopilot/afcs/internal/flythrough-roll</property>
-            <value>0</value>
-          </not-equals>
-        </or>
       </condition>
 </enable>
   </filter>
@@ -81,16 +77,10 @@
     <gain>1</gain>
     <enable>
       <condition>
-        <or>
            <not-equals>
             <property>controls/flight/force_trim_release</property>
             <value>false</value>
           </not-equals>
-          <not-equals>
-            <property>/autopilot/afcs/internal/flythrough-pitch</property>
-            <value>0</value>
-          </not-equals>
-        </or>
       </condition>
 </enable>
   </filter>
@@ -123,6 +113,7 @@
   <debug>false</debug>
     <enable>
       <condition>
+      <and>
         <or>
           <equals>
             <property>/autopilot/afcs/internal/ap1</property>
@@ -133,6 +124,11 @@
             <value>1</value>
           </equals>
           </or>
+          <equals>
+            <property>/autopilot/afcs/internal/flythrough-roll</property>
+            <value>0</value>
+          </equals>
+          </and>
         </condition>
     </enable>
  <input>
@@ -143,8 +139,8 @@
    <prop>/controls/flight/aileron-trim-filtered</prop>
   </output>
   <config>
-   <Kp>/autopilot/afcs/internal/kpATTroll</Kp><!--0.025-->
-   <Ti>/autopilot/afcs/internal/kpATTrollTi</Ti><!-- 50-->
+   <Kp>0.033</Kp><!--0.025-->
+   <Ti>10</Ti><!-- 50-->
    <Td>0.0</Td>
    <u_min>-1.0</u_min>
    <u_max>1.0</u_max>
@@ -160,20 +156,6 @@
     <output>/controls/flight/aileron-trim</output>
     <type>noise-spike</type>
     <max-rate-of-change>0.5</max-rate-of-change>
-    <enable>
-      <condition>
-        <or>
-          <equals>
-            <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
-          </equals>
-          <equals>
-            <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
-          </equals>
-          </or>
-        </condition>
-    </enable>
   </filter>
   
  
@@ -185,6 +167,7 @@
     <debug>false</debug>
     <enable>
       <condition>
+      <and>
         <or>
           <equals>
             <property>/autopilot/afcs/internal/ap1</property>
@@ -195,6 +178,11 @@
             <value>1</value>
           </equals>
           </or>
+          <equals>
+            <property>/autopilot/afcs/internal/flythrough-pitch</property>
+            <value>0</value>
+          </equals>
+          </and>
         </condition>
     </enable>
     <input>
@@ -205,8 +193,8 @@
       <prop>/controls/flight/elevator-trim-filtered</prop>
     </output>
     <config>
-      <Kp>/autopilot/afcs/internal/kpATTpitch</Kp><!-- -0.025-->
-      <Ti>/autopilot/afcs/internal/kpATTpitchTi</Ti><!-- 50-->
+      <Kp>-0.033</Kp><!-- -0.025-->
+      <Ti>10</Ti><!-- 50-->
       <Td>0.0</Td>
       <u_min>-1.0</u_min>
       <u_max>1.0</u_max>
@@ -640,7 +628,7 @@
       </condition>
     </enable>
    <input>
-      <prop>/autopilot/afcs/internal/heading-bug-error-deg</prop>
+      <prop>/autopilot/afcs/internal/heading-bug-error-deg-predicted</prop>
     </input>
     <reference>0</reference>
     <output>
@@ -735,8 +723,8 @@
     <config>
       <Kp>1.0</Kp>          <!-- proportional gain -->
       <Ki>0.0</Ki>          <!-- integral gain -->
-       <u_min>-4</u_min> <!-- minimum output clamp -->
-      <u_max>4</u_max>   <!-- maximum output clamp -->
+       <u_min>-8</u_min> <!-- minimum output clamp -->
+      <u_max>8</u_max>   <!-- maximum output clamp -->
     </config>
   </pi-simple-controller>
 
@@ -790,7 +778,7 @@
     </output>
     <config>
             <Kp>1</Kp><!-- 1 -->
-            <Ti>1.0</Ti>
+            <Ti>10.0</Ti>
             <Td>0.0</Td>
       <u_min>/autopilot/afcs/internal/roll-command-limit-m</u_min> 
       <u_max>/autopilot/afcs/internal/roll-command-limit-p</u_max>  
@@ -1055,7 +1043,7 @@
       <property>/autopilot/afcs/locks/speed</property>
       <value>GTC</value>
    </not-equals>
-                         <not-equals>
+              <not-equals>
             <property>/autopilot/afcs/locks/altitude</property>
             <value>ias-hold</value>
           </not-equals>
@@ -1423,7 +1411,7 @@
     </output>
     <config>
       <Kp>1</Kp>  
-      <Ki>10.0</Ki>             
+      <Ki>5.0</Ki>             
       <u_min>0.1</u_min> 
       <u_max>79</u_max>   
     </config>
@@ -1485,7 +1473,7 @@
     </output>
     <config>
       <Kp>-0.0025</Kp>  
-     <Ti>10.0</Ti>       
+     <Ti>50.0</Ti>       
       <Td>0.0</Td>           
       <u_min>0</u_min> 
       <u_max>1</u_max>   
@@ -1708,7 +1696,7 @@
   <predict-simple>
     <input>orientation/heading-magnetic-deg</input>
     <output>/autopilot/afcs/internal/heading-magnetic-deg-predicted</output>
-    <seconds>0</seconds>
+    <seconds>2</seconds>
     <filter-gain>0.0</filter-gain>
   </predict-simple>
   
