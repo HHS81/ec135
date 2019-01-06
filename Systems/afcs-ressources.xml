@@ -1,0 +1,46 @@
+<!-- ===========Helionix 4-axis AFCS ================================
+
+
+
+	This file is part of FlightGear, the free flight simulator
+	http://www.flightgear.org/
+
+	Copyright (C) 2018/ 2019 Heiko Schulz, Heiko.H.Schulz@gmx.net
+
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License as
+	published by the Free Software Foundation; either version 2 of the
+	License, or (at your option) any later version.
+
+	This program is distributed in the hope that it will be useful, but
+	WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	General Public License for more details.
+	
+
+
+
+
+ Real one provides very likely the same features as their older previous version used in the Ec135 P2+T2+/ BK117 C2:
+ [1] http://www.academia.edu/20652359/BK117_C--2_Training_Manual_Autopilot_BK117_C-2_Training_Manual_Autopilot
+ 
+  ATT-Mode: 
+  -automatic trim follow-up in hover: trim follows the pilot cyclic inputs
+  -reference beep trim: pitch, roll can be changed
+  -override action
+  -effort against spring loads- both known also as flythrough
+  Real one: AFCS moves the cyclic. Trimsystem is a magnetic clutch hold simple spring- so actually joysticks with spring are not unrealistic for this type of heli
+  Only diffference: on the real one the zero-point can be shifted. Would need a force-feedback joystick or a real forcetrim cyclic stick to simulate this in FGFS
+  The S-Tec 55 by Joshua Davidson shows a flythrough behavior, as the servos can be overriden there. 
+  On the Eurocopters EC 145 and likely on their derivates inputs by the pilot are detected by detent switches in the paralell actuators, at around 2% it decouples the autopilot
+    
+  Only SAS:                                            cyclick stick input=====================> SEMA (smart electro-mechanical actuators) provides SAS->hydraulic boost => rotor(linkage)
+  AFCS with ATT-Mode or Upper Modes:    cyclick stick input<=trim Box with parallel actuators<===AFCS computers==============================================
+  
+  Aka:
+  Only with/ without SAS:  (as an example roll)             User(controls/aileron) ===>controls/aileron-cyclic-stick====> ((via ec135/nasal/helicopter-fcs.nas -> controls/fcs/roll ) = SEMA) ==(hydraulic boost)=>aileron-cmd h135.xml 
+                                                                    I
+  AFCS (incl. SAS) with ATT-Mode or Upper Modes:    User(controls/aileron) <==>controls/aileron-cyclic-stick (parallel actuator: can be overriden by controls/aileron; used for the virtual cyclic stick drive)<===AFCS computers (all the pid-, pi-simple-controllers and filters)
+
+
+ ========================================================================== -->

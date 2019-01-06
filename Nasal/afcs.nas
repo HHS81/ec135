@@ -498,21 +498,17 @@ var kpALTHTCR = 1;
 var kpALTATCR = 0.25; 
 
 
-if (  ( ((atrim >0) and (speed < 40)) and ((rollinput < -0.02) or (rollinput > 0.02))) or (FTR > 0))  {
+if   ( ((atrim >0) and (speed < 40)) and ((rollinput < -0.02) or (rollinput > 0.02)) and (FTR <1))  {
 setprop("/autopilot/afcs/internal/flythrough-roll", 1 );
-}elsif  ( ((speed > 40) and  ((rollinput < -0.02) or (rollinput > 0.02))) or (FTR > 0)){
-setprop("/autopilot/afcs/internal/flythrough-roll", 1 );
-}elsif    (FTR > 0)   {
+}elsif   ((speed > 40) and  ((rollinput < -0.02) or (rollinput > 0.02))and (FTR <1)) {
 setprop("/autopilot/afcs/internal/flythrough-roll", 1 );
 }else{
 setprop("/autopilot/afcs/internal/flythrough-roll", 0 );
 }
 
-if (  ( ((atrim >0) and (speed < 40)) and  (pitchinput < -0.02) or (pitchinput > 0.02)) or (FTR > 0)){
+if   ( ((atrim >0) and (speed < 40)) and ((pitchinput < -0.02) or (pitchinput > 0.02)) and (FTR <1))  {
 setprop("/autopilot/afcs/internal/flythrough-pitch", 1 );
-}elsif  ( ((speed > 40) and  ((pitchinput < -0.02) or (pitchinput > 0.02))) or (FTR > 0)){
-setprop("/autopilot/afcs/internal/flythrough-pitch", 1 );
-}elsif   (FTR > 0)   {
+}elsif   ((speed > 40) and  ((pitchinput < -0.02) or (pitchinput > 0.02))and (FTR <1)) {
 setprop("/autopilot/afcs/internal/flythrough-pitch", 1 );
 }else{
 setprop("/autopilot/afcs/internal/flythrough-pitch", 0 );
@@ -549,8 +545,8 @@ setprop("/autopilot/afcs/internal/flythrough-pitch", 0 );
 ##
 
 if (headmode == 0){
-var kpATTroll = 0.05 ;
-var kpATTrollTi = 50 ;
+var kpATTroll = 0.033 ;
+var kpATTrollTi = 10 ;
 setprop("/autopilot/afcs/internal/kpATTroll", kpATTroll );
 setprop("/autopilot/afcs/internal/kpATTrollTi", kpATTrollTi );
 }else{
@@ -559,8 +555,8 @@ setprop("/autopilot/afcs/internal/kpATTrollTi", 10 );
 }
 
 if (speedmode == 0){
-var kpATTpitch = -0.05; 
-var kpATTpitchTi = 50; 
+var kpATTpitch = -0.033; 
+var kpATTpitchTi = 10; 
 setprop("/autopilot/afcs/internal/kpATTpitch", kpATTpitch );
 setprop("/autopilot/afcs/internal/kpATTpitchTi", kpATTpitchTi );
 }else{

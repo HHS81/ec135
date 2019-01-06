@@ -1073,9 +1073,16 @@ var autotrim = {
 		settimer(func me._loop_(id), 0);
 	},
 	update: func {
+	
+	var ap1 = getprop("/autopilot/afcs/control/ap1") or 0;
+var ap2 = getprop("/autopilot/afcs/control/ap2") or 0;
+
+if ((ap1 < 1) or (ap2 < 1)){
+	
+	
 		me.elevator.update();
 		me.aileron.update();
-
+}
 	},
 	Trim: {
 		new: func(name) {

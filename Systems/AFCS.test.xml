@@ -5,6 +5,7 @@
 	http://www.flightgear.org/
 
 	Copyright (C) 2018/ 2019 Heiko Schulz, Heiko.H.Schulz@gmx.net
+    with parts based on pa28-fcs.xml by Joshua Davidson 
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License as
@@ -18,36 +19,254 @@
 	
 
 -->
+
+<!-- please see afcs-ressources.xml for more information about-->
+
 <PropertyList>
-  <!-- hydraulic actuator -->
-  <!-- User input -> helicopter fcs -> ../fcs/roll/ pitch -> ../flight/aileron-cmd -->
-  <!--afcs -.../flight/pitch-deg / roll-deg->aileron/ elevator-trim-filtered -> aileron/ elevator-trim-->
-  <!-- Real one: afcs moves the cyclic, but allows flythrough. Would need a force-feedback joystick or a real forcetrim cyclic stick-->
-  <filter>
-    <name>roll hydr. actuator</name>
+ <!-- start part,  based on pa28-fcs.xml on Copyright (c) 2019 Joshua Davidson (it0uchpods)-->
+ 
+<!-- override/ effort against spring switch
+<filter>
+    <name>override roll</name>
     <debug>false</debug>
-    <type>gain</type>
-    <input>/controls/flight/fcs/roll</input>
-    <output>/controls/flight/aileron-cmd</output>
+  <type>noise-spike</type>
+      <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+  <max-rate-of-change>0.5</max-rate-of-change>
+    <input>/controls/flight/aileron</input>>
+    <output>/controls/flight/aileron-override</output>
     <gain>1</gain>
   </filter>
   
   <filter>
-    <name>pitch hydr. actuator</name>
+    <name>override pitch</name>
     <debug>false</debug>
-    <type>gain</type>
-    <input>/controls/flight/fcs/pitch</input>
-    <output>/controls/flight/elevator-cmd</output>
+  <type>noise-spike</type>
+      <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+  <max-rate-of-change>0.5</max-rate-of-change>
+    <input>/controls/flight/elevator</input>>
+    <output>/controls/flight/elevator-override</output>
     <gain>1</gain>
   </filter>
   
   <filter>
-    <name>yaw hydr. actuator</name>
+    <name>override yaw</name>
+    <debug>false</debug>
+  <type>noise-spike</type>
+      <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+  <max-rate-of-change>0.5</max-rate-of-change>
+    <input>/controls/flight/rudder</input>>
+    <output>/controls/flight/rudder-override</output>
+    <gain>1</gain>
+  </filter>
+  
+
+<filter>
+<type>gain</type>
+<gain>1.0</gain>
+<input>
+ <expression>
+    <sum>
+      <product>
+        <property>/controls/flight/aileron-override</property>
+          <value>0.5</value>
+      </product>
+        <property>/controls/flight/aileron-afcs</property>
+    </sum>
+</expression>
+</input>
+  <output>
+    <property>/controls/flight/aileron-cyclic</property>
+  </output>
+</filter>
+
+<filter>
+<type>gain</type>
+<gain>1.0</gain>
+<input>
+ <expression>
+    <sum>
+      <product>
+        <property>/controls/flight/elevator-override</property>
+          <value>0.5</value>
+        </product>
+        <property>/controls/flight/elevator-afcs</property>
+    </sum>
+</expression>
+</input>
+  <output>
+    <property>/controls/flight/elevator-cyclic</property>
+  </output>
+</filter>
+
+
+<filter>
+    <name>control position</name>
+<type>gain</type>
+<gain>1.0</gain>
+<input>
+<expression>
+    <sum>
+        <property>/controls/flight/aileron</property>
+        <property>/controls/flight/aileron-trim</property>
+    </sum>
+</expression>
+ </input>
+  <output>
+    <property>/controls/flight/aileron-stick-pos</property>
+  </output>
+</filter>
+
+
+<filter>
+    <name>control position</name>
+<type>gain</type>
+<gain>1.0</gain>
+<input>
+<expression>
+    <sum>
+        <property>/controls/flight/elevator</property>
+        <property>/controls/flight/elevator-trim</property>
+    </sum>
+</expression>
+ </input>
+  <output>
+    <property>/controls/flight/elevator-stick-pos</property>
+  </output>
+</filter>
+
+
+ <logic>
+  <update-interval-secs type="double">0.1</update-interval-secs>
+   <input>
+      <greater-than>
+       <property>/controls/flight/aileron-cyclic</property>
+       <value><property>/controls/flight/aileron-afcs</property></value>
+     </greater-than>   
+   </input>
+   <output>/controls/flight/aileron-switch</output>
+ </logic>
+ 
+  <logic>
+    <update-interval-secs type="double">0.1</update-interval-secs>
+   <input>
+      <greater-than>
+       <property>/controls/flight/elevator-cyclic</property>
+       <value><property>/controls/flight/elevator-afcs</property></value>
+     </greater-than>   
+   </input>
+   <output>/controls/flight/elevator-switch</output>
+ </logic>-->
+ 
+
+
+
+<!-- end part,  based on pa28-fcs.xml on Copyright (c) 2019 Joshua Davidson (it0uchpods)-->
+
+<filter>
+    <name>aileron-filter Roll SEMA</name>
+    <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+    <input>/controls/flight/aileron-cyclic</input><!--input AFCS and user-->
+    <output>/controls/flight/aileron</output><!--output to sema-->
+    <gain>1</gain><!-- can be used for SEMA failures-->
+        <enable>
+      <condition>
+        <or>
+          <equals>
+            <property>/autopilot/afcs/internal/ap1</property>
+            <value>1</value>
+          </equals>
+          <equals>
+            <property>/autopilot/afcs/internal/ap2</property>
+            <value>1</value>
+          </equals>
+          </or>
+        </condition>
+    </enable>
+  </filter>
+  
+  <filter>
+    <name>elevator-filter pitch-SEMA</name>
+    <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+    <input>/controls/flight/elevator-cyclic</input><!--input AFCS and user-->
+    <output>/controls/flight/elevator</output><!--output to sema-->
+    <gain>1</gain> <!-- can be used for SEMA failures-->
+          <enable>
+      <condition>
+        <or>
+          <equals>
+            <property>/autopilot/afcs/internal/ap1</property>
+            <value>1</value>
+          </equals>
+          <equals>
+            <property>/autopilot/afcs/internal/ap2</property>
+            <value>1</value>
+          </equals>
+          </or>
+        </condition>
+    </enable>
+  </filter>
+  
+    <filter>
+    <name>rudder-filter yaw-SEMA</name>
+    <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+    <input>/controls/flight/rudder-yaw-pedals</input><!--input AFCS and user-->
+    <output>/controls/flight/rudder</output><!--output to sema-->
+    <gain>1</gain> <!-- can be used for SEMA failures-->
+        <enable>
+      <condition>
+        <or>
+          <equals>
+            <property>/autopilot/afcs/internal/ap1</property>
+            <value>1</value>
+          </equals>
+          <equals>
+            <property>/autopilot/afcs/internal/ap2</property>
+            <value>1</value>
+          </equals>
+          </or>
+        </condition>
+    </enable>
+  </filter>
+
+<!-- SEMA = [home= fgdata]/Aircraft/generic/helicopter-fcs.nas-->
+   
+  <filter>
+    <name>roll hydr. boost</name>
     <debug>false</debug>
     <type>gain</type>
-    <input>/controls/flight/fcs/yaw</input>
-    <output>/controls/flight/rudder-cmd</output>
-    <gain>1</gain>
+    <input>/controls/flight/fcs/roll</input><!-- input from sema-->
+    <output>/controls/flight/aileron-cmd</output><!--rotor linkage-->
+    <gain>1</gain><!-- hydraulic boost input-->
+  </filter>
+  
+  <filter>
+    <name>pitch hydr. boost</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/fcs/pitch</input><!-- input from sema-->
+    <output>/controls/flight/elevator-cmd</output><!--rotor linkage-->
+    <gain>1</gain><!-- hydraulic boost input-->
+  </filter>
+  
+  <filter>
+    <name>yaw hydr. boost</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <input>/controls/flight/fcs/yaw</input><!-- input from sema-->
+    <output>/controls/flight/rudder-cmd</output><!--rotor linkage-->
+    <gain>1</gain><!-- hydraulic boost input-->
   </filter>
   
   <!--Attitude Hold-->
@@ -136,28 +355,18 @@
   </input>
   <reference>/controls/flight/roll-deg</reference>
   <output>
-   <prop>/controls/flight/aileron-trim-filtered</prop>
+   <prop>/controls/flight/aileron-cyclic</prop>
   </output>
   <config>
-   <Kp>0.033</Kp><!--0.025-->
-   <Ti>10</Ti><!-- 50-->
+   <Kp>0.033</Kp><!--0.033-->
+   <Ti>10</Ti><!-- 10-->
    <Td>0.0</Td>
    <u_min>-1.0</u_min>
    <u_max>1.0</u_max>
   </config>
  </pid-controller>
  
-   <filter>
-    <name>aileron-filter GTC</name>
-    <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
-    <initialize-to>output</initialize-to>
-    <input>/controls/flight/aileron-trim-filtered</input>
-    <output>/controls/flight/aileron-trim</output>
-    <type>noise-spike</type>
-    <max-rate-of-change>0.5</max-rate-of-change>
-  </filter>
-  
+     
  
   
   
@@ -190,41 +399,17 @@
     </input>
     <reference>/controls/flight/pitch-deg</reference>
     <output>
-      <prop>/controls/flight/elevator-trim-filtered</prop>
+      <prop>/controls/flight/elevator-cyclic</prop>
     </output>
     <config>
-      <Kp>-0.033</Kp><!-- -0.025-->
-      <Ti>10</Ti><!-- 50-->
+      <Kp>-0.033</Kp><!-- -0.033-->
+      <Ti>10</Ti><!-- 30-->
       <Td>0.0</Td>
       <u_min>-1.0</u_min>
       <u_max>1.0</u_max>
     </config>
   </pid-controller>
   
-<filter>
-    <name>elevator-filter GTC</name>
-    <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
-    <initialize-to>output</initialize-to>
-    <input>/controls/flight/elevator-trim-filtered</input>
-    <output>/controls/flight/elevator-trim</output>
-    <type>noise-spike</type>
-    <max-rate-of-change>0.5</max-rate-of-change>
-    <enable>
-      <condition>
-        <or>
-          <equals>
-            <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
-          </equals>
-          <equals>
-            <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
-          </equals>
-          </or>
-        </condition>
-    </enable>
-  </filter>
   
 
   
@@ -813,7 +998,7 @@
     </input>
     <reference>0</reference>
     <output>
-      <prop>controls/flight/rudder-trim</prop>
+      <prop>controls/flight/yaw-afcs</prop>
     </output>
     <config>
       <Kp>/autopilot/afcs/internal/kpSS</Kp><!-- -1-->
@@ -1010,7 +1195,7 @@
       <property>/autopilot/afcs/internal/target-yaw-rate-fps</property>
     </reference>
     <output>
-      <property>/controls/flight/rudder-trim</property>
+      <property>/controls/flight/rudder-yaw-pedals</property>
     </output>
     <config>
             <Kp>/autopilot/afcs/internal/kpHHHold</Kp>
@@ -1623,21 +1808,6 @@
     <gain>-1</gain>
   </filter>
 
- <logic>
-   <input>
-  <and>
-     <less-than>
-       <property>/autopilot/afcs/timer/rescue-double-click-timer-sec</property>
-       <value>0.9</value>
-     </less-than>
-      <greater-than>
-       <property>/autopilot/afcs/control/rescue-double-click</property>
-       <value>1</value>
-     </greater-than>   
-  </and>     
-   </input>
-   <output>/autopilot/afcs/timer/rescue-btn-double-clicked</output>
- </logic>
  
 
   
