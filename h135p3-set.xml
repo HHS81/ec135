@@ -1257,7 +1257,13 @@ Thanks for all the help!
                 <file>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/Nasal/helionix-terrain-map.nas</file>
                 <file>Aircraft/ec135//Nasal/masterlist_h135.nas</file>
         </mfd>
-	
+
+<!-- Canvas test-->
+     <efis>
+         <file>Aircraft/ec135/Models/instrumentation/EUcopter-mfd/PFD.nas</file>
+     </efis>
+
+        	
 		<ec135>
 			<file>Aircraft/ec135/Nasal/afcs.nas</file>
 			<file>Aircraft/ec135/Nasal/ground-equipement.nas</file>

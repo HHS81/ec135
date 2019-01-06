@@ -544,7 +544,7 @@
       <prop>/controls/flight/roll-deg</prop>
     </output>
     <config>
-      <Kp>0.033</Kp>
+      <Kp>1</Kp>
       <Ti>10.0</Ti>
       <Td>0.0</Td>
       <u_min>-15.0</u_min>
