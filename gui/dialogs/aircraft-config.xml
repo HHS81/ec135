@@ -1,0 +1,890 @@
+<?xml version="1.0"?>
+
+<!-- H 135 P3 T3
+
+Copyright (C) 2019 Heiko Schulz, Heiko.H.Schulz@gmx.net
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of the
+ License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+-->
+
+<PropertyList>
+
+    <name>aircraft-config</name>
+    <layout>vbox</layout>
+    <resizable>false</resizable>
+    <modal>false</modal>
+    <draggable>true</draggable>
+    <group>
+        <layout>hbox</layout>
+ 
+        <halign>center</halign>
+        <text>
+            <label>Helicopter Configuration</label>
+        </text>
+        
+        <button>
+            <legend>Close</legend>
+            <key>Esc</key>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+	</button>
+	</group>
+	<hrule/>
+    
+<group>
+        <layout>hbox</layout>
+        <halign>left</halign>
+<button>
+
+   <legend>Open Livery Dialog</legend>
+                <binding>
+                    <command>nasal</command>
+                    <script>aircraft.livery.dialog.toggle()</script>
+                </binding>
+</button>
+</group>
+<hrule/>
+    
+<group>
+        <layout>hbox</layout>
+
+        <halign>center</halign>
+        
+         <text>
+            <label>These options are initialized from the xml-file in Models/liveries or Models/liveries_h135p3, but can be changed here. These also changing emptyweight and drag of the helicopter</label>
+        </text>
+         
+</group>
+
+<hrule>
+    <color>
+      <red>1.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>5</pref-height>
+ </hrule>
+
+
+    <group>
+        <layout>hbox</layout>
+        <default-padding>8</default-padding>
+    <group>
+        <layout>vbox</layout>
+         <text>
+            <label>Interior Options: </label>
+        </text>
+
+    <group>
+        <layout>hbox</layout>
+       	<checkbox>
+                <halign>left</halign>
+                <label>HEMS Interior</label>
+                <property>/sim/model/ec135/HEMS</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/HEMS</property>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/VIP</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/Utility</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+    
+	<checkbox>
+                <halign>left</halign>
+                <label>VIP Interior</label>
+                <property>/sim/model/ec135/VIP</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/HEMS</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/VIP</property>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/Utility</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>  
+
+	<checkbox>
+                <halign>left</halign>
+                <label>Utility Interior</label>
+                <property>/sim/model/ec135/Utility</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/HEMS</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/VIP</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/Utility</property>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+    </group> 
+
+	<hrule/>
+
+<group>
+	<layout>vbox</layout>
+             <text>
+            <label>Specific Options: </label>
+        </text>
+        
+<group>
+	<layout>hbox</layout>
+<checkbox>
+                <halign>left</halign>
+                <label>Select Windscreen with Triangel</label>
+                <property>/sim/model/ec135/windscreen_tri</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/windscreen_tri</property>
+                <value>true</value>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/windscreen</property>
+                <value>false</value>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+</group>
+    
+<hrule>
+    <color>
+      <red>0.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+ </hrule>
+ 
+<group>
+	<layout>vbox</layout>
+     
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Oil Cooler Inlet</label>
+                <property>/sim/model/ec135/OilCoolInlet</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/OilCoolInlet</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select IBF-Vent </label>
+                <property>/sim/model/ec135/IBFGrille</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/IBFGrille</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+ </group>
+    
+
+<hrule>
+    <color>
+      <red>0.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+ </hrule>
+ 
+<group>
+	<layout>vbox</layout>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Nose with Front Light</label>
+                <property>/sim/model/ec135/nosefl</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/nosefl</property>
+                <value>true</value>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/nose</property>
+                <value>false</value>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+    
+
+	<checkbox>
+                <halign>left</halign>
+                <label>Select High Tail Fin:</label>
+                <property>/sim/model/ec135/HighTail</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/HighTail</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+    
+</group>
+    
+<hrule>
+    <color>
+      <red>0.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+ </hrule>
+ 
+ 
+<group>
+	<layout>hbox</layout>
+   
+	<checkbox>
+                <halign>left</halign>
+                <label>Select retractable Light Left</label>
+                <property>/sim/model/ec135/SLLightL</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/SLLightL</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>center</halign>
+                <label>Select retractable Light Right</label>
+                <property>/sim/model/ec135/SLLightR</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/SLLightR</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+ </group>
+ 
+<hrule>
+    <color>
+      <red>0.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+ </hrule>
+ 
+ 
+<group>
+	<layout>hbox</layout>
+     
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Rearddoor Window Left</label>
+                <property>/sim/model/ec135/reardoor_winL</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/reardoor_winL</property>
+                <value>true</value>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/reardoorL</property>
+                <value>false</value>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>center</halign>
+                <label>Select Rearddoor Window Right </label>
+                <property>/sim/model/ec135/IBFGrille</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/reardoor_winR</property>
+                <value>true</value>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/reardoorR</property>
+                <value>false</value>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+    
+	<checkbox>
+                <halign>right</halign>
+                <label>Select Clamshell Buckle</label>
+                <property>/sim/model/ec135/buckle</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/buckle</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+ </group>
+ 
+<hrule>
+    <color>
+      <red>0.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+ </hrule>
+ 
+<group>
+	<layout>vbox</layout>
+  
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Big Radom</label>
+                <property>/sim/model/ec135/BigRadom</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/BigRadom</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Small Radom </label>
+                <property>/sim/model/ec135/smallradom</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/smallradom</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+ </group>
+ 
+ 
+ <hrule>
+    <color>
+      <red>0.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+ </hrule>
+ 
+ 
+<group>
+	<layout>vbox</layout>
+        <group>
+            <layout>hbox</layout>
+	<checkbox>
+                <halign>fill</halign>
+                <label>Select Lowskid</label>
+                <property>/sim/model/ec135/lowskid</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/lowskid</property>
+                <value>1</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/midskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/highskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/longskid_floats</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>fill</halign>
+                <label>Select MiddleHighSkid</label>
+                <property>/sim/model/ec135/midskid</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/lowskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/midskid</property>
+                <value>1</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/highskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/longskid_floats</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>fill</halign>
+                <label>Select HighSkid</label>
+                <property>/sim/model/ec135/highskid</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/lowskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/midskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/highskid</property>
+                <value>1</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/longskid_floats</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>fill</halign>
+                <label>Select LongSkid</label>
+                <property>/sim/model/ec135/longskid_floats</property>
+                <live>true</live>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/lowskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/midskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/highskid</property>
+                <value>0</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/longskid_floats</property>
+                <value>1</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+ </group>
+ 
+
+        <group>
+            <layout>hbox</layout>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Standard Step</label>
+                <property>/sim/model/ec135/standardstep</property>
+                <live>true</live>
+                <binding>
+                <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/standardstep</property>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/multifunctioncarrier</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/roundstep</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>center</halign>
+                <label>Select Multifunctioncarrier</label>
+                <property>/sim/model/ec135/multifunctioncarrier</property>
+                <live>true</live>
+                <binding>
+                <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/standardstep</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/multifunctioncarrier</property>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/roundstep</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>right</halign>
+                <label>Select Roundstep</label>
+                <property>/sim/model/ec135/roundstep</property>
+                <live>true</live>
+                <binding>
+                <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/standardstep</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/multifunctioncarrier</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/roundstep</property>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+        </group>    
+    
+ </group>
+ 
+ </group>
+ 
+<hrule>
+    <color>
+      <red>0.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>2</pref-height>
+ </hrule>
+ 
+
+    </group>
+        <vrule/>
+        
+   <!-- end of general options-->     
+        
+    <group>
+        <layout>hbox</layout>
+        <default-padding>8</default-padding>
+    <group>
+        <layout>vbox</layout>
+         <text>
+            <label>General Options: </label>
+        </text>
+	<hrule/>
+     
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Upper Wirecutter</label>
+                <property>/sim/model/ec135/wirecutter_up</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/wirecutter_up</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Lower Wirecutter </label>
+                <property>/sim/model/ec135/wirecutter_down</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/wirecutter_down</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Skid Wirecutters </label>
+                <property>/sim/model/ec135/wirecutter_skid</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/wirecutter_skid</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+<checkbox>
+                <halign>left</halign>
+                <label>Select Hellas</label>
+                <property>/sim/model/ec135/hellas</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/hellas</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Searchlight Nose</label>
+                <property>/sim/model/ec135/searchlight_front</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/searchlight_front</property>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/nose</property>
+                <value>true</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/BigRadom</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/smallradom</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/nosefl</property>
+                <value>false</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Searchlight Left</label>
+                <property>/sim/model/ec135/searchlight_left</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/searchlight_left</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select FLIR</label>
+                <property>/sim/model/ec135/FLIR</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/FLIR</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Loudspeaker</label>
+                <property>/sim/model/ec135/loudspeaker</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/loudspeaker</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Mirror</label>
+                <property>/sim/model/ec135/mirror</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/mirror</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Emergency Floats</label>
+                <property>/sim/model/ec135/emergfloats</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/emergfloats</property>
+                </binding>
+                <binding>
+                    <command>property-assign</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/longskid_floats</property>
+                <value>1</value>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Snow Skids</label>
+                <property>/sim/model/ec135/snowskid</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/snowskid</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select Winch</label>
+                <property>/sim/model/ec135/winch</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/winch</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	<checkbox>
+                <halign>left</halign>
+                <label>Select DoubleCargoHook</label>
+                <property>/sim/model/ec135/DoubleCargoHook</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/DoubleCargoHook</property>
+                </binding>
+                <binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+ </group>
+ 
+ </group>
+ 
+<hrule>
+    <color>
+      <red>0.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+ </hrule>
+     </group>
+     
+    
+
+
+</PropertyList>

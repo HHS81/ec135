@@ -169,7 +169,6 @@
 <!-- end part,  based on pa28-fcs.xml on Copyright (c) 2019 Joshua Davidson (it0uchpods)-->
 
 
-<!-- To-do: add noise spike to SEMA and parallel actuators-->
 
 <filter>
     <name>Pilot Aileron input to aileron-cyclic</name>
@@ -180,7 +179,8 @@
     <gain>1</gain>
    <enable>
       <condition>
-        <or>
+      <or>
+             <or>
           <equals>
             <property>/autopilot/afcs/internal/ap1</property>
             <value>0</value>
@@ -190,6 +190,11 @@
             <value>0</value>
           </equals>
           </or>
+          <equals>
+            <property>controls/flight/force_trim_release</property>
+            <value>true</value>
+          </equals>
+        </or>
         </condition>
     </enable>
         </filter>
@@ -203,7 +208,8 @@
     <gain>1</gain>
    <enable>
       <condition>
-        <or>
+      <or>
+             <or>
           <equals>
             <property>/autopilot/afcs/internal/ap1</property>
             <value>0</value>
@@ -213,6 +219,11 @@
             <value>0</value>
           </equals>
           </or>
+          <equals>
+            <property>controls/flight/force_trim_release</property>
+            <value>true</value>
+          </equals>
+        </or>
         </condition>
     </enable>
         </filter>
@@ -226,7 +237,8 @@
     <gain>1</gain>
    <enable>
       <condition>
-        <or>
+      <or>
+             <or>
           <equals>
             <property>/autopilot/afcs/internal/ap1</property>
             <value>0</value>
@@ -236,9 +248,56 @@
             <value>0</value>
           </equals>
           </or>
+          <equals>
+            <property>controls/flight/force_trim_release</property>
+            <value>true</value>
+          </equals>
+        </or>
         </condition>
     </enable>
         </filter>
+        
+  <filter>
+    <name></name>
+    <debug>false</debug>
+  <type>noise-spike</type>
+      <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+  <max-rate-of-change>0.25</max-rate-of-change>
+    <input>/controls/flight/aileron-cyclic-stick-tofilter</input>>
+    <output>/controls/flight/aileron-cyclic-stick</output>
+    <gain>1</gain>
+   <enable>
+      <condition>
+          <equals>
+            <property>controls/flight/force_trim_release</property>
+            <value>false</value>
+          </equals>
+        </condition>
+    </enable>
+  </filter>
+  
+  <filter>
+    <name></name>
+    <debug>false</debug>
+  <type>noise-spike</type>
+      <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+  <max-rate-of-change>0.25</max-rate-of-change>
+    <input>/controls/flight/elevator-cyclic-stick-tofilter</input>>
+    <output>/controls/flight/elevator-cyclic-stick</output>
+    <gain>1</gain>
+   <enable>
+      <condition>
+          <equals>
+            <property>controls/flight/force_trim_release</property>
+            <value>false</value>
+          </equals>
+        </condition>
+    </enable>
+  </filter>
 
 
 <filter>
@@ -358,24 +417,12 @@
 <pid-controller>
   <name>AFCS input to aileron-cyclic-stick</name>
   <debug>false</debug>
-    <enable>
+   <enable>
       <condition>
-      <and>
-        <or>
           <equals>
-            <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
+            <property>controls/flight/force_trim_release</property>
+            <value>false</value>
           </equals>
-          <equals>
-            <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
-          </equals>
-          </or>
-          <equals>
-            <property>/autopilot/afcs/internal/flythrough-roll</property>
-            <value>0</value>
-          </equals>
-          </and>
         </condition>
     </enable>
  <input>
@@ -383,7 +430,7 @@
   </input>
   <reference>/controls/flight/roll-deg</reference>
   <output>
-   <prop>/controls/flight/aileron-cyclic-stick</prop>
+   <prop>/controls/flight/aileron-cyclic-stick-tofilter</prop>
   </output>
   <config>
    <Kp>0.0125</Kp><!--0.033-->
@@ -402,24 +449,12 @@
   <pid-controller>
     <name>auto pitch attitude hold</name>
     <debug>false</debug>
-    <enable>
+   <enable>
       <condition>
-      <and>
-        <or>
           <equals>
-            <property>/autopilot/afcs/internal/ap1</property>
-            <value>1</value>
+            <property>controls/flight/force_trim_release</property>
+            <value>false</value>
           </equals>
-          <equals>
-            <property>/autopilot/afcs/internal/ap2</property>
-            <value>1</value>
-          </equals>
-          </or>
-          <equals>
-            <property>/autopilot/afcs/internal/flythrough-pitch</property>
-            <value>0</value>
-          </equals>
-          </and>
         </condition>
     </enable>
     <input>
@@ -427,7 +462,7 @@
     </input>
     <reference>/controls/flight/pitch-deg</reference>
     <output>
-      <prop>/controls/flight/elevator-cyclic-stick</prop>
+      <prop>/controls/flight/elevator-cyclic-stick-tofilter</prop>
     </output>
     <config>
       <Kp>-0.0125</Kp><!-- -0.033-->

@@ -17,10 +17,10 @@
             </item>
 
             <item>
-                <label>Select Livery</label>
+                <label>Helicopter Configuration</label>
                 <binding>
-                    <command>nasal</command>
-                    <script>aircraft.livery.dialog.toggle()</script>
+                    <command>dialog-show</command>
+                    <dialog-name>aircraft-config</dialog-name>
                 </binding>
             </item>
             

@@ -252,14 +252,15 @@ setprop("/autopilot/afcs/control/speed-mode", 1);
 
 var rescuebtn = getprop("/autopilot/afcs/timer/rescue-btn-double-clicked") or 0;
 var timer = getprop("/autopilot/afcs/timer/rescue-double-click-timer-sec") or 0;
+var ra = getprop("/instrumentation/radar-altimeter/radar-altitude-ft") or 0;
 
-
-if (rescuebtn >0) {
+if (rescuebtn >0){
 setprop("/autopilot/afcs/control/ap1", 1);
 setprop("/autopilot/afcs/control/ap2", 1);
 setprop("/autopilot/afcs/control/alt-mode", 3);
 setprop("/autopilot/afcs/control/speed-mode", 1);
 setprop("/autopilot/afcs/control/heading-mode", 1);
+setprop("/controls/flight/force_trim_release", "false");
 }
 
 if (timer >1){
@@ -362,12 +363,12 @@ setprop("/autopilot/afcs/internal/target-climb-rate-fps",gsroc);
 }
 
 #replace "65" later with MDA/ DH property value
-if ((altmode == 5) and (ra <65)){
-setprop("/autopilot/afcs/control/alt-mode", 1);
-setprop("/autopilot/afcs/control/heading-mode", 1);
-setprop("/autopilot/afcs/control/navsource-couple", 0);
-}
-}
+#if ((altmode == 5) and (ra <65)){
+#setprop("/autopilot/afcs/control/alt-mode", 1);
+#setprop("/autopilot/afcs/control/heading-mode", 1);
+#setprop("/autopilot/afcs/control/navsource-couple", 0);
+#}
+#}
 
 
 
@@ -385,7 +386,7 @@ var altarmed = getprop("/autopilot/afcs/internal/altitude-armed") or 0;
 
 
 
-if ( ((altmode == 2) and (altarmed > 0)) and ((altd <25) and (altd >-25)) ){
+if ( ((altmode == 2) and (altarmed > 0)) and ((altd <300) and (altd >-300)) ){
 setprop("/autopilot/afcs/control/alt-mode", 3)
 }
 
@@ -401,12 +402,22 @@ setprop("/autopilot/afcs/control/alt-mode", 1);
 
 ##Go-Around Mode
 ##
+var vs = getprop ("/autopilot/internal/vert-speed-fpm") or 0;
 
 if (altmode == 7){
 setprop("/autopilot/afcs/internal/target-climb-rate-fps", 16.667);
 setprop("/autopilot/afcs/internal/nav1-armed", 0);
 setprop("/autopilot/afcs/internal/nav2-armed", 0);
 setprop("/autopilot/afcs/control/navsource-couple", 0);
+setprop("/autopilot/afcs/control/speed-mode", 1);
+}elsif  ((altmode == 7) and (vs > 500)){
+setprop("/autopilot/afcs/internal/target-climb-rate-fps", 16.667);
+setprop("/autopilot/afcs/internal/nav1-armed", 0);
+setprop("/autopilot/afcs/internal/nav2-armed", 0);
+setprop("/autopilot/afcs/control/navsource-couple", 0);
+setprop("/autopilot/afcs/control/speed-mode", 1);
+setprop("/autopilot/afcs/settings/target-speed-kt", 65);
+setprop("/autopilot/afcs/internal/drift-u-kt", 65);
 }
 
 

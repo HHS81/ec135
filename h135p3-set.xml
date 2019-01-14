@@ -81,7 +81,7 @@ Thanks for all the help!
             <path>Aircraft/ec135/filter.xml</path>
 </autopilot>
 	<autopilot n="4">
-                <path>Aircraft/ec135/Systems/AFCS.test.xml</path>
+                <path>Aircraft/ec135/Systems/AFCS.xml</path>
 	</autopilot>
 <autopilot n="5">
          <name>Helionix instrumentation drivers</name>
@@ -123,66 +123,67 @@ Thanks for all the help!
 			<name type="string">D-HECB</name>
 			</livery>
 	   	    	<ec135>
+				<ftr-button-real type="bool">true</ftr-button-real>
 			  <state type="int">0</state>
 				<rotor-step-deg type="float">-1.0</rotor-step-deg>
-				<AnalogDual>true</AnalogDual>
-				<DigitalDual>false</DigitalDual>
-				<AnalogSingle>false</AnalogSingle>
-				<DigitalSingle>false</DigitalSingle>	
-				<HEMS>true</HEMS>
-				<VIP>false</VIP>
-				<Utility>false</Utility>
-				<hide-gsdi>true</hide-gsdi>
-				<BigRadom>false</BigRadom>
-				<nose>false</nose><!--nose without frontlight-->
+				<AnalogDual type="bool">true</AnalogDual>
+				<DigitalDual type="bool">false</DigitalDual>
+				<AnalogSingle type="bool">false</AnalogSingle>
+				<DigitalSingle type="bool">false</DigitalSingle>	
+				<HEMS type="bool">true</HEMS>
+				<VIP type="bool">false</VIP>
+				<Utility type="bool">false</Utility>
+				<hide-gsdi type="bool">true</hide-gsdi>
+				<BigRadom type="bool">false</BigRadom>
+				<nose type="bool">false</nose><!--nose without frontlight-->
 				<!--or-->
-				<smallradom>false</smallradom>
+				<smallradom type="bool">false</smallradom>
 				<!--or-->
-				<nosefl>true</nosefl><!--nose with frontlight-->
-				<searchlight_front>false</searchlight_front><!--only without radom and without nosefl-->
-				<searchlight_left>false</searchlight_left>
-				<FLIR>false</FLIR>
-				<windscreen_tri>true</windscreen_tri>
+				<nosefl type="bool">true</nosefl><!--nose with frontlight-->
+				<searchlight_front type="bool">false</searchlight_front><!--only without radom and without nosefl-->
+				<searchlight_left type="bool">false</searchlight_left>
+				<FLIR type="bool">false</FLIR>
+				<windscreen_tri type="bool">true</windscreen_tri>
 				<!--or-->
-				<windscreen>false</windscreen>
-				<mirror>false</mirror>
-				<wirecutter_up>false</wirecutter_up>
-				<wirecutter_down>false</wirecutter_down>
-				<OilCoolInlet>true</OilCoolInlet>
-				<HighTail>false</HighTail>
-				<IBFFilter>true</IBFFilter>
-				<winch>false</winch>
-				<SLLightR>false</SLLightR><!--Retractablelanding/SearchlightRight-->
-				<SLLightL>true</SLLightL><!--Retractablelanding/SearchlightLEFT-->
-				<loudspeaker>false</loudspeaker>
-				<hellas>false</hellas>
+				<windscreen type="bool">false</windscreen>
+				<mirror type="bool">false</mirror>
+				<wirecutter_up type="bool">false</wirecutter_up>
+				<wirecutter_down type="bool">false</wirecutter_down>
+				<OilCoolInlet type="bool">true</OilCoolInlet>
+				<HighTail type="bool">false</HighTail>
+				<IBFFilter type="bool">true</IBFFilter>
+				<winch type="bool">false</winch>
+				<SLLightR type="bool">false</SLLightR><!--Retractablelanding/SearchlightRight-->
+				<SLLightL type="bool">true</SLLightL><!--Retractablelanding/SearchlightLEFT-->
+				<loudspeaker type="bool">false</loudspeaker>
+				<hellas type="bool">false</hellas>
 				<lowskid>0</lowskid>
-				<snowboard_lowskid>false</snowboard_lowskid>
-				<wirecutter_skid>false</wirecutter_skid>
+				<snowboard_lowskid type="bool">false</snowboard_lowskid>
+				<wirecutter_skid type="bool">false</wirecutter_skid>
 				<!--or-->
 				<longskid_floats>0</longskid_floats>
 				<emergfloats>0</emergfloats>
 				<!--or-->
 				<midskid>1</midskid>
-				<snowboard_midskid>false</snowboard_midskid>
-				<wirecutter_midskid>false</wirecutter_midskid>
+				<snowboard_midskid type="bool">false</snowboard_midskid>
+				<wirecutter_midskid type="bool">false</wirecutter_midskid>
 				<!--or-->
 				<highskid>0</highskid>
-				<snowboard_highskid>false</snowboard_highskid>
-				<wirecutter_highskid>false</wirecutter_highskid>
+				<snowboard_highskid type="bool">false</snowboard_highskid>
+				<wirecutter_highskid type="bool">false</wirecutter_highskid>
 				<!--steps-->
-				<standardstep>true</standardstep>
+				<standardstep type="bool">true</standardstep>
 				<!--or-->
-				<multifunctioncarrier>false</multifunctioncarrier><!--in use with FLIR etc...)-->
+				<multifunctioncarrier type="bool">false</multifunctioncarrier><!--in use with FLIR etc...)-->
 				<!--or-->
-				<roundstep>false</roundstep>
-				<DoubleCargoHook>false</DoubleCargoHook>
-				<buckle>true</buckle><!--reardoor_buckle-->
+				<roundstep type="bool">false</roundstep>
+				<DoubleCargoHook type="bool">false</DoubleCargoHook>
+				<buckle type="bool">true</buckle><!--reardoor_buckle-->
 				<!--reardoors-->
-				<reardoor_winR>false</reardoor_winR><!--reardoor with window-->
-				<reardoor_winL>false</reardoor_winL><!--reardoor with window-->
-				<reardoorL>true</reardoorL>
-				<reardoorR>true</reardoorR>
+				<reardoor_winR type="bool">false</reardoor_winR><!--reardoor with window-->
+				<reardoor_winL type="bool">false</reardoor_winL><!--reardoor with window-->
+				<reardoorL type="bool">true</reardoorL>
+				<reardoorR type="bool">true</reardoorR>
 				
 				<doors>
 					<door>
@@ -873,25 +874,46 @@ Thanks for all the help!
 				<name>f</name>
 				<desc>Force Trim Release</desc>
 				<binding>
+					<condition>
+					<property>/sim/model/ec135/ftr-button-real</property>
+					</condition>
 					<command>nasal</command>
 					<script>ec135.autotrim.start()</script>
 				</binding>
 					<binding>
+					<condition>
+					<property>/sim/model/ec135/ftr-button-real</property>
+					</condition>
 						<command>property-assign</command>
 						<property>controls/flight/force_trim_release</property>
 						<value type="bool">true</value>
 					</binding>
 				<mod-up>
 					<binding>
+					<condition>
+					<property>/sim/model/ec135/ftr-button-real</property>
+					</condition>
 						<command>nasal</command>
 						<script>ec135.autotrim.stop()</script>
 					</binding>
 					<binding>
+					<condition>
+					<property>/sim/model/ec135/ftr-button-real</property>
+					</condition>
 						<command>property-assign</command>
 						<property>controls/flight/force_trim_release</property>
 						<value type="bool">false</value>
 					</binding>
 				</mod-up>
+					<binding>
+					<condition>
+					<not>
+					<property>/sim/model/ec135/ftr-button-real</property>
+					</not>
+					</condition>
+						<command>property-toggle</command>
+						<property>controls/flight/force_trim_release</property>
+					</binding>
 			</key>
 
   
@@ -1273,8 +1295,8 @@ Thanks for all the help!
 			<file>Aircraft/ec135/Nasal/mk-wiper.nas</file>
 			<file>Aircraft/ec135/Nasal/systems.nas</file>
 			<file>Aircraft/ec135/Nasal/Electrical.nas</file>
-			<file>Aircraft/ec135/Nasal/helicopter-fcs.nas</file>
-			<!--<file>Aircraft/Generic/helicopter-fcs.nas</file>-->
+			<!--<file>Aircraft/ec135/Nasal/helicopter-fcs.nas</file>-->
+			<file>Aircraft/Generic/helicopter-fcs.nas</file>
 			<file>Aircraft/ec135/Nasal/fcs-config.nas</file>
 			<file>Aircraft/ec135/Systems/kcs55.nas</file>
 			<file>Aircraft/ec135/Nasal/residualthrust.nas</file>

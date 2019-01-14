@@ -773,7 +773,13 @@
 	<type>select</type>
 	<object-name>wirecutter_skid</object-name>
 	<condition>
+   <or>
+	<and>
 	<property>sim/model/ec135/wirecutter_skid</property>
+   <property>/sim/model/ec135/lowskid</property>
+	</and>
+	<property>/sim/model/ec135/longskid_floats</property>
+   </or>
 	</condition>
 </animation>
 
@@ -867,7 +873,10 @@
 	<type>select</type>
 	<object-name>snowboard_midskid</object-name>
 	<condition>
-	<property>sim/model/ec135/snowboard_midskid</property>
+	<and>
+	<property>sim/model/ec135/snowskid</property>
+   <property>/sim/model/ec135/midskid</property>
+	</and>
 	</condition>
 </animation>
 
@@ -875,7 +884,10 @@
 	<type>select</type>
 	<object-name>wirecutter_midskid</object-name>
 	<condition>
-	<property>sim/model/ec135/wirecutter_midskid</property>
+	<and>
+	<property>sim/model/ec135/wirecutter_skid</property>
+   <property>/sim/model/ec135/midskid</property>
+	</and>
 	</condition>
 </animation>
 
@@ -935,7 +947,10 @@
 	<type>select</type>
 	<object-name>snowboard_highskid</object-name>
 	<condition>
-	<property>sim/model/ec135/snowboard_highskid</property>
+	<and>
+	<property>sim/model/ec135/snowskid</property>
+   <property>/sim/model/ec135/highskid</property>
+	</and>
 	</condition>
 </animation>
 
@@ -943,7 +958,10 @@
 	<type>select</type>
 	<object-name>wirecutter_highskid</object-name>
 	<condition>
-	<property>sim/model/ec135/wirecutter_highskid</property>
+	<and>
+	<property>sim/model/ec135/wirecutter_skid</property>
+   <property>/sim/model/ec135/highskid</property>
+	</and>
 	</condition>
 </animation>
 
@@ -975,7 +993,13 @@
 	<type>select</type>
 	<object-name>snowboard_lowskid</object-name>
 	<condition>
-	<property>sim/model/ec135/snowboard_lowskid</property>
+	<or>
+	<and>
+	<property>sim/model/ec135/snowskid</property>
+   <property>/sim/model/ec135/lowskid</property>
+	</and>
+	<property>sim/model/ec135/longskid_floats</property>
+	</or>
 	</condition>
 </animation>
 

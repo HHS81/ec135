@@ -106,8 +106,8 @@ var canvas_PFD = {
 		me.apAlt = getprop("autopilot/settings/target-altitude-ft");
 		me.apSpd = getprop("autopilot/settings/target-speed-kt");
 		
-		#10 deg = 105px
-		me.h_trans.setTranslation(0, me.pitch*10.5);
+		#10 deg = 74px
+		me.h_trans.setTranslation(0, me.pitch*7.4);
 		me.h_rot.setRotation(-me.roll*D2R, me.horizon.getCenter());
 		
 		me.bankPointer.setRotation(-me.roll*D2R);

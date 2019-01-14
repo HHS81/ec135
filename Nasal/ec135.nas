@@ -18,6 +18,19 @@ var bell = func(x, spread = 2) pow(math.e, -(x * x) / spread);
 var max = func(a, b) a > b ? a : b;
 var min = func(a, b) a < b ? a : b;
 
+#save states=====================================
+ var save_list = [ 
+"/consumables/fuel/tank[0]/level-gal_us",
+"/consumables/fuel/tank[1]/level-gal_us",
+"/consumables/fuel/tank[2]/level-gal_us",
+"/engines/engine/oil-temperature-degc-filter",
+"/controls/flight/aileron-trim",
+"/controls/flight/elevator-trim",
+];
+ 
+ aircraft.data.add(save_list);
+ 
+
 # liveries =========================================================
 if (getprop ("sim/model/variant") == 1){
 aircraft.livery.init("Aircraft/ec135/Models/liveries_h135p3");

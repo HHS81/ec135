@@ -26,7 +26,7 @@
  
   ATT-Mode: 
   -automatic trim follow-up in hover: trim follows the pilot cyclic inputs
-  -reference beep trim: pitch, roll can be changed
+  -reference beep trim: pitch and roll attitude can be changed via beep trim on cyclic
   -override action
   -effort against spring loads- both known also as flythrough
   Real one: AFCS moves the cyclic. Trimsystem is a magnetic clutch hold simple spring- so actually joysticks with spring are not unrealistic for this type of heli

@@ -44,6 +44,48 @@ Copyright (C) 2019 Heiko Schulz, Heiko.H.Schulz@gmx.net
 	</group>
 	<hrule/>
     
+	<group>
+        <text>
+            <label>AFCS Realism Settings</label>
+        </text>
+	<layout>vbox</layout>
+	<padding>6</padding>
+    
+	<checkbox>
+                <halign>left</halign>
+                <label>Enable realistic FTR-button - by setting it, you need to keep the FTR-Button (f-key) pressed to set the cyclic forces to zero</label>
+                <property>/sim/model/ec135/ftr-button-real</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/ftr-button-real</property>
+                </binding>
+	<binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>    
+ 	</group>
+	<hrule/>
+
+    
+	<group>
+	<layout>vbox</layout>
+	<padding>6</padding>
+	<checkbox>
+                <halign>left</halign>
+                <label>Enable procedural-lights</label>
+                <property>/sim/model/ec135/procedural-lights</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command><!-- dialog-apply would apply values to all objects here - setlistener reacts on them in unfortunate way-->
+                <property>/sim/model/ec135/procedural-lights</property>
+                </binding>
+	<binding>
+                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
+                </binding>
+	</checkbox>
+	</group>
+	<hrule/>
  
     
  
