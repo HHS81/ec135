@@ -363,12 +363,12 @@ setprop("/autopilot/afcs/internal/target-climb-rate-fps",gsroc);
 }
 
 #replace "65" later with MDA/ DH property value
-#if ((altmode == 5) and (ra <65)){
-#setprop("/autopilot/afcs/control/alt-mode", 1);
-#setprop("/autopilot/afcs/control/heading-mode", 1);
-#setprop("/autopilot/afcs/control/navsource-couple", 0);
-#}
-#}
+if ((altmode == 5) and (ra <65)){
+setprop("/autopilot/afcs/control/alt-mode", 1);
+setprop("/autopilot/afcs/control/heading-mode", 1);
+setprop("/autopilot/afcs/control/navsource-couple", 0);
+}
+}
 
 
 
