@@ -64,8 +64,7 @@
 	2.) assume that there is the same hardware used for the BO105- so change fdm values to higher max rollrate to give the same impression. dynamic="0.51"   delta="0.125"
 	3.) increase sensitivity of the hardware via the way FGFS handles the hardware. (sensitivity x 1,37)
 	
-	real values of min/maxcyclicele and min/maxcyclicail are known, but due to unclear issues with copyright, values are used here which comes close and let the heli show 
-	nearly the same character as with real values
+	
 	
 	
 	Fuel Capacity: 142.7 US gal = 540liters = 427kg
@@ -91,6 +90,7 @@
 	[1]http://www.springer.com/cda/content/document/cda_downloaddocument/9783540889717-c1.pdf?SGWID=0-0-45-693203-p173897906,
 	Dave's all the worlds fenestron
 	Type Certifications
+	EC 135 AMM
 	
 	FDM still in the work as some more datas are missing but expected to come soon or later.
 -->
@@ -111,12 +111,12 @@
 
 <rotor name="main" x="-2.973" y="0.0" z="1.751" 
 	nx="0.087" ny="0" nz="1." fx="1" fy="0" fz="0" ccw="1"
-	maxcollective="17.0" mincollective="0.0"
-	mincyclicele="-7.4" maxcyclicele="13.9"
-	mincyclicail="-8.0" maxcyclicail="6.7"
+	maxcollective="17.3" mincollective="0.0"
+	mincyclicele="-7.8" maxcyclicele="14"
+	mincyclicail="-6.6" maxcyclicail="7.9"
 	diameter="10.2" 
 	numblades="4" 
-	weightperblade="84.22" 
+	weightperblade="83.7" 
 	relbladecenter="0.5"
 	dynamic="0.51" rpm="395" phi0="45" 
 	rellenflaphinge="0.09" delta3="0"
@@ -184,7 +184,7 @@
 <!--flapmin/max guessed from a real fenestron with 1-3degrees-->
 <rotor name="tail" x="-8.844" y="-0.07" z="0.873"
 	nx="0.00" ny="-1" nz="0.00" fx="1" fy="0" fz="0" ccw="1"
-	maxcollective="34.2" mincollective="-12.8"
+	maxcollective="34.2" mincollective="-16.8"
 	diameter="1" numblades="10" weightperblade="0.64" relbladecenter="0.5"
 	dynamic="1.4" rpm="3584" rellenflaphinge="0.35" delta3="0" translift="0" delta="0.5" twist="-7.0" 
 	pitch-a="10"
