@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+Helionix MFD - Canvas Flight Navigation Display for Eurocopter
+Author : litzi
+-->
+
+<PropertyList>
+  <params>
+    <hotspots>Aircraft/ec135/Models/instrumentation/EUcopter-mfd-c/Models/mfd1-hotspots.xml</hotspots>
+  </params>  
+  
+  <path>Models/mfd1.ac</path> 
+  
+  <!-- ALS display effect for the MFD screen object , needs FG 2018.3+-->
+<!--  <effect>
+      <inherits-from>Effects/model-interior-display</inherits-from> 
+      <object-name>helionix1</object-name>
+  </effect>     -->
+
+  <!-- ALS implicit lightmap for MFD bezel 
+  <effect>
+      <inherits-from>Aircraft/ec145/Models/Effects/mfd1-lightmap</inherits-from> 
+      <object-name>xmfdbezel</object-name>
+  </effect>  -->   
+  
+  <!--<animation>
+        <type>pick</type>
+        <object-name>helionix1</object-name>
+        <action>
+                <button>0</button>
+                <repeatable>false</repeatable>
+                <binding>
+                      <command>nasal</command>
+                      <script>bk117.showPfd();</script>
+                </binding>
+        </action>
+ </animation>-->
+
+ <!-- the panel screen is included as canvas via Nasal -->
+
+ <animation> 
+    <type>material</type> 
+    <object-name>helionix1</object-name>
+    <emission>
+      <red>1.0</red>
+      <green>1.0</green>
+      <blue>1.0</blue>
+    </emission>    
+ </animation>
+
+ <!-- all interactions are done via an overlaid 2D panel with action-elements -->
+  
+  <panel>
+    <name>panel-hotspots</name>
+    <path alias="/params/hotspots"/>
+    <top-left>
+        <x-m>0.028</x-m>
+        <y-m>-0.105</y-m>
+        <z-m>0.132</z-m>
+    </top-left>
+    <bottom-left>
+        <x-m>0.028</x-m> 
+        <y-m>-0.105</y-m>
+        <z-m>-0.13</z-m>
+    </bottom-left>                      
+    <bottom-right>
+        <x-m>0.028</x-m>
+        <y-m>0.105</y-m>
+        <z-m>-0.13</z-m>
+    </bottom-right>
+  </panel>
+  
+</PropertyList>

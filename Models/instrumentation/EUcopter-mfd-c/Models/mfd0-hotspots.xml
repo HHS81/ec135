@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<!-- This part should be the same for any 3D panel.  Customize the actions section. 
+     Original file and hot-spot concept re-used from FG Eurofighter Model 
+
+ Bezel Button Numbers
+
+    2  3  4  5  6 7 
+[1]<pwr           
+ 25                8
+ 24                9
+ 23                10
+ 22                11
+ 21                12
+ 20                13
+  19 18 17 16 15 14
+
+Author: litzi
+-->
+
+<PropertyList>
+	<name>MFD0 Hotspots</name>
+	<background>Aircraft/Instruments-3d/EUcopter-mfd/Textures/transparent.rgb</background>
+	<w>60</w>
+	<h>80</h>
+<!-- 	<y-offset>0</y-offset> -->
+
+	<instruments>
+		<instrument>
+			<name>MFD Buttons</name>
+			<x>30</x>
+			<y>40</y>
+			<w-base>60</w-base>
+			<h-base>80</h-base>
+
+		<actions>
+			<action>
+				<name>power button 01</name>
+				<button>0</button>
+				<x>-28</x>
+				<y>29</y>
+				<w>3.5</w>
+				<h>6</h>
+				<binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(1);</script>     
+				</binding>
+			</action>
+
+                        <action>
+                                <name>button 02</name>
+                                <button>0</button>
+                                <x>-21</x>
+                                <y>36</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(2);</script>     
+                                </binding>
+                        </action>
+
+                        <action>
+                                <name>button 03</name>
+                                <button>0</button>
+                                <x>-13</x>
+                                <y>36</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(3);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 04</name>
+                                <button>0</button>
+                                <x>-5</x>
+                                <y>36</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(4);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 05</name>
+                                <button>0</button>
+                                <x>2</x>
+                                <y>36</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(5);</script>     
+                                </binding>
+                        </action>
+
+                        <action>
+                                <name>button 06</name>
+                                <button>0</button>
+                                <x>10</x>
+                                <y>36</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(6);</script>     
+                                </binding>
+                        </action>
+
+                        <action>
+                                <name>button 07</name>
+                                <button>0</button>
+                                <x>17</x>
+                                <y>36</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(7);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 08</name>
+                                <button>0</button>
+                                <x>25</x>
+                                <y>20</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(8);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 09</name>
+                                <button>0</button>
+                                <x>25</x>
+                                <y>11</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(9);</script>     
+                                </binding>
+                        </action>   
+                        
+                        <action>
+                                <name>button 10</name>
+                                <button>0</button>
+                                <x>25</x>
+                                <y>3</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(10);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 11</name>
+                                <button>0</button>
+                                <x>25</x>
+                                <y>-7</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(11);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 12</name>
+                                <button>0</button>
+                                <x>25</x>
+                                <y>-15</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(12);</script>     
+                                </binding>
+                        </action>
+
+                        <action>
+                                <name>button 13</name>
+                                <button>0</button>
+                                <x>25</x>
+                                <y>-24</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(13);</script>     
+                                </binding>
+                        </action>
+                        
+                        
+                        <action>
+                                <name>button 25</name>
+                                <button>0</button>
+                                <x>-28</x>
+                                <y>20</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(25);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 24</name>
+                                <button>0</button>
+                                <x>-28</x>
+                                <y>11</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(24);</script>     
+                                </binding>
+                        </action>   
+                        
+                        <action>
+                                <name>button 23</name>
+                                <button>0</button>
+                                <x>-28</x>
+                                <y>3</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(23);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 22</name>
+                                <button>0</button>
+                                <x>-28</x>
+                                <y>-7</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(22);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 21</name>
+                                <button>0</button>
+                                <x>-28</x>
+                                <y>-15</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(21);</script>     
+                                </binding>
+                        </action>
+
+                        <action>
+                                <name>button 20</name>
+                                <button>0</button>
+                                <x>-28</x>
+                                <y>-24</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(20);</script>     
+                                </binding>
+                        </action>
+
+                         <action>
+                                <name>button 19</name>
+                                <button>0</button>
+                                <x>-21</x>
+                                <y>-39</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(19);</script>     
+                                </binding>
+                        </action>
+
+                        <action>
+                                <name>button 18</name>
+                                <button>0</button>
+                                <x>-14</x>
+                                <y>-39</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(18);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 17</name>
+                                <button>0</button>
+                                <x>-7</x>
+                                <y>-39</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(17);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 16</name>
+                                <button>0</button>
+                                <x>0</x>
+                                <y>-39</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(16);</script>     
+                                </binding>
+                        </action>
+
+                        <action>
+                                <name>button 15</name>
+                                <button>0</button>
+                                <x>7</x>
+                                <y>-39</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(15);</script>     
+                                </binding>
+                        </action>
+                        
+                        <action>
+                                <name>button 14</name>
+                                <button>0</button>
+                                <x>14</x>
+                                <y>-39</y>
+                                <w>4</w>
+                                <h>4</h>
+                                <binding>
+                                  <command>nasal</command>
+                                  <script>mfd.mfd0.clickon(14);</script>     
+                                </binding>
+                        </action>
+                        
+                      </actions>
+	      </instrument>
+	</instruments>
+
+</PropertyList>
+
+
+
