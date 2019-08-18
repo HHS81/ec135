@@ -997,6 +997,9 @@ Thanks for all the help!
 <GTX330>
 			<file>Aircraft/ec135/Models/instrumentation/GTX330/GTX330.nas</file>
 </GTX330>
+		<CAD>
+			<file>Aircraft/ec135/Models/instrumentation/cad/cad.nas</file>
+		</CAD>
 	</nasal>
 
 
