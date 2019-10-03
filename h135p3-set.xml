@@ -522,9 +522,21 @@ Thanks for all the help!
 			<line>The H1355 has to fly with SAS engaged all the times- disengaging will usually produce a caution warning on the real thing</line>
 			<line></line>
 			<line>Landinglight -> l-key (Small L)</line>
-			<line>Open/ Close doors -> click the doorse</line>
-			<line>Cut AFCS/SAS -> CTR-d-Key</line>
+			<line>Open/ Close doors -> click the doors</line>
+			<line>Cut AFCS/SAS -> CTR-d-key</line>
 			<line>Engage AFCS/SAS -> CTR-a-key</line>
+			<line>AP Upper mode Off-> CTR-b-key</line>
+			<line>Force Trim Release -> f-key (small f)</line>
+			<line>Auto Trim Cancel -> SHIFT-t-key</line>
+			<line>Go Around Mode -> CTR-g-key</line>
+			<line>"Rescue Button" -> fast-double-press CTR-a-key = will keep the helicopter at present speed, altitude and heading </line>
+			<line>GTC.H Mode -> CTR-f key = Set speed to zero and to Auto-Hover when Rescue-Button is pressed before</line>
+			<line>beep trim up -> 1 key</line>
+			<line>beep trim down -> 7 key</line>
+			<line>beep trim left -> left arrow key</line>
+			<line>beep trim right -> right arrow key</line>
+			<line></line>
+
 			<line></line>
 		</help>
 		
