@@ -185,6 +185,10 @@ init_switches = func() {
     tprop.setBoolValue(1);
     tprop=props.globals.getNode("controls/lighting/instrument-lights",1);
     tprop.setBoolValue(0);
+    tprop=props.globals.getNode("controls/engines/engine[0]/fadec/engine-guard",1);
+    tprop.setBoolValue(0);
+    tprop=props.globals.getNode("controls/engines/engine[1]/fadec/engine-guard",1);
+    tprop.setBoolValue(0);
 
     setprop("controls/lighting/instrument-lights-norm",0.5);
    setprop("controls/lighting/stdby-instrument-lights-norm",0.5);
