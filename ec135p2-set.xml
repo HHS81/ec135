@@ -31,6 +31,19 @@ Thanks for all the help!
 			<tag>2010s</tag>
 		</tags>
 		
+		<previews>
+		    <preview>
+			<type>panel</type>
+			<splash type="bool">true</splash>
+			<path>Pics/ec135-interior.jpg</path>
+		    </preview>
+		    <preview>
+			<type>exterior</type>
+			<splash type="bool">true</splash>
+			<path>Pics/ec135-exterior.jpg</path>
+		    </preview>
+		</previews>
+		
 
 		<flight-model>yasim</flight-model>
 		<aero>ec135P2</aero>
@@ -65,7 +78,7 @@ Thanks for all the help!
 				<float n="0" alias="/position/gear-agl-m"/>										<!-- rotor particles -->
 				<float n="1" alias="/orientation/pitch-deg"/>									<!-- rotor particles -->
 				<float n="2" alias="/orientation/roll-deg"/>									<!-- rotor particles -->
-				<float n="3" alias="/rotors/main/torque"/>										<!-- rotor particles -->
+				<float n="3" alias="/environment/aircraft-effects/wash-strength"/>										<!-- rotor particles -->
 				<float n="4" alias="/rotors/main/rpm"/>											<!-- rotor particles - check if needed since it should be standard mp value -->
 				
 				<int n="1" alias="/gear/gear/ground-is-solid"/>									<!-- rotor particles -->
@@ -820,8 +833,13 @@ Thanks for all the help!
 
 	</sim>
 	
-	
-	
+<environment>	
+	<aircraft-effects>
+		<wash-x>0</wash-x>
+		<wash-y>0</wash-y>
+		<wash-strength>0</wash-strength>
+	</aircraft-effects>
+</environment>		
 	
 <limits>
 <vne>155</vne>
@@ -1271,6 +1289,7 @@ Thanks for all the help!
 			<file>Aircraft/ec135/Nasal/Longline_all.nas</file>
 			<file>Aircraft/ec135/Nasal/Winch.nas</file>
 			<file>Aircraft/ec135/Nasal/BambiBucket.nas</file>
+			<file>Aircraft/ec135/Nasal/rotor_wash.nas</file>
 			<file>Aircraft/ec135/Nasal/externalweights.nas</file>
 			<file>Aircraft/ec135/Nasal/fadec.nas</file>
 			<file>Aircraft/ec135/Nasal/mk-wiper.nas</file>
@@ -1296,6 +1315,9 @@ Thanks for all the help!
 <GTX330>
 			<file>Aircraft/ec135/Models/instrumentation/GTX330/GTX330.nas</file>
 </GTX330>
+		<CAD>
+			<file>Aircraft/ec135/Models/instrumentation/cad/cad.nas</file>
+		</CAD>
 	</nasal>
 
 

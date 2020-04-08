@@ -1153,6 +1153,11 @@
   <type>pick</type>
   <visible>false</visible>
   <object-name>ENG1.idle</object-name>
+  <condition>
+    <not>
+      <property>controls/engines/engine[0]/fadec/engine-guard</property>
+    </not>
+  </condition>
   <action>
    <button>0</button>
    <repeatable>false</repeatable>
@@ -1168,6 +1173,11 @@
   <type>pick</type>
    <visible>false</visible>
   <object-name>ENG1.off</object-name>
+  <condition>
+    <not>
+      <property>controls/engines/engine[0]/fadec/engine-guard</property>
+    </not>
+  </condition>
   <action>
    <button>0</button>
    <repeatable>false</repeatable>
@@ -1215,6 +1225,11 @@
   <type>pick</type>
   <visible>false</visible>
   <object-name>ENG2.idle</object-name>
+  <condition>
+    <not>
+      <property>controls/engines/engine[1]/fadec/engine-guard</property>
+    </not>
+  </condition>
   <action>
    <button>0</button>
    <repeatable>false</repeatable>
@@ -1230,6 +1245,11 @@
   <type>pick</type>
   <visible>false</visible>
   <object-name>ENG2.off</object-name>
+  <condition>
+    <not>
+      <property>controls/engines/engine[1]/fadec/engine-guard</property>
+    </not>
+  </condition>
   <action>
    <button>0</button>
    <repeatable>false</repeatable>
@@ -1468,9 +1488,81 @@
         </axis>
     </animation>
  
+<animation>
+  <type>pick</type>
+  <object-name>guard.e1</object-name>
+  <visible>true</visible>
+  <condition>
+    <greater-than-equals>
+      <property>controls/engines/engine[0]/fadec/engine-state</property>
+      <value>2</value>
+    </greater-than-equals>
+  </condition>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/engines/engine[0]/fadec/engine-guard</property>
+      <value type="bool">true</value>
+    </binding>
+  </action>
+</animation>
 
+<animation>
+  <type>rotate</type>
+  <object-name>guard.e1</object-name>
+  <property>controls/engines/engine[0]/fadec/engine-guard</property>
+  <factor>90.0</factor>
+  <center>
+    <x-m>0.0140</x-m>
+    <y-m>-0.1445</y-m>
+    <z-m>0.000</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>0</y>
+    <z>1</z>
+  </axis>
+</animation>
 
+<animation>
+  <type>pick</type>
+  <object-name>guard.e2</object-name>
+  <visible>true</visible>
+  <condition>
+    <greater-than-equals>
+      <property>controls/engines/engine[1]/fadec/engine-state</property>
+      <value>2</value>
+    </greater-than-equals>
+  </condition>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/engines/engine[1]/fadec/engine-guard</property>
+      <value type="bool">true</value>
+    </binding>
+  </action>
+</animation>
 
+<animation>
+  <type>rotate</type>
+  <object-name>guard.e2</object-name>
+  <property>controls/engines/engine[1]/fadec/engine-guard</property>
+  <factor>90.0</factor>
+  <center>
+    <x-m>0.0140</x-m>
+    <y-m>-0.0445</y-m>
+    <z-m>0.000</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>0</y>
+    <z>1</z>
+  </axis>
+</animation>
 
 
 </PropertyList>
